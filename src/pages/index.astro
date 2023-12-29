@@ -7,23 +7,91 @@ import Layout from '../layouts/Layout.astro';
     <h1 class='font-mono opacity-20 font-extralight fixed '>
       about me
     </h1>
-    <div class='flex flex-row justify-center items-center w-full h-screen '>
-      <div class='flex flex-col '>
-        <svg>
-          <rect width="1rem" height="5rem" fill="var(--pm-color)" />
-          <rect x="1rem" y="2rem" width="1rem" height="1rem" fill="var(--pm-color)" />
-          <rect x="2rem" width="1rem" height="5rem" fill="var(--pm-color)" />
-          <rect x="4rem" width="1rem" height="5rem" fill="var(--pm-color)" />
-          <rect x="5rem" y="0rem" width="1.9rem" height="1rem" fill="var(--pm-color)" />
-          <rect x="5rem" y="2rem" width="1.7rem" height="1rem" fill="var(--pm-color)" />
-          <rect x="5rem" y="4rem" width="1.9rem" height="1rem" fill="var(--pm-color)" />
-          <rect x="8rem" width="1rem" height="5rem" fill="var(--pm-color)" />
-          <rect x="9rem" y="4rem" width="1.9rem" height="1rem" fill="var(--pm-color)" />
-        </svg>
+    <div class='grid grid-cols-2 grid-rows-2 gap-[1rem] justify-center w-full h-screen '>
+      <div class='min-w-[12rem] min-h-[5.5rem] mr-[0.5rem] mb-[0.3rem] self-end justify-self-end grid grid-cols-11 grid-rows-5'>
+        <div class='b row-span-5' /> 
+        <div class='b row-start-3 row-end-4 col-start-2 col-end-3 ' /> 
+        <div class='b row-span-5 col-start-3 col-end-4' /> 
+        <div class='b row-span-5 col-start-5 col-end-6' /> 
+        <div class='b row-span-1 col-start-6 col-end-8 ' /> 
+        <div class='b row-start-3 row-end-4 col-start-6 col-end-8 ' /> 
+        <div class='b row-start-5 row-end-6 col-start-6 col-end-8 ' /> 
+        <div class='b row-span-5 col-start-9 col-end-10 ' /> 
+        <div class='b row-start-5 row-end-6 col-start-10 col-end-12 ' /> 
+      </div>
+      <p class=' self-end justify-self-start text-left font-serif w-[14rem] ml-[0.5rem] '>
+        I’m Sokmontrey, a <span class='pm-color'>programmer</span>, 
+        <span class='pm-color'>designer</span>, and a <span class='pm-color'>math enthusiast</span>. 
+        I learn, build, and teach stuffs.
+      </p>
+      <p class=' text-right self-start justify-self-end font-serif w-[13rem] mr-[0.5rem] '>
+        I started with <span class='pm-color'>game dev</span>,
+        experience in <span class='pm-color'>front-end</span>, 
+        but I prefer <span class='pm-color'><u>other stuffs</u></span>. 
+        And I use <span class='pm-color'>Neovim btw</span>.
+      </p>
+      <div class='flex ml-[0.5rem] '>
+        <div class='min-w-[3.2rem] min-h-[5.5rem] self-start grid grid-cols-3 grid-rows-5 '>
+          <div class='b row-span-5 col-start-1 col-end-2 ' />
+          <div class='b row-start-5 row-end-6 col-start-2 col-end-4 ' />
+        </div>
+        <div id='o-wrapper' class=' min-w-[3.2rem] min-h-[5.5rem] self-start grid grid-cols-3 grid-rows-5 ml-4 '>
+          <div id='o' class='row-start-1 row-end-6 col-start-1 col-end-4 z-10 rounded-3xl ' />
+        </div>
+        <nav class='flex-1 ml-[1rem] pm-color '>
+          <ul class='font-mono '>
+            <li><a>
+              Blogs
+            </a></li>
+            <li><a>
+              Projects
+            </a></li>
+            <li><a href="https://www.linkedin.com/in/sokmontrey-sythat-53ab23206/">
+              LinkedIn
+            </a></li>
+            <li><a href="https://linktr.ee/sokmontrey">
+              Linktree
+            </a></li>
+          </ul>
+        </nav>
       </div>
     </div>
   </header>
 </Layout>
+
+<style>
+.b {
+  width: 100%;
+  height: 100%;
+  background-color: var(--pm-color);
+}
+
+.e-b {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color);
+}
+
+#o{
+  transition: all 0.3s ease-in-out;
+  background-color: var(--bg-color);
+  border: 1rem solid var(--pm-color);
+  width: 100%;
+  height: 100%;
+}
+#o:hover{
+  height: 200%;
+}
+/**/
+/* #o-wrapper{ */
+/*   transition: all 0.3s ease-in-out; */
+/*   min-width: 3.2rem; */
+/*   min-height: 5.5rem; */
+/* } */
+/* #o-wrapper:hover{ */
+/*   min-width: 7rem; */
+/* } */
+</style>
 
 <script is:inline>
   const storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");

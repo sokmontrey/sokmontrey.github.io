@@ -30,13 +30,26 @@
   --bg-color: #0F0F0F;
   --ft-color: #303436;
   --nt-color: #efefef;
-  --pm-color: #3273f4;
+  --pm-color: #4080FF;
   --sd-color: #f05454;
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--nt-color);
+}
+
+a{
+  transition: all 0.2s ease-in-out;
+  text-decoration: underline;
+  text-decoration-thickness: 0.01em;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  background-color: var(--sd-color);
+  color: var(--nt-color);
+  padding: 0.1rem 0.2rem;
 }
 
 .font-mono {
@@ -49,4 +62,50 @@ body {
 
 .font-sans {
   font-family: "Work Sans", sans-serif;
+}
+
+.pm-color {
+  color: var(--pm-color);
+}
+
+.sd-color {
+  color: var(--sd-color);
+}
+
+.ft-color {
+  color: var(--ft-color);
+}
+
+.bg-color {
+  background-color: var(--bg-color);
+}
+
+.nt-color {
+  color: var(--nt-color);
+}
+
+.bg-nt-color {
+  background-color: var(--nt-color);
+}
+
+.bg-bg-color {
+  background-color: var(--bg-color);
+}
+
+.bg-ft-color {
+  background-color: var(--ft-color);
+}
+
+.bg-pm-color {
+  background-color: var(--pm-color);
+}
+
+.bg-sd-color {
+  background-color: var(--sd-color);
+}
+
+u {
+  text-decoration: underline;
+  text-decoration-thickness: 0.01em;
+  text-underline-offset: 0.2em;
 }
