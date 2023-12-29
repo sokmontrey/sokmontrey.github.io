@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Work+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --bg-color: #efefef;
+  --ft-color: #c9ced1;
+  --nt-color: #222831;
+  --pm-color: #1961f0;
+  --sd-color: #f05454;
+}
+
+@property --block{
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 1rem;
+}
+
+[data-theme="light"] {
+  --bg-color: #efefef;
+  --ft-color: #c9ced1;
+  --nt-color: #222831;
+  --pm-color: #1961f0;
+  --sd-color: #f05454;
+}
+
+[data-theme="dark"] {
+  --bg-color: #0F0F0F;
+  --ft-color: #303436;
+  --nt-color: #efefef;
+  --pm-color: #3273f4;
+  --sd-color: #f05454;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--nt-color);
+}
+
+.font-mono {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.font-serif {
+  font-family: "Libre Baskerville", serif;
+}
+
+.font-sans {
+  font-family: "Work Sans", sans-serif;
+}

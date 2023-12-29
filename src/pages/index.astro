@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Home">
+  <header>
+    <h1 class='font-mono opacity-20 font-extralight fixed '>
+      about me
+    </h1>
+    <div class='flex flex-row justify-center items-center w-full h-screen '>
+      <div class='flex flex-col '>
+        <svg>
+          <rect width="1rem" height="5rem" fill="var(--pm-color)" />
+          <rect x="1rem" y="2rem" width="1rem" height="1rem" fill="var(--pm-color)" />
+          <rect x="2rem" width="1rem" height="5rem" fill="var(--pm-color)" />
+          <rect x="4rem" width="1rem" height="5rem" fill="var(--pm-color)" />
+          <rect x="5rem" y="0rem" width="1.9rem" height="1rem" fill="var(--pm-color)" />
+          <rect x="5rem" y="2rem" width="1.7rem" height="1rem" fill="var(--pm-color)" />
+          <rect x="5rem" y="4rem" width="1.9rem" height="1rem" fill="var(--pm-color)" />
+          <rect x="8rem" width="1rem" height="5rem" fill="var(--pm-color)" />
+          <rect x="9rem" y="4rem" width="1.9rem" height="1rem" fill="var(--pm-color)" />
+        </svg>
+      </div>
+    </div>
+  </header>
+</Layout>
+
+<script is:inline>
+  const storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  if (storedTheme) document.documentElement.setAttribute('data-theme', storedTheme);
+
+  function changeTheme() {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const theme = currentTheme === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  };
+</script>
+
