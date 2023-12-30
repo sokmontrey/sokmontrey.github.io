@@ -1,0 +1,13 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const files = await Astro.glob('./*.mdx');
+---
+
+<Layout title="Articles">
+  {files.map((file) => (
+    <div>
+      <h2>{file.frontmatter.title}</h2>
+    </div>
+  ))}
+</Layout>

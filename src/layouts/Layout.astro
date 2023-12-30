@@ -1,6 +1,6 @@
 ---
-  import './global.css';
-  const { title } = Astro.props;
+import './global.css';
+const { title } = Astro.props;
 ---
 
 <html lang="en" data-theme="dark" >
@@ -14,5 +14,17 @@
 </head>
 <body>
   <slot />
+  <script>
+    const storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    if (storedTheme) document.documentElement.setAttribute('data-theme', storedTheme);
+
+    function changeTheme() {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const theme = currentTheme === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    };
+  </script>
 </body>
 </html>
+
