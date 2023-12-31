@@ -5,9 +5,8 @@ const files = await Astro.glob('./*.mdx');
 ---
 
 <Layout title="Articles">
-  {files.map((file) => (
-    <div>
-      <h2>{file.frontmatter.title}</h2>
-    </div>
-  ))}
+  <header class='fixed top-4 left-4 '>
+    <p class='font-serif text-xl opacity-80 '>Sokmontrey</p>
+    <h1 class='font-mono font-light text-base opacity-50 '>Blogs/Articles</h1>
+  </header>
 </Layout>

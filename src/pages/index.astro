@@ -5,47 +5,54 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Home">
   <header>
     <div class='grid grid-cols-2 grid-rows-2 gap-[1rem] justify-center w-full h-screen '>
-      <div class='min-w-[12rem] min-h-[5.5rem] mr-[0.5rem] mb-[0.3rem] self-end justify-self-end grid grid-cols-11 grid-rows-5'>
-        <div class='b row-span-5' /> 
-        <div class='b row-start-3 row-end-4 col-start-2 col-end-3 ' /> 
-        <div class='b row-span-5 col-start-3 col-end-4' /> 
-        <div class='b row-span-5 col-start-5 col-end-6' /> 
-        <div class='b row-span-1 col-start-6 col-end-8 ' /> 
-        <div class='b row-start-3 row-end-4 col-start-6 col-end-8 ' /> 
-        <div class='b row-start-5 row-end-6 col-start-6 col-end-8 ' /> 
-        <div class='b row-span-5 col-start-9 col-end-10 ' /> 
-        <div class='b row-start-5 row-end-6 col-start-10 col-end-12 ' /> 
-      </div>
-      <p class=' self-end justify-self-start text-left font-sans w-[13rem] ml-[0.5rem] text-justify '>
-        I’m Sokmontrey, a random programmer, and math enthusiast. I <span class='pm-color'>learn</span>, <span class='pm-color'>build</span>, and <span class='pm-color'>teach</span> stuffs. <br>
+
+      <div id='e-wrapper' class='self-end justify-self-end flex mr-[0.5rem] '>
+        <div class='min-w-[3.2rem] min-h-[5.5rem] mr-[1rem] mb-[0.3rem] grid grid-cols-3 grid-rows-5'>
+          <div class='b row-span-5' /> 
+          <div class='b row-start-3 row-end-4 col-start-2 col-end-3 ' /> 
+          <div class='b row-span-5 col-start-3 col-end-4' /> 
+        </div>
+        <div class='min-w-[1.1rem] min-h-[5.5rem] mb-[0.3rem] grid grid-cols-1 grid-rows-5'>
+          <div class='b row-span-5 col-start-1 col-end-2' /> 
+        </div>
+        <div id="e" class='min-w-[2.1rem] min-h-[5.5rem] mr-[1rem] mb-[0.3rem] grid grid-cols-2 grid-rows-5'>
+          <div class='b row-span-1 col-start-1 col-end-3 ' /> 
+          <div class='b row-start-3 row-end-4 col-start-1 col-end-3 ' /> 
+          <div class='b row-start-5 row-end-6 col-start-1 col-end-3 ' /> 
+        </div>
+        <div class="min-w-[3.2rem] min-h-[5.5rem] mb-[0.3rem] grid grid-cols-3 grid-rows-5">
+          <div class='b row-span-5 col-start-1 col-end-2 ' /> 
+          <div class='b row-start-5 row-end-6 col-start-2 col-end-4 ' /> 
+        </div>
+      </div> 
+
+      <p class=' w-[13rem] self-end text-justify justify-self-start text-left font-serif ml-[0.5rem] '>
+        I am experienced with <span class='pm-color'>front-end</span>, but also prefer <span class='pm-color'><u>other stuffs</u></span>. 
+        And I use <span class='pm-color'>Neovim btw</span>.
       </p>
-      <p class=' text-right self-start justify-self-end font-sans w-[12rem] text-justify mr-[0.5rem] '>
-        I am experienced with designing and building <span class='pm-color'>front-end</span>,
-        but also prefer <span class='pm-color'><u>other stuffs</u></span>. 
-        <!-- And I use <span class='pm-color'>Neovim btw</span>. -->
+      
+      <p class=' w-[12rem] text-justify text-right self-start justify-self-end font-serif mr-[0.5rem] '>
+        I’m Sokmontrey, a random programmer, and math enthusiast. I <span class='pm-color'>build</span> and <span class='pm-color'>teach</span> stuffs. <br>
       </p>
+
       <div class='flex ml-[0.5rem] '>
-        <div class='min-w-[3.2rem] min-h-[5.5rem] self-start grid grid-cols-3 grid-rows-5 mt-1 '>
+        <div class='min-w-[1rem] min-h-[5.5rem] self-start grid grid-cols-1 grid-rows-5 mt-1 '>
           <div class='b row-span-5 col-start-1 col-end-2 ' />
-          <div class='b row-start-5 row-end-6 col-start-2 col-end-4 ' />
+          <!-- <div class='b row-start-5 row-end-6 col-start-2 col-end-4 ' /> -->
+        </div>
+        <div id='l' class='min-w-[2rem] min-h-[5.5rem] self-start grid grid-cols-2 grid-rows-5 mt-1 '>
+          <div class='b row-start-5 row-end-6 col-start-1 col-end-3 ' />
+          <!-- <div class='b row-start-5 row-end-6 col-start-2 col-end-4 ' /> -->
         </div>
         <div id='o-wrapper' class=' min-w-[3.2rem] min-h-[5.5rem] self-start grid grid-cols-3 grid-rows-5 ml-4 mt-1 '>
           <div id='o' class='row-start-1 row-end-6 col-start-1 col-end-4 z-10 rounded-3xl ' />
         </div>
         <nav class='flex-1 ml-[1rem] pm-color '>
           <ul class='font-serif '>
-            <li><a href="/articles/">
-              Articles
-            </a></li>
-            <li><a>
-              Projects
-            </a></li>
-            <li><a href="https://www.linkedin.com/in/sokmontrey-sythat-53ab23206/">
-              LinkedIn
-            </a></li>
-            <li><a href="https://linktr.ee/sokmontrey">
-              Linktree
-            </a></li>
+            <li><a href="/articles/"> Articles </a></li>
+            <li><a> Projects </a></li>
+            <li><a href="https://www.linkedin.com/in/sokmontrey-sythat-53ab23206/"> LinkedIn </a></li>
+            <li><a href="https://linktr.ee/sokmontrey"> Linktree </a></li>
           </ul>
         </nav>
       </div>
@@ -76,24 +83,43 @@ import Layout from '../layouts/Layout.astro';
 }
 
 #o{
-  transition: all 0.3s ease-in-out;
   background-color: var(--bg-color);
   border: 1rem solid var(--pm-color);
   width: 100%;
   height: 100%;
+  transition: all 0.3s ease-in-out;
   animation: start-o 3s ease-in-out;
 }
 #o:hover{
   height: 200%;
 }
-/**/
-/* #o-wrapper{ */
-/*   transition: all 0.3s ease-in-out; */
-/*   min-width: 3.2rem; */
-/*   min-height: 5.5rem; */
-/* } */
-/* #o-wrapper:hover{ */
-/*   min-width: 7rem; */
-/* } */
+
+#l{
+  /* padding-right: 1rem; */
+  min-width: 2rem;
+  transition: all 0.3s ease-in-out;
+}
+#l:hover{
+  min-width: 4rem;
+}
+
+@keyframes start-e {
+  0% {
+    min-width: 8rem;
+  }
+  100% {
+    min-width: 2.1rem;
+  }
+}
+
+#e{
+  min-width: 2.1rem;
+  transition: all 0.3s ease-in-out;
+  animation: start-e 2s ease-in-out;
+}
+#e:hover,
+#e-wrapper:hover #e{
+  min-width: 4.1rem;
+}
 </style>
 
