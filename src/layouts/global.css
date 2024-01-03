@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --bg-color: #DBE3EC;
+  --bg-color: #dbe3ec;
   --ft-color: #c9ced1;
-  --nt-color: #13171E;
+  --nt-color: #13171e;
   --pm-color: #1961f0;
   --sd-color: #f05454;
 }
@@ -19,9 +19,9 @@
 }
 
 [data-theme="light"] {
-  --bg-color: #DBE3EC;
+  --bg-color: #dbe3ec;
   --ft-color: #c9ced1;
-  --nt-color: #13171E;
+  --nt-color: #13171e;
   --pm-color: #1961f0;
   --sd-color: #f05454;
 }
@@ -29,13 +29,13 @@
 [data-theme="dark"] {
   --bg-color: #0e1115;
   --ft-color: #303436;
-  --nt-color: #EEEEEE;
+  --nt-color: #eeeeee;
   --pm-color: #4080ff;
   --sd-color: #f05454;
 
-  --ac1-color: #85FF9E;
-  --ac2-color: #FFFB7D;
-  --ac3-color: #EF7B45;
+  --ac1-color: #85ff9e;
+  --ac2-color: #fffb7d;
+  --ac3-color: #ef7b45;
 }
 
 .font-mono {
@@ -63,14 +63,14 @@
 }
 
 .bg-color {
-  background-color: var(--bg-color);
+  color: var(--bg-color);
 }
 
 .nt-color {
   color: var(--nt-color);
 }
 
-.ac1-color{
+.ac1-color {
   color: var(--ac1-color);
 }
 
@@ -127,7 +127,7 @@ a {
 }
 
 a:hover {
-  background-color: var(--sd-color);
+  /* background-color: var(--sd-color); */
   color: var(--nt-color);
   padding: 0.3rem 0rem;
 }

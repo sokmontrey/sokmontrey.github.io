@@ -27,7 +27,7 @@
   };
 </script>
 
-<div class='fixed top-0 right-0 p-4 '>
+<div class='fixed top-0 right-0 p-8 '>
   <button on:click={changeTheme}>
     {#if theme === "dark"}
       <i class="fa-solid fa-sun"></i>

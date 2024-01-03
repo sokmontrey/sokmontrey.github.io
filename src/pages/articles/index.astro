@@ -6,10 +6,12 @@ const files = await Astro.glob('./*/index.mdx');
 ---
 
 <Layout title="Articles">
-  <header class='fixed top-4 left-4 '>
-    <a class='no-underline' href='/'>
-      <p class='font-serif text-lg opacity-80 '>Sokmontrey</p>
-    </a>
+  <header class='fixed top-0 left-0 p-8 '>
+    <nav>
+      <a class='no-underline opacity-80 hover:opacity-100 ' href='/'>
+        <p class='font-serif text-lg '>Sokmontrey</p>
+      </a>
+    </nav>
     <h1 class='font-mono font-light text-sm opacity-50 '>Blogs/Articles</h1>
   </header>
   <main class=' flex flex-col pt-[15vh] w-[45%] mx-auto '>
@@ -19,15 +21,14 @@ const files = await Astro.glob('./*/index.mdx');
         </aside>
         <section>
           <Title title={file.frontmatter.title} url={file.url} />
-          <p class=' font-mono font-light text-base pl-4 py-4 '>
+          <p class=' font-mono text-base pl-4 py-4 '>
             {file.frontmatter.date || 'January 01, 2000'}
           </p>
-          <p class=' font-sans font-light text-base py-2 '>
+          <p class=' font-sans text-base py-2 '>
             {file.frontmatter.description || 'No description'}
           </p>
         </section>
       </div>
-
       <hr>
     )}
   </main>
