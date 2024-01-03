@@ -1,6 +1,8 @@
 ---
 import './global.css';
-const { title } = Astro.props;
+import ThemeToggle from '../components/ThemeToggle.svelte';
+
+const { title, description } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -9,25 +11,16 @@ const { title } = Astro.props;
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title}</title>
-  <meta name="description" content="Displaying projects and experience">
+  <meta name="description" content={description || "No description"}>
   <meta name="google" content="notranslate">
   <meta http-equiv="Content-Language" content="en">
 
+  <script src="https://kit.fontawesome.com/b71972c7cc.js" crossorigin="anonymous"></script>
   <!--TODO: SEO-->
 </head>
 <body>
   <slot />
-  <script>
-    const storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    if (storedTheme) document.documentElement.setAttribute('data-theme', storedTheme);
-
-    function changeTheme() {
-      const currentTheme = document.documentElement.getAttribute("data-theme");
-      const theme = currentTheme === "dark" ? "light" : "dark";
-      document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
-    };
-  </script>
+  <ThemeToggle client:only="svelte" />
 </body>
 </html>
 

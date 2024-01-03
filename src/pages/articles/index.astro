@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import BlogTitle from '../../components/articles/BlogTitle.svelte';
+import Title from '../../components/articles/Title.svelte';
 
 const files = await Astro.glob('./*/index.mdx');
 ---
@@ -18,11 +18,11 @@ const files = await Astro.glob('./*/index.mdx');
         <aside class=' bg-ft-color opacity-30 w-full h-full rounded-[3.2rem] '>
         </aside>
         <section>
-          <BlogTitle title={file.frontmatter.title} url={file.url} />
-          <p class='opacity-50 font-mono font-light text-base pl-4 py-4 '>
+          <Title title={file.frontmatter.title} url={file.url} />
+          <p class=' font-mono font-light text-base pl-4 py-4 '>
             {file.frontmatter.date || 'January 01, 2000'}
           </p>
-          <p class='opacity-50 font-sans font-light text-base py-2 '>
+          <p class=' font-sans font-light text-base py-2 '>
             {file.frontmatter.description || 'No description'}
           </p>
         </section>
