@@ -1,12 +1,34 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import BlogTitle from '../../components/articles/BlogTitle.svelte';
 
-const files = await Astro.glob('./*.mdx');
+const files = await Astro.glob('./*/index.mdx');
 ---
 
 <Layout title="Articles">
   <header class='fixed top-4 left-4 '>
-    <p class='font-serif text-xl opacity-80 '>Sokmontrey</p>
-    <h1 class='font-mono font-light text-base opacity-50 '>Blogs/Articles</h1>
+    <a class='no-underline' href='/'>
+      <p class='font-serif text-lg opacity-80 '>Sokmontrey</p>
+    </a>
+    <h1 class='font-mono font-light text-sm opacity-50 '>Blogs/Articles</h1>
   </header>
+  <main class=' flex flex-col pt-[15vh] w-[45%] mx-auto '>
+    {files.map((file)=>
+      <div class='my-20 grid grid-cols-2 gap-8 min-h-[45vh]'>
+        <aside class=' bg-ft-color opacity-30 w-full h-full rounded-[3.2rem] '>
+        </aside>
+        <section>
+          <BlogTitle title={file.frontmatter.title} url={file.url} />
+          <p class='opacity-50 font-mono font-light text-base pl-4 py-4 '>
+            {file.frontmatter.date || 'January 01, 2000'}
+          </p>
+          <p class='opacity-50 font-sans font-light text-base py-2 '>
+            {file.frontmatter.description || 'No description'}
+          </p>
+        </section>
+      </div>
+
+      <hr>
+    )}
+  </main>
 </Layout>
