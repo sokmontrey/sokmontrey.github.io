@@ -14,22 +14,10 @@ const files = await Astro.glob('./*/index.mdx');
     </nav>
     <h1 class='font-mono font-light text-sm opacity-50 '>Blogs/Articles</h1>
   </header>
-  <main class=' flex flex-col pt-[15vh] w-[45%] mx-auto '>
-    {files.map((file)=>
-      <div class='my-20 grid grid-cols-2 gap-8 min-h-[45vh]'>
-        <aside class=' bg-ft-color opacity-30 w-full h-full rounded-[3.2rem] '>
-        </aside>
-        <section>
-          <Title title={file.frontmatter.title} url={file.url} />
-          <p class=' font-mono text-base pl-4 py-4 '>
-            {file.frontmatter.date || 'January 01, 2000'}
-          </p>
-          <p class=' font-sans text-base py-2 '>
-            {file.frontmatter.description || 'No description'}
-          </p>
-        </section>
-      </div>
-      <hr>
-    )}
+
+  <main class=' flex flex-col pt-[15vh] w-[90%] md:w-[45%] mx-auto '>
+    {files.map((file) => {
+      return <file.thumbnail />
+    })}
   </main>
 </Layout>
