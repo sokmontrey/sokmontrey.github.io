@@ -4,8 +4,8 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Home">
   <p class='fixed top-0 left-0 text-red-500 '>Development in progress</p>
-  <header>
-    <div class='grid grid-cols-2 grid-rows-2 gap-[1rem] justify-center w-full h-screen '>
+  <header class='flex flex-col justify-center'>
+    <div class='grid grid-cols-2 grid-rows-2 gap-[1rem] justify-center w-full h-[70vh] pt-[15vh] '>
       <div id='e-wrapper' class='self-end justify-self-end flex mr-[1rem] '>
         <div class='min-w-[3.2rem] min-h-[5.5rem] mr-[1rem] mb-[0.3rem] grid grid-cols-3 grid-rows-5'>
           <div class='b row-span-5' /> 
@@ -65,7 +65,16 @@ import Layout from '../layouts/Layout.astro';
         </nav>
       </div>
     </div>
+
+    <a href="#projects" id="scroll-down-btn" class='no-a-bg mx-auto mb-[30vh] flex flex-col items-center no-underline'>
+      <p>scroll down</p>
+      <i class="fa-solid fa-arrow-down"></i>
+    </a>
   </header>
+
+  <main id="projects">
+    <h1>Projects</h1>
+  </main>
 </Layout>
 
 <style>
@@ -128,6 +137,28 @@ import Layout from '../layouts/Layout.astro';
 #e:hover,
 #e-wrapper:hover #e{
   min-width: 4.1rem;
+}
+
+@keyframes scroll-down {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0.3rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+#scroll-down-btn{
+  color: var(--nt-color);
+  opacity: 0.3;
+  animation: scroll-down 2s ease-in-out infinite;
+  transition: all 0.3s ease-in-out;
+}
+#scroll-down-btn:hover{
+  opacity: 1;
 }
 </style>
 
