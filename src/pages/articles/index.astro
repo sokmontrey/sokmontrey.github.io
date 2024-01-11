@@ -1,23 +1,13 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Title from '../../components/articles/Title.svelte';
+import ArticlesLayout from '@/layouts/ArticlesLayout.astro';
 
-const files = await Astro.glob('./*/index.mdx');
+const articles = await Astro.glob('./**/index.mdx');
 ---
 
-<Layout title="Articles">
-  <header class='fixed top-0 left-0 p-8 '>
-    <nav>
-      <a class='no-underline opacity-80 hover:opacity-100 ' href='/'>
-        <p class='font-serif text-lg '>Sokmontrey</p>
-      </a>
-    </nav>
-    <h1 class='font-mono font-light text-sm opacity-50 '>Blogs/Articles</h1>
-  </header>
-
-  <main class=' flex flex-col pt-[15vh] w-[90%] md:w-[45%] mx-auto '>
-    {files.map((file) => {
-      return <file.thumbnail />
-    })}
-  </main>
-</Layout>
+<ArticlesLayout>
+  {articles.map((article)=> { return (<div>
+    <article.thumbnail />
+    <a href={article.url}>{article.frontmatter.title}</a> 
+  </div>) 
+  })}
+</ArticlesLayout>
