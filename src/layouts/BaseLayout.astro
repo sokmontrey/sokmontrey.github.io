@@ -1,5 +1,7 @@
 ---
 import './global.css';
+import ThemeToggle from '@/components/ThemeToggle.svelte';
+
 const { title } = Astro.props;
 ---
 
@@ -11,6 +13,7 @@ const { title } = Astro.props;
     <script src="https://kit.fontawesome.com/b71972c7cc.js" crossorigin="anonymous"></script>
   </head>
   <body>
+    <ThemeToggle client:only="svelte" />
     <slot />
   </body>
 </html>

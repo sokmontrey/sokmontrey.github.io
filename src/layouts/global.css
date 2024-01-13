@@ -202,7 +202,7 @@ h6 {
 }
 
 hr {
-  opacity: 10%;
+  opacity: 30%;
   border: dashed 1px var(--nt-color);
   /* width: 50%; */
   /* margin: 0 auto; */

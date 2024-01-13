@@ -1,6 +1,4 @@
 <script>
-  import { onMount } from 'svelte';
-
   function getTheme(){
     return localStorage.getItem('theme') 
       || (window.matchMedia("(prefers-color-scheme: dark)").matches 
@@ -25,9 +23,11 @@
     updateTheme(theme);
     storeTheme(theme);
   };
+
+  // changeTheme();
 </script>
 
-<div class='fixed top-0 right-0 p-8 '>
+<div class='fixed top-0 right-0 p-8 z-[100] '>
   <button on:click={changeTheme}>
     {#if theme === "dark"}
       <i class="fa-solid fa-sun"></i>
