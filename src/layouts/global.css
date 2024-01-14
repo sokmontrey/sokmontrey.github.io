@@ -12,6 +12,10 @@
   --sd-color: #f05454;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   min-height: 100vh;
 }

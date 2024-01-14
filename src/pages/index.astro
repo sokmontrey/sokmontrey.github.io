@@ -1,9 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import GenArt from '@/components/GenArt.svelte';
 import IntroProfile from '@/components/IntroProfile.svelte';
 import AsciiBackground from '@/components/AsciiBackground.svelte';
-
 ---
 
 <BaseLayout title="Home">
@@ -11,14 +9,18 @@ import AsciiBackground from '@/components/AsciiBackground.svelte';
 
   <AsciiBackground client:only="svelte" />
 
-  <header class='h-[100vh] w-[100vw] flex justify-center items-center relative z-10 '>
-    <IntroProfile />
-    <div class='flex flex-col '>
-      <h1 class='bg-[var(--bg-color)] '>Hi,</h1>
-      <p>This is Sokmontrey, me</p>
-    </div>
+  <header class='h-[100vh] w-[100vw] flex flex-col justify-center items-center relative z-10 '>
+    <h1 class='flex-1 flex items-end '>Hi,</h1>
+    <a href="#intro" class=' flex-1 flex flex-col justify-center items-center opacity-40 hover:opacity-100 hover:text-[var(--nt-color)] '>
+      <p class='font-mono animate-bounce '>scroll down</p>
+      <i class="fa-solid fa-arrow-down animate-bounce"></i>
+    </a>
   </header>
 
   <hr />
 
+  <section id="intro" class='flex items-center justify-center h-[100vh] w-[100vw] relative '>
+    <IntroProfile />
+    <p>This is Sokmontrey, Me.</p>
+  </section>
 </BaseLayout>

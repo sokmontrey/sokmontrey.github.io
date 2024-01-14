@@ -72,11 +72,9 @@
       for (let i=0; i<TWO_PI; i+=INCREMENT) {
         const x_offset = Math.floor(radius * Math.cos(i) / text_w) * text_w;
         const y_offset = Math.floor(radius * Math.sin(i) / text_h) * text_h;
-        const _x = x + x_offset;
-        const _y = y + y_offset;
-        const char = getChars(chars,_x,_y);
+        const char = getChars(chars);
         ctx.fillStyle = color;
-        ctx.fillText(char, _x, _y);
+        ctx.fillText(char, x+x_offset, y+y_offset);
       }
     }
 
@@ -87,6 +85,7 @@
         const hex_opacity = Math.floor((9-i) * 5).toString(16).padStart(2, '0');
         drawCircle(mouse_pos[0], mouse_pos[1], i, nt_color + hex_opacity);
       }
+
       requestAnimationFrame(loop);
     };
     requestAnimationFrame(loop);
