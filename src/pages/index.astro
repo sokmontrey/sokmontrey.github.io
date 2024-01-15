@@ -20,7 +20,7 @@ import AsciiBackground from '@/components/AsciiBackground.svelte';
   <hr />
 
   <section id="intro" class='flex items-center justify-center h-[100vh] w-[100vw] relative '>
-    <IntroProfile />
+    <IntroProfile client:only="svelte" />
     <p>This is Sokmontrey, Me.</p>
   </section>
 </BaseLayout>

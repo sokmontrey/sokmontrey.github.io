@@ -1,12 +1,7 @@
 <script>
-  // @ts-check
-  export const opts = {
-    viewBox:'0 0 100 100',
-    ...$$props
-  };
-
+  export let viewBox = '0 0 100 100';
 </script>
 
-<svg {...opts} xmlns="http://www.w3.org/2000/svg">
+<svg viewBox={viewBox} >
   <slot />
 </svg>

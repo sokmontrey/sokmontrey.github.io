@@ -1,11 +1,16 @@
 <script>
-  // @ts-check
+	import { tweened } from 'svelte/motion';
+  import { cubicOut } from 'svelte/easing';
 
-  export let opts = {
-    cx: 50,
-    cy: 50,
-    r: 40,
-  };
+  export let ref;
+
+  const _x = tweened(0, { duration: 1000, easing: cubicOut });
+  const _y = tweened(0, { duration: 1000, easing: cubicOut });
+  const _r = tweened(10, { duration: 1000, easing: cubicOut });
+
+  $: _x.set(ref.pos.x);
+  $: _y.set(ref.pos.y);
+  $: _r.set(ref.r);
 </script>
 
-<circle {...opts} />
+<circle cx={$_x} cy={$_y} r={$_r} />
