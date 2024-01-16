@@ -1,13 +1,14 @@
 <script>
   import signal from "@/utils/signal.js";
   import Circle from "@/components/visuals/Circle.svelte";
+  import { onMount } from "svelte";
 
   let circle = signal({ cx: 0, cy: 0, r: 10 });
 </script>
 
 <button
-  on:click={() => {
-  circle.toNow(({cx}) => ({ cx:cx+ 10 }));
+  on:click={async () => {
+    await circle.to(({ cx }) => ({ cx: cx + 10 }));
   }}>Click</button
 >
 

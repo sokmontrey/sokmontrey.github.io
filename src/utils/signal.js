@@ -37,6 +37,28 @@ export default function signal(
   motion_func = tweened
 ) {
   const _store = motion_func(value, opts);
+  let _tasks = [];
+
+  /** Animate to a new value. BUT push the animation to a queue enabling async/await.
+    *
+    * @param {T} values - Values to animate to.
+    * @param {Function} values - Function that returns values to animate to.
+    * @param {Object} opts - Options for svelte/motion store.
+    *
+    * @returns {Signal} - The same Signal instance.
+    *
+    * @example
+    * await signal.to(1);
+    * await signal.to({ x: 1 }); //allows patially/fully updating object values
+    */
+  function to(values, opts = {}) {
+    _tasks.push(
+      _getUpdateFunction(
+        _calculateValue(values)
+        , opts)
+    );
+    return this;
+  }
 
   /** Animate to a new value instantly.
     *
@@ -52,9 +74,24 @@ export default function signal(
     */
   function toNow(values, opts = {}) {
     _getUpdateFunction(
-      _calculateValue(values, opts)
-    , opts)(); //<-- call the update function
+      _calculateValue(values)
+      , opts
+    )(); //<-- call the update function
     return this;
+  }
+
+  /** Enable thenable for executing all queued animations.
+    *
+    * @param {Function} resolve - Function to call when all animations are done.
+    * @param {Function} reject - Function to call when an error occurs.
+    * @returns {Promise} - A promise.
+    */
+  async function then(resolve = () => { }, reject = () => { }) {
+    for (const task of _tasks) {
+      await task();
+    }
+    _tasks = [];
+    resolve();
   }
 
   /** Use to determine the values to animate to.
@@ -66,7 +103,7 @@ export default function signal(
     *
     * @returns {T} - Values to animate to.
     */
-  function _calculateValue(values, opts = {}) {
+  function _calculateValue(values) {
     return (values instanceof Function)
       ? values(get(_store))
       : values;
@@ -86,7 +123,9 @@ export default function signal(
   }
 
   return {
+    to,
     toNow,
+    then,
     subscribe: _store.subscribe,
     update: _store.update,
     set: _store.set,
