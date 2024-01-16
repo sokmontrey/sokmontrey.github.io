@@ -2,9 +2,9 @@
 import { tweened } from "svelte/motion";
 import { cubicInOut } from "svelte/easing";
 import { interpolate } from "d3-interpolate";
+import { get } from "svelte/store";
 
-/**
-  * @typedef {Object} Signal 
+/** @typedef {Object} Signal 
   * @property {Function} to - Animate to a new value. BUT push the animation to a queue enabling async/await.
   * @property {Function} then - Execute all queued animations.
   * @property {Function} toNow - Animate to a new value instantly.
@@ -37,92 +37,55 @@ export default function signal(
   motion_func = tweened
 ) {
   const _store = motion_func(value, opts);
-  const _tasks = [];
-
-  /** Animate to a new value. BUT push the animation to a queue
-    * enabling async/await.
-    *
-    * @param {T} values - Values to animate to.
-    * @param {Object} opts - Options for svelte/motion store.
-    * @returns {Signal} - The same Signal instance.
-    * @example
-    * await signal.to(1);
-    * await signal.to({ x: 1 }); //allows patially/fully updating object values
-    */
-  function to(values, opts = {}) {
-    _tasks.push(() =>
-      values instanceof Object
-        ? _updateObject(values, opts)
-        : _updateScalar(values, opts),
-    );
-    return this;
-  }
-
-  /** Execute all queued animations.
-    *
-    * @param {Function} resolve - Callback to execute when all animations are done.
-    * @returns {Signal} - The same Signal instance.
-    * @example
-    * await signal.to(1).then(() => console.log('done'));
-    */
-  async function then(resolve) {
-    for (const task of _tasks) {
-      await task();
-    }
-    _tasks = [];
-    resolve();
-    return this;
-  }
 
   /** Animate to a new value instantly.
     *
     * @param {T} values - Values to animate to.
+    * @param {Function} values - Function that returns values to animate to.
     * @param {Object} opts - Options for svelte/motion store.
+    *
     * @returns {Signal} - The same Signal instance.
+    *
     * @example
     * signal.toNow(1);
     * signal.toNow({ x: 1 }); //allows patially/fully updating object values
     */
   function toNow(values, opts = {}) {
-    if (values instanceof Object) {
-      _updateObject(values, opts);
-    } else {
-      _updateScalar(values, opts);
-    }
+    _getUpdateFunction(
+      _calculateValue(values, opts)
+    , opts)(); //<-- call the update function
     return this;
   }
 
-  /** Use to animate object value(s).
-    *
+  /** Use to determine the values to animate to.
+    * 
     * @private
     * @param {T} values - Values to animate to.
+    * @param {Function} values - Function that returns values to animate to.
     * @param {Object} opts - Options for svelte/motion store.
-    * @returns {Signal} - The same Signal instance.
-    * @example
-    * this._updateObject({ x: 1 });
+    *
+    * @returns {T} - Values to animate to.
     */
-  function _updateObject(values, opts = {}) {
-    _store.update((prev) => {
-      return { ...prev, ...values };
-    }, opts);
+  function _calculateValue(values, opts = {}) {
+    return (values instanceof Function)
+      ? values(get(_store))
+      : values;
   }
 
-  /** Use to animate scalar
+  /** Animate to a new value depending on the type of value.
     *
     * @private
     * @param {T} values - Values to animate to.
-    * @param {Object} opts - Options for svelte/motion store.
-    * @returns {Signal} - The same Signal instance.
-    * @example
-    * this._updateScalar(1);
+    *
+    * @returns {Function} - Corresponding update function.
     */
-  function _updateScalar(values, opts = {}) {
-    _store.set(values, opts);
+  function _getUpdateFunction(values, opts = {}) {
+    return (values instanceof Object)
+      ? () => _store.update((prev) => ({ ...prev, ...values }), opts)
+      : () => _store.set(values, opts);
   }
 
   return {
-    to,
-    then,
     toNow,
     subscribe: _store.subscribe,
     update: _store.update,
