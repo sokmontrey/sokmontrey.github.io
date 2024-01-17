@@ -11,12 +11,14 @@
   export let h = 100;
 
   /** @type {number} x */
-  /** @type {number} y */
   export let x = null;
+  /** @type {number} y */
   export let y = null;
 
   /** @type {string} fill */
   export let fill = "white";
+
+  export let unit = "px";
 </script>
 
 <Div
@@ -25,8 +27,8 @@
     "background-color": style["background-color"] || fill || "",
     display: style.display || "inline-block",
     position: style.position || (x !== null || y !== null ? "absolute" : ""),
-    left: x ? x + "px" : "",
-    top: y ? y + "px" : "",
+    left: x ? x + unit : "",
+    top: y ? y + unit : "",
   }}
   {w}
   {h}

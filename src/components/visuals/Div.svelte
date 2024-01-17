@@ -7,13 +7,15 @@
   export let w = null;
   /** @type {number} h */
   export let h = null;
+
+  export let unit = "px";
 </script>
 
 <div
   style={Object.entries({
     ...style,
-    width: w + "px",
-    height: h + "px",
+    width: w + unit,
+    height: h + unit,
   }).reduce((acc, [k, v]) => {
     return acc + `${k}: ${v};`;
   }, "")}
