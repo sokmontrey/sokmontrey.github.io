@@ -21,8 +21,3 @@
     fill={$circle.fill}
   />
 </Div>
-
-<!-- <svg viewBox="0 0 100 100"> -->
-<!--   <circle {...$circle} /> -->
-<!--   <circle {...$circle2} /> -->
-<!-- </svg> -->
