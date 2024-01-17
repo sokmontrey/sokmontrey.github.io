@@ -1,23 +1,16 @@
 <script>
   import signal from "@/utils/signal.js";
-  import Circle from "@/components/visuals/Circle.svelte";
-  import Div from "@/components/visuals/Div.svelte";
 
-  let circle = signal({ x: 5, y: 0, r: 5, fill: "red" });
+  import Div from "@/components/visuals/Div.svelte";
+  import Rect from "@/components/visuals/Rect.svelte";
+
+  let circle = signal({ x: 50, y: 50, r: 5, fill: "white" });
 </script>
 
-<button
-  on:click={() =>
-    circle.toNow(({ r, x }) => ({ r: r + 1, x: x + 5, fill: "blue" }))}
->
-  Move
-</button>
+<button on:click={() => circle.toNow({ r: Math.random() * 50 })}> Move </button>
 
-<Div class="w-[500px] h-[500px] relative ">
-  <Circle
-    x={$circle.x}
-    y={$circle.y}
-    r={$circle.r}
-    fill={$circle.fill}
-  />
+<Div let:w let:h class="relative bg-slate-500 " w={500} h={500}>
+  <Rect w={50 * w} h={50 * h} x={20 * w} fill="red">
+    <Rect></Rect>
+  </Rect>
 </Div>
