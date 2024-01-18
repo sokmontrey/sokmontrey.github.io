@@ -25,7 +25,6 @@
   style={{
     ...style,
     "background-color": style["background-color"] || fill || "",
-    display: style.display || "inline-block",
     position: style.position || (x !== null || y !== null ? "absolute" : ""),
     left: x ? x + unit : "",
     top: y ? y + unit : "",
