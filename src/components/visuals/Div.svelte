@@ -1,13 +1,20 @@
 <script>
   //ts-check
-  /** @type {Object} style */
+
+  /** @type {Object} style - Style object
+    * Use regular css properties name and values
+    * 
+    * @example
+    * 'background-color': 'red',
+    */
   export let style = {};
 
-  /** @type {number} w */
+  /** @type {number} w - Width */
   export let w = null;
-  /** @type {number} h */
+  /** @type {number} h - Height */
   export let h = null;
 
+  /** @type {string} unit - Unit to be used*/
   export let unit = "px";
 </script>
 

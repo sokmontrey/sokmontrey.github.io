@@ -3,9 +3,13 @@
 
   /** @type {number} r */
   export let r = 100;
-  /** @type {number} cx */
+  /** @type {number} x - left value
+    * to the center of the circle (cx)
+    * This will set position to 'absolute' */
   export let x = null;
-  /** @type {number} cy */
+  /** @type {number} y - top value
+    * to the center of the circle (cy)
+    * This will set position to 'absolute' */
   export let y = null;
 </script>
 
