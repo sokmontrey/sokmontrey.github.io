@@ -146,12 +146,13 @@ a::before {
   bottom: 0%;
   /* left: 100%; */
 
-  background-color: var(--sd-color);
+  background-color: var(--pm-color);
   z-index: -1;
 }
 
 a:hover{
-  color: var(--sd-color);
+  color: var(--pm-color);
+  font-weight: 700;
 }
 
 a:hover::before {

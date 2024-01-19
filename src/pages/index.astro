@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import AsciiBackground from '@/components/AsciiBackground.svelte';
+import Bio from '@/components/Bio.svelte';
 ---
 
 <BaseLayout title="Home">
@@ -11,14 +12,10 @@ import AsciiBackground from '@/components/AsciiBackground.svelte';
   <header class='h-[100vh] w-[100vw] flex flex-col justify-center items-center relative z-10 '>
     <div class='pt-[20vh]'>
       <h1 class='flex text-[5.9rem] '>Hi,</h1>
-      <p class='font-mono text-base font-bold '>
-        I'm Sokmontrey, a math enthusiast <br>
-        who found out about computer science.<br>
-        I learn, build, and teach stuffs.
-      </p>
+      <Bio />
     </div>
-    <a href="#intro" class='mt-[20vh] text-center opacity-50 hover:opacity-100'>
-      <p class='font-mono animate-bounce '>scroll down</p>
+    <a href="#intro" class='mt-[20vh] text-center text-[0.8rem] opacity-50 hover:opacity-100'>
+      <p class='font-mono animate-bounce text-[1rem] '>scroll down</p>
       <i class="fa-solid fa-arrow-down animate-bounce"></i>
     </a>
   </header>

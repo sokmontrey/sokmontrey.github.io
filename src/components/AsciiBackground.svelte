@@ -64,6 +64,7 @@
       mouse_pos[1] = y - y % text_h;
     });
 
+    const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     const getChars = (chars) => {
       if (chars.length === 1) return chars;
       return chars[Math.floor(Math.random() * chars.length)];
@@ -83,7 +84,7 @@
     }
 
     const loop = ()=>{
-      ctx.fillStyle = bg_color + '77';
+      ctx.fillStyle = bg_color + '55';
       ctx.fillRect(0,0,w,h);
       for (let i=1; i<10; i++) {
         const hex_opacity = Math.floor((9-i) * 5).toString(16).padStart(2, '0');
@@ -95,11 +96,12 @@
     const ripple = (e, x, y)=>{
       x = x || mouse_pos[0];
       y = y || mouse_pos[1];
-      for (let i=0; i<20; i++) {
+      for (let i=0; i<15; i++) {
+        const hex_opacity = Math.floor((25-i) * 5).toString(16).padStart(2, '0');
         setTimeout(()=>{
           drawCircle(x, y, i, 
-            nt_color, 
-            'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+            nt_color + hex_opacity, 
+            letters,
           );
         }, i * 70);
       }
@@ -115,7 +117,7 @@
 
     requestAnimationFrame(loop);
     window.addEventListener('click', ripple);
-    randomRipple();
+    // randomRipple();
   });
 </script>
 
