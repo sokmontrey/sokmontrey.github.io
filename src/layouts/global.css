@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;400;700&family=EB+Garamond:ital,wght@0,700;1,400&family=Poppins:wght@300;400;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -51,11 +51,11 @@ body {
 }
 
 .font-serif {
-  font-family: "Libre Baskerville", serif;
+  font-family: "EB Garamond", serif;
 }
 
 .font-sans {
-  font-family: "Manrope", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .pm-color {
@@ -181,8 +181,9 @@ h6 {
   color: var(--nt-color);
 }
 
+
 h1 {
-  font-size: 1.9rem;
+  font-size: 2.3rem;
 }
 
 h2 {
@@ -203,6 +204,10 @@ h5 {
 
 h6 {
   font-size: 1rem;
+}
+
+p {
+  font-size: 1.2rem;
 }
 
 hr {

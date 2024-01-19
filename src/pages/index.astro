@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import IntroProfile from '@/components/IntroProfile.svelte';
 import AsciiBackground from '@/components/AsciiBackground.svelte';
 ---
 
@@ -10,8 +9,15 @@ import AsciiBackground from '@/components/AsciiBackground.svelte';
   <AsciiBackground client:only="svelte" />
 
   <header class='h-[100vh] w-[100vw] flex flex-col justify-center items-center relative z-10 '>
-    <h1 class='flex-1 flex items-end '>Hi,</h1>
-    <a href="#intro" class=' flex-1 flex flex-col justify-center items-center opacity-40 hover:opacity-100 hover:text-[var(--nt-color)] '>
+    <div class='pt-[20vh]'>
+      <h1 class='flex text-[5.9rem] '>Hi,</h1>
+      <p class='font-mono text-base font-bold '>
+        I'm Sokmontrey, a math enthusiast <br>
+        who found out about computer science.<br>
+        I learn, build, and teach stuffs.
+      </p>
+    </div>
+    <a href="#intro" class='mt-[20vh] text-center opacity-50 hover:opacity-100'>
       <p class='font-mono animate-bounce '>scroll down</p>
       <i class="fa-solid fa-arrow-down animate-bounce"></i>
     </a>
@@ -20,7 +26,5 @@ import AsciiBackground from '@/components/AsciiBackground.svelte';
   <hr />
 
   <section id="intro" class='flex items-center justify-center h-[100vh] w-[100vw] relative '>
-    <IntroProfile client:only="svelte" />
-    <p>This is Sokmontrey, Me.</p>
   </section>
 </BaseLayout>
