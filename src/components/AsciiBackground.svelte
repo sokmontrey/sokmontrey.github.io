@@ -6,9 +6,9 @@
     return getComputedStyle(document.documentElement).getPropertyValue(color_name);
   }
 
-  let nt_color = getRootColor('--nt-color');
-  let pm_color = getRootColor('--pm-color');
-  let bg_color = getRootColor('--bg-color');
+  let nt_color = null;
+  let pm_color = null;
+  let bg_color = null;
 
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
@@ -26,6 +26,10 @@
   });
 
   onMount(() => {
+    nt_color = getRootColor('--nt-color');
+    pm_color = getRootColor('--pm-color');
+    bg_color = getRootColor('--bg-color');
+
     const canvas = document.getElementById(canvas_id);
     const ctx = canvas.getContext('2d');
 
@@ -85,25 +89,33 @@
         const hex_opacity = Math.floor((9-i) * 5).toString(16).padStart(2, '0');
         drawCircle(mouse_pos[0], mouse_pos[1], i, nt_color + hex_opacity);
       }
-
       requestAnimationFrame(loop);
     };
-    requestAnimationFrame(loop);
 
-    window.addEventListener('click', ()=>{
-      requestAnimationFrame(()=>{
-        const x = mouse_pos[0];
-        const y = mouse_pos[1];
-        for (let i=0; i<20; i++) {
-          setTimeout(()=>{
-            drawCircle(x, y, i, 
-              nt_color, 
-              'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
-            );
-          }, i * 50);
-        }
-      });
-    });
+    const ripple = (e, x, y)=>{
+      x = x || mouse_pos[0];
+      y = y || mouse_pos[1];
+      for (let i=0; i<20; i++) {
+        setTimeout(()=>{
+          drawCircle(x, y, i, 
+            nt_color, 
+            'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+          );
+        }, i * 70);
+      }
+    };
+
+    const randomRipple = ()=>{
+      if (Math.random() < 0.5) {
+        ripple(null, Math.random() * w , Math.random() * h );
+      }
+
+      setTimeout(randomRipple, 3000);
+    };
+
+    requestAnimationFrame(loop);
+    window.addEventListener('click', ripple);
+    randomRipple();
   });
 </script>
 
