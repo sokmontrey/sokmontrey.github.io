@@ -4,19 +4,26 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import ArticlePost from '@/components/ArticlePost.svelte';
 
 const articles = await Astro.glob('./**/index.mdx');
+const thumbnails = await Astro.glob('./**/Thumbnail.astro');
 ---
 
 <BaseLayout title="Articles">
-  <header class=' py-6 pl-8 sticky top-0 bg-bg-color bg-red-500 z-10 '>
-    <h1 class='text-2xl'>
-      Stuffs I <span class='pm-color '>Wrote</span>.
-    </h1>
-    <a class='opacity-70 font-mono font-bold text-sm ' href='/' >
-      By Sokmontrey
-    </a>
-  </header>
+    <header class=' py-6 pl-8 sticky top-0 bg-bg-color bg-red-500 z-10 '>
+        <h1 class='text-2xl'>
+            Stuffs I <span class='pm-color '>Wrote</span>.
+        </h1>
+        <a class='opacity-70 font-mono font-bold text-sm ' href='/' >
+            By Sokmontrey
+        </a>
+    </header>
 
-  <main class='w-[80%] mx-auto pt-10'>
-      {articles.map((article) => <ArticlePost article={article} />)}
-  </main>
+    <main class='w-[80%] mx-auto pt-10'>
+        {articles.map((article, i) => <ArticlePost
+            date={article.frontmatter.date}
+            title={article.frontmatter.title}
+            description={article.frontmatter.description}
+        >
+            <thumbnails[i].default slot="thumbnail" />
+        </ArticlePost>)}
+    </main>
 </BaseLayout>
