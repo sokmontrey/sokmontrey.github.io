@@ -40,14 +40,17 @@ const thumbnails = await Astro.glob('./**/Thumbnail.astro');
 
 <script>
     const topbar_element = document.getElementById("topbar-header");
-    var last_scroll_top = 0;
+    let last_scroll_top = 0;
+    let is_down = false;
     window.addEventListener(
         "scroll",
         () => {
-            var st = window.scrollY || document.documentElement.scrollTop;
-            if (st > last_scroll_top) {
+            let st = window.scrollY || document.documentElement.scrollTop;
+            if (st > last_scroll_top && !is_down) {
+                is_down = true;
                 topbar_element.classList.add("opacity-0");
-            } else if (st < last_scroll_top) {
+            } else if (st < last_scroll_top && is_down) {
+                is_down = false;
                 topbar_element.classList.remove("opacity-0");
             }
             last_scroll_top = st <= 0 ? 0 : st;
