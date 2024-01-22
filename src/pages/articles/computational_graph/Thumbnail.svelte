@@ -1,5 +1,6 @@
 <script>
     import signal from "@/utils/signal.js";
+    import { onMount } from 'svelte';
 
     import Div from "@/components/visuals/Div.svelte";
     import Rect from "@/components/visuals/Rect.svelte";
@@ -9,21 +10,17 @@
     const px = "px";
 </script>
 
-<Div let:w class="relative bg-slate-500 w-[100%] ">
-    <button on:click={() => circle.toNow({ r: Math.random() })}>
-        Click {$circle.r * w}
-    </button>
+<Div let:w class="relative flex justify-center w-[100%] ">
     <Div
-        class="bg-red-500"
         style = {{
             width: $circle.r * w + px,
             height: $circle.r * w + px,
         }}
         let:w
     >
-        <Rect class='bg-blue-500'>
+    <button class='bg-white p-4 text-black' on:click={()=> circle.toNow({ r: Math.random() * 0.5 })}>
             Hello world
-        </Rect>
-        <Circle class='bg-blue-500' r={($circle.r * w) / 2 + px} />
+        </button>
+        <Circle class='bg-white' r={($circle.r * w) / 2 + px} />
     </Div>
 </Div>

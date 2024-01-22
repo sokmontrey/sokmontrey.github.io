@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  --bg-color: #D2E0EF;
+  --bg-color: #DDE6EF;
   --ft-color: #c9ced1;
   --nt-color: #151A22;
   --pm-color: #1A58D3;
@@ -32,7 +32,7 @@ body {
 }
 
 [data-theme="light"] {
-  --bg-color: #B5CFED;
+  --bg-color: #DDE6EF;
   --ft-color: #c9ced1;
   --nt-color: #151A22;
   --pm-color: #1A58D3;
