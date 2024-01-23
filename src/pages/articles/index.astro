@@ -22,7 +22,7 @@ const thumbnails = await Astro.glob('./**/Thumbnail.astro');
         <ThemeToggle client:only='svelte' />
     </header>
 
-    <main class='w-[85%] md:w-[100%] mx-auto pt-4 '>
+    <main class='w-[85%] md:w-[100%] mx-auto pt-[6%] '>
         {articles.map((article, i) => { 
             const thumbnail = thumbnails[i]; 
             return <ArticlePost
