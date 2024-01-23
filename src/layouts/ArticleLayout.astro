@@ -1,8 +1,50 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import ThemeToggle from '@/components/ThemeToggle.svelte';
+
+const { frontmatter } = Astro.props;
 ---
 
-<BaseLayout title="Hello World">
-  <slot />
+<BaseLayout title={frontmatter.title}>
+    <header
+        id="topbar-header"
+        class="box-border transition-all duration-300 ease-in-out w-full overflow-hidden justify-between items-center flex py-8 px-8 sticky top-0 z-10 bg-transparent lg:opacity-100 "
+    >
+        <a href='/' slot="left" class='flex items-center'>
+            <i class="fa-solid fa-chevron-left"></i>
+            <h1 class='text-lg pl-4 ' >
+                Stuffs I <span class="pm-color">Wrote</span>.
+            </h1>
+        </a>
+        <ThemeToggle client:only='svelte' />
+    </header>
+
+    <div class='fixed top-8 right-8 z-[300] '>
+        <ThemeToggle client:only="svelte" />
+    </div>
+
+    <main class='w-[85%] mx-auto pt-[0%] '>
+        <h2 class='font-serif pm-color font-bold text-[2.3rem] '>
+            {frontmatter.title}
+        </h2>
+
+        <div class='flex flex-wrap mb-3 mt-2 '>
+            {frontmatter.tags.map((tag)=>
+                <span class='bg-ft-color px-[0.5rem] m-[0.1rem] rounded-xl'>#{tag}</span>
+            )}
+        </div>
+
+        <p >
+            {frontmatter.date}
+        </p>
+
+        <p class='opacity-80 mt-4 '>
+            {frontmatter.description}
+        </p>
+
+        <hr class='my-4 mb-8'>
+
+        <slot />
+    </main>
 </BaseLayout>
 
