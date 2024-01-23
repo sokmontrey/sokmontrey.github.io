@@ -1,27 +1,48 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import AsciiBackground from '@/components/AsciiBackground.svelte';
+import ThemeToggle from '@/components/ThemeToggle.svelte';
 import Bio from '@/components/Bio.svelte';
 ---
 
 <BaseLayout title="Home">
-  <p class='text-[#ff5555] fixed top-0 left-0' >Site is under construction</p>
-
-  <AsciiBackground client:only="svelte" />
-
-  <header class='h-[100vh] w-[100vw] flex flex-col justify-center items-center relative z-10 '>
-    <div class='pt-[20vh]'>
-      <h1 class='flex text-[5.9rem] '>Hi,</h1>
-      <Bio />
+    <div class='fixed top-8 right-8 z-[100] '>
+        <ThemeToggle client:only="svelte" />
     </div>
-    <a href="#intro" class='mt-[20vh] text-center text-[0.8rem] opacity-50 hover:opacity-100'>
-      <p class='font-mono animate-bounce text-[1rem] '>scroll down</p>
-      <i class="fa-solid fa-arrow-down animate-bounce"></i>
-    </a>
-  </header>
+    <p class='text-[#ff5555] fixed top-0 left-0' >Site is under construction</p>
 
-  <hr />
+    <AsciiBackground client:only="svelte" />
 
-  <section id="intro" class='flex items-center justify-center h-[100vh] w-[100vw] relative '>
-  </section>
+    <header class='h-[100vh] w-[100vw] border-box px-[7%] flex flex-col justify-center items-center relative z-10 '>
+        <div class='pt-[10vh]'>
+            <h1 class='flex text-[5.9rem] '>Hi,</h1>
+            <p class="font-mono text-sm md:text-base ">
+              I'm Sokmontrey, a <span class="diff-text">math</span> enthusiast <br />
+              who found out about <span class="diff-text">computer</span> science.<br />
+              I <span class='diff-text'>learn, build,</span> and <span class='diff-text'>teach</span> stuffs.
+            </p>
+        </div>
+        <a href="#intro" class='mt-[20vh] text-center text-[0.8rem] opacity-50 hover:opacity-100'>
+            <p class='font-mono animate-bounce text-[1rem] '>scroll down</p>
+            <i class="fa-solid fa-arrow-down animate-bounce"></i>
+        </a>
+    </header>
+
+    <hr />
+
+    <section id="intro" class='flex items-center justify-center h-[100vh] w-[100vw] relative '>
+    </section>
 </BaseLayout>
+
+<style>
+  .diff-text {
+    @apply font-serif text-base;
+    color: var(--pm-color);
+  }
+
+  @media (min-width: 768px) {
+    .diff-text {
+      @apply text-xl;
+    }
+  }
+</style>
