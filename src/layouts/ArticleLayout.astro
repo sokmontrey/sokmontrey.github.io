@@ -6,6 +6,10 @@ import ArticleSectionBar from '@/components/ArticleSectionBar.svelte';
 const { frontmatter } = Astro.props;
 ---
 
+<style is:inline>
+    @import url('/article.css');
+</style>
+
 <BaseLayout title={frontmatter.title}>
     <div
         id="topbar-header"
@@ -20,7 +24,7 @@ const { frontmatter } = Astro.props;
         <ThemeToggle client:only='svelte' />
     </div>
 
-    <header class='mx-auto flex flex-col pt-[20%] md:pt-[17%] lg:pt-[0%] w-[85%] md:w-[80%] lg:w-[100%] lg:flex-row lg:h-[100vh] '>
+    <header class='mx-auto flex flex-col pt-[20%] md:pt-[16%] lg:pt-[0%] w-[85%] md:w-[70%] lg:w-[100%] lg:flex-row lg:h-[100vh] '>
         <div class=' flex flex-col justify-center lg:text-right lg:flex-1 lg:px-[3%] lg:pl-[9%] lg:items-end '>
             <h2 class="font-serif pm-color font-bold my-0 text-[2.5rem] xl:text-[2.8rem] lg:w-[85%] xl:w-[60%] ">
                 {frontmatter.title}
@@ -34,16 +38,16 @@ const { frontmatter } = Astro.props;
         </div>
 
         <div class=' flex flex-col self-center lg:flex-1 lg:px-[3%] lg:pr-[9%] '>
-            <p class="opacity-50 font-mono ">
+            <p class="opacity-50 font-mono p-0 ">
                 {frontmatter.date}
             </p>
-            <p class="opacity-80 mt-4 lg:w-[80%] xl:w-[70%] ">
+            <p class="opacity-80 mt-4 p-0 lg:w-[80%] xl:w-[70%] ">
                 {frontmatter.description}
             </p>
         </div>
     </header>
 
-    <hr class='mt-8 lg:mt-[5%] lg:w-[10%] lg:mx-auto '>
+    <hr class='mt-8 mt-[10%] w-[100px] mx-auto '>
 
     <main class='w-[85%] mx-auto md:w-[73%] md:pt-[5%] lg:pt-[8%] lg:w-[45%] xl:w-[35%] '>
         <slot />
