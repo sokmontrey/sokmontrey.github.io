@@ -9,7 +9,7 @@
     <div
         class="flex flex-col items-start justify-center border-box row-start-2 md:row-start-1 md:col-start-1 md:px-[8%] lg:px-[23%] xl:px-[26%]"
     >
-        <p class=" nt-color opacity-70 z-0 w-full">
+        <p class=" font-mono nt-color opacity-70 z-0 w-full">
             {date || "January 23, 2024"}
         </p>
 
