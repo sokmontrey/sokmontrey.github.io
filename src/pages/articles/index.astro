@@ -33,16 +33,6 @@ const thumbnails = await Astro.glob('./**/Thumbnail.astro');
             >
                 <thumbnail.default slot="thumbnail" />
             </ArticlePost>} )}
-        {articles.map((article, i) => { 
-            const thumbnail = thumbnails[i]; 
-            return <ArticlePost
-                date={article.frontmatter.date}
-                title={article.frontmatter.title}
-                description={article.frontmatter.description}
-                url={article.url}
-            >
-                <thumbnail.default slot="thumbnail" />
-            </ArticlePost>} )}
     </main>
 </BaseLayout>
 
