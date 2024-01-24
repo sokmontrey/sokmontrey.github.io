@@ -31,7 +31,7 @@
 </script>
 
 <aside
-    class="hidden md:flex flex-col justify-end fixed bottom-8 left-8 h-[100vh] font-mono"
+    class="hidden lg:flex flex-col justify-end fixed bottom-8 left-8 h-[100vh] font-mono"
 >
     <ul class="">
         {#each sections as section, i}
