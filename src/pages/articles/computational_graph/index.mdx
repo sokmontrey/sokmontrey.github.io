@@ -6,6 +6,29 @@ type: "article"
 tags: ["article", "mathematics", "programming", "machine learning", "graph theory"]
 date: "January 23, 2024"
 ---
- 
-# Why1 ?
-Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.
+
+Computational Graph is a way to represent function in a computer program. The representation - Graph - can be used to optimize function evaluation. It is also open a door for finding the derivative or gradient of the function automatically.
+
+Before we get any further, why do we want to "represent a function" in the first place? Can we just doing so using simple programming?
+
+For example, the function $f(x) = sin(x^2 + 1)$, in JavaScript, can be written as 
+
+```js
+function f(x) {
+    return Math.sin(x*x + 1);
+}
+```
+or the arrow notation:
+```js
+const f = (x)=>Math.sin(x*x + 1);
+```
+
+And when we need its derivative, why don't we just... take its derivative?
+The derivative of $f(x)$ with respect to $x$ would be $f'(x) = cos(x^2 + 1) \cdot 2x$.
+In JavaScript would be:
+
+```js
+function df(x) {
+    return Math.cos(x*x + 1) * 2 * x
+}
+```
