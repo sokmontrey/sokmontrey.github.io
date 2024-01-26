@@ -18,12 +18,11 @@ function f(x) {
     return Math.sin(x*x + 1);
 }
 ```
-or the arrow notation:
 ```js
 const f = (x)=>Math.sin(x*x + 1);
 ```
 
-And when we need its derivative, why don't we just... take its derivative?
+And if we need its derivative, why don't we just... take its derivative?
 The derivative of $f(x)$ with respect to $x$ would be $f'(x) = cos(x^2 + 1) \cdot 2x$.
 In JavaScript would be:
 
@@ -32,3 +31,10 @@ function df(x) {
     return Math.cos(x*x + 1) * 2 * x
 }
 ```
+```js
+const df = (x)=>Math.cos(x*x + 1) * 2 * x;
+```
+
+As mentioned, a computational graph representation of a function can be optimized. But this still haven't answer the question, why? In many programming languages, this math operations got optimize into a very few instruction steps. Why bother finding a representation of it?
+
+To answer this, let's take a look at some of its application first.
