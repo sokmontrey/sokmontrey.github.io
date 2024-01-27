@@ -6,10 +6,6 @@ import ArticleSectionBar from '@/components/ArticleSectionBar.svelte';
 const { frontmatter } = Astro.props;
 ---
 
-<style is:inline>
-    @import url('/article.css');
-</style>
-
 <BaseLayout title={frontmatter.title}>
     <div
         id="topbar-header"
@@ -49,7 +45,7 @@ const { frontmatter } = Astro.props;
 
     <hr class='mt-8 mt-[10%] w-[100px] mx-auto '>
 
-    <main class='w-[85%] mx-auto md:w-[73%] md:pt-[5%] lg:pt-[8%] lg:w-[45%] xl:w-[35%] '>
+    <main class='w-[85%] mx-auto md:w-[73%] pt-[5%] lg:pt-[8%] lg:w-[45%] xl:w-[35%] '>
         <slot />
     </main>
 

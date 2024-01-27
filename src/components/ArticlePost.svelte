@@ -14,7 +14,7 @@
         </p>
 
         <h2
-            class=" text-[2.3rem] lg:text-[2.8rem] xl:text-[3rem] font-bold w-full"
+            class=" text-[2.3rem] mb-0 lg:text-[2.8rem] xl:text-[3rem] font-bold w-full"
         >
             <a href={url} class="pm-color hover:text-[var(--nt-color)] ">
                 {title || "Untitled"}

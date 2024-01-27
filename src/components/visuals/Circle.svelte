@@ -1,26 +1,26 @@
 <script>
-    import Rect from "@/components/visuals/Rect.svelte";
+	import Rect from "@/components/visuals/Rect.svelte";
 
-    /** @type {Object} style - Style object
-     * Use regular css properties name and values
-     *
-     * @example
-     * 'background-color': 'red',
-     */
-    export let style = {};
+	/** @type {Object} style - Style object
+	 * Use regular css properties name and values
+	 *
+	 * @example
+	 * 'background-color': 'red',
+	 */
+	export let style = {};
 
-    /** @type {number} r */
-    export let r = 100;
+	/** @type {number} r */
+	export let r = null;
 </script>
 
 <Rect
-    style={{
-        ...style,
-        "border-radius": "100%",
-        width: `calc(2 * ${r})`,
-        height: `calc(2 * ${r})`,
-    }}
-    {...$$restProps}
+	style={{
+		...style,
+		"border-radius": "100%",
+		width: style["width"] || `calc(2 * ${r})`,
+		height: style["height"] || `calc(2 * ${r})`,
+	}}
+	{...$$restProps}
 >
-    <slot w={r * 2} h={r * 2} />
+	<slot w={r * 2} h={r * 2} />
 </Rect>

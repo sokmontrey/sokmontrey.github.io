@@ -15,9 +15,10 @@ const thumbnails = await Astro.glob('./**/Thumbnail.astro');
     >
         <a href='/' slot="left" class='flex items-center'>
             <i class="fa-solid fa-chevron-left"></i>
-            <h1 class='text-lg pl-4 ' >
-                <span class="nt-color">Stuffs I</span> Wrote.
-            </h1>
+            <p class='text-lg pl-4 font-serif ' >
+                <span class="nt-color">Stuffs I</span> 
+				<span class="pm-color">Wrote.</span>
+            </p>
         </a>
         <ThemeToggle client:only='svelte' />
     </header>

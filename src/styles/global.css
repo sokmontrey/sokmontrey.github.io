@@ -166,6 +166,7 @@ h6 {
   font-family: var(--serif-font);
   color: var(--pm-color);
   font-weight: 400;
+  margin-bottom: 1rem;
 }
 
 h1 {
@@ -195,6 +196,7 @@ h6 {
 p {
   font-size: 1rem;
   font-family: var(--sans-font);
+  opacity: 80%;
 }
 
 hr {
@@ -202,4 +204,8 @@ hr {
   border: dashed 1px var(--nt-color);
   /* width: 50%; */
   /* margin: 0 auto; */
+}
+
+.katex-html {
+    display: none;
 }
