@@ -209,3 +209,13 @@ hr {
 .katex-html {
     display: none;
 }
+
+math * {
+	font-size: 1.3rem;
+}
+
+pre {
+	padding: 1rem;
+	border-radius: 0.5rem;
+	margin: 1rem 0rem;
+}

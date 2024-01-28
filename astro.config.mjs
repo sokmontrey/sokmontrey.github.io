@@ -9,8 +9,12 @@ import rehypeKatex from "rehype-katex";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), svelte(), mdx()],
+	integrations: [tailwind(), svelte(), mdx()],
 	markdown: {
+		syntaxHighlight: 'shiki',
+		shikiConfig: { theme: 'poimandres' },
+		remarkRehype: { footnoteLabel: 'Footnotes' },
+		gfm: false,
 		remarkPlugins: [remarkMath],
 		rehypePlugins: [rehypeKatex]
 	},
