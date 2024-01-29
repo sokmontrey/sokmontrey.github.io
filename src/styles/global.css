@@ -165,7 +165,7 @@ h5,
 h6 {
   font-family: var(--serif-font);
   color: var(--pm-color);
-  font-weight: 400;
+  font-weight: bold;
   margin-bottom: 1rem;
 }
 
@@ -194,7 +194,7 @@ h6 {
 }
 
 p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-family: var(--sans-font);
   opacity: 80%;
 }
@@ -218,4 +218,10 @@ pre {
 	padding: 1rem;
 	border-radius: 0.5rem;
 	margin: 1rem 0rem;
+}
+
+blockquote {
+	padding-left: 1rem;
+	border-left: solid 2px var(--ft-color);
+	margin: 1rem 0px;
 }
