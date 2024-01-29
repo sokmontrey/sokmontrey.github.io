@@ -20,6 +20,10 @@ export default defineConfig({
 		remarkRehype: { footnoteLabel: 'Footnotes' },
 		gfm: false,
 		remarkPlugins: [remarkMath],
-		rehypePlugins: [rehypeKatex]
+		rehypePlugins: [
+			[rehypeKatex, {
+				trust: true,
+			}],
+		]
 	},
 });
