@@ -210,6 +210,10 @@ hr {
     display: none;
 }
 
+.katex-display .katex .katex-mathml > math > semantics{
+	margin: 2rem 0px;
+}
+
 math * {
 	font-size: 1.3rem;
 }
