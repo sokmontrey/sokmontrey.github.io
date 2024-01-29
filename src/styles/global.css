@@ -202,16 +202,12 @@ p {
 hr {
   opacity: 30%;
   border: dashed 1px var(--nt-color);
-  /* width: 50%; */
-  /* margin: 0 auto; */
+  width: 30%;
+  margin: 2rem auto;
 }
 
 .katex-html {
     display: none;
-}
-
-.katex-display .katex .katex-mathml > math > semantics{
-	margin: 2rem 0px;
 }
 
 math * {
@@ -222,6 +218,10 @@ pre {
 	padding: 1rem;
 	border-radius: 0.5rem;
 	margin: 1rem 0rem;
+}
+
+pre > code {
+	font-family: var(--mono-font);
 }
 
 blockquote {
