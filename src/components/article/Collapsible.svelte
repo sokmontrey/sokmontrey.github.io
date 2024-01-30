@@ -2,16 +2,17 @@
 	import signal from "@/utils/signal";
 
 	let init_h;
+	let duration = 1000;
 	const animate_h = signal(0);
 
 	let is_collapsed = true;
 	function toggleCollapse() {
 		if (is_collapsed) {
 			is_collapsed = false;
-			animate_h.toNow(init_h, { duration: init_h * 5 });
+			animate_h.toNow(init_h, { duration });
 		} else {
 			is_collapsed = true;
-			animate_h.toNow(0, { duration: init_h * 5 });
+			animate_h.toNow(0, { duration });
 		}
 	}
 
