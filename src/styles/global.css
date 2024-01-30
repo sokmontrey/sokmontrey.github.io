@@ -229,3 +229,16 @@ blockquote {
 	border-left: solid 2px var(--ft-color);
 	margin: 1rem 0px;
 }
+
+button {
+	outline: none;
+}
+
+button h1,
+button h2,
+button h3,
+button h4,
+button h5,
+button h6 {
+	margin-bottom: 0px;
+}
