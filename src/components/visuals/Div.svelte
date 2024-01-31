@@ -15,7 +15,7 @@
     let h = null;
 </script>
 
-<div 
+<div
     bind:clientWidth={w}
     bind:clientHeight={h}
     style={Object.entries(style).reduce(

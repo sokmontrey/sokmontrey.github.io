@@ -7,12 +7,15 @@ tags: ["article", "mathematics", "programming", "machine learning", "graph theor
 date: "January 23, 2024"
 ---
 
+import Collapsible from '@/components/article/Collapsible.svelte';
+
+import AbstractFunction from './AbstractFunction.svelte';
+import Derivative from './Derivative.svelte';
+
 {/*
 VERSION 2: 
 -> NOTE: this article assume you know what a mathematical function is.
 -> If not, here is a quick overview
--> This is a function
--> this is the graph of it
 -> But why? optimization, derivative, gradient, etc.
 -> Can't we just write the function and the derivative?
 -> Machine learning application.
@@ -20,18 +23,64 @@ VERSION 2:
 */}
 
 > <span class='pm-color font-mono'>Note:</span><br />
-> It's not necessary, but having a basic understanding of function and derivative is wonderful.
-> <br />
-> Thing might sound a little abstract when we talk about math. So I'll try to explain everything anyway.
+> This article assumes that you have a basic understanding of functions (both in math and programming) and derivatives. Below is a quick overview.
 
-# Function
+<Collapsible client:load is_collapsed={false}>
+<h1 slot="toggler">Overview</h1>
 
-**A function** tells how things turn into another. The "Thing" that go in/out of function could be any mathematical object including numbers and even function itself.
+## Function
+A function tells us how things turn into another. The things that get in/out of a function can be anything, including a function itself.
+
+<AbstractFunction client:only="svelte" />
+
+This is very abstract definition of a function. A more familiar form of a function are the one takes in a number and gives out, potentially, a different number.
+
+<br />
+
+$$
+f(x) = x^2 + \sin(x)
+$$
 
 ```
-Function Illustration
+The Above function illustration
 ```
 
-Function can take in and give out a number or a set of them.
+## Derivative
+The concept of derivative is beautiful. I wrote another article purely dedicated to this which you can read it [here](/articles/derivative) (probably not exist yet).
 
-$$f(x) = x^2 + \sin(x)$$
+<br />
+
+All you need to know for this article are:
+
+<br />
+
+1. The output of a function **can be** different based on its input.
+```
+Linear Function
+```
+2. Derivative is used on a function to determine how the output would change with respect to its input.
+```
+Linear rate of change
+```
+3. The rate of change of a function **can** also varies depending on where you are on the function.
+```
+Curved function rate of change
+```
+4. To determine how something is changing, we need at least two data points to see the difference.
+5. 
+6. But, two points will give us the average rate of change which is not specific to a certain input.
+```
+average vs instantaneous rate of change
+```
+7. In derivative, we simply ask: "what if those two points are very close together?"
+
+$$
+\lim_{h\to0} \frac{f(x + h) - f(x)}{h}
+$$
+```
+The above formula illustration
+```
+
+</Collapsible>
+
+# Why?

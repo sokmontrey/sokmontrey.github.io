@@ -15,6 +15,7 @@
     "@astrojs/tailwind": "^5.0.4",
     "astro": "^4.0.7",
     "d3-interpolate": "^3.0.1",
+    "diagramatics": "^1.2.0",
     "flubber": "^0.4.2",
     "rehype-katex": "^7.0.0",
     "remark-math": "^6.0.0",
