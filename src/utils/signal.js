@@ -131,3 +131,11 @@ export default function signal(
 		set: _store.set,
 	};
 }
+
+export function all(...events) {
+	return Promise.all(events);
+}
+
+export function delay (delayInms) {
+  return new Promise(resolve => setTimeout(resolve, delayInms));
+};
