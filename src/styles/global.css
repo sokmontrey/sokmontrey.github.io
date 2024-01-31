@@ -137,6 +137,7 @@ a {
   z-index: 1;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
+  color: var(--pm-color);
 }
 
 a:hover{
@@ -193,10 +194,15 @@ h6 {
   font-size: 1rem;
 }
 
-p {
+p, li{
   font-size: 1.1rem;
   font-family: var(--sans-font);
   opacity: 80%;
+}
+
+ol {
+	list-style-type: decimal;
+	padding-left: 1rem;
 }
 
 hr {
@@ -204,10 +210,6 @@ hr {
   border: dashed 1px var(--nt-color);
   width: 30%;
   margin: 2rem auto;
-}
-
-.katex-html {
-    display: none;
 }
 
 math * {
