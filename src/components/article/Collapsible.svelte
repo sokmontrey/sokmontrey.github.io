@@ -1,27 +1,14 @@
 <script>
-	import signal from "@/utils/signal";
+	import { slide } from "svelte/transition";
+	import { cubicIn, cubicOut } from "svelte/easing";
 
-	let init_h;
-	let duration = 1000;
-	const animate_h = signal(0);
-
-	let is_collapsed = true;
-	function toggleCollapse() {
-		if (is_collapsed) {
-			is_collapsed = false;
-			animate_h.toNow(init_h, { duration });
-		} else {
-			is_collapsed = true;
-			animate_h.toNow(0, { duration });
-		}
-	}
-
-	function getChildHeight(node) {
-		init_h = node.offsetHeight * 2;
-	}
+	export let is_collapsed = true;
 </script>
 
-<button on:click={toggleCollapse} class="flex flex-row items-center">
+<button
+	on:click={() => (is_collapsed = !is_collapsed)}
+	class="flex flex-row items-center"
+>
 	{#if is_collapsed}
 		<i class="fa-solid fa-chevron-right mr-4"></i>
 	{:else}
@@ -30,8 +17,11 @@
 	<slot name="toggler" />
 </button>
 
-<div class="overflow-hidden" style={`max-height: ${$animate_h}px;`}>
-	<div use:getChildHeight>
+{#if !is_collapsed}
+	<div
+		in:slide={{ duration: 800, easing: cubicIn }}
+		out:slide={{ duration: 800, easing: cubicOut }}
+	>
 		<slot />
 	</div>
-</div>
+{/if}
