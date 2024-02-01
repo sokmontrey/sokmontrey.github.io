@@ -234,6 +234,15 @@ blockquote {
 
 button {
 	outline: none;
+	transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+	transform: translateY(-5px);
+}
+
+button:active {
+	transform: translateY(5px);
 }
 
 button h1,
