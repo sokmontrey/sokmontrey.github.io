@@ -3,13 +3,18 @@
 	import { getRootColor } from "@/utils/color";
 	import { onMount } from "svelte";
 
-	const circle = signal({ pos: 0, opa: 1, fill: getRootColor("--nt-color") });
-	const rect = signal({ pos: 0, opa: 0, fill: getRootColor("--nt-color") });
+	const circle = signal({ pos: 0, opa: 1, fill: 'white' });
+	const rect = signal({ pos: 0, opa: 0, fill: 'white' });
+
+	onMount(() => {
+		circle.toNow({ fill: getRootColor("--nt-color") });
+		rect.toNow({ fill: getRootColor("--nt-color") });
+	});
 
 	let h;
 	let turn = 0;
 	let running = false;
-	async function move () {
+	async function move() {
 		if (running) return;
 		running = true;
 		if (turn === 0) {
@@ -58,7 +63,7 @@
 			left: auto;
 		`}
 	></div>
-	<button on:click={move} class="hover:text-[var(--pm-color)] ">
+	<button on:click={move} class="hover:text-[var(--pm-color)]">
 		<span
 			class="font-mono text-4xl font-bold py-10 px-2 border-dashed border-gray-500 border-r-4 mr-5"
 			>FUNC</span

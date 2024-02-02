@@ -10,6 +10,7 @@ date: "January 23, 2024"
 import Collapsible from '@/components/article/Collapsible.svelte';
 
 import AbstractFunction from './AbstractFunction.svelte';
+import FamiliarFunction from './FamiliarFunction.svelte';
 import Derivative from './Derivative.svelte';
 
 {/*
@@ -31,19 +32,17 @@ VERSION 2:
 ## Function
 A function tells us how things turn into another. The things that get in/out of a function can be anything, including a function itself.
 
-<AbstractFunction client:only="svelte" />
+<AbstractFunction client:load />
 
 This is a very abstract definition of a function. A more familiar form is the one that takes in a number and gives out, potentially, a different number.
 
 <br />
 
 $$
-f(x) = x^2 + \sin(x)
+f(x) = x^2
 $$
 
-```
-The Above function illustration
-```
+<FamiliarFunction client:load />
 
 ## Derivative
 The concept of derivative is beautiful. I wrote another article purely dedicated to this which you can read it [here](/articles/derivative) (probably not exist yet).
