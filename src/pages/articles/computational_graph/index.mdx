@@ -45,40 +45,49 @@ $$
 <FamiliarFunction client:load />
 
 ## Derivative
-The concept of derivative is beautiful. I wrote another article purely dedicated to this which you can read it [here](/articles/derivative) (probably not exist yet).
+The concept of derivative is beautiful. I wrote another article purely dedicated to this which you can read [here](/articles/derivative) (probably doesn't exist yet).
 
 <br />
 
-All you need to know for this article are:
+All you need to know for this article is that:
 
 <br />
 
-1. The output of a function **can be** different based on its input.
-```
-Linear Function
-```
-2. Derivative is used on a function to determine how the output would change with respect to its input.
-```
-Linear rate of change
-```
-3. The rate of change of a function **can** also varies depending on where you are on the function.
-```
-Curved function rate of change
-```
-4. To determine how something is changing, we need at least two data points to see the difference.
-5. 
-6. But, two points will give us the average rate of change which is not specific to a certain input.
-```
-average vs instantaneous rate of change
-```
-7. In derivative, we simply ask: "what if those two points are very close together?"
+1. You want to know how a function $f(x)$ is changing at a specific input $a$.
+2. To determine if or how something is changing, we need at least two data points to see the difference.
 
 $$
-\lim_{h\to0} \frac{f(x + h) - f(x)}{h}
+\frac{f(b) - f(a)}{b - a} 
 $$
+$$
+\textrm{(divided by b - a to find the rate)}
+$$
+
+3. But two is not one. We want to know the rate of change of the function at $a$ not an overall average, from $a$ to $b$.
 ```
-The above formula illustration
+Average != Instantaneous
 ```
+4. With derivative, we simply ask: "what if those two points are very close together?" Not zero, but very close.
+
+$$
+\lim_{b\to a} \frac{f(b) - f(a)}{b - a}
+$$
+
+With $\lim$ we can make $b$ approach $a$. $b$ is not equal to $a$, but it's very close. This is the derivative of $f(x)$ at $a$. 
+
+<br />
+
+Now, we can find the derivative of $f(x)$ at any point $x$. To do so we increase $x$ by a small amount $h$ then divide the difference of output and input together.
+
+<div class="p-2 my-4 border border-[var(--pm-color)] rounded-lg ">
+
+$$
+\color{white} {\lim_{h\to0} \frac{\color{lightgreen} {f(x + h)} \color{lightblue} { -f(x)}}{h}}
+$$
+
+</div>
+
+This is the **fundamental definition of derivative**. But we, a sane individual, would love to have a little abstraction. There are derivative rules on **elementary functions** (power, exponential, trig function, etc) that can solve any complex function as long as applied with **combinational derivative rules** (product, chain rule, etc).
 
 </Collapsible>
 
