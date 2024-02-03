@@ -7,14 +7,14 @@
 		axes_empty,
 		arrow1,
 		text,
-        textvar,
+		textvar,
 	} from "diagramatics";
 
 	import { interpolate } from "d3-interpolate";
 
 	import { plotf } from "diagramatics";
 	import { onMount } from "svelte";
-    import { getRootColor } from "@/utils/color";
+	import { getRootColor } from "@/utils/color";
 
 	let mysvg;
 	let controldiv;
@@ -28,10 +28,18 @@
 	const axis_opt = { x: [-5, 5], y: [-5, 5] };
 	const f_p = plotf(f, axis_opt).stroke("var(--nt-color").strokewidth(2);
 	const axis_p = axes_empty();
-	const b_color = interpolate(getRootColor("--pm-color"), getRootColor("--sd-color"));
-	const f_text = textvar("y = f(x)").position(V2(0, 1.5)).fontsize(5).textfill("var(--nt-color)");
+	const f_text = textvar("y = f(x)")
+		.position(V2(0, 1.5))
+		.fontsize(5)
+		.textfill("var(--nt-color)");
 
 	onMount(() => {
+
+		const b_color = interpolate(
+			getRootColor("--pm-color"),
+			getRootColor("--sd-color"),
+		);
+
 		let int = new Interactive(controldiv, mysvg);
 
 		int.draw_function = (inp) => {
