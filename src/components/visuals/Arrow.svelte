@@ -11,8 +11,10 @@
 
 <div
 	{...$$restProps}
-	class="flex justify-center items-center"
 	style={`
+	display: flex;
+	justify-content: center;
+	align-items: center;
 		flex-direction: ${dir === "down" || dir === "up" ? "column" : "row"};
 	`}
 >
