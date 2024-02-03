@@ -6,7 +6,7 @@
 </script>
 
 <div class="flex justify-center items-center">
-	<Arrow dir="right" />
+	<Arrow dir="right" class="px-5 " />
 	<div class='p-4 bg-pm-color nt-color rounded'>
 		{@html html}
 	</div>
