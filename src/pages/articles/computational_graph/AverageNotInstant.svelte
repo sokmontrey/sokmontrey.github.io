@@ -7,12 +7,14 @@
 		axes_empty,
 		arrow1,
 		text,
+        textvar,
 	} from "diagramatics";
 
 	import { interpolate } from "d3-interpolate";
 
 	import { plotf } from "diagramatics";
 	import { onMount } from "svelte";
+    import { getRootColor } from "@/utils/color";
 
 	let mysvg;
 	let controldiv;
@@ -26,7 +28,8 @@
 	const axis_opt = { x: [-5, 5], y: [-5, 5] };
 	const f_p = plotf(f, axis_opt).stroke("var(--nt-color").strokewidth(2);
 	const axis_p = axes_empty();
-	const b_color = interpolate("blue", "red");
+	const b_color = interpolate(getRootColor("--pm-color"), getRootColor("--sd-color"));
+	const f_text = textvar("y = f(x)").position(V2(0, 1.5)).fontsize(5).textfill("var(--nt-color)");
 
 	onMount(() => {
 		let int = new Interactive(controldiv, mysvg);
@@ -38,7 +41,7 @@
 			const der_rate = df(a.x);
 			const avg_rate = slope(a, b);
 
-			const a_arrow = arrow1(a, a.add(V2(0.5, der_rate / 2)), 0.15)
+			const a_arrow = arrow1(a, a.add(V2(0.5, der_rate / 2)), 0.12)
 				.fill("blue")
 				.stroke("blue")
 				.opacity(0.5);
@@ -48,7 +51,7 @@
 			const b_arrow = arrow1(
 				a,
 				a.add(V2(0.5, avg_rate / 2).scale(b.x > a.x ? 1 : -1)),
-				0.15,
+				0.12,
 			)
 				.fill(color)
 				.stroke(color);
@@ -63,7 +66,7 @@
 				.fontsize(6)
 				.textfill("var(--sd-color)");
 
-			draw(f_p, axis_p, a_arrow, b_arrow, a_text, b_text);
+			draw(f_p, axis_p, a_arrow, b_arrow, a_text, b_text, f_text);
 		};
 
 		int.locator("a", V2(-1, 1), 0.12, "blue", f_p);
