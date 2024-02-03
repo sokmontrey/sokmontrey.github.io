@@ -11,7 +11,7 @@ import Collapsible from '@/components/article/Collapsible.svelte';
 
 import AbstractFunction from './AbstractFunction.svelte';
 import FamiliarFunction from './FamiliarFunction.svelte';
-import Derivative from './Derivative.svelte';
+import AverageNotInstant from './AverageNotInstant.svelte';
 
 {/*
 VERSION 2: 
@@ -60,14 +60,14 @@ $$
 \frac{f(b) - f(a)}{b - a} 
 $$
 $$
-\textrm{(divided by b - a to find the rate)}
+\textrm{(divided by the change in input b - a to find the rate)}
 $$
 
 3. But two is not one. We want to know the rate of change of the function at $a$ not an overall average, from $a$ to $b$.
-```
-Average != Instantaneous
-```
-4. With derivative, we simply ask: "what if those two points are very close together?" Not zero, but very close.
+
+<AverageNotInstant client:load />
+
+4. With derivative, we simply ask: "what if those two points are very close together?" Not on top of one another, but very close.
 
 $$
 \lim_{b\to a} \frac{f(b) - f(a)}{b - a}
