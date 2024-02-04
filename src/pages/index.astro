@@ -16,19 +16,19 @@ import Bio from '@/components/Bio.svelte';
     <header class='h-[100vh] w-[100vw] border-box px-[7%] flex flex-col justify-center items-center relative z-10 '>
         <div class='pt-[10vh]'>
             <h1 class='flex text-[5.9rem] nt-color font-normal '>Hi,</h1>
-            <p class="font-sans text-sm md:text-base ">
-              I'm Sokmontrey, a <span class="diff-text">math</span> enthusiast <br />
-              who found out about <span class="diff-text">computer</span> science.<br />
-              I <span class='diff-text'>learn, build,</span> and <span class='diff-text'>teach</span> stuffs.
+            <p class="font-sans text-base md:text-lg ">
+              I'm Sokmontrey, a math enthusiast <br />
+              who found out about computer science.<br />
+              I learn, build, and teach stuffs.
             </p>
         </div>
-        <a href="#intro" class='mt-[20vh] text-center text-[0.8rem] opacity-50 hover:opacity-100'>
+        <a href="#intro" class='mt-[20vh] text-center text-[0.8rem] opacity-80 hover:opacity-100'>
             <p class='font-mono animate-bounce text-[1rem] '>scroll down</p>
             <i class="fa-solid fa-arrow-down animate-bounce"></i>
         </a>
     </header>
 
-    <hr />
+    <hr class="w-full my-0" />
 
     <section id="intro" class='flex items-center justify-center h-[100vh] w-[100vw] relative '>
         <a href="/articles/" class="font-mono text-xl">
@@ -39,7 +39,7 @@ import Bio from '@/components/Bio.svelte';
 
 <style>
   .diff-text {
-    @apply font-serif text-base;
+    @apply font-mono text-base;
     color: var(--pm-color);
   }
 
