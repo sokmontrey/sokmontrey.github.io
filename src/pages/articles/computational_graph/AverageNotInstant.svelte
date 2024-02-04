@@ -8,6 +8,7 @@
 		arrow1,
 		text,
 		textvar,
+        xygrid,
 	} from "diagramatics";
 
 	import { interpolate } from "d3-interpolate";
@@ -25,11 +26,13 @@
 	const f = (x) => x ** 2;
 	const df = (x) => 2 * x;
 	const slope = (a, b) => (b.y - a.y) / (b.x - a.x);
-	const axis_opt = { x: [-5, 5], y: [-5, 5] };
+	// const axis_opt = { x: [-5, 5], y: [1, 5] };
+	const axis_opt = { xrange : [-1.5, 1.5], yrange : [-1, 2] };
 	const f_p = plotf(f, axis_opt).stroke("var(--nt-color").strokewidth(2);
-	const axis_p = axes_empty();
+	// const axis_p = axes_empty(axis_opt);
+	const axis_p = xygrid(axis_opt);
 	const f_text = textvar("y = f(x)")
-		.position(V2(0, 1.5))
+		.position(V2(0, 2.2))
 		.fontsize(5)
 		.textfill("var(--nt-color)");
 
