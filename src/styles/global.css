@@ -258,3 +258,7 @@ li::marker {
 	font-family: var(--mono-font);
 	color: var(--sd-color);
 }
+
+p {
+	margin: 1rem 0px;
+}

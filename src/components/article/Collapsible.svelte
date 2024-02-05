@@ -2,7 +2,7 @@
 	import { slide } from "svelte/transition";
 	import { cubicIn, cubicOut } from "svelte/easing";
 
-	export let is_collapsed = true;
+	let is_collapsed = false;
 </script>
 
 <button
@@ -14,6 +14,7 @@
 	{:else}
 		<i class="fa-solid fa-chevron-down mr-4"></i>
 	{/if}
+
 	<slot name="toggler" />
 </button>
 
