@@ -253,3 +253,8 @@ button h5,
 button h6 {
 	margin-bottom: 0px;
 }
+
+li::marker {
+	color: var(--sd-color);
+	font-family: var(--mono-font);
+}
