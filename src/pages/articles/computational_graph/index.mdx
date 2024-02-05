@@ -1,7 +1,7 @@
 ---
 layout: "@/layouts/ArticleLayout.astro"
-title: "Computational Graph & Automatic Differentiation"
-description: "Representing mathematical expression in a computer program is straight-forward, but implementing functions and taking its derivative is a different story."
+title: Taking Derivative Automatically with Computational Graph
+description: At the heart of many machine learning algorithms, there are functions and derivatives. How can a computer program find the derivative of a function automatically? 
 type: "article"
 tags: ["article", "mathematics", "programming", "machine learning", "graph theory"]
 date: "January 23, 2024"
@@ -13,20 +13,10 @@ import AbstractFunction from './AbstractFunction.svelte';
 import FamiliarFunction from './FamiliarFunction.svelte';
 import AverageNotInstant from './AverageNotInstant.svelte';
 
-{/*
-VERSION 2: 
--> NOTE: this article assume you know what a mathematical function is.
--> If not, here is a quick overview
--> But why? optimization, derivative, gradient, etc.
--> Can't we just write the function and the derivative?
--> Machine learning application.
--> Beside from the optimization with tensor inputs, we want to find the gradient automatically.
-*/}
-
 > <span class='pm-color font-mono'>Note:</span><br />
-> This article assumes that you have a basic understanding of functions (both in math and programming) and derivatives. Below is a quick overview.
+> This article assumes that you have a basic understanding of functions and derivatives. Below is a quick overview which you can skip if you already know what is the deal with these concepts.
 
-<Collapsible client:load is_collapsed={false}>
+<Collapsible client:load>
 <h1 slot="toggler">Overview</h1>
 
 ## Function
@@ -35,8 +25,6 @@ A function tells us how things turn into another. The things that get in/out of 
 <AbstractFunction client:load />
 
 This is a very abstract definition of a function. A more familiar form is the one that takes in a number and gives out, potentially, a different number.
-
-<br />
 
 $$
 f(x) = x^2
@@ -47,11 +35,7 @@ $$
 ## Derivative
 The concept of derivative is beautiful. I wrote another article purely dedicated to this which you can read [here](/articles/derivative) (probably doesn't exist yet).
 
-<br />
-
 All you need to know for this article is that:
-
-<br />
 
 1. You want to know how a function $f(x)$ is changing at a specific input $a$.
 2. To determine if or how something is changing, we need at least two data points to see the difference.
@@ -59,9 +43,8 @@ All you need to know for this article is that:
 $$
 \frac{f(b) - f(a)}{b - a} 
 $$
-$$
-\textrm{(divided by the change in input b - a to find the rate)}
-$$
+
+(divide the change in output by the change in input to find the rate of change)
 
 3. But two is not one. We want to know the rate of change of the function at $a$ not an overall average, from $a$ to $b$.
 
@@ -79,20 +62,52 @@ $$
 
 With **Limit** we can make $b$ approach $a$. But remember, $b$ is not equal to $a$, they are very close. This is the derivative of $f(x)$ at $a$. 
 
-<br />
-
 Now, we can find the derivative of $f(x)$ at any point $x$. To do so, we increase $x$ by a small amount $h$ then divide the change in output by the change in input.
 
 <div class="p-2 my-4 border border-[var(--pm-color)] border-dashed border-2 ">
 
 $$
- \color{gray}{ \frac{\mathrm{d} f }{\mathrm{d} x} =} \; \color{teal}{ \lim_{h \to 0} } \color{orange}{ \frac{f(x+\color{teal}{h} \color{orange}{) - f(x)}} {\color{teal}{h}} }
+\frac{\mathrm{d} f }{\mathrm{d} x} =\; \lim_{h \to 0} \frac{f(x+h) - f(x)} {h}
 $$
 
 </div>
 
-This is the **fundamental definition of derivative**. But we, a sane individual, would love to have a little abstraction. There are derivative rules on **elementary functions** (power, exponential, trig function, etc) that can solve any complex function as long as applied with **combinational derivative rules** (product, chain rule, etc).
+This is the **fundamental definition of derivative**. 
+
+5. But we, a sane individual, would love to have a little abstraction. There are derivative rules on **elementary functions** (power, exponential, trig function, etc) that can solve any complex function as long as applied with **combinational derivative rules** (product, chain rule, etc).
 
 </Collapsible>
 
+---
+
 # Why?
+
+Let's make things clear before we continue. It is very easy to represent mathematical expression in a computer program. The function $f(x) = x^2$ can be written in [python](https://www.python.org/) as:
+    
+```python
+def f(x):
+    return x**2 # x square
+```
+
+And its derivative form with respect to $x$, $\mathrm{d}f/\mathrm{d}x = 2x$ (we will talk about this later), can be written as:
+
+```python 
+def df(x):
+    return 2*x
+```
+
+So, [why](https://www.merriam-webster.com/dictionary/why) am I writing this article? why can't we simply just... write it? Why do we need **computational graph**? And what is a graph anyway? 
+
+But as you might have guessed, it is because of automation. If we have a complex function, we don't want to write its derivative by hand. 
+
+Computational graph is a way to represent mathematical function in computer program. Automatic differentiation then can be used on the graph to find its derivative. And on top of that, it can be optimized for further performance improvment which is very important for machine learning applications.
+
+{/*
+VERSION 2: 
+x -> NOTE: this article assume you know what a mathematical function is.
+x -> If not, here is a quick overview
+-> But why? optimization, derivative, gradient, etc.
+-> Can't we just write the function and the derivative?
+-> Machine learning application.
+-> Beside from the optimization with tensor inputs, we want to find the gradient automatically.
+*/}
