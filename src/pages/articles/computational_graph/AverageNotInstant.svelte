@@ -4,11 +4,10 @@
 		diagram_combine,
 		V2,
 		Interactive,
-		axes_empty,
 		arrow1,
 		text,
 		textvar,
-        xygrid,
+		xygrid,
 	} from "diagramatics";
 
 	import { interpolate } from "d3-interpolate";
@@ -27,17 +26,12 @@
 	const df = (x) => 2 * x;
 	const slope = (a, b) => (b.y - a.y) / (b.x - a.x);
 	// const axis_opt = { x: [-5, 5], y: [1, 5] };
-	const axis_opt = { xrange : [-1.5, 1.5], yrange : [-1, 2] };
+	const axis_opt = { xrange: [-1.5, 1.5], yrange: [-1, 2] };
 	const f_p = plotf(f, axis_opt).stroke("var(--nt-color").strokewidth(2);
 	// const axis_p = axes_empty(axis_opt);
 	const axis_p = xygrid(axis_opt);
-	const f_text = textvar("y = f(x)")
-		.position(V2(0, 2.2))
-		.fontsize(5)
-		.textfill("var(--nt-color)");
 
 	onMount(() => {
-
 		const b_color = interpolate(
 			getRootColor("--pm-color"),
 			getRootColor("--sd-color"),
@@ -77,7 +71,7 @@
 				.fontsize(6)
 				.textfill("var(--sd-color)");
 
-			draw(f_p, axis_p, a_arrow, b_arrow, a_text, b_text, f_text);
+			draw(f_p, axis_p, a_arrow, b_arrow, a_text, b_text);
 		};
 
 		int.locator("a", V2(-1, 1), 0.12, "blue", f_p);

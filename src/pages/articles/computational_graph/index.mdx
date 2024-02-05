@@ -67,22 +67,26 @@ $$
 
 <AverageNotInstant client:load />
 
-4. With derivative, we simply ask: "what if those two points are very close together?" Not on top of one another, but very close.
+$$
+y = f(x) = x^2
+$$
+
+4. With derivative, we simply ask: "what if those two points were very close together?" Not on top of one another, but very close. Try moving the red dot closer to the blue one and see how the rate of change match up.
 
 $$
 \lim_{b\to a} \frac{f(b) - f(a)}{b - a}
 $$
 
-With $\lim$ we can make $b$ approach $a$. $b$ is not equal to $a$, but it's very close. This is the derivative of $f(x)$ at $a$. 
+With **Limit** we can make $b$ approach $a$. But remember, $b$ is not equal to $a$, they are very close. This is the derivative of $f(x)$ at $a$. 
 
 <br />
 
-Now, we can find the derivative of $f(x)$ at any point $x$. To do so we increase $x$ by a small amount $h$ then divide the difference of output and input together.
+Now, we can find the derivative of $f(x)$ at any point $x$. To do so, we increase $x$ by a small amount $h$ then divide the change in output by the change in input.
 
-<div class="p-2 my-4 border border-[var(--pm-color)] rounded-lg ">
+<div class="p-2 my-4 border border-[var(--pm-color)] border-dashed border-2 ">
 
 $$
-\color{white} {\lim_{h\to0} \frac{\color{lightgreen} {f(x + h)} \color{lightblue} { -f(x)}}{h}}
+ \color{gray}{ \frac{\mathrm{d} f }{\mathrm{d} x} =} \; \color{teal}{ \lim_{h \to 0} } \color{orange}{ \frac{f(x+\color{teal}{h} \color{orange}{) - f(x)}} {\color{teal}{h}} }
 $$
 
 </div>
