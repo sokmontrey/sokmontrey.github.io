@@ -8,8 +8,12 @@
   --bg-color: #DDE6EF;
   --ft-color: #c9ced1;
   --nt-color: #151A22;
-  --pm-color: #1A58D3;
+  --pm-color: #1a58d3;
   --sd-color: #f05454;
+
+  --ac1-color: #85ff9e;
+  --ac2-color: #fffb7d;
+  --ac3-color: #ef7b45;
 
   --serif-font: "EB Garamond", serif;
   --mono-font: "JetBrains Mono", monospace;

@@ -12,6 +12,7 @@ import Collapsible from '@/components/article/Collapsible.svelte';
 import AbstractFunction from './AbstractFunction.svelte';
 import FamiliarFunction from './FamiliarFunction.svelte';
 import AverageNotInstant from './AverageNotInstant.svelte';
+import StraightGraph from './StraightGraph.svelte';
 
 > <span class='pm-color font-mono'>Note:</span><br />
 > This article assumes that you have a basic understanding of functions and derivatives. Below is a quick overview which you can skip if you already know what is the deal with these concepts.
@@ -96,11 +97,25 @@ def df(x):
     return 2*x
 ```
 
-So, [why](https://www.merriam-webster.com/dictionary/why) am I writing this article? why can't we simply just... write it? Why do we need **computational graph**? And what is a graph anyway? 
+So, [why](https://www.merriam-webster.com/dictionary/why) am I writing this article? why can't we just... write it? Why do we need **computational graph**? And what is a graph anyway? 
 
-But as you might have guessed, it is because of automation. If we have a complex function, we don't want to write its derivative by hand. 
+We simply don't want to figure out and write the derivative of any function by hand. It is now a computer's job.
 
-Computational graph is a way to represent mathematical function in computer program. Automatic differentiation then can be used on the graph to find its derivative. And on top of that, it can be optimized for further performance improvment which is very important for machine learning applications.
+# Computational Graph
+
+Consider the function:
+
+$$
+f(x) = e^{5x + 3}
+$$
+
+It can look very intimidating. But it is just a series of operations. First we multiply $x$ by $5$, then add $3$, and finally raise $e$ to the result.
+
+Below is how you might visualize the operations:
+
+<StraightGraph client:load />
+
+By the way, this is a graph, a computational graph. It is consisted of connected nodes representing an operation. The arrows or edges represent how the output from one operation will be used in another.
 
 {/*
 VERSION 2: 
