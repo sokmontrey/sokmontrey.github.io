@@ -137,11 +137,24 @@ This is the one we might be familiar with the most. We have a function, we follo
 For example we have the following function:
 
 $$
-f(x) = x^2 + sin(x) 
+f(x, y) = x^2 + \sin(x + y^2) 
 $$
 
-To find its derivative with repsect to $x$, we start from the top.
-1. We have two terms, $x^2$ and $sin(x)$, summed together. Treat them like two separate functions.
+If we take its derivative with respect to $x$, we would have:
+
+$$
+\frac{\partial f} {\partial x} = 2x + \cos(x + y^2)
+$$
+
+The symbol $\partial$ is called the partial derivative because $f$ take in two inputs, $x$ and $y$. And we partially taking the derivative with respect to one of them.
+
+This mean that we can also find the derivative of $f$ with respect to $y$:
+
+$$
+\frac{\partial f} {\partial y} = \cos(x + y^2) \cdot 2y
+$$
+
+We will discuss the rules later. What important is that the symbolic method give us new functions each with respect to different inputs.
 
 <br />
 
