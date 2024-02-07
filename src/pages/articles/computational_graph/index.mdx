@@ -1,7 +1,7 @@
 ---
 layout: "@/layouts/ArticleLayout.astro"
 title: Taking Derivative Automatically with Computational Graph
-description: At the heart of many machine learning algorithms, there are functions and derivatives. How can a computer program find the derivative of a function automatically? We will explore the concept of computational graph and automatic differentiation. And also, I will include a little design dicisions that I made to create a library in C++ to work with these concept.
+description: At the heart of many machine learning algorithms, there are functions and derivatives. How can a computer program find the derivative of a function automatically? We will explore the concept of computational graph and automatic differentiation. 
 type: "article"
 tags: ["article", "mathematics", "programming", "machine learning", "graph theory"]
 date: "January 23, 2024"
@@ -13,8 +13,10 @@ import AverageNotInstant from './AverageNotInstant.svelte';
 import StraightGraph from './StraightGraph.svelte';
 import NotStraightGraph from './NotStraightGraph.svelte';
 
-> <span class='pm-color font-mono'>Note:</span><br />
-> This article assumes that you have a basic understanding of functions and derivatives. Below is a quick overview which you can skip if you already know what is the deal with these concepts.
+> <span class='note'>Note:</span><br />
+> This article assumes that you have a basic understanding of functions and derivatives. Below is a quick overview which you can skip if you already know what is the deal with these concepts. 
+>
+> Also, everything in this article is just my views on the subject. I will only talk about the concept that I understand and the one I use to implement a simple library to work with all of these idea. 
 
 # Overview
 ## Function
@@ -73,7 +75,7 @@ $$
 
 This is the **fundamental definition of derivative**. 
 
-5. But we, a sane individual, would love to have a little abstraction. There are derivative rules on **elementary functions** (power, exponential, trig function, etc) that can solve any complex function as long as applied with **combinational derivative rules** (product, chain rule, etc).
+5. But we, sane individuals, would love to have a little abstraction. There are derivative rules on **elementary functions** (power, exponential, trig function, etc) that can solve any complex function as long as applied with **combinational derivative rules** (product, chain rule, etc). The result is another function that can calculate the rate of change, precisely. 
 
 <br />
 
@@ -105,9 +107,9 @@ $$
 f(x) = e^{5x + 3}
 $$
 
-It can look very intimidating. But it is just a series of operations. First we multiply $x$ by $5$, then add $3$, and finally raise $e$ to the result.
+It can look very intimidating. But it is just a series of operations. First, we multiply $x$ by $5$, then add $3$, and finally raise $e$ to the result.
 
-Below is how you might visualize the operations:
+Below, is how you might visualize the operations:
 
 <StraightGraph client:load />
 
@@ -125,28 +127,28 @@ And here is its graph:
 
 One thing to note here is that when creating computational graph, we need to avoid redundant nodes and operations. The $sin(x)$ is being used twice in the function.
 
-# Automatic Differentiation
+And this should be enough for us to get started with the concept of automatic differentiation or auto diff. But we will go back and forth between these two.
 
-This should be enough for us to get started with automatic differentiation. We will get back to the more complex idea later once we have rough image of everything.
+# Differentiation
 
-There are multiple ways to find derivative of a function. We will only focus on one specific automatic differentiation method. But before that, let's quickly go through the other methods and see why we don't use them.
+There are a few methods to find the derivative of a function. Auto diff is just one of them that work well in a computer program.
 
 ## Symbolic Differentiation
-This is the one we might be familiar with the most. We have a function, we follow the rules of derivative, and we get another function which is the derivative of the original function with respect to one of the input.
+This is the method we might use when finding the derivative by hand.
 
-For example we have the following function:
+For example, if we have the following function:
 
 $$
 f(x, y) = x^2 + \sin(x + y^2) 
 $$
 
-If we take its derivative with respect to $x$, we would have:
+Its derivative with respect to $x$ is:
 
 $$
 \frac{\partial f} {\partial x} = 2x + \cos(x + y^2)
 $$
 
-The symbol $\partial$ is called the partial derivative because $f$ take in two inputs, $x$ and $y$. And we partially taking the derivative with respect to one of them.
+Since $f$ take in two inputs, we use the symbol $\partial$ to denote the partial derivative, the derivative of $f$ with respect to one of its many inputs.
 
 This mean that we can also find the derivative of $f$ with respect to $y$:
 
@@ -154,21 +156,27 @@ $$
 \frac{\partial f} {\partial y} = \cos(x + y^2) \cdot 2y
 $$
 
-We will discuss the rules later. What important is that the symbolic method give us new functions each with respect to different inputs.
+Now, here is the problem. Each derivative is another function. If the original function has a lot of parameters (input), we would also have a lot of new function for each inputs. Of course there are ways to optimize this. The **main problem** of this method is that it could leads to a very complicated function very quickly.
 
-<br />
+As a homework, try it out on function that require **product rules**.
 
 ## Numerical Differentiation
+
+Another method use the **fundamental definition of derivative** to find the rate of change of a function at a specific point. We call it **numerical differentiation**
+
+$$
+\frac{\mathrm{d} f }{\mathrm{d} x} =\; \lim_{h \to 0} \frac{f(x+h) - f(x)} {h}
+$$
+
+Here is how you might implement it in python:
+
+```python
+def df(f, x, h=1e-5):
+    return (f(x+h) - f(x)) / h
+```
+
+It's simple, but let's not waste our time on this. $h$ need to be an incredibly small number, and computer are very bad with that. But please don't just take my word for it. Try out the code and compare them with the infinitely accurate symbolic method.
+
 ## Automatic Differentiation
 
 # Implementation with OOP
-
-{/*
-VERSION 2: 
-x -> NOTE: this article assume you know what a mathematical function is.
-x -> If not, here is a quick overview
--> But why? optimization, derivative, gradient, etc.
--> Can't we just write the function and the derivative?
--> Machine learning application.
--> Beside from the optimization with tensor inputs, we want to find the gradient automatically.
-*/}

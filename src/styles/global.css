@@ -258,6 +258,10 @@ button h6 {
 	margin-bottom: 0px;
 }
 
+ul, ol {
+  margin-left: 1rem;
+}
+
 li::marker {
 	color: var(--sd-color);
 	font-family: var(--mono-font);
@@ -265,4 +269,9 @@ li::marker {
 
 p {
 	margin: 1rem 0px;
+}
+
+.note {
+  font-family: var(--mono-font);
+  color: var(--pm-color);
 }
