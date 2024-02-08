@@ -13,6 +13,8 @@ import AverageNotInstant from './AverageNotInstant.svelte';
 import StraightGraph from './StraightGraph.svelte';
 import NotStraightGraph from './NotStraightGraph.svelte';
 
+import Hover from '@/components/Hover.svelte';
+
 > <span class='note'>Note:</span><br />
 > This article assumes that you have a basic understanding of functions and derivatives. Below is a quick overview which you can skip if you already know what is the deal with these concepts. 
 >
@@ -75,7 +77,17 @@ $$
 
 This is the **fundamental definition of derivative**. 
 
+{/*
 5. But we, sane individuals, would love to have a little abstraction. There are derivative rules on **elementary functions** (power, exponential, trig function, etc) that can solve any complex function as long as applied with **combinational derivative rules** (product, chain rule, etc). The result is another function that can calculate the rate of change, precisely. 
+*/}
+
+5. But we, sane individuals, would love to have a little abstraction. There are derivative rules on <Hover> 
+    <span slot="toggler"> elementary functions </span>
+    <ul> <li>power</li> <li>exponential</li> <li>trig function</li> <li>log</li> <li>...</li> </ul> 
+</Hover> that can solve any complex function as long as applied with <Hover>
+    <span slot="toggler">combinational derivative rules</span>
+    <ul><li>summation of functions</li><li>product of functions</li><li>composition of function</li></ul>
+</Hover>. The result is another function that can calculate the rate of change, precisely. 
 
 <br />
 
