@@ -77,10 +77,6 @@ $$
 
 This is the **fundamental definition of derivative**. 
 
-{/*
-5. But we, sane individuals, would love to have a little abstraction. There are derivative rules on **elementary functions** (power, exponential, trig function, etc) that can solve any complex function as long as applied with **combinational derivative rules** (product, chain rule, etc). The result is another function that can calculate the rate of change, precisely. 
-*/}
-
 5. But we, sane individuals, would love to have a little abstraction. There are derivative rules on <Hover> 
     <span slot="toggler"> elementary functions </span>
     <ul> <li>power</li> <li>exponential</li> <li>trig function</li> <li>log</li> <li>...</li> </ul> 
@@ -100,7 +96,10 @@ def f(x):
     return x**2 # x square
 ```
 
-And its derivative form with respect to $x$, $\mathrm{d}f/\mathrm{d}x = 2x$ (we will talk about this later), can be written as:
+And its derivative form with respect to $x$,
+<Hover> <span slot="toggler"> $\mathrm{d}f/\mathrm{d}x = 2x$ </span> 
+$x^2$ is a power function. <br /> $\frac{d}{dx}x^n = nx^{n-1}$ 
+</Hover> , can be written as: 
 
 ```python 
 def df(x):
