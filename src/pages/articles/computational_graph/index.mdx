@@ -40,16 +40,22 @@ The concept of derivative is beautiful. I wrote another article purely dedicated
 
 All you need to know for this article is that:
 
-1. You want to know how a function $f(x)$ is changing at a specific input $a$.
+1. You want to know how is a function $f(x)$ changing at a specific input $a$.
 2. To determine if or how something is changing, we need at least two data points to see the difference.
 
+<Hover>
+
+<span slot="toggler">
 $$
 \frac{f(b) - f(a)}{b - a} 
 $$
+</span>
 
-(divide the change in output by the change in input to find the rate of change)
+Divide the change in output by the change in input to find the rate of change.
 
-3. But two is not one. We want to know the rate of change of the function at $a$ not an overall average, from $a$ to $b$.
+</Hover>
+
+3. But two are not one. We want to know the rate of change of the function at $a$ not an overall average, from $a$ to $b$.
 
 <AverageNotInstant client:load />
 
@@ -65,17 +71,25 @@ $$
 
 With **Limit** we can make $b$ approach $a$. But remember, $b$ is not equal to $a$, they are very close. This is the derivative of $f(x)$ at $a$. 
 
-Now, we can find the derivative of $f(x)$ at any point $x$. To do so, we increase $x$ by a small amount $h$ then divide the change in output by the change in input.
+Bolow is the **fundamental definition of derivative**. 
 
-<div class="p-2 my-4 border border-[var(--pm-color)] border-dashed border-2 ">
+<div class="p-2 my-4 border pm-color border-[var(--pm-color)] border-dashed ">
+
+<Hover>
+
+<span slot="toggler">
 
 $$
 \frac{\mathrm{d} f }{\mathrm{d} x} =\; \lim_{h \to 0} \frac{f(x+h) - f(x)} {h}
 $$
 
-</div>
+</span>
 
-This is the **fundamental definition of derivative**. 
+To find the derivative of $f(x)$ at any point $x$, we increase $x$ by a small amount $h$ then divide the change in output by the change in input.
+
+</Hover>
+
+</div>
 
 5. But we, sane individuals, would love to have a little abstraction. There are derivative rules on <Hover> 
     <span slot="toggler"> elementary functions </span>
@@ -96,10 +110,7 @@ def f(x):
     return x**2 # x square
 ```
 
-And its derivative form with respect to $x$,
-<Hover> <span slot="toggler"> $\mathrm{d}f/\mathrm{d}x = 2x$ </span> 
-$x^2$ is a power function. <br /> $\frac{d}{dx}x^n = nx^{n-1}$ 
-</Hover> , can be written as: 
+And its derivative form with respect to $x$, $\mathrm{d}f/\mathrm{d}x = 2x$, can be written as: 
 
 ```python 
 def df(x):
@@ -108,7 +119,7 @@ def df(x):
 
 So, [why](https://www.merriam-webster.com/dictionary/why) am I writing this article? why can't we just... write it? Why do we need **computational graph**? And what is a graph anyway? 
 
-We simply don't want to figure out and write the derivative of any function by hand. It is now a computer's job.
+Here is why, we simply do not want to figure out and write the derivative of any function by hand. It is now a computer's job.
 
 # Computational Graph
 
