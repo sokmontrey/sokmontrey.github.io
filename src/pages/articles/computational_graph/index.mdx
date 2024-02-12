@@ -91,12 +91,12 @@ To find the derivative of $f(x)$ at any point $x$, we increase $x$ by a small am
 
 </div>
 
-5. But we, sane individuals, would love to have a little abstraction. There are derivative rules on <Hover> 
+5. But we, sane individuals, would not want to use it in that form. The formula can be used to find derivative of any <Hover> 
     <span slot="toggler"> elementary functions </span>
-    <ul> <li>power</li> <li>exponential</li> <li>trig function</li> <li>log</li> <li>...</li> </ul> 
-</Hover> that can solve any complex function as long as applied with <Hover>
+    <ul> <li>$x^n$</li> <li>$e^x$</li> <li>$\sin$</li> <li>$\ln$</li> <li>...</li> </ul> 
+</Hover>, creating elementary rules. These rules then can be used to solve any advanced function using <Hover>
     <span slot="toggler">combinational derivative rules</span>
-    <ul><li>summation of functions</li><li>product of functions</li><li>composition of function</li></ul>
+    <ul><li>$f(x) + g(x)$</li><li>$f(x) \times g(x)$</li><li>$f(g(x))$</li></ul>
 </Hover>. The result is another function that can calculate the rate of change, precisely. 
 
 <br />
@@ -110,7 +110,10 @@ def f(x):
     return x**2 # x square
 ```
 
-And its derivative form with respect to $x$, $\mathrm{d}f/\mathrm{d}x = 2x$, can be written as: 
+And its derivative form with respect to $x$, <Hover> 
+<span slot="toggler"> $\frac{d}{dx}f = 2x$</span> <br/>
+$x^2$ is in the form $x^n$. <br /> Power rule: $\frac{d}{dx}x^n = nx^{n-1}$
+</Hover>, can be written as: 
 
 ```python 
 def df(x):
