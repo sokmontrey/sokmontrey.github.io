@@ -40,7 +40,7 @@ The concept of derivative is beautiful. I wrote another article purely dedicated
 
 All you need to know for this article is that:
 
-1. You want to know how is a function $f(x)$ changing at a specific input $a$.
+1. We want to know how a function f changes at a specific input a.
 2. To determine if or how something is changing, we need at least two data points to see the difference.
 
 <Hover>
@@ -69,9 +69,7 @@ $$
 \lim_{b\to a} \frac{f(b) - f(a)}{b - a}
 $$
 
-With **Limit** we can make $b$ approach $a$. But remember, $b$ is not equal to $a$, they are very close. This is the derivative of $f(x)$ at $a$. 
-
-Bolow is the **fundamental definition of derivative**. 
+We can use **Limit** to make $b$ approach $a$. But remember, $b$ is not equal to $a$, they are very close. This is the derivative of $f(x)$ at $a$. Replace $a$ with any pointer $x$ we got the **fundamental definition of derivative**. 
 
 <div class="p-2 my-4 border pm-color border-[var(--pm-color)] border-dashed ">
 
@@ -91,11 +89,12 @@ To find the derivative of $f(x)$ at any point $x$, we increase $x$ by a small am
 
 </div>
 
-5. But we, sane individuals, would not want to use it in that form. The formula can be used to find derivative of any <Hover> 
+5. This formula is used to derive simple rules on <Hover> 
     <span slot="toggler"> elementary functions </span>
     <ul> <li>$x^n$</li> <li>$e^x$</li> <li>$\sin$</li> <li>$\ln$</li> <li>...</li> </ul> 
-</Hover>, creating elementary rules. These rules then can be used to solve any advanced function using <Hover>
-    <span slot="toggler">combinational derivative rules</span>
+</Hover>. Those rules then can be used to solve any advanced function using <Hover>
+    <span slot="toggler">combinational rules</span>
+    , derivative rules acting on combination of functions.
     <ul><li>$f(x) + g(x)$</li><li>$f(x) \times g(x)$</li><li>$f(g(x))$</li></ul>
 </Hover>. The result is another function that can calculate the rate of change, precisely. 
 
@@ -111,8 +110,8 @@ def f(x):
 ```
 
 And its derivative form with respect to $x$, <Hover> 
-<span slot="toggler"> $\frac{d}{dx}f = 2x$</span> <br/>
-$x^2$ is in the form $x^n$. <br /> Power rule: $\frac{d}{dx}x^n = nx^{n-1}$
+<span slot="toggler"> $\frac{d}{dx}f = 2x$</span> <br/><br/>
+$x^2$ is in the form $x^n$. <br /> **Power rule**: $\frac{d}{dx}x^n = nx^{n-1}$
 </Hover>, can be written as: 
 
 ```python 
@@ -120,7 +119,7 @@ def df(x):
     return 2*x
 ```
 
-So, [why](https://www.merriam-webster.com/dictionary/why) am I writing this article? why can't we just... write it? Why do we need **computational graph**? And what is a graph anyway? 
+So, [why](https://www.merriam-webster.com/dictionary/why) am I writing this article? why can't we just... write the code? Why do we need **computational graph**? And what is a graph anyway? 
 
 Here is why, we simply do not want to figure out and write the derivative of any function by hand. It is now a computer's job.
 
@@ -150,9 +149,9 @@ And here is its graph:
 
 <NotStraightGraph client:load />
 
-One thing to note here is that when creating computational graph, we need to avoid redundant nodes and operations. The $sin(x)$ is being used twice in the function.
+One thing to note here is that when creating computational graph, we need to avoid redundant nodes and operations. $\sin(x)$ is being used twice in the function.
 
-And this should be enough for us to get started with the concept of automatic differentiation or auto diff. But we will go back and forth between these two.
+And this should be enough for us to get started with the concept of automatic differentiation or auto diff. And we will go back and forth between these two.
 
 # Differentiation
 
@@ -169,17 +168,92 @@ $$
 
 Its derivative with respect to $x$ is:
 
+<div class='flex justify-center items-center '>
+
+<Hover> 
+<span slot="toggler" class='ac2-color'>
 $$
-\frac{\partial f} {\partial x} = 2x + \cos(x + y^2)
+\frac{\partial f} {\partial x} =
+$$ 
+</span>
+The symbol $\partial$ denotes the partial derivative, the derivative of $f$ with respect to one of its **many** inputs.
+</Hover>
+
+<Hover>
+<span slot="toggler" class='ac1-color'>
 $$
+\;\; 2x
+$$
+</span>
+Same as before, power rule $\frac{d}{dx}x^2 = 2x$
+</Hover>
+
+<Hover>
+<span slot="toggler" class='pm-color'>
+$$
+\; + \cos(x + y^2)
+$$
+</span>
+Derivative of $\sin(x)$ is $\cos(x)$ <br />
+
+$$
+\Rightarrow \sin'(x + y^2) = \cos(x + y^2)
+$$
+
+(prime `'` is another notation for derivative)
+</Hover>
+
+<Hover>
+<span slot="toggler" class='sd-color'>
+$$
+\;\; \cdot \;\; 1
+$$
+</span>
+This is the result of **chain rule**. The previous sin rule is for $\sin(x)$ not $\sin(x + y^2)$. We can still use it on the function, but we must must multiple it with the derivative of the inner function. Derivative of $x + y^2$ with respect to $x$ is 1.
+</Hover>
+
+</div>
 
 Since $f$ take in two inputs, we use the symbol $\partial$ to denote the partial derivative, the derivative of $f$ with respect to one of its many inputs.
 
 This mean that we can also find the derivative of $f$ with respect to $y$:
 
+<div class='flex justify-center items-center '>
+
 $$
-\frac{\partial f} {\partial y} = \cos(x + y^2) \cdot 2y
+\frac{\partial f} {\partial y} = 
 $$
+<Hover>
+<span slot="toggler" class='text-gray-500'>
+$$
+\; 0
+$$
+</span>
+Derivative of $x^2$ with respect to $y$ is $0$. (Power rule, x is a constant $\times y^0$)
+</Hover>
+
+<Hover>
+<span slot="toggler" class='pm-color'>
+$$
+\; + \cos(x + y^2)
+$$
+</span>
+
+- Derivative of $\sin(\mathrm{inner\;function})$ is $\cos(\mathrm{inner\;function})$. (Trig rule) 
+- Multiply with the derivative of the inner function with respect to y. (Chain rule)
+
+</Hover>
+
+<Hover>
+<span slot="toggler" class='sd-color'>
+$$
+\;\; \cdot \;\; 2y
+$$
+</span>
+Derivative of $x + y^2$ with respect to $y$ is $2y$. (Power rule, $x$ is a constant $\times y^2$)
+</Hover>
+
+</div>
 
 Now, here is the problem. Each derivative is another function. If the original function has a lot of parameters (input), we would also have a lot of new function for each inputs. Of course there are ways to optimize this. The **main problem** of this method is that it could leads to a very complicated function very quickly.
 
