@@ -229,7 +229,7 @@ $$
 \; 0
 $$
 </span>
-Derivative of $x^2$ with respect to $y$ is $0$. (Power rule, x is a constant $\times y^0$)
+Power Rule: Derivative of $x^2$ with respect to $y$ is $0$. (x is a constant $\times y^0$)
 </Hover>
 
 <Hover>
@@ -239,8 +239,8 @@ $$
 $$
 </span>
 
-- Derivative of $\sin(\mathrm{inner\;function})$ is $\cos(\mathrm{inner\;function})$. (Trig rule) 
-- Multiply with the derivative of the inner function with respect to y. (Chain rule)
+- Trig Rule: Derivative of $\sin(\mathrm{inner\;function})$ is $\cos(\mathrm{inner\;function})$.
+- Chain Rule: Multiply with the derivative of the inner function with respect to y.
 
 </Hover>
 
@@ -250,7 +250,7 @@ $$
 \;\; \cdot \;\; 2y
 $$
 </span>
-Derivative of $x + y^2$ with respect to $y$ is $2y$. (Power rule, $x$ is a constant $\times y^2$)
+Power rule: Derivative of $x + y^2$ with respect to $y$ is $2y$. ($x$ is a constant $\times y^2$)
 </Hover>
 
 </div>
@@ -261,7 +261,7 @@ As a homework, try it out on function that require **product rules**.
 
 ## Numerical Differentiation
 
-Another method use the **fundamental definition of derivative** to find the rate of change of a function at a specific point. We call it **numerical differentiation**
+Another method use the **fundamental definition of derivative**. Pull up the formula, plug in your desire input, plug in a very small number, and you got your answer. This is **numerical differentiation**.
 
 $$
 \frac{\mathrm{d} f }{\mathrm{d} x} =\; \lim_{h \to 0} \frac{f(x+h) - f(x)} {h}
@@ -274,8 +274,12 @@ def df(f, x, h=1e-5):
     return (f(x+h) - f(x)) / h
 ```
 
-It's simple, but let's not waste our time on this. $h$ need to be an incredibly small number, and computer are very bad with that. But please don't just take my word for it. Try out the code and compare them with the infinitely accurate symbolic method.
+It's simple, but let's not waste our time to it. $h$ need to be an incredibly small number, and computer are very bad with that. But please don't just take my word for it. Try out the code and compare them with the infinitely accurate symbolic method. There are many other problems with this method. If you are interested in the topic enough, please, please, please look for other detailed explainations.
 
 ## Automatic Differentiation
+
+There are two types of auto diff: **forward mode** and **reverse mode**. We will talk about reverse mode because it feels more natural to me. But they all have pros and cons, mostly depending on the ratio between number of input and number of output of the function. With that, we are ready to start. 
+
+The most important thing for auto diff is idea of **Chain Rule**. Any function that can be represented as a computational graph can be differentiated using the chain rule. We don't even need the other combinational rules. 
 
 # Implementation with OOP
