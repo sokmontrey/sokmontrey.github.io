@@ -1,15 +1,13 @@
 <script>
-	export let r = "100px";
-	export let fill = "var(--nt-color)";
+  let w = 0;
 </script>
 
 <div
+  bind:clientWidth={w}
 	{...$$restProps}
 	style={`
-		width: ${r};
-		height: ${r};
+    height: ${w}px;
 		border-radius: 100%;
-		background-color: ${fill};
 	`}
 >
 	<slot />

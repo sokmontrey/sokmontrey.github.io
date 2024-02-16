@@ -286,3 +286,9 @@ p {
   margin: 1rem 0px;
   opacity: 100%;
 }
+
+.middle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

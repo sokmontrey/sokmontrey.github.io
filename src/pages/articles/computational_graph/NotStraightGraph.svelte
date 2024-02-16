@@ -1,66 +1,70 @@
 <script>
-  import Katex from "svelte-katex";
   import Circle from "@/components/visuals/Circle.svelte";
   import Arrow from "@/components/visuals/Arrow.svelte";
+  import Katex from "svelte-katex";
 
-  const px = "px";
+  const circle = {
+    class: "middle nt-color bg-blue-500/50 w-16 ",
+  };
 
-  let w;
-  $: r = w * 0.08;
-
-  const circle_class = "flex justify-center items-center nt-color bg-blue-500/50 ";
+  const arrow = {
+    container_class: "opacity-50 pl-2 ",
+    body_class: "bg-nt-color",
+    length: "30px",
+    dir: "right",
+  };
 </script>
 
-<div
-  bind:clientWidth={w}
-  class="w-full h-full flex justify-center items-center my-10"
->
-  <Circle
-    r={r + px}
-    fill=""
-    class={circle_class}
-  >
+<div class="w-full h-full flex justify-center items-center my-10">
+  <Circle {...circle}>
     <Katex>x</Katex>
   </Circle>
-  <Arrow dir="right" class="pl-2 " />
-  <Circle
-    r={r + px}
-    fill=""
-    class="flex justify-center items-center nt-color bg-orange-500/50 "
-  >
-    <Katex>sin</Katex>
+
+  <Arrow {...arrow} />
+
+  <Circle {...circle}>
+    <Katex>\sin</Katex>
   </Circle>
-  <div class=" flex flex-col justify-center items-center ml-2">
-    <Arrow dir="right" class=" -rotate-[30deg] origin-left " />
-    <Arrow dir="right" class=" rotate-[30deg] origin-left " />
+
+  <div>
+    <Arrow
+      {...arrow}
+      container_class=" pl-2 opacity-50 origin-left -rotate-[30deg]"
+    />
+    <Arrow
+      {...arrow}
+      container_class=" pl-2 opacity-50 origin-left rotate-[30deg]"
+    />
   </div>
-  <div class=" flex flex-col justify-center items-center">
-    <Circle
-      r={r + px}
-      fill=""
-      class={circle_class}
-    >
+
+  <div>
+    <Circle {...circle}>
       <Katex>x^2</Katex>
     </Circle>
-    <Circle
-      r={r + px}
-      fill=""
-      class={circle_class + " mt-5 "}
-    >
+    <div class="h-5"></div>
+    <Circle {...circle}>
       <Katex>\times 3</Katex>
     </Circle>
   </div>
-  <div class=" flex flex-col justify-center items-center ml-2">
-    <Arrow dir="right" class=" rotate-[30deg] origin-right " />
-    <Arrow dir="right" class=" -rotate-[30deg] origin-right " />
+
+  <div>
+    <Arrow
+      {...arrow}
+      container_class=" pl-2 opacity-50 origin-right rotate-[30deg]"
+    />
+    <Arrow
+      {...arrow}
+      container_class=" pl-2 opacity-50 origin-right -rotate-[30deg]"
+    />
   </div>
-  <Circle
-    r={r + px}
-    fill=""
-    class={circle_class}
-  >
+
+  <Circle {...circle}>
     <Katex>+</Katex>
   </Circle>
-  <Arrow dir="right" class="pl-2" />
-  <Katex> g </Katex>
+
+  <Arrow {...arrow} />
+
+  <Circle {...circle}>
+    <Katex>g</Katex>
+  </Circle>
 </div>
