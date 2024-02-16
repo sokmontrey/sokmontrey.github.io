@@ -12,6 +12,7 @@ import FamiliarFunction from './FamiliarFunction.svelte';
 import AverageNotInstant from './AverageNotInstant.svelte';
 import StraightGraph from './StraightGraph.svelte';
 import NotStraightGraph from './NotStraightGraph.svelte';
+import MulGraph from './MulGraph.svelte';
 
 import Hover from '@/components/Hover.svelte';
 
@@ -280,6 +281,10 @@ It's simple, but let's not waste our time to it. $h$ need to be an incredibly sm
 
 There are two types of auto diff: **forward mode** and **reverse mode**. We will talk about reverse mode because it feels more natural to me. But they all have pros and cons, mostly depending on the ratio between number of input and number of output of the function. With that, we are ready to start. 
 
-The most important thing for auto diff is idea of **Chain Rule**. Any function that can be represented as a computational graph can be differentiated using the chain rule. We don't even need the other combinational rules. 
+The most important thing for auto diff is idea of **Chain Rule**. Any function that can be represented as a computational graph is differentiable using the chain rule. Let's checkout a few examples.
+
+Consider the function $f(x) = a(x)b(x)$. We have function $a$ and $b$, both take in $x$, multiplied together to get $f$. The graph should look something like this:
+
+<MulGraph client:load />
 
 # Implementation with OOP
