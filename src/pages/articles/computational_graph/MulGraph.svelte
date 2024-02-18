@@ -1,41 +1,64 @@
 <script>
-  import Katex from "svelte-katex";
   import Circle from "@/components/visuals/Circle.svelte";
   import Arrow from "@/components/visuals/Arrow.svelte";
-
-  const px = "px";
-
-  let w;
-  $: r = w * 0.08;
+  import Katex from "svelte-katex";
 
   const circle = {
-    class: "flex justify-center items-center nt-color bg-blue-500/50 ",
+    class: "middle nt-color bg-blue-500/50 w-16 ",
+  };
+
+  const arrow = {
+    container_class: "opacity-50 pl-2 ",
+    body_class: "bg-nt-color",
+    length: "30px",
+    dir: "right",
   };
 </script>
 
-<div bind:clientWidth={w} class="middle my-10">
-  <Circle r={r + px} {...circle}>
+<div class="w-full h-full flex justify-center items-center my-10">
+  <Circle {...circle}>
     <Katex>x</Katex>
   </Circle>
-  <div class=" flex flex-col justify-center items-center ml-2">
-    <Arrow dir="right" class=" -rotate-[30deg] origin-left " />
-    <Arrow dir="right" class=" rotate-[30deg] origin-left " />
+
+  <div>
+    <Arrow
+      {...arrow}
+      container_class=" pl-2 opacity-50 origin-left -rotate-[30deg]"
+    />
+    <Arrow
+      {...arrow}
+      container_class=" pl-2 opacity-50 origin-left rotate-[30deg]"
+    />
   </div>
-  <div class=" flex flex-col justify-center items-center">
-    <Circle r={r + px} {...circle}>
+
+  <div>
+    <Circle {...circle}>
       <Katex>a(x)</Katex>
     </Circle>
-    <Circle r={r + px} {...circle}>
+    <div class="h-5"></div>
+    <Circle {...circle}>
       <Katex>b(x)</Katex>
     </Circle>
   </div>
-  <div class=" flex flex-col justify-center items-center ml-2">
-    <Arrow dir="right" class=" rotate-[30deg] origin-right " />
-    <Arrow dir="right" class=" -rotate-[30deg] origin-right " />
+
+  <div>
+    <Arrow
+      {...arrow}
+      container_class=" pl-2 opacity-50 origin-right rotate-[30deg]"
+    />
+    <Arrow
+      {...arrow}
+      container_class=" pl-2 opacity-50 origin-right -rotate-[30deg]"
+    />
   </div>
-  <Circle r={r + px} {...circle}>
+
+  <Circle {...circle}>
     <Katex>\times</Katex>
   </Circle>
-  <Arrow dir="right" class="pl-2" />
-  <Katex>f</Katex>
+
+  <Arrow {...arrow} />
+
+  <Circle {...circle}>
+    <Katex>f</Katex>
+  </Circle>
 </div>
