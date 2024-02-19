@@ -53,7 +53,7 @@
   </div>
 
   <Circle {...circle}>
-    <Katex>\times</Katex>
+    <code>mul</code>
   </Circle>
 
   <Arrow {...arrow} />
