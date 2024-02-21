@@ -4,38 +4,32 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
 <BaseLayout title="Home">
   <header class='h-[100vh] flex justify-center items-center'>
-    <div class="grid grid-cols-3 grid-rows-2 " id="hello-container" >
-      <p class="text-9xl font-mono font-bold text-center">H</p>
-      <p class="text-9xl font-mono font-bold text-center">E</p>
-      <p class="text-9xl font-mono font-bold text-center">L</p>
-      <p class="text-9xl font-mono font-bold text-center">L</p>
-      <p class="text-9xl font-mono font-bold text-center">O</p>
-      <p class="text-9xl font-mono font-bold text-center">.</p>
+    <div class="grid grid-cols-3 grid-rows-2 justify-left " >
+      <span class="letter">H</span>
+      <span class="letter">E</span>
+      <span class="letter">L</span>
+      <span class="letter -translate-x-1 ">L</span>
+      <span class="letter">O</span>
+      <span class="letter">.</span>
     </div>
   </header>
+
+  <hr class="w-[10%] mx-auto opacity-30 border-dashed" />
+
+  <main class="p-10 pt-20 h-[100vh]">
+    <div class="">
+      <p class="serif-font text-[1rem] wrap w-[18rem]">
+        <span class="text-[4rem] float-left pr-4 leading-[0.9] ">I</span> am Sokmontrey, a math enthusiast who found out about computer science. I learn, built, and teach stuffs.
+      </p>
+    </div>
+  </main>
 </BaseLayout>
 
-<script>
-  const hello_container = document.getElementById('hello-container');
-  hello_container.textContent = '';
-  const words = ['H', 'E', 'L', 'L', 'O', '.'];
-
-  function createLetter(index) {
-    if (index < words.length) {
-      const letter = document.createElement('p');
-      letter.style.fontSize = `${10}rem`;
-      letter.style.fontFamily = `var(--mono-font)`;
-      letter.style.lineHeight = `1`;
-      letter.style.fontWeight = `bold`;
-      letter.classList.add('letter');
-      letter.textContent = words[index];
-
-      hello_container.appendChild(letter);
-      setTimeout(() => {
-        createLetter(index + 1);
-      }, (index + 1) * 100);
-    }
-  }
-
-  setTimeout(()=> (createLetter(0)), 500);
-</script>
+<style> 
+.letter {
+  font-size: 7rem;
+  font-family: var(--mono-font);
+  line-height: 0.9;
+  font-weight: bold;
+}
+</style>
