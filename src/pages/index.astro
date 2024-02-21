@@ -1,51 +1,41 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import AsciiBackground from '@/components/AsciiBackground.svelte';
-import ThemeToggle from '@/components/ThemeToggle.svelte';
-import Bio from '@/components/Bio.svelte';
 ---
 
 <BaseLayout title="Home">
-    <div class='fixed top-8 right-8 z-[100] '>
-        <ThemeToggle client:only="svelte" />
+  <header class='h-[100vh] flex justify-center items-center'>
+    <div class="grid grid-cols-3 grid-rows-2 " id="hello-container" >
+      <p class="text-9xl font-mono font-bold text-center">H</p>
+      <p class="text-9xl font-mono font-bold text-center">E</p>
+      <p class="text-9xl font-mono font-bold text-center">L</p>
+      <p class="text-9xl font-mono font-bold text-center">L</p>
+      <p class="text-9xl font-mono font-bold text-center">O</p>
+      <p class="text-9xl font-mono font-bold text-center">.</p>
     </div>
-    <p class='text-[#ff5555] fixed top-0 left-0' >Site is under construction</p>
-
-    <AsciiBackground client:only="svelte" />
-
-    <header class='h-[100vh] w-[100vw] border-box px-[7%] flex flex-col justify-center items-center relative z-10 '>
-        <div class='pt-[10vh]'>
-            <h1 class='flex text-[5.9rem] nt-color font-normal '>Hi,</h1>
-            <p class="font-sans text-base md:text-lg ">
-              I'm Sokmontrey, a math enthusiast <br />
-              who found out about computer science.<br />
-              I learn, build, and teach stuffs.
-            </p>
-        </div>
-        <a href="#intro" class='mt-[20vh] text-center text-[0.8rem] opacity-80 hover:opacity-100'>
-            <p class='font-mono animate-bounce text-[1rem] '>scroll down</p>
-            <i class="fa-solid fa-arrow-down animate-bounce"></i>
-        </a>
-    </header>
-
-    <hr class="w-full my-0" />
-
-    <section id="intro" class='flex items-center justify-center h-[100vh] w-[100vw] relative '>
-        <a href="https://axia-article.netlify.app" class="font-mono text-xl">
-            Stuffs I wrote
-        </a>
-    </section>
+  </header>
 </BaseLayout>
 
-<style>
-  .diff-text {
-    @apply font-mono text-base;
-    color: var(--pm-color);
-  }
+<script>
+  const hello_container = document.getElementById('hello-container');
+  hello_container.textContent = '';
+  const words = ['H', 'E', 'L', 'L', 'O', '.'];
 
-  @media (min-width: 768px) {
-    .diff-text {
-      @apply text-xl;
+  function createLetter(index) {
+    if (index < words.length) {
+      const letter = document.createElement('p');
+      letter.style.fontSize = `${10}rem`;
+      letter.style.fontFamily = `var(--mono-font)`;
+      letter.style.lineHeight = `1`;
+      letter.style.fontWeight = `bold`;
+      letter.classList.add('letter');
+      letter.textContent = words[index];
+
+      hello_container.appendChild(letter);
+      setTimeout(() => {
+        createLetter(index + 1);
+      }, (index + 1) * 100);
     }
   }
-</style>
+
+  setTimeout(()=> (createLetter(0)), 500);
+</script>
