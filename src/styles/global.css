@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -11,19 +12,14 @@
 }
 
 :root {
-  --bg-color: #141a23;
-  --ft-color: #303436;
-  --ft2-color: #5a5e60;
-  --nt-color: #eeeeee;
-  --pm-color: #4080ff;
-  --sd-color: #f05454;
-
-  --ac1-color: #85ff9e;
-  --ac2-color: #fffb7d;
-  --ac3-color: #ef7b45;
+  --bg-color: #0E1215;
+  --nt-color: #FFFFFF;
+  --pm-color: #95E037;
+  --pn-color: #27353D;
 
   --mono-font: "JetBrains Mono", monospace;
-  --serif-font: "Lora", serif;
+  --mono2-font: "Space Mono", monospace;
+  --serif-font: "DM Serif Text", serif;
 }
 
 html {
@@ -33,10 +29,16 @@ html {
 
 body {
   min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--nt-color);
 }
 
 .mono-font {
   font-family: var(--mono-font);
+}
+
+.mono2-font {
+  font-family: var(--mono2-font);
 }
 
 .serif-font {
@@ -47,71 +49,20 @@ body {
   font-family: var(--sans-font);
 }
 
-.pm-color {
-  color: var(--pm-color);
-}
-
-.sd-color {
-  color: var(--sd-color);
-}
-
-.ft-color {
-  color: var(--ft-color);
-}
-
 .bg-color {
   color: var(--bg-color);
 }
 
-.nt-color {
+.nt-color{
   color: var(--nt-color);
 }
 
-.ac1-color {
-  color: var(--ac1-color);
+.pn-color{
+  color: var(--pn-color);
 }
 
-.ac2-color {
-  color: var(--ac2-color);
+.pm-color{
+  color: var(--pm-color);
 }
 
-.ac3-color {
-  color: var(--ac3-color);
-}
 
-.bg-nt-color {
-  background-color: var(--nt-color);
-}
-
-.bg-bg-color {
-  background-color: var(--bg-color);
-}
-
-.bg-ft-color {
-  background-color: var(--ft-color);
-}
-
-.bg-pm-color {
-  background-color: var(--pm-color);
-}
-
-.bg-sd-color {
-  background-color: var(--sd-color);
-}
-
-.bg-ac1-color {
-  background-color: var(--ac1-color);
-}
-
-.bg-ac2-color {
-  background-color: var(--ac2-color);
-}
-
-.bg-ac3-color {
-  background-color: var(--ac3-color);
-}
-
-body {
-  background-color: var(--bg-color);
-  color: var(--nt-color);
-}
