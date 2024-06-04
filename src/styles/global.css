@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -16,10 +17,12 @@
   --nt-color: #FFFFFF;
   --pm-color: #95E037;
   --pn-color: #27353D;
+  --pn2-color: #9EAEB7;
 
   --mono-font: "JetBrains Mono", monospace;
   --mono2-font: "Space Mono", monospace;
-  --serif-font: "DM Serif Text", serif;
+  /* --serif-font: "DM Serif Text", serif; */
+  --serif-font: "EB Garamond", serif;
 }
 
 html {
@@ -61,8 +64,13 @@ body {
   color: var(--pn-color);
 }
 
+.pn2-color{
+  color: var(--pn2-color);
+}
+
 .pm-color{
   color: var(--pm-color);
 }
+
 
 
