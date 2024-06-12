@@ -1,10 +1,15 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import WelcomeSection from '@/components/WelcomeSection.astro';
-import StuffsSection from '@/components/StuffsSection.astro';
+import Projects from '@/components/Projects.astro';
+import CommunityInvolvements from '@/components/CommunityInvolvements.astro';
 ---
 
 <BaseLayout title="Sokmontrey">
   <WelcomeSection></WelcomeSection>
-  <StuffsSection></StuffsSection>
+
+  <div class="md:w-[70%] lg:w-[60%] xl:w-[50%]">
+    <Projects />
+    <CommunityInvolvements />
+  </div>
 </BaseLayout>

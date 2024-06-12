@@ -7,7 +7,7 @@ const { title, type, type_alt, url } = Astro.props;
     { url === undefined ? title 
       : <a href={url} target="_blank">{title}</a> }
   </h2>
-  <p class="serif-font inline pn2-color text-[1.1rem] type-container"> 
+  <p class="serif-font inline nt-color text-[1.1rem] type-container"> 
     (<span class="type">{type}</span><span class="type-alt">{type_alt}</span>)
   </p>
   <p class="inline serif-font text-[1.1rem] pn2-color">
