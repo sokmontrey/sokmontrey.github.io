@@ -5,7 +5,8 @@ const { title, type, type_alt, url, is_hide } = Astro.props;
 <article class="py-[0.5rem]">
   <h2 class="text-[1.5rem] serif-font">
     { url === undefined ? title 
-      : <a href={url} target="_blank">{title}</a> }
+      : (<a href={url} target="_blank">{title}</a> <i class="fa-solid fa-link text-sm pm-color"></i>) }
+    
   </h2>
   <p class="serif-font inline nt-color text-[1.1rem] type-container"> 
     (<span class="type">{type}</span><span class="type-alt">{type_alt}</span>)
