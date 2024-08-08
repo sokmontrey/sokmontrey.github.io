@@ -1,0 +1,3 @@
+- [ ] add what-do-i-do description 
+- [ ] contact info
+- [ ] axia article (link directly to deri intro page) 
