@@ -1,0 +1,9 @@
+.serif-font {
+	font-family: var(--serif-font);
+} 
+
+.mono-font {
+	font-family: var(--mono-font);
+} 
+
+

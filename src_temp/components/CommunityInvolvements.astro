@@ -1,0 +1,102 @@
+---
+import StuffsContainer from '@/layouts/StuffsContainer.astro';
+import Stuff from '@/layouts/Stuff.astro';
+---
+
+<StuffsContainer title="Community involvements">
+  <Stuff 
+  title="Ontario Skills Competition 2024"
+  type="prg." 
+  type_alt="programming.">
+    Representing George Brown College to program a .NET CLI application in a 6 hours software development competition, achieving 4th place overall. (Provincial Code scope). 
+  </Stuff>
+
+  <Stuff 
+  title="FRC 2024 (mentoring)"
+  type="rbt." 
+  type_alt="robotic">
+    advising over the electrical and programming side for the FRC team 6977.
+  </Stuff>
+
+  <Stuff 
+  title="Hack for good 2023"
+  type="hck-thn." 
+  type_alt="hackathon.">
+    Developed an Agri-tech solution prototype, ultimately winning the 1st prize in the hackathon.
+  </Stuff>
+
+  <div id="more-container">
+    <Stuff 
+    title="Ontario Skills Competition 2023"
+    type="e-eng." 
+    type_alt="electrical engineering.">
+      Competed in the electrical engineering scope. Regional gold medalist and 4th in the provincial competition. 
+    </Stuff>
+
+    <Stuff 
+    title="FRC 2023"
+    type="rbt." 
+    type_alt="robotic.">
+      Working collaboratively to build and program a robot for the team 6977 to competition in the FIRST Robotic Competition. Handled the electrical and programming group. 
+    </Stuff>
+
+    <Stuff 
+    title="Cambodia CS Cup 2021"
+    type="prg." 
+    type_alt="programming.">
+     A competitive programming competition (achieve top 20 as a high school student).
+    </Stuff>
+
+    <Stuff 
+    title="Impressive Community"
+    type="art." 
+    type_alt="graphic design - volunteering">
+      Design advertising materials, including posters, banners, and illustrations, to effectively promote an annual educational event.
+    </Stuff>
+
+    <Stuff 
+    title="Ellipse Bot"
+    type="rbt." 
+    type_alt="robotic.">
+      Founded the team with a group of friends to spread interest in innovation and STEM by developing/showcasing IOT projects and attending competitions.
+    </Stuff>
+  </div>
+
+  <button id="show-more-btn"
+  class="ml-0 m-[1rem] mono-font pm-color">
+    show more
+  </button>
+
+</StuffsContainer>
+
+<style>
+  #show-more-btn::before {
+    content: '[';
+    transition: all 0.3s ease-in-out;
+  }
+  #show-more-btn::after{
+    content: ']';
+    transition: all 0.3s ease-in-out;
+  }
+
+  #show-more-btn:hover:before {
+    content: '[';
+    padding: 0rem 0.2rem;
+  }
+  #show-more-btn:hover:after{
+    content: ']';
+    padding: 0rem 0.2rem;
+  }
+</style>
+
+<script> 
+let is_show_more = false;
+const more_container = document.getElementById('more-container');
+more_container.style.display = 'none';
+const show_more_btn = document.getElementById('show-more-btn');
+show_more_btn.addEventListener('click', ()=>{
+  is_show_more = !is_show_more;
+  more_container.style.display = is_show_more ? 'block' : 'none';
+  show_more_btn.innerText = is_show_more ? "show less" : "show more";
+}); 
+</script>

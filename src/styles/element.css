@@ -1,0 +1,10 @@
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-color);
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--nt-color);
+}

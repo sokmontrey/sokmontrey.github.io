@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Serif+Text:ital@0;1&display=swap');
+
+@import url('element.css');
+@import url('font.css');
+@import url('color.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  position: static;
+  z-index: 0;
+}
+
+:root {
+  --bg-color: #11151A;
+  --nt-color: #EED9B4;
+	--lt-color: #34393D;
+
+  --pm-color: #95E037;
+  --pn-color: #27353D;
+  --pn2-color: #9EAEB7;
+
+  --mono-font: "DM Mono", monospace;
+  --serif-font: "DM Serif Text", serif;
+}

@@ -1,0 +1,31 @@
+---
+import BlockContainer from '@/components/BlockContainer.astro';
+
+const phrases = [
+	["", "", "Lorem ipsum dolor sit amet, ", "consectetur adipiscing"],
+	["", "", "Suspendisse diam libero, maximus sit ", "amet eros at,"],
+	["euism ", "I'm Sokmontrey, ", "risus. Cras ", "ac varius"],
+	["purus. ", "a math enthusiast ", "Cras metus ", "tortor, sodales"],
+	["ut, rhoncus ", "who's discovering ", "quis ", "augue."],
+	["felis, ", "Computer Science, ", "vel egestas ", "dui congue"],
+		["viverra ", "Art, and Engineering. ", "nibh, at"],
+	["", "", "Mauris lorem turpis, sodales vehicula ", "fringilla"],
+	["", "", "rutrum purus. Aliquam euismod ", "velit"],
+];
+---
+
+<BlockContainer>
+	<div>
+		<h1 class='serif-font text-[96px] nt-color flex-start '>
+			hello.
+		</h1>
+		<div class='mono-font'>
+			{phrases.map(line => <p>
+				<span class="lt-color ">{line[0]}</span>
+				<span class="nt-color ">{line[1]}</span>
+				<span class="lt-color ">{line[2]}</span>
+				<span class="lt-color hidden md:inline">{line[3]}</span>
+			</p>)}
+		</div>
+	</div>
+</BlockContainer>

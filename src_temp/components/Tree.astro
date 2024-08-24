@@ -1,0 +1,31 @@
+---
+const tree_color = ['95E037', '3A8E38', '3A8E38', '96E037', '3A8E38', '3A8E38', '3A8E38', '96E037', '3A8E38', '3A8E38', '3A8E38', '96E037', '3A9549', '1D4C41', '38483D', '1D4C41', '38483D', '3A9549', '3A9549', '38483D', '3A9549', '96E037', '344C3C', '344C3C', '394C34', '394C34', '414C34', '95E037', '474C34', '3A9549', '52533B', '52533B', '595741', '595741', '595741', '595741'];
+
+const tree = `  ****
+ ********
+**#*#**#**
+   #   #
+    # #
+     #  *
+     # *
+     ##
+    ##
+    ##`;
+
+let color_i = 0;
+
+const html_tree = tree.split('').map(t => {
+  switch(t) {
+    case ' ': return " "; //"&nbsp;";
+    case '*':
+    case '#': 
+      return `<span style="color: #${tree_color[color_i++]}">${t}</span>`;
+    case '\n': return '\n';
+  }
+}).join('');
+
+---
+
+<div class="mono2-font text-[1rem] leading-[0.78] mx-auto">
+<p class="whitespace-pre" set:html={html_tree}></p>
+</div>
