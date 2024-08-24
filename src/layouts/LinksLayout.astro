@@ -2,9 +2,16 @@
 import BlockContainer from '@/components/BlockContainer.astro';
 import LineWithDots from '@/components/LineWithDots.astro';
 import links from '@/configs/links.json';
+
+
+interface Props {
+	id: string;
+}
+
+const { id } = Astro.props;
 ---
 
-<BlockContainer height='auto'>
+<BlockContainer id={id} height='auto'>
 	<div>
 		<h1 class=" serif-font text-[3rem] ">links</h1>
 		<ul>

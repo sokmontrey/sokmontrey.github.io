@@ -5,9 +5,15 @@ import LineWithDots from '@/components/LineWithDots.astro';
 import { toRoman } from '@/utils/number.js';
 
 import contents from '@/configs/contents.json';
+
+interface Props {
+	id: string;
+}
+
+const { id } = Astro.props;
 ---
 
-<BlockContainer>
+<BlockContainer id={id}>
 	<div>
 		<h1 class=" serif-font text-[3rem] ">contents</h1>
 		<ul class=" ">

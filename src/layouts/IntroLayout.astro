@@ -12,9 +12,15 @@ const phrases = [
 	["", "", "Mauris lorem turpis, sodales vehicula ", "fringilla"],
 	["", "", "rutrum purus. Aliquam euismod ", "velit"],
 ];
+
+interface Props {
+	id: string;
+}
+
+const { id } = Astro.props;
 ---
 
-<BlockContainer>
+<BlockContainer id={id}>
 	<div>
 		<h1 class='serif-font text-[96px] nt-color flex-start '>
 			hello.

@@ -8,11 +8,11 @@ import LinksLayout from '@/layouts/LinksLayout.astro';
 
 <BaseLayout title={'Home'} >
 	<header>
-		<IntroLayout />
-		<TableOfContentLayout />
+		<IntroLayout id="intro" />
+		<TableOfContentLayout id="contents" />
 	</header>
 	<main>
-		<LinksLayout />
+		<LinksLayout id="links" />
 		<NavBar />
 	</main>
 </BaseLayout>

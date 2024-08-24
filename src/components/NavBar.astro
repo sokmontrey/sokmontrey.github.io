@@ -5,7 +5,7 @@ const height = contents.length * 20 + 60;
 
 <ul class=" p-8 flex flex-col items-end sticky top-0 float-right z-[0] mono-font text-sm">
 	{contents.map(content => <li class='px-4'>
-		{content.alt}
+		<a href={content.url}>{content.alt}</a>
 	</li>)}
 </ul>
 
