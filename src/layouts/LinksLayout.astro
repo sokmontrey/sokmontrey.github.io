@@ -1,0 +1,23 @@
+---
+import BlockContainer from '@/components/BlockContainer.astro';
+import LineWithDots from '@/components/LineWithDots.astro';
+import links from '@/configs/links.json';
+---
+
+<BlockContainer height='auto'>
+	<div>
+		<h1 class=" serif-font text-[3rem] ">links</h1>
+		<ul>
+			{links.map((link, i) => <li>
+				<a class="mono-font" href={link.url} target="_blank">
+					<LineWithDots 
+						width={30}
+						additional_width={30}
+						str={link.name}
+						postfix={`<i class="${link.icon}"></i>`}
+					/> 
+				</a>
+			</li>)}
+		</ul>
+	</div>
+</BlockContainer>

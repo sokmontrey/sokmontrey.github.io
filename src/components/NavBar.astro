@@ -1,0 +1,17 @@
+---
+import contents from '@/configs/contents.json';
+const height = contents.length * 20 + 60;
+---
+
+<ul class=" p-8 flex flex-col items-end sticky top-0 float-right z-[0] mono-font text-sm">
+	{contents.map(content => <li class='px-4'>
+		{content.alt}
+	</li>)}
+</ul>
+
+<div 
+	class="w-[30vw] z-[3] relative float-left left-full translate-x-[-100%] bg-bg-color "
+	style={`height: ${height}px;`} 
+></div>
+
+<div class='clear-right'></div>

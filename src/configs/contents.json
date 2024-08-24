@@ -1,14 +1,22 @@
 [
   {
+    "name": "Links",
+    "alt": "Links",
+    "url": "#links"
+  },
+  {
     "name": "Projects",
+    "alt": "Projects",
     "url": "#projects"
   },
   {
     "name": "Experiences",
+    "alt": "Experiences",
     "url": "#experiences"
   },
   {
     "name": "Community Involvements",
+    "alt": "Involvements",
     "url": "#involvements"
   }
 ]

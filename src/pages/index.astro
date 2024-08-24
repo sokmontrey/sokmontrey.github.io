@@ -2,6 +2,8 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import IntroLayout from '@/layouts/IntroLayout.astro';
 import TableOfContentLayout from '@/layouts/TableOfContentLayout.astro';
+import NavBar from '@/components/NavBar.astro';
+import LinksLayout from '@/layouts/LinksLayout.astro';
 ---
 
 <BaseLayout title={'Home'} >
@@ -10,6 +12,7 @@ import TableOfContentLayout from '@/layouts/TableOfContentLayout.astro';
 		<TableOfContentLayout />
 	</header>
 	<main>
-
+		<LinksLayout />
+		<NavBar />
 	</main>
 </BaseLayout>
