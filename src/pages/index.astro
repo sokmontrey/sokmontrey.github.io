@@ -1,17 +1,15 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import WelcomeSection from '@/components/WelcomeSection.astro';
-import Projects from '@/components/Projects.astro';
-import Experiences from '@/components/Experiences.astro';
-import CommunityInvolvements from '@/components/CommunityInvolvements.astro';
+import IntroLayout from '@/layouts/IntroLayout.astro';
+import TableOfContentLayout from '@/layouts/TableOfContentLayout.astro';
 ---
 
-<BaseLayout title="Sokmontrey">
-  <WelcomeSection></WelcomeSection>
+<BaseLayout title={'Home'} >
+	<header>
+		<IntroLayout />
+		<TableOfContentLayout />
+	</header>
+	<main>
 
-  <div class="md:w-[70%] lg:w-[65%] xl:w-[60%]">
-    <Projects />
-    <Experiences />
-    <CommunityInvolvements />
-  </div>
+	</main>
 </BaseLayout>

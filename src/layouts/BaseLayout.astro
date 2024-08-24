@@ -1,22 +1,17 @@
 ---
-import '@/styles/global.css';
+import '@/styles/base.css';
 
 const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{title}</title>
-	
-    <!--Icons-->
-    <script src="https://kit.fontawesome.com/b71972c7cc.js" crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <main>
-      <slot />
-    </main>
-  </body>
+	<head>
+		<!--SEO-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
 </html>
