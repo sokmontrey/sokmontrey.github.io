@@ -1,0 +1,27 @@
+---
+import BlockContainer from '@/components/BlockContainer.astro';
+
+import { toRoman } from '@/utils/number.js';
+
+import content_list from '@/configs/table-of-content.json';
+
+const width = 30;
+const additional_width = 30;
+---
+
+<BlockContainer>
+	<div>
+		<h1 class=" serif-font text-[3rem] ">contents</h1>
+		<ul class=" ">
+			{content_list.map((entr, i) => {
+			const name = entr['name'];
+				return <li class="mono-font ">
+					<span class=''>{name}</span>
+					<span class='lt-color '>{'.'.repeat(width - name.length)}</span><!-- avoiding extra margin between spans
+					--><span class='lt-color hidden md:inline'>{'.'.repeat(additional_width)}</span>
+					<span>{toRoman(i + 1)}</span>
+				</li>
+			})}
+		</ul>
+	</div>
+</BlockContainer>
