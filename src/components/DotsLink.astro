@@ -11,7 +11,7 @@ interface Props {
 const { width, additional_width, str, postfix, href, is_blank } = Astro.props;
 
 const dot = '.';
-const dash = '=';
+const dash = '<';
 ---
 
 <a href={href} target={is_blank ? '_blank' : ''}>
@@ -36,9 +36,9 @@ a:hover .nt-color {
 	color: var(--pm-color);
 }
 
-a:hover .lt-color {
-	color: var(--pm-color);
-}
+/* a:hover .lt-color { */
+/* 	color: var(--pm-color); */
+/* } */
 
 a:hover #dash {
 	display: inline;

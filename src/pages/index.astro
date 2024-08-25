@@ -4,19 +4,34 @@ import IntroLayout from '@/layouts/IntroLayout.astro';
 import TableOfContentLayout from '@/layouts/TableOfContentLayout.astro';
 import NavBar from '@/components/NavBar.astro';
 import LinksLayout from '@/layouts/LinksLayout.astro';
+import ProjectsLayout from '@/layouts/ProjectsLayout.astro';
 ---
 
 <BaseLayout title={'Home'} >
-	<header>
+	<header class=" h-screen block-container" id="intro">
 		<IntroLayout id="intro" />
-		<TableOfContentLayout id="contents" />
 	</header>
 	<main>
-		<LinksLayout id="links" />
+		<section class=" block-container h-screen " id="contents">
+			<TableOfContentLayout id="contents" />
+		</section>
+		<section class=" block-container " id="links">
+			<LinksLayout id="links" />
+		</section>
 		<NavBar />
-		<IntroLayout id="intro" />
-		<IntroLayout id="intro" />
-		<IntroLayout id="intro" />
-		<IntroLayout id="intro" />
+		<section class=" block-container " id="projects">
+			<ProjectsLayout id="projects" />
+		</section>
 	</main>
 </BaseLayout>
+
+<style>
+.block-container {
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+    box-sizing: border-box;
+}
+</style>

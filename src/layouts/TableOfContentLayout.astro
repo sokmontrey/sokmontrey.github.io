@@ -1,32 +1,23 @@
 ---
-import BlockContainer from '@/components/BlockContainer.astro';
 import DotsLink from '@/components/DotsLink.astro';
 
 import { toRoman } from '@/utils/number.js';
 
-import contents from '@/configs/contents.json';
-
-interface Props {
-	id: string;
-}
-
-const { id } = Astro.props;
+import contents from '@/data/contents.json';
 ---
 
-<BlockContainer id={id}>
-	<div>
-		<h1 class=" serif-font text-[3rem] ">contents</h1>
-		<ul class=" ">
-			{contents.map((content, i) => {
-			return <li class="mono-font ">
-				<DotsLink
-					href = {content.url}
-					width={30}
-					additional_width={30}
-					str={content.name}
-					postfix={toRoman(i + 1)}
-				/>
-			</li> })}
-		</ul>
-	</div>
-</BlockContainer>
+<div>
+	<h1 class=" serif-font text-[3rem] ">contents</h1>
+	<ul class=" ">
+		{contents.map((content, i) => {
+		return <li class="mono-font ">
+			<DotsLink
+				href = {content.url}
+				width={30}
+				additional_width={30}
+				str={content.name}
+				postfix={toRoman(i + 1)}
+			/>
+		</li> })}
+	</ul>
+</div>

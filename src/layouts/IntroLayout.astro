@@ -1,6 +1,4 @@
 ---
-import BlockContainer from '@/components/BlockContainer.astro';
-
 const phrases = [
 	["", "", "Lorem ipsum dolor sit amet, ", "consectetur adipiscing"],
 	["", "", "Suspendisse diam libero, maximus sit ", "amet eros at,"],
@@ -12,26 +10,18 @@ const phrases = [
 	["", "", "Mauris lorem turpis, sodales ", "vehicula fringilla"],
 	["", "", "rutrum purus. Aliquam euismod ", "velit"],
 ];
-
-interface Props {
-	id: string;
-}
-
-const { id } = Astro.props;
 ---
 
-<BlockContainer id={id}>
-	<div class="px-4 md:px-0">
-		<h1 class='serif-font text-[96px] nt-color flex-start '>
-			hello.
-		</h1>
-		<div class='mono-font'>
-			{phrases.map(line => <p>
-				<span class="lt-color ">{line[0]}</span>
-				<span class="nt-color ">{line[1]}</span>
-				<span class="lt-color ">{line[2]}</span>
-				<span class="lt-color hidden md:inline">{line[3]}</span>
-			</p>)}
-		</div>
+<div class="px-4 md:px-0">
+	<h1 class='serif-font text-[96px] nt-color flex-start '>
+		hello.
+	</h1>
+	<div class='mono-font'>
+		{phrases.map(line => <p>
+			<span class="lt-color ">{line[0]}</span>
+			<span class="nt-color ">{line[1]}</span>
+			<span class="lt-color ">{line[2]}</span>
+			<span class="lt-color hidden md:inline">{line[3]}</span>
+		</p>)}
 	</div>
-</BlockContainer>
+</div>

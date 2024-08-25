@@ -4,6 +4,10 @@
 
 .mono-font {
 	font-family: var(--mono-font);
-} 
+}
+
+.h1 {
+	font-size: 3rem;
+}
 
 
