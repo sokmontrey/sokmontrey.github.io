@@ -3,15 +3,50 @@ import contents from '@/configs/contents.json';
 const height = contents.length * 20 + 60;
 ---
 
-<ul class=" p-8 flex flex-col items-end sticky top-0 float-right z-[0] mono-font text-sm">
+<button id="nav-btn" class="w-full backdrop-blur-sm fixed top-0 left-0 p-6 block md:hidden z-[1] text-left flex items-start bg-[var(--half-bg-color)]">
+	<i id="nav-btn-icon" class="fa-solid fa-bars text-xl"></i>
+</button>
+
+<ul id="nav-container" class=" p-8 pt-10 pb-20 md:pb-4 hidden md:block flex flex-col items-start fixed md:sticky top-12 md:top-0 float-left z-[1] mono-font text-2xl md:text-sm w-full md:w-auto">
 	{contents.map(content => <li class='px-4'>
 		<a href={content.url}>{content.alt}</a>
 	</li>)}
 </ul>
 
 <div 
-	class="w-[30vw] z-[3] relative float-left left-full translate-x-[-100%] bg-bg-color "
+	class="w-full hidden md:block md:w-[40vw] z-[3] relative bg-bg-color "
 	style={`height: ${height}px;`} 
 ></div>
 
-<div class='clear-right'></div>
+<br><br>
+
+<script>
+let is_nav_open = false;
+const nav_btn = document.getElementById('nav-btn');
+const nav_btn_icon = document.getElementById('nav-btn-icon');
+const nav_container = document.getElementById('nav-container');
+nav_btn.addEventListener('click', () => {
+	is_nav_open = !is_nav_open;
+	if (is_nav_open) {
+		nav_btn.classList.add('h-full');
+		nav_btn_icon.classList.remove('fa-bars');
+		nav_btn_icon.classList.add('fa-xmark');
+	} else {
+		nav_btn.classList.remove('h-full');
+		nav_btn_icon.classList.add('fa-bars');
+		nav_btn_icon.classList.remove('fa-xmark');
+	}
+	nav_container.classList.toggle('hidden');
+});
+
+let prev_scroll_pos = window.pageYOffset;
+window.onscroll = function() {
+	const current_scroll_pos = window.pageYOffset;
+	if (prev_scroll_pos > current_scroll_pos) {
+		nav_btn.style.top = "0";
+	} else if (!is_nav_open) {
+		nav_btn.style.top = "-100%";
+	}
+	prev_scroll_pos = current_scroll_pos;
+}
+</script>

@@ -8,8 +8,8 @@ const phrases = [
 	["purus. ", "a math enthusiast ", "Cras metus ", "tortor, sodales"],
 	["ut, rhoncus ", "who's discovering ", "quis ", "augue."],
 	["felis, ", "Computer Science, ", "vel egestas ", "dui congue"],
-		["viverra ", "Art, and Engineering. ", "nibh, at"],
-	["", "", "Mauris lorem turpis, sodales vehicula ", "fringilla"],
+["viverra ", "Art, and Engineering. ", "nibh, ", "at"],
+	["", "", "Mauris lorem turpis, sodales ", "vehicula fringilla"],
 	["", "", "rutrum purus. Aliquam euismod ", "velit"],
 ];
 
@@ -21,7 +21,7 @@ const { id } = Astro.props;
 ---
 
 <BlockContainer id={id}>
-	<div>
+	<div class="px-4 md:px-0">
 		<h1 class='serif-font text-[96px] nt-color flex-start '>
 			hello.
 		</h1>

@@ -6,6 +6,6 @@ interface Props {
 
 const { height, id } = Astro.props;
 ---
-<section id={id} class={` h-[${height || '100vh'}] flex flex-col justify-center items-center `}>
+<section id={id} class={` h-[100vh] flex flex-col justify-center items-center `}>
 	<slot />
 </section>
