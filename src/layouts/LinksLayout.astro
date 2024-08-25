@@ -1,6 +1,6 @@
 ---
 import BlockContainer from '@/components/BlockContainer.astro';
-import LineWithDots from '@/components/LineWithDots.astro';
+import DotsLink from '@/components/DotsLink.astro';
 import links from '@/configs/links.json';
 
 
@@ -14,16 +14,16 @@ const { id } = Astro.props;
 <BlockContainer id={id} height='h-auto'>
 	<div>
 		<h1 class=" serif-font text-[3rem] ">links</h1>
-		<ul>
-			{links.map((link, i) => <li>
-				<a class="mono-font" href={link.url} target="_blank">
-					<LineWithDots 
-						width={30}
-						additional_width={30}
-						str={link.name}
-						postfix={`<i class="${link.icon}"></i>`}
-					/> 
-				</a>
+		<ul class="">
+			{links.map((link, i) => <li class="mono-font">
+				<DotsLink
+					href={link.url}
+					is_blank
+					width={30}
+					additional_width={30}
+					str={link.name}
+					postfix={`<i class="${link.icon}"></i>`}
+				/> 
 			</li>)}
 		</ul>
 	</div>

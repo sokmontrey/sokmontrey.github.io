@@ -1,6 +1,6 @@
 ---
 import BlockContainer from '@/components/BlockContainer.astro';
-import LineWithDots from '@/components/LineWithDots.astro';
+import DotsLink from '@/components/DotsLink.astro';
 
 import { toRoman } from '@/utils/number.js';
 
@@ -18,14 +18,15 @@ const { id } = Astro.props;
 		<h1 class=" serif-font text-[3rem] ">contents</h1>
 		<ul class=" ">
 			{contents.map((content, i) => {
-			return <li class="mono-font "><a href={content.url}>
-				<LineWithDots
+			return <li class="mono-font ">
+				<DotsLink
+					href = {content.url}
 					width={30}
 					additional_width={30}
 					str={content.name}
 					postfix={toRoman(i + 1)}
 				/>
-			</a></li> })}
+			</li> })}
 		</ul>
 	</div>
 </BlockContainer>
