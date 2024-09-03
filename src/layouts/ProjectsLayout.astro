@@ -1,14 +1,37 @@
 ---
 import projects from '@/data/projects.json';
+import project_configs from '@/data/project_configs.json';
+
+import SimpleHeader from '@/components/SimpleHeader.astro';
+import BasicInfoCard from '@/components/BasicInfoCard.astro';
+import ShowMoreBtn from '@/components/ShowMoreButton.astro';
+
+const { number_of_projects_show: num_show } = project_configs;
+const proj_length = projects.length;
 ---
 
-<div>
-	<h1 class='serif-font h1 '>projects</h1>
-	<ul>
-		{projects.map((item, i) => <li>
-			<h2 class="serif-font">
-				{item.title}
-			</h2 >
-		</li>)}
+<div class="w-[90vw] md:w-[55vw]">
+	<SimpleHeader text="Projects" number="ii" />
+	<ul class="py-4 pt-8 ">
+		{projects.slice(0, num_show).map(item => <BasicInfoCard
+				title={item.title} 
+				url={item.url}
+				tags={item.tags}
+				type={item.type}
+				description={item.description} /> )}
+
+		{proj_length > num_show ? <ShowMoreBtn target_id="more-proj" /> : <></>}
+
+		<div id="more-proj" class='hidden'>
+			{proj_length > num_show 
+			? projects.slice(num_show, proj_length).map(item => <BasicInfoCard
+					title={item.title} 
+					url={item.url}
+					tags={item.tags}
+					type={item.type}
+					description={item.description} /> )
+			: <></> }
+		</div>
 	</ul>
 </div>
+
