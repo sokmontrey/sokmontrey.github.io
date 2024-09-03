@@ -10,6 +10,10 @@
 	color: var(--lt-color);
 }
 
+.lt2-color {
+	color: var(--lt2-color);
+}
+
 .pm-color {
 	color: var(--pm-color);
 }
@@ -32,6 +36,10 @@
 
 .bg-lt-color {
 	background-color: var(--lt-color);
+}
+
+.bg-lt2-color {
+	background-color: var(--lt2-color);
 }
 
 .bg-pm-color {
