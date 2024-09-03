@@ -9,7 +9,7 @@ const height = contents.length * 20 + 60;
 
 <ul id="nav-container" class=" p-8 pt-10 pb-20 md:pb-4 hidden md:block flex flex-col items-start fixed md:sticky top-12 md:top-0 float-left z-[1] mono-font text-2xl md:text-sm w-full md:w-auto">
 	{contents.map(content => <li class='px-4'>
-		<a href={content.url}>{content.alt}</a>
+		<a href={content.url} class='hover:text-[var(--pm-color)]'>{content.alt}</a>
 	</li>)}
 </ul>
 
