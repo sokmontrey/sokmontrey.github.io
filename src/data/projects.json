@@ -1,7 +1,30 @@
 [
   {
-    "title": "Nodeflow CPP",
-    "description": "",
+    "title": ["ML", "Notebooks"],
+    "type": ["ml", "machine learning"],
+    "tags": ["ipynb"],
+    "description": "Collection of jupyter notebooks of machine learning practices for learning purposes and competitions. (under development)",
+    "url": "https://github.com/sokmontrey/machine-learning"
+  },
+  {
+    "title": ["Nodeflow", "CPP"],
+    "type": ["prog", "programming"],
+    "tags": ["cpp", "cmake"],
+    "description": "A simple and highly extensible Computational graph library written in C++ with the support of auto diff.",
+    "url": "https://github.com/sokmontrey/nodeflow"
+  },
+  {
+    "title": ["Dynamical", "JS"],
+    "type": ["prog", "programming"],
+    "tags": ["js"],
+    "description": "A 2D mass aggregated physic library written entirely from scratch in JavaScript.",
+    "url": "https://github.com/sokmontrey/dynamical-js"
+  },
+  {
+    "title": ["Eighter"],
+    "type": ["e.eng", "electical engineering"],
+    "tags": ["logic ic"],
+    "description": "an 8 bit computer design and build from scratch on breadboards.",
     "url": ""
   }
 ]
