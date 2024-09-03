@@ -1,0 +1,45 @@
+---
+const {target_id} = Astro.props;
+---
+
+<show-more-btn data-target_id={target_id}>
+	<button class='pm-color mono-font pb-4'>
+		[<span id="text">show more</span>]
+	</button>
+</show-more-btn>
+
+<script>
+class ShowMoreButton extends HTMLElement {
+	 constructor() {
+      super();
+
+		const target_id = this.dataset.target_id as string;
+		const target_ele = document.getElementById(target_id);
+		const btn = this.querySelector('button') as HTMLButtonElement;
+		const text = btn.querySelector('#text') as HTMLElement;
+		btn.addEventListener('click', () => {
+			target_ele?.classList.toggle('hidden');
+			text.innerText = target_ele?.classList.contains('hidden') 
+				? 'show more' 
+				: 'show less';
+		});
+    }
+}
+
+customElements.define('show-more-btn', ShowMoreButton);
+</script>
+
+<style>
+#text {
+	transition: padding 0.2s ease-in-out;
+}
+
+button:hover #text {
+	padding: 0 5px;
+}
+
+button:active #text {
+	padding: 0 3px;
+}
+
+</style>
