@@ -21,9 +21,9 @@
 
 	--half-bg-color: #11151Aaa;
 
-  --pm-color: #95E037;
-  --pn-color: #27353D;
-  --pn2-color: #9EAEB7;
+  --pm-color: #f78928; 
+	/* #95E037; */
+	--sd-color: #f78928;
 
   --mono-font: "DM Mono", monospace;
   --serif-font: "DM Serif Text", serif;

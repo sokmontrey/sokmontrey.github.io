@@ -18,6 +18,10 @@
 	color: var(--pm-color);
 }
 
+.sd-color {
+	color: var(--sd-color);
+}
+
 .pn-color {
 	color: var(--pn-color);
 }
@@ -46,10 +50,6 @@
 	background-color: var(--pm-color);
 }
 
-.bg-pn-color {
-	background-color: var(--pn-color);
-}
-
-.bg-pn2-color {
-	background-color: var(--pn2-color);
+.bg-sd-color {
+	background-color: var(--sd-color);
 }
