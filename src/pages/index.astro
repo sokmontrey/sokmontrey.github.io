@@ -10,19 +10,16 @@ import ExperiencesLayout from '@/layouts/ExperiencesLayout.astro';
 import InvolvementsLayout from '@/layouts/InvolvementsLayout.astro';
 ---
 
-<BaseLayout title={'Home'} >
+<BaseLayout title={'Portfolio'} >
 	<header class=" h-screen block-container" id="intro">
 		<IntroLayout />
 	</header>
-	<main class='mb-[50vh]'>
-		<section class=" block-container h-screen " id="contents">
+	<main>
+		<section class=" block-container h-[30vh] " id="contents">
 			<TableOfContentLayout />
 		</section>
-		<section class=" block-container " id="links">
-			<LinksLayout />
-		</section>
 		<NavBar />
-		<section class=" block-container " id="projects">
+		<section class=" block-container mt-[30vh] " id="projects">
 			<ProjectsLayout />
 		</section>
 		<section class=" block-container pt-20 " id="experiences">
@@ -32,11 +29,19 @@ import InvolvementsLayout from '@/layouts/InvolvementsLayout.astro';
 			<InvolvementsLayout />
 		</section>
 	</main>
+	<footer class="mt-[15vh] ">
+		<section class=" block-container mb-[15vh] " id="links">
+			<LinksLayout />
+		</section>
+		<section class=" block-container mt-10 mb-[5vh] opacity-70 ">
+			<p>&copy; 2024 Sokmontrey Sythat.</p>
+		</section>
+	</footer>
 </BaseLayout>
 
 <style>
 .block-container {
-	width: 100vw;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
