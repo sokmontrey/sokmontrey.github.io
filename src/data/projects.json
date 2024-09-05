@@ -21,6 +21,13 @@
     "url": "https://github.com/sokmontrey/dynamical-js"
   },
   {
+    "title": ["image", "to", "ascii"],
+    "type": ["prog.", "programming"],
+    "tags": ["js"],
+    "description": "A simple web app that converts image into ascii art. (replacing pixels with corresponding ascii character for brightness)",
+    "url": "https://github.com/sokmontrey/image-to-ascii?tab=readme-ov-file"
+  },
+  {
     "title": ["Eighter"],
     "type": ["e.eng", "electical engineering"],
     "tags": ["logic ic"],

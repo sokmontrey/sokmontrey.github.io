@@ -4,23 +4,32 @@ import IntroLayout from '@/layouts/IntroLayout.astro';
 import TableOfContentLayout from '@/layouts/TableOfContentLayout.astro';
 import NavBar from '@/components/NavBar.astro';
 import LinksLayout from '@/layouts/LinksLayout.astro';
+
 import ProjectsLayout from '@/layouts/ProjectsLayout.astro';
+import ExperiencesLayout from '@/layouts/ExperiencesLayout.astro';
+import InvolvementsLayout from '@/layouts/InvolvementsLayout.astro';
 ---
 
 <BaseLayout title={'Home'} >
 	<header class=" h-screen block-container" id="intro">
-		<IntroLayout id="intro" />
+		<IntroLayout />
 	</header>
 	<main class='mb-[50vh]'>
 		<section class=" block-container h-screen " id="contents">
-			<TableOfContentLayout id="contents" />
+			<TableOfContentLayout />
 		</section>
 		<section class=" block-container " id="links">
-			<LinksLayout id="links" />
+			<LinksLayout />
 		</section>
 		<NavBar />
 		<section class=" block-container " id="projects">
-			<ProjectsLayout id="projects" />
+			<ProjectsLayout />
+		</section>
+		<section class=" block-container pt-20 " id="experiences">
+			<ExperiencesLayout />
+		</section>
+		<section class=" block-container pt-20 " id="involvements">
+			<InvolvementsLayout />
 		</section>
 	</main>
 </BaseLayout>
