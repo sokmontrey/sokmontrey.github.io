@@ -1,0 +1,23 @@
+[
+  {
+    "title": ["Skills Ontario Compeition 2024"],
+    "type": ["comp", "competing"],
+    "tags": ["c#"],
+    "description": "Representing George Brown College to program a .NET CLI application under 6 hours for the skill Ontario competition, achieving 4th place overall. (Provincial Programming scope).",
+    "url": ""
+  },
+  {
+    "title": ["FRC 2024", "(mentoring)"],
+    "type": ["ment", "mentoring"],
+    "tags": ["robotics"],
+    "description": "Advising over the electrical and programming side for the FRC team 6977.",
+    "url": ""
+  },
+  {
+    "title": ["Hack For Good 2023"],
+    "type": ["comp", "competing"],
+    "tags": ["hackathon"],
+    "description": "Developed an Agri-tech solution prototype, ultimately winning the 1st prize in the hackathon.",
+    "url": ""
+  }
+]
