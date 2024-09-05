@@ -15,6 +15,11 @@
     "icon": "fa-brands fa-github"
   },
   {
+    "name": "YouTube",
+    "url": "https://www.youtube.com/@sokmontrey",
+    "icon": "fa-brands fa-youtube"
+  },
+  {
     "name": "Behance",
     "url": "https://www.behance.net/sokmontrey",
     "icon": "fa-brands fa-square-behance"
