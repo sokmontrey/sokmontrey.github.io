@@ -1,0 +1,72 @@
+---
+interface Props {
+	title: string[],
+	description: string,
+	url: string,
+	type: string[],
+	tags: string[],
+}
+
+const { title, description, url, type, tags } = Astro.props;
+---
+
+<li class="container py-2">
+	<div class='flex items-center '>
+		<h2 class="mono-font flex-1 h2 font-medium">
+			{url 
+		? <a href={url} target="_blank" class="hover:text-[var(--pm-color)]">
+				{title.join(' ')}
+				<i class="fa-solid fa-arrow-up-right-from-square"></i>
+			</a>
+			: <span>{title.join(' ')}</span>}
+		</h2 >
+		<p class='mono-font'>
+			[{tags.join(', ')}]
+		</p>
+	</div>
+	<p class='mono-font type-container pt-2'>
+		<span class="type1 opacity-50 ">({type[0]}.)</span>
+		<span class='type2'>({type[1]}.)</span>
+	</p >
+	<p class='mono-font description mb-4 lt2-color lg:w-[70%]' >
+		{description.split("**").map((t, i) => 
+		i % 2 === 0 
+		? <span>{t}</span> 
+		: <strong>{t}</strong>)}
+	</p>
+</li>
+
+<style>
+strong {
+	color: var(--sd-color);
+}
+
+i::before {
+	font-size: 0.9rem;
+	color: var(--lt-color);
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+}
+
+.type1 {
+	display: inline;
+}
+.type2 {
+	display: none;
+}
+
+.type-container {
+	cursor: pointer;
+}
+
+.type-container:hover .type1 {
+	display: none;
+}
+
+.type-container:hover .type2 {
+	display: inline;
+}
+</style>
