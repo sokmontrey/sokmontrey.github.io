@@ -8,21 +8,21 @@
   },
   {
     "title": ["Nodeflow", "CPP"],
-    "type": ["prog", "programming"],
+    "type": ["prg", "programming"],
     "tags": ["cpp", "cmake"],
     "description": "A simple and highly extensible Computational graph library written in C++ with the support of auto diff.",
     "url": "https://github.com/sokmontrey/nodeflow"
   },
   {
     "title": ["Dynamical", "JS"],
-    "type": ["prog", "programming"],
+    "type": ["prg", "programming"],
     "tags": ["js"],
     "description": "A 2D mass aggregated physic library written entirely from scratch in JavaScript.",
     "url": "https://github.com/sokmontrey/dynamical-js"
   },
   {
     "title": ["image", "to", "ascii"],
-    "type": ["prog.", "programming"],
+    "type": ["prg", "programming"],
     "tags": ["js"],
     "description": "A simple web app that converts image into ascii art. (replacing pixels with corresponding ascii character for brightness)",
     "url": "https://github.com/sokmontrey/image-to-ascii?tab=readme-ov-file"

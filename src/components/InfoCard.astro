@@ -25,8 +25,8 @@ const { title, description, url, type, tags } = Astro.props;
 		</p>
 	</div>
 	<p class='mono-font type-container pt-2'>
-		<span class="type1 opacity-50 ">({type[0]}.)</span>
-		<span class='type2'>({type[1]}.)</span>
+		<span class="type1 opacity-50 hidden md:inline ">({type[0]}.)</span>
+		<span class='type2 opacity-50 inline md:hidden '>({type[1]}.)</span>
 	</p >
 	<p class='mono-font description mb-4 lt2-color lg:w-[70%]' >
 		{description.split("**").map((t, i) => 
@@ -49,13 +49,6 @@ i::before {
 .container {
 	display: flex;
 	flex-direction: column;
-}
-
-.type1 {
-	display: inline;
-}
-.type2 {
-	display: none;
 }
 
 .type-container {
