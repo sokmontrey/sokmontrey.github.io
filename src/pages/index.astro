@@ -13,12 +13,15 @@ import InvolvementsLayout from '@/layouts/InvolvementsLayout.astro';
 <BaseLayout title={'Portfolio'} >
 	<header class=" h-screen block-container" id="intro">
 		<IntroLayout />
+		<i class="fa-solid fa-arrow-down mt-10 lt-color animate-bounce"></i>
 	</header>
 	<main>
 		<section class=" block-container h-[30vh] " id="contents">
 			<TableOfContentLayout />
 		</section>
+
 		<NavBar />
+
 		<section class=" block-container mt-[30vh] " id="projects">
 			<ProjectsLayout />
 		</section>
