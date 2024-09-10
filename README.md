@@ -1,1 +1,1 @@
-Check out my [website](https://www.sokmontrey.netlify.app)
+Check out my [website](https://sokmontrey.netlify.app)
