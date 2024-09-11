@@ -1,35 +1,35 @@
 [
   {
     "title": ["ML", "Notebooks"],
-    "type": ["ml", "machine learning"],
-    "tags": ["ipynb"],
+    "type": ["edu", "educational purposes"],
+    "tags": ["ipynb", "ml"],
     "description": "Collection of jupyter notebooks of machine learning practices for learning purposes and competitions. (under development)",
     "url": "https://github.com/sokmontrey/machine-learning"
   },
   {
     "title": ["Nodeflow", "CPP"],
-    "type": ["prg", "programming"],
-    "tags": ["cpp", "cmake"],
+    "type": ["lib", "library"],
+    "tags": ["cpp", "cmake", "algebra"],
     "description": "A simple and highly extensible Computational graph library written in C++ with the support of auto diff.",
     "url": "https://github.com/sokmontrey/nodeflow"
   },
   {
     "title": ["Dynamical", "JS"],
-    "type": ["prg", "programming"],
-    "tags": ["js"],
+    "type": ["lib", "library"],
+    "tags": ["js", "physic"],
     "description": "A 2D mass aggregated physic library written entirely from scratch in JavaScript.",
     "url": "https://github.com/sokmontrey/dynamical-js"
   },
   {
     "title": ["image", "to", "ascii"],
-    "type": ["prg", "programming"],
+    "type": ["app", "web app"],
     "tags": ["js", "html", "css"],
     "description": "A simple web app that converts image into ascii art. (replacing pixels with corresponding ascii character for brightness)",
     "url": "https://github.com/sokmontrey/image-to-ascii?tab=readme-ov-file"
   },
   {
     "title": ["Eighter"],
-    "type": ["e.eng", "electical engineering"],
+    "type": ["edu", "educational purposes"],
     "tags": ["logic ic"],
     "description": "an 8 bit computer design and build from scratch on breadboards.",
     "url": ""
