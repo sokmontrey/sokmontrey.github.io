@@ -3,8 +3,8 @@
     "title": ["ML", "Notebooks"],
     "type": ["edu", "educational purposes"],
     "tags": ["ipynb", "ml"],
-    "description": "Collection of jupyter notebooks of machine learning practices for learning purposes and competitions. (under development)",
-    "url": "https://github.com/sokmontrey/machine-learning"
+    "description": "Collection of jupyter notebooks of machine learning practices for learning purposes and competitions. (under development)", 
+	"url": "https://github.com/sokmontrey/machine-learning"
   },
   {
     "title": ["Nodeflow", "CPP"],
