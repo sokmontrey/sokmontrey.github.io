@@ -1,5 +1,12 @@
 [
   {
+    "title": ["IEEExtreme 18"],
+    "type": ["comp.prog", "competitive programming"],
+    "tags": ["2024"],
+    "description": "Participate in a global competitive programming competition achieving 19th in Canada",
+    "url": ""
+  },
+  {
     "title": ["GMTK Game Jam"],
     "type": ["game.dev", "game development"],
     "tags": ["2024"],
@@ -45,7 +52,7 @@
     "title": ["Cambodia CS Cup"],
     "type": ["prg", "programming"],
     "tags": ["2021"],
-    "description": "Solving competitive programming problems for the competition, achiving top 20th as an only high school student",
+    "description": "Solving competitive programming problems in a national (Cambodia) competitive programming competition, achiving top 20th as an only high school student.",
     "url": ""
   },
   {

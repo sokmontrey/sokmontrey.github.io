@@ -1,9 +1,16 @@
 [
   {
+    "title": ["GBC", "Mobihelp"],
+    "type": ["on-campus tutor", "on-campus tutor"],
+    "tags": ["Sep 2024 - Present"],
+    "description": "Help students on their course questions and concerns.",
+    "url": ""
+  },
+  {
     "title": ["Code", "Ninja"],
     "type": ["coding instructor", "coding instructor"],
     "tags": ["Feb 2024 - Sep 2024"],
-    "description": "Help students with their game development project in Unity",
+    "description": "Help students with their game development project in Unity.",
     "url": ""
   },
   {
