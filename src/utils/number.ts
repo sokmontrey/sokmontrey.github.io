@@ -1,4 +1,4 @@
-export function toRoman(num) {
+export function toRoman(num: number) {
   const roman_values = {
     x: 10,
     ix: 9,

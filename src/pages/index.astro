@@ -1,40 +1,61 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import IntroLayout from '@/layouts/IntroLayout.astro';
-import TableOfContentLayout from '@/layouts/TableOfContentLayout.astro';
-import NavBar from '@/components/NavBar.astro';
-import LinksLayout from '@/layouts/LinksLayout.astro';
 
-import ProjectsLayout from '@/layouts/ProjectsLayout.astro';
-import ExperiencesLayout from '@/layouts/ExperiencesLayout.astro';
-import InvolvementsLayout from '@/layouts/InvolvementsLayout.astro';
+import NavBar from '@/components/NavBar.astro';
+import SimpleHeader from '@/components/SimpleHeader.astro';
+import InfoList from '@/components/InfoList.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
+import Links from '@/components/Links.astro';
+
+import { toRoman } from '@/utils/number';
+import { formatTitle } from '@/utils/text';
+
+import { getCollection } from 'astro:content';
+const project_entries = await getCollection('projects');
+const experience_entries = await getCollection('experiences');
+const extra_curriculars_entries = await getCollection('extra-curriculars');
+const links_entries = await getCollection('links');
+
+const contents = [
+	{ name: "projects", entries: project_entries, num_show: 4 },
+	{ name: "experiences", entries: experience_entries, num_show: 3, },
+	{ name: "extra_curriculars", entries: extra_curriculars_entries, num_show: 4 },
+	{ name: "links", not_entry: true, entries: null },
+];
 ---
 
 <BaseLayout title={'Portfolio'} >
-	<header class=" h-screen block-container " id="intro">
+	<header class=" h-screen block-container ">
 		<IntroLayout />
 		<i class="fa-solid fa-arrow-down mt-10 lt-color animate-bounce"></i>
 	</header>
+
 	<main>
-		<section class=" block-container h-[30vh] " id="contents">
-			<TableOfContentLayout />
+		<section class=" block-container h-[30vh] ">
+			<TableOfContents {contents} />
 		</section>
 
-		<NavBar />
+		<NavBar {contents} />
 
-		<section class=" block-container mt-[30vh] " id="projects">
-			<ProjectsLayout />
-		</section>
-		<section class=" block-container pt-20 " id="experiences">
-			<ExperiencesLayout />
-		</section>
-		<section class=" block-container pt-20 " id="involvements">
-			<InvolvementsLayout />
-		</section>
+		<div class='mt-20'></div>
+		{contents
+			.filter(content => !content.not_entry)
+			.map((content, i) => 
+			<section class=" block-container pt-20 " id={content.name}>
+				<div class="w-[90vw] md:w-[55vw]">
+					<SimpleHeader text={formatTitle(content.name)} number={toRoman(i + 1)} />
+					<InfoList 
+						entries={content.entries!}  
+						num_show={content.num_show!}
+						id={content.name} />
+				</div>
+			</section>)}
 	</main>
+
 	<footer class="mt-[15vh] ">
 		<section class=" block-container mb-[15vh] " id="links">
-			<LinksLayout />
+			<Links links={links_entries} />
 		</section>
 		<section class=" block-container mt-10 mb-[5vh] opacity-70 ">
 			<p>&copy; 2024 Sokmontrey Sythat.</p>

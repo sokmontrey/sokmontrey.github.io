@@ -6,7 +6,7 @@ const common_schema = z.object({
 	tags: z.array(z.string()),
 	description: z.string(),
 	url: z.string().optional(),
-	image: z.array(z.string().optional()),
+	image: z.array(z.string()).optional(),
 })
 
 const projects = defineCollection({ 
@@ -15,7 +15,7 @@ const projects = defineCollection({
 });
 
 const experiences = defineCollection({ 
-	type: 'data',
+	type: 'content',
 	schema: common_schema,
 });
 
@@ -24,6 +24,15 @@ const extra_curriculars = defineCollection({
 	schema: common_schema,
 });
 
+const links = defineCollection({
+	type: 'data',
+	schema: z.object({
+		name: z.string(),
+		url: z.string(),
+		icon: z.string(),
+	})
+})
+
 export const collections = {
-	projects, experiences, extra_curriculars
+	projects, experiences, extra_curriculars, links
 };
