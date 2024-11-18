@@ -7,6 +7,7 @@ const common_schema = z.object({
 	description: z.string(),
 	url: z.string().optional(),
 	image: z.array(z.string()).optional(),
+	date: z.date(),
 })
 
 const projects = defineCollection({ 

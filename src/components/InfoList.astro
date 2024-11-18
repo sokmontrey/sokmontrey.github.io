@@ -15,16 +15,17 @@ interface Props {
 }
 
 const { entries, num_show, id } = Astro.props;
+const sorted_entries = entries.sort((a, b) => b.data.date - a.data.date);
 ---
 
 <ul class="py-4 pt-8 ">
-	{entries.slice(0, num_show).map(entry => <InfoCard {entry} /> )}
+	{sorted_entries.slice(0, num_show).map(entry => <InfoCard {entry} /> )}
 
-	{entries.length > num_show ? <ShowMoreButton target_id={"more-" + id} /> : <></>}
+	{sorted_entries.length > num_show ? <ShowMoreButton target_id={"more-" + id} /> : <></>}
 
 	<div id={"more-" + id} class='hidden'>
-		{entries.length > num_show 
-		? entries.slice(num_show, entries.length).map(entry => <InfoCard {entry} /> )
+		{sorted_entries.length > num_show 
+		? sorted_entries.slice(num_show, entries.length).map(entry => <InfoCard {entry} /> )
 		: <></> }
 	</div>
 </ul>

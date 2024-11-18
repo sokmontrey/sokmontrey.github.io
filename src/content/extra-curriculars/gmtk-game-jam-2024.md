@@ -6,4 +6,5 @@ type:
 tags:
 - 2024
 description: "Built a retro-style, object-scaling, platforming puzzle game in Unity within 3 days for the game jam."
+date: 2024-09-20
 ---

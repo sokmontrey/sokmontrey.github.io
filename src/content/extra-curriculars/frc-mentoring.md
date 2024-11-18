@@ -6,4 +6,5 @@ type:
 tags:
 - 2024
 description: "Advised the FIRST Robotic team CyberSquad 6977 on electrical and programming aspects."
+date: 2024-01-01
 ---
