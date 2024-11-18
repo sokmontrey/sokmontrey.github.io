@@ -6,7 +6,6 @@ type:
 tags:
 - ts
 - svelte
-- stegonography
 description: "A web app that allows user to hide image/text directly inside another image."
 url: "https://github.com/sokmontrey/cyphex"
 ---
