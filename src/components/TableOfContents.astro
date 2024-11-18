@@ -1,0 +1,21 @@
+---
+import { toRoman } from "@/utils/number";
+import DotsLink from "./DotsLink.astro";
+
+const { contents } = Astro.props;
+---
+
+<div> 
+	<h1 class=" serif-font h1 ">Contents</h1>
+	<ul>
+		{contents.map((content, i) => <li class="mono-font ">
+			<DotsLink
+				href = {`#${content.name}`}
+				width={30}
+				additional_width={30}
+				str={content.name}
+				postfix={toRoman(i + 1)}
+			/>
+		</li> )}
+	</ul>
+</div>

@@ -1,26 +1,26 @@
 ---
+import type { CollectionEntry } from 'astro:content'
+
 interface Props {
-	title: string[],
-	description: string,
-	url: string,
-	type: string[],
-	tags: string[],
+	entry: CollectionEntry<'projects'>
+	| CollectionEntry<'experiences'>
+	| CollectionEntry<'extra_curriculars'>;
 }
 
-const { title, description, url, type, tags } = Astro.props;
+const { entry } = Astro.props;
+const { title, description, type, tags, url } = entry.data;
 ---
 
 <li class="container py-2">
 	<div class='flex items-center '>
 		<h2 class="mono-font flex-1 h2 font-medium">
 			{url 
-		? <a href={url} target="_blank" class="hover:text-[var(--pm-color)]">
-				{title.join(' ')}
-				<i class="fa-solid fa-arrow-up-right-from-square"></i>
+			? <a href={url} target="_blank" class="group hover:text-[var(--pm-color)]">
+				{title} <span class='lt-color group-hover:text-[var(--pm-color)] text-sm group-hover:pl-1 transition-all duration-200'>&gt; details</span>
 			</a>
-			: <span>{title.join(' ')}</span>}
+			: <span>{title}</span>}
 		</h2 >
-		<p class='mono-font'>
+		<p class='mono-font opacity-50'>
 			[{tags.join(', ')}]
 		</p>
 	</div>
@@ -52,7 +52,7 @@ i::before {
 }
 
 .type-container {
-	cursor: pointer;
+	/* cursor: pointer; */
 }
 
 .type-container:hover .type1 {

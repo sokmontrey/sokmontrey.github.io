@@ -1,44 +1,31 @@
 ---
-interface Item {
-	title: string[];
-	url: string;
-	tags: string[];
-	type: string[];
-	description: string;
-}
+import InfoCard from '@/components/InfoCard.astro';
+import ShowMoreButton from './ShowMoreButton.astro';
+
+import type { CollectionEntry } from 'astro:content';
+
+type CollectionType = CollectionEntry<'projects'>
+	| CollectionEntry<'experiences'>
+	| CollectionEntry<'extra_curriculars'>;
 
 interface Props {
-	items: Item[];
+	entries: CollectionType[];
 	num_show: number;
 	id: string;
 }
 
-const { items, num_show, id } = Astro.props;
-
-import InfoCard from '@/components/InfoCard.astro';
-import ShowMoreButton from './ShowMoreButton.astro';
-
-const length = items.length;
+const { entries, num_show, id } = Astro.props;
+const sorted_entries = entries.sort((a, b) => b.data.date - a.data.date);
 ---
 
 <ul class="py-4 pt-8 ">
-	{items.slice(0, num_show).map(item => <InfoCard
-			title={item.title} 
-			url={item.url}
-			tags={item.tags}
-			type={item.type}
-			description={item.description} /> )}
+	{sorted_entries.slice(0, num_show).map(entry => <InfoCard {entry} /> )}
 
-	{length > num_show ? <ShowMoreButton target_id={"more-" + id} /> : <></>}
+	{sorted_entries.length > num_show ? <ShowMoreButton target_id={"more-" + id} /> : <></>}
 
 	<div id={"more-" + id} class='hidden'>
-		{length > num_show 
-		? items.slice(num_show, length).map(item => <InfoCard
-				title={item.title} 
-				url={item.url}
-				tags={item.tags}
-				type={item.type}
-				description={item.description} /> )
+		{sorted_entries.length > num_show 
+		? sorted_entries.slice(num_show, entries.length).map(entry => <InfoCard {entry} /> )
 		: <></> }
 	</div>
 </ul>

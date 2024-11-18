@@ -1,0 +1,20 @@
+---
+import DotsLink from "./DotsLink.astro";
+
+const { links } = Astro.props;
+---
+
+<div>
+	<h1 class=" serif-font h1 pb-4">Have a good one!</h1>
+	<ul class="">
+		{links.map(link => <li class="mono-font">
+			<DotsLink
+				href={link.data.url}
+				is_blank
+				width={30}
+				additional_width={30}
+				str={link.data.name}
+				postfix={`<i class="${link.data.icon}"></i>`} /> 
+		</li>)}
+	</ul>
+</div>
