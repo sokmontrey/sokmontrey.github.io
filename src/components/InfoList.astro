@@ -4,12 +4,13 @@ import ShowMoreButton from './ShowMoreButton.astro';
 
 import type { CollectionEntry } from 'astro:content';
 
-type CollectionType = CollectionEntry<'projects'>
-	| CollectionEntry<'experiences'>
-	| CollectionEntry<'extra_curriculars'>;
+type CollectionEntryType =
+	CollectionEntry<'projects'> |
+	CollectionEntry<'experiences'> |
+	CollectionEntry<'extra_curriculars'>;
 
 interface Props {
-	entries: CollectionType[];
+	entries: CollectionEntryType[];
 	num_show: number;
 	id: string;
 }
