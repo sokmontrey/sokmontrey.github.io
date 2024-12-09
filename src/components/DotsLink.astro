@@ -15,7 +15,7 @@ const dash = '<';
 ---
 
 <a href={href} target={is_blank ? '_blank' : ''}>
-	<span class='nt-color'>{str}</span>
+	<span class='text'>{str}</span>
 	<span id="dot">
 		<span class='lt-color'>{dot.repeat(width - str.length)}</span><!-- avoiding extra margin between spans
 		--><span class='lt-color hidden md:inline'>{dot.repeat(additional_width)}</span>
@@ -24,21 +24,21 @@ const dash = '<';
 		<span class='lt-color'>{dash.repeat(width - str.length)}</span><!-- avoiding extra margin between spans
 		--><span class='lt-color hidden md:inline'>{dash.repeat(additional_width)}</span>
 	</span>
-	<span class="nt-color" set:html={postfix}></span>
+	<span class="postfix" set:html={postfix}></span>
 </a>
 
 <style>
-a {
-	transition: all 0.2s ease-in-out;
-}
+	a {
+		text-decoration: none;
+	}
 
-a:hover .nt-color {
+a:hover .text {
 	color: var(--pm-color);
 }
 
-/* a:hover .lt-color { */
-/* 	color: var(--pm-color); */
-/* } */
+a:hover .postfix {
+	color: var(--pm-color);
+}
 
 a:hover #dash {
 	display: inline;

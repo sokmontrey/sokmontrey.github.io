@@ -32,15 +32,17 @@ const contents = [
 	</header>
 
 	<main>
-		<section class=" block-container h-[30vh] mb-[20vh]">
+		<section class=" block-container h-[30vh] mb-[5vh]">
 			<TableOfContents contents={[{name:'links'}].concat(contents)} />
 		</section>
 
 		<NavBar contents={[{name:'links'}].concat(contents)} />
 
 		<section class="block-container h-[70vh] " id="links">
-			<h1 class="pb-[15vh] text-4xl serif-font">Links</h1>
-			<Links />
+			<div>
+				<SimpleHeader text={formatTitle('links')} number={toRoman(0)} />
+				<Links />
+			</div>
 		</section>
 
 		<section class="block-container py-[30vh]">

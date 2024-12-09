@@ -2,53 +2,42 @@
 import links from '../data/links.json';
 ---
 
-<div class="grid grid-cols-2 -rotate-90">
-    <div></div>
-    <p class="lt2-color sans-font text-center border-b-2 border-[var(--lt-color)] pb-2 h2">
-        Active-ness
-    </p>
-    <div class="flex flex-col items-end mr-4">
-        {links.map((link, i) =>
-            <a href={link.url} target="_blank" class="py-[1.1rem] text-sm mono-font rotate-45 origin-right lt2-color">
-                { !link.is_not_external
-                    ? <i class="fa-solid fa-external-link-alt lt-color rotate-45"></i>
-                    : <></> }
+<div class="flex flex-col items-start ">
+    {links.map((link, i) =>
+        <a class="py-2 mono-font " href={link.url} target={link.is_not_external ? '' : '_blank'}>
+            <span class="nt-color"><i class={link.icon + ' '}></i></span>
+            <span class="desc">{link.description}</span>
+            <span class="lt-color">
                 {link.name}
-            </a>
-        )}
-    </div>
-
-    <div class="flex flex-col border-l-2 border-[var(--lt-color)] pl-4 pr-4">
-        {links.map((link, i) =>
-            <p class="desc py-4 nt-color mono-font hover:rotate-90 origin-left transition-all duration-1000 ease-in-out">
-                {link.description}
-                <i class={link.icon + ' rotate-90 nt-color'}></i>
-            </p>
-        )}
-    </div>
+                {!link.is_not_external ? <i class="fa-solid fa-arrow-right -rotate-45 text-sm"></i> : ''}
+            </span>
+        </a>
+    )}
 </div>
 
 <style>
-    a {
-        transition: all 0.1s ease-in-out;
+    span {
+        transition: all 0.2s ease-in-out;
+    }
+
+    .desc {
         text-decoration: underline;
-        text-underline-offset: 4px;
-        text-underline-color: var(--lt-color);
+        text-decoration-style: dashed;
+        text-decoration-color: var(--lt-color);
+        text-underline-offset: 5px;
+        cursor: pointer;
+        transition: all 0.1s;
     }
 
-    a:hover {
+    a:hover span {
         color: var(--pm-color);
-	}
-
-    .desc:hover ~ .desc {
-        opacity: 0;
-	}
-
-    .desc > i {
-        transition: all 1s ease-in-out;
     }
 
-    .desc:hover > i {
-        transform: rotate(0deg);
+    a:hover .desc {
+        text-decoration-color: var(--pm-color);
+    }
+
+    a {
+        text-decoration: none;
     }
 </style>
