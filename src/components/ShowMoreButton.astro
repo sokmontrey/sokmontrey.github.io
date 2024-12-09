@@ -3,8 +3,8 @@ const {target_id} = Astro.props;
 ---
 
 <show-more-btn data-target_id={target_id}>
-	<button class='pm-color mono-font pb-4'>
-		[<span id="text">show more</span>]
+	<button class='pm-color mono-font pb-4 text-lg'>
+		[<span id="text">+</span>]
 	</button>
 </show-more-btn>
 
@@ -20,8 +20,8 @@ class ShowMoreButton extends HTMLElement {
 		btn.addEventListener('click', () => {
 			target_ele?.classList.toggle('hidden');
 			text.innerText = target_ele?.classList.contains('hidden') 
-				? 'show more' 
-				: 'show less';
+				? '+'
+				: '-';
 		});
     }
 }
@@ -32,14 +32,14 @@ customElements.define('show-more-btn', ShowMoreButton);
 <style>
 #text {
 	transition: padding 0.2s ease-in-out;
-}
-
-button:hover #text {
 	padding: 0 5px;
 }
 
-button:active #text {
-	padding: 0 3px;
+button:hover #text {
+	padding: 0 10px;
 }
 
+button:active #text {
+	padding: 0 7px;
+}
 </style>

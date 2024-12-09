@@ -3,6 +3,7 @@
 @import url('element.css');
 @import url('font.css');
 @import url('color.css');
+@import url('global.css');
 
 @tailwind base;
 @tailwind components;

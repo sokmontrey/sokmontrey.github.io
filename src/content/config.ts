@@ -25,15 +25,6 @@ const extra_curriculars = defineCollection({
 	schema: common_schema,
 });
 
-const links = defineCollection({
-	type: 'data',
-	schema: z.object({
-		name: z.string(),
-		url: z.string(),
-		icon: z.string(),
-	})
-})
-
 export const collections = {
-	projects, experiences, extra_curriculars, links
+	projects, experiences, extra_curriculars
 };

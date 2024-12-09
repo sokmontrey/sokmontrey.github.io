@@ -1,20 +1,43 @@
 ---
-import DotsLink from "./DotsLink.astro";
-
-const { links } = Astro.props;
+import links from '../data/links.json';
 ---
 
-<div>
-	<h1 class=" serif-font h1 pb-4">Have a good one!</h1>
-	<ul class="">
-		{links.map(link => <li class="mono-font">
-			<DotsLink
-				href={link.data.url}
-				is_blank
-				width={30}
-				additional_width={30}
-				str={link.data.name}
-				postfix={`<i class="${link.data.icon}"></i>`} /> 
-		</li>)}
-	</ul>
+<div class="grid grid-cols-2 -rotate-90">
+    <div></div>
+    <p class="lt2-color mono-font text-center border-b-2 border-[var(--lt-color)] pb-4 h2">
+        Active-ness
+    </p>
+    <div class="flex flex-col items-end mr-4">
+        {links.map((link, i) =>
+            <a href={link.url} target="_blank" class="py-4 mono-font rotate-45 origin-right lt2-color">
+                { !link.is_not_external
+                    ? <i class="fa-solid fa-external-link-alt lt-color rotate-45"></i>
+                    : <></> }
+                {link.name}
+            </a>
+        )}
+    </div>
+
+    <div class="flex flex-col border-l-2 border-[var(--lt-color)] pl-4 pr-4">
+        {links.map((link, i) =>
+            <p class="desc py-4 lt2-color mono-font hover:rotate-90 origin-left transition-all duration-1000 ease-in-out">
+                {link.description}
+                <i class={link.icon + ' rotate-90 nt-color'}></i>
+            </p>
+        )}
+    </div>
 </div>
+
+<style>
+    a {
+        transition: all 0.1s ease-in-out;
+    }
+
+    a:hover {
+        color: var(--pm-color);
+	}
+
+    .desc:hover ~ .desc {
+        opacity: 0;
+	}
+</style>

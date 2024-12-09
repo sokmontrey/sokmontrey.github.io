@@ -17,37 +17,35 @@ import Tree from "../components/Tree.astro";
 const project_entries = await getCollection('projects');
 const experience_entries = await getCollection('experiences');
 const extra_curriculars_entries = await getCollection('extra-curriculars');
-const links_entries = await getCollection('links');
 
 const contents = [
 	{ name: "projects", entries: project_entries, num_show: 4 },
 	{ name: "experiences", entries: experience_entries, num_show: 3, },
 	{ name: "extra_curriculars", entries: extra_curriculars_entries, num_show: 4 },
-	{ name: "links", not_entry: true, entries: null },
 ];
 ---
 
 <BaseLayout title={'Sokmontrey Sythat'} >
-	<header class=" h-screen block-container ">
+	<header class=" h-screen block-container " id="intro">
 		<IntroLayout />
 		<i class="fa-solid fa-arrow-down mt-10 lt-color animate-bounce"></i>
 	</header>
 
 	<main>
-		<section class="block-container h-[50vh] ">
-			<Tree />
+		<section class="block-container h-[70vh] mb-[20vh]" id="links">
+			<h1 class="pb-[15vh] h1 serif-font">Links</h1>
+			<Links />
 		</section>
 
 		<section class=" block-container h-[30vh] ">
-			<TableOfContents {contents} />
+			<TableOfContents contents={[{name:'links'}].concat(contents)} />
 		</section>
 
-		<NavBar {contents} />
+		<NavBar contents={[{name:'links'}].concat(contents)} />
 
 		<div class='mt-20'></div>
 		{contents
-			.filter(content => !content.not_entry)
-			.map((content, i) => 
+			.map((content, i) =>
 			<section class=" block-container pt-20 " id={content.name}>
 				<div class="w-[90vw] md:w-[55vw]">
 					<SimpleHeader text={formatTitle(content.name)} number={toRoman(i + 1)} />
@@ -60,9 +58,12 @@ const contents = [
 	</main>
 
 	<footer class="mt-[15vh] ">
-		<section class=" block-container mb-[15vh] " id="links">
-			<Links links={links_entries} />
-		</section>
+		<div class=" block-container ">
+			<h1 class=" serif-font h1 pb-4">Have a good one!</h1>
+			<a href="#intro" class="rounded-xl nt-color hover:text-[var(--pm-color)] transition-all duration-200 mono-font ">
+				<i class="fa-solid fa-arrow-up mt-10 mb-10"></i>
+			</a>
+		</div>
 		<section class=" block-container mt-10 mb-[5vh] opacity-70 ">
 			<p>&copy; 2024 Sokmontrey Sythat.</p>
 		</section>

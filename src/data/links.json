@@ -1,0 +1,39 @@
+[
+  {
+    "name": "GitHub",
+    "description": "turing complete spaghetti",
+    "url": "",
+    "icon": "fa-brands fa-github"
+  },
+  {
+    "name": "Blog",
+    "description": "i write now and then",
+    "url": "",
+    "icon": "fa-solid fa-pen-nib",
+    "is_not_external": true
+  },
+  {
+    "name": "LinkedIn",
+    "description": "\"networking\"",
+    "url": "",
+    "icon": "fa-brands fa-linkedin"
+  },
+  {
+    "name": "Email",
+    "description": "electronic mail",
+    "url": "",
+    "icon": "fa-solid fa-envelope"
+  },
+  {
+    "name": "YouTube",
+    "description": "not much",
+    "url": "",
+    "icon": "fa-brands fa-youtube"
+  },
+  {
+    "name": "Behance",
+    "description": "drawing",
+    "url": "",
+    "icon": "fa-brands fa-square-behance"
+  }
+]
