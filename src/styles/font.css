@@ -6,6 +6,10 @@
 	font-family: var(--mono-font);
 }
 
+.sans-font {
+	font-family: var(--sans-font);
+}
+
 .h1 {
 	font-size: 3rem;
 }

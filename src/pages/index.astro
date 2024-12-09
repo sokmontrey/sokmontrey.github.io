@@ -28,27 +28,32 @@ const contents = [
 <BaseLayout title={'Sokmontrey Sythat'} >
 	<header class=" h-screen block-container " id="intro">
 		<IntroLayout />
-		<i class="fa-solid fa-arrow-down mt-10 lt-color animate-bounce"></i>
+		<i class="fa-solid fa-arrow-down mt-10 nt-color animate-bounce"></i>
 	</header>
 
 	<main>
-		<section class="block-container h-[70vh] mb-[20vh]" id="links">
-			<h1 class="pb-[15vh] h1 serif-font">Links</h1>
-			<Links />
-		</section>
-
-		<section class=" block-container h-[30vh] ">
+		<section class=" block-container h-[30vh] mb-[20vh]">
 			<TableOfContents contents={[{name:'links'}].concat(contents)} />
 		</section>
 
 		<NavBar contents={[{name:'links'}].concat(contents)} />
+
+		<section class="block-container h-[70vh] " id="links">
+			<h1 class="pb-[15vh] text-4xl serif-font">Links</h1>
+			<Links />
+		</section>
+
+		<section class="block-container py-[30vh]">
+			<Tree />
+			<!--<p class="sans-font">Figure 1.1: A tree</p>-->
+		</section>
 
 		<div class='mt-20'></div>
 		{contents
 			.map((content, i) =>
 			<section class=" block-container pt-20 " id={content.name}>
 				<div class="w-[90vw] md:w-[55vw]">
-					<SimpleHeader text={formatTitle(content.name)} number={toRoman(i + 1)} />
+					<SimpleHeader text={formatTitle(content.name)} number={toRoman(i + 2)} />
 					<InfoList 
 						entries={content.entries}
 						num_show={content.num_show!}
