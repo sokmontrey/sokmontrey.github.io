@@ -2,11 +2,11 @@
   {
     "name": "GitHub",
     "description": "turing complete spaghetti",
-    "url": "",
+    "url": "https://github.com/sokmontrey",
     "icon": "fa-brands fa-github"
   },
   {
-    "name": "Blog",
+    "name": "Blog [Development]",
     "description": "i write now and then",
     "url": "",
     "icon": "fa-solid fa-pen-nib",
@@ -15,25 +15,25 @@
   {
     "name": "LinkedIn",
     "description": "\"networking\"",
-    "url": "",
+    "url": "https://www.linkedin.com/feed/",
     "icon": "fa-brands fa-linkedin"
   },
   {
     "name": "Email",
     "description": "electronic mail",
-    "url": "",
+    "url": "sythatsokmontrey@gmail.com",
     "icon": "fa-solid fa-envelope"
   },
   {
     "name": "YouTube",
     "description": "not much",
-    "url": "",
+    "url": "https://www.youtube.com/@sokmontrey",
     "icon": "fa-brands fa-youtube"
   },
   {
     "name": "Behance",
     "description": "drawing",
-    "url": "",
+    "url": "https://www.behance.net/sokmontrey",
     "icon": "fa-brands fa-square-behance"
   }
 ]
