@@ -1,32 +1,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Serif+Text:ital@0;1&display=swap');
 
-@import url('element.css');
 @import url('font.css');
 @import url('color.css');
-@import url('global.css');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-  position: static;
-  z-index: 0;
-}
+/** {*/
+/*  position: static;*/
+/*  z-index: 0;*/
+/*}*/
 
 :root {
-  --bg-color: #11151A;
-  --nt-color: #EED9B4;
-  --lt-color: #34393D;
-	--lt2-color: #C0B39B;
+    --bg-color: #11151A;
+    --nt-color: #EED9B4;
+    --lt-color: #3f4649;
+    --lt2-color: #C0B39B;
 
 	--half-bg-color: #11151Aaa;
 
-  --pm-color: #f78928; 
-	/* #95E037; */
-	--sd-color: #f78928;
+    --pm-color: #f78928;
+    /* #95E037; */
+    --sd-color: #f78928;
 
-  --mono-font: "DM Mono", monospace;
-  --serif-font: "DM Serif Text", serif;
-  --sans-font: "Poppins", sans-serif;
+    --mono-font: "DM Mono", monospace;
+    --serif-font: "DM Serif Text", serif;
+    --sans-font: "Poppins", sans-serif;
+}
+
+html {
+     scroll-behavior: smooth;
+     background-color: var(--bg-color);
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--nt-color);
+}
+
+a {
+    color: var(--nt-color);
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: var(--lt-color);
+    text-underline-offset: 5px;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+a:hover {
+    color: var(--pm-color);
+    text-decoration-color: var(--pm-color);
+}
+
+a:active {
+    transform: translate(0, 5px);
+    text-underline-offset: 1px;
 }
