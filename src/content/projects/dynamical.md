@@ -7,6 +7,6 @@ tags:
     - ts
     - react
 description: "A 2D position-based dynamic physic engine written in typescript."
-url: "https://github.com/sokmontrey/dynamical-js"
+url: "https://dynamical.netlify.app"
 date: 2024-11-18
 ---
