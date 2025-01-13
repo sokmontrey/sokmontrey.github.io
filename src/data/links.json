@@ -1,22 +1,23 @@
 [
   {
-    "name": "GitHub",
-    "description": "Turing complete spaghetti",
-    "url": "https://github.com/sokmontrey",
-    "icon": "fa-brands fa-github"
-  },
-  {
     "name": "Blog (Development)",
     "description": "I write now and then",
     "url": "",
     "icon": "fa-solid fa-pen-nib",
-    "is_not_external": true
+    "is_not_external": true,
+    "draft": true
   },
   {
     "name": "LinkedIn",
     "description": "\"networking\"",
     "url": "https://www.linkedin.com/feed/",
     "icon": "fa-brands fa-linkedin"
+  },
+  {
+    "name": "GitHub",
+    "description": "Turing complete spaghetti",
+    "url": "https://github.com/sokmontrey",
+    "icon": "fa-brands fa-github"
   },
   {
     "name": "Email",

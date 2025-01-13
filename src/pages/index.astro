@@ -18,10 +18,15 @@ const project_entries = await getCollection('projects');
 const experience_entries = await getCollection('experiences');
 const extra_curriculars_entries = await getCollection('extra-curriculars');
 
-const contents = [
-	{ name: "projects", entries: project_entries, num_show: 4 },
-	{ name: "experiences", entries: experience_entries, num_show: 3, },
-	{ name: "extra_curriculars", entries: extra_curriculars_entries, num_show: 4 },
+const contents: {
+	name: string,
+	id: string,
+	entries: CollectionEntry<any>[],
+	num_show: number
+}[] = [
+	{ name: "Projects", id: "projects", entries: project_entries, num_show: 4 },
+	{ name: "Experiences", id: "experiences", entries: experience_entries, num_show: 3, },
+	{ name: "Extra Curriculars", id: "extra_curriculars", entries: extra_curriculars_entries, num_show: 4 },
 ];
 ---
 
@@ -33,10 +38,18 @@ const contents = [
 
 	<main>
 		<section class=" block-container h-[30vh] mb-[5vh]">
-			<TableOfContents contents={[{name:'links'}].concat(contents)} />
+			<TableOfContents
+				contents={[{
+					name:'Links',
+					id:'links'
+				}].concat(contents)} />
 		</section>
 
-		<NavBar contents={[{name:'links'}].concat(contents)} />
+		<NavBar
+			contents={[{
+				name:'Links',
+				id:'links'
+			}].concat(contents)} />
 
 		<section class="block-container h-[70vh] " id="links">
 			<div>
@@ -47,19 +60,19 @@ const contents = [
 
 		<section class="block-container py-[30vh]">
 			<Tree />
-			<!--<p class="sans-font">Figure 1.1: A tree</p>-->
+			<p class="mono-font">Figure 1.1: A tree?</p>
 		</section>
 
 		<div class='mt-20'></div>
 		{contents
 			.map((content, i) =>
-			<section class=" block-container pt-20 " id={content.name}>
+			<section class=" block-container pt-20 " id={content.id}>
 				<div class="w-[90vw] md:w-[55vw]">
 					<SimpleHeader text={formatTitle(content.name)} number={toRoman(i + 2)} />
 					<InfoList 
 						entries={content.entries}
 						num_show={content.num_show!}
-						id={content.name} />
+						id={content.id} />
 				</div>
 			</section>)}
 	</main>

@@ -2,42 +2,23 @@
 import links from '../data/links.json';
 ---
 
-<div class="flex flex-col items-start ">
-    {links.map((link, i) =>
-        <a class="py-2 mono-font " href={link.url} target={link.is_not_external ? '' : '_blank'}>
-            <span class="nt-color"><i class={link.icon + ' '}></i></span>
-            <span class="desc">{link.description}</span>
-            <span class="lt-color">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 ">
+    {links.filter(link => !link.draft).map((link, i) =>
+        <a class="group py-2 mono-font flex flex-col items-start"
+           href={link.url}
+           target={link.is_not_external ? '' : '_blank'}
+        >
+            <span>
+                <span class="hidden group-hover:inline group-active:px-1 transition-all duration-100 ease-in-out">
+                    &gt;
+                </span>
                 {link.name}
-                {!link.is_not_external ? <i class="fa-solid fa-arrow-right -rotate-45 text-sm"></i> : ''}
+                <i class={link.icon + ' '}></i>
+                {!link.is_not_external ? <i class="lt-color fa-solid fa-arrow-right -rotate-45 text-sm"></i> : ''}
+            </span>
+            <span class="lt2-color sans-font group-hover:text-[var(--nt-color)]">
+                {link.description}
             </span>
         </a>
     )}
 </div>
-
-<style>
-    span {
-        transition: all 0.2s ease-in-out;
-    }
-
-    .desc {
-        text-decoration: underline;
-        text-decoration-style: dashed;
-        text-decoration-color: var(--lt-color);
-        text-underline-offset: 5px;
-        cursor: pointer;
-        transition: all 0.1s;
-    }
-
-    a:hover span {
-        color: var(--pm-color);
-    }
-
-    a:hover .desc {
-        text-decoration-color: var(--pm-color);
-    }
-
-    a {
-        text-decoration: none;
-    }
-</style>

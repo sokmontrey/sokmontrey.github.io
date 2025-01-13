@@ -15,7 +15,12 @@ interface Props {
 	id: string;
 }
 
-const { entries, num_show, id } = Astro.props;
+const {
+	entries,
+	num_show,
+	id
+} = Astro.props;
+
 const sorted_entries = entries.sort((a, b) => b.data.date - a.data.date);
 ---
 

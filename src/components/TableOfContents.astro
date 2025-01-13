@@ -10,7 +10,7 @@ const { contents } = Astro.props;
 	<ul>
 		{contents.map((content, i) => <li class="mono-font ">
 			<DotsLink
-				href = {`#${content.name}`}
+				href = {`#${content.id}`}
 				width={30}
 				additional_width={30}
 				str={content.name}
