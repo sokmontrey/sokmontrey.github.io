@@ -1,6 +1,6 @@
 ---
 const { entry } = Astro.props;
-const { title, description, thumbnail, url } = entry.data;
+const { title, description, thumbnail, thumbnail_hover, url } = entry.data;
 ---
 
 <div class="py-2 ">
@@ -12,14 +12,45 @@ const { title, description, thumbnail, url } = entry.data;
     <p class="sans-font md:w-[70%] lg:w-[40%]  ">
         {description}
     </p>
-    {thumbnail &&
-        <img
-            src={thumbnail}
-            alt={title}
-            class="mx-auto my-10 w-[60%] h-[auto] object-cover"
-        />
-    }
+    <div class="thumbnail-container">
+        {thumbnail &&
+            <img
+                src={thumbnail}
+                alt={title}
+                class={"mx-auto my-10 w-[60%] h-[auto] object-cover" + (thumbnail_hover ? "thumbnail-img" : "")}
+            /> }
+        {thumbnail_hover &&
+            <img
+                src={thumbnail_hover}
+                alt={title}
+                class={"mx-auto my-10 w-[60%] h-[auto] object-cover" + (thumbnail_hover ? "thumbnail-hover-img" : "")}
+            /> }
+    </div>
     <!--<p class="mono-font lt2-color">-->
     <!--    [{tags.join(', ')}]-->
     <!--</p>-->
 </div>
+
+<style>
+    .thumbnail-img {
+        filter: brightness(0.5);
+    }
+
+    .thumbnail-hover-img {
+        filter: brightness(1.5);
+    }
+
+    .thumbnail-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .thumbnail-container:hover .thumbnail-img {
+        filter: brightness(1.5);
+    }
+
+    .thumbnail-container:hover .thumbnail-hover-img {
+        filter: brightness(0.5);
+    }
+</style>
