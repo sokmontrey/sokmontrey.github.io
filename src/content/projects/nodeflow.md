@@ -1,8 +1,5 @@
 ---
 title: Nodeflow CPP
-type: 
-    - lib
-    - library
 tags: 
     - cpp
     - cmake

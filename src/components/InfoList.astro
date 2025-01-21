@@ -26,7 +26,6 @@ const sorted_entries = entries.sort((a, b) => b.data.date - a.data.date);
 
 <ul class="py-4 pt-8 ">
 	{sorted_entries.slice(0, num_show).map(entry => <InfoCard {entry} /> )}
-
 	{sorted_entries.length > num_show ? <ShowMoreButton target_id={"more-" + id} /> : <></>}
 
 	<div id={"more-" + id} class='hidden'>

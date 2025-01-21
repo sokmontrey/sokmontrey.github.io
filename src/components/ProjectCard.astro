@@ -1,0 +1,13 @@
+---
+const { entry } = Astro.props;
+const { title, description, type, tags, url } = entry.data;
+---
+
+<div class="py-2 ">
+    <h2 class="serif-font h1">
+        {title}
+    </h2>
+    <p class="sans-font">
+        {description}
+    </p>
+</div>

@@ -13,6 +13,8 @@ import { formatTitle } from '@/utils/text';
 
 import { getCollection } from 'astro:content';
 import Tree from "../components/Tree.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import {SectionLinkContent} from "../types/type";
 
 const project_entries = await getCollection('projects');
 const experience_entries = await getCollection('experiences');
@@ -24,9 +26,16 @@ const contents: {
 	entries: CollectionEntry<any>[],
 	num_show: number
 }[] = [
-	{ name: "Projects", id: "projects", entries: project_entries, num_show: 4 },
+	// { name: "Projects", id: "projects", entries: project_entries, num_show: 4 },
 	{ name: "Experiences", id: "experiences", entries: experience_entries, num_show: 3, },
 	{ name: "Extra Curriculars", id: "extra_curriculars", entries: extra_curriculars_entries, num_show: 4 },
+];
+
+const sections: SectionLinkContent[] = [
+	{ name: 'Links', id: 'links' },
+	{ name: 'Projects', id: 'projects' },
+	{ name: 'Experiences', id: 'experiences' },
+	{ name: 'Extra Curriculars', id: 'extra_curriculars' },
 ];
 ---
 
@@ -38,18 +47,10 @@ const contents: {
 
 	<main>
 		<section class=" block-container h-[30vh] mb-[5vh]">
-			<TableOfContents
-				contents={[{
-					name:'Links',
-					id:'links'
-				}].concat(contents)} />
+			<TableOfContents section_link_contents={sections} />
 		</section>
 
-		<NavBar
-			contents={[{
-				name:'Links',
-				id:'links'
-			}].concat(contents)} />
+		<NavBar section_link_contents={sections} />
 
 		<section class="block-container h-[70vh] " id="links">
 			<div>
@@ -64,17 +65,26 @@ const contents: {
 		</section>
 
 		<div class='mt-20'></div>
-		{contents
-			.map((content, i) =>
+
+		<section class=" block-container pt-20 " id='projects'>
+			<div class="w-[90vw] md:w-[55vw]">
+				<h1 class='mono-font h3 lt2-color flex-1 '>ii. Projects</h1>
+				{project_entries.map(entry => <ProjectCard {entry} />)}
+			</div>
+		</section>
+
+		{contents.map((content, i) =>
 			<section class=" block-container pt-20 " id={content.id}>
 				<div class="w-[90vw] md:w-[55vw]">
-					<SimpleHeader text={formatTitle(content.name)} number={toRoman(i + 2)} />
+					<h1 class='mono-font h3 lt2-color flex-1 '>{toRoman(i + 3)}. {content.name}</h1>
+					<!--<SimpleHeader text={formatTitle(content.name)} number={toRoman(i + 2)} />-->
 					<InfoList 
 						entries={content.entries}
 						num_show={content.num_show!}
 						id={content.id} />
 				</div>
-			</section>)}
+			</section>
+		)}
 	</main>
 
 	<footer class="mt-[15vh] ">

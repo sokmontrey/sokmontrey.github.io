@@ -1,6 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 
-const common_schema = z.object({
+const common_schema =
+	z.object({
 	title: z.string(),
 	type: z.array(z.string()),
 	tags: z.array(z.string()),
@@ -12,7 +13,13 @@ const common_schema = z.object({
 
 const projects = defineCollection({ 
 	type: 'content',
-	schema: common_schema,
+	schema: z.object({
+		title: z.string(),
+		tags: z.array(z.string()),
+		description: z.string(),
+		url: z.string().optional(),
+		image: z.array(z.string()).optional(),
+	})
 });
 
 const experiences = defineCollection({ 

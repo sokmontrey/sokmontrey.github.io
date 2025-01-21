@@ -1,8 +1,5 @@
 ---
 title: Dynamical
-type: 
-    - lib
-    - library
 tags:
     - ts
     - react

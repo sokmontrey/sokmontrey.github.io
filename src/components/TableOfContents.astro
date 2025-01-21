@@ -2,13 +2,19 @@
 import { toRoman } from "@/utils/number";
 import DotsLink from "./DotsLink.astro";
 
-const { contents } = Astro.props;
+import type { SectionLinkContent } from '@/types/type';
+
+interface Props {
+	section_link_contents: SectionLinkContent[];
+}
+
+const { section_link_contents } = Astro.props as Props;
 ---
 
 <div> 
 	<h1 class=" serif-font h1 ">Contents</h1>
 	<ul>
-		{contents.map((content, i) => <li class="mono-font ">
+		{section_link_contents.map((content, i) => <li class="mono-font ">
 			<DotsLink
 				href = {`#${content.id}`}
 				width={30}

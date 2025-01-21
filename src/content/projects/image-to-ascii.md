@@ -1,8 +1,5 @@
 ---
 title: Image to ascii
-type: 
-    - app
-    - web app
 tags: 
     - js
     - html
