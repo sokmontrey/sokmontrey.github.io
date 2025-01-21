@@ -7,7 +7,10 @@ const { title, description, type, tags, url } = entry.data;
     <h2 class="serif-font h1">
         {title}
     </h2>
-    <p class="sans-font">
+    <p class="mono-font lt2-color">
+        [{tags.join(', ')}]
+    </p>
+    <p class="sans-font mt-4">
         {description}
     </p>
 </div>
