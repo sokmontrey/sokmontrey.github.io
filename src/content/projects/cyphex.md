@@ -4,6 +4,6 @@ tags:
     - ts
     - svelte
 description: "A web app for hiding image/text directly inside another image."
-url: "https://github.com/sokmontrey/cyphex"
+url: "https://cyphex.netlify.app"
 date: 2024-09-05
 ---

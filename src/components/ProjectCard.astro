@@ -1,16 +1,25 @@
 ---
 const { entry } = Astro.props;
-const { title, description, type, tags, url } = entry.data;
+const { title, description, thumbnail, url } = entry.data;
 ---
 
 <div class="py-2 ">
     <h2 class="serif-font h1">
-        {title}
+        <a href={url} target="_blank" class="group hover:text-[var(--pm-color)]">
+            {title} <i class="fa-solid fa-arrow-up-right-from-square group-hover:text-[var(--pm-color)] text-sm group-hover:pl-1 transition-all duration-200"></i>
+        </a>
     </h2>
-    <p class="mono-font lt2-color">
-        [{tags.join(', ')}]
-    </p>
-    <p class="sans-font mt-4">
+    <p class="sans-font md:w-[70%] lg:w-[40%]  ">
         {description}
     </p>
+    {thumbnail &&
+        <img
+            src={thumbnail}
+            alt={title}
+            class="mx-auto my-10 w-[60%] h-[auto] object-cover"
+        />
+    }
+    <!--<p class="mono-font lt2-color">-->
+    <!--    [{tags.join(', ')}]-->
+    <!--</p>-->
 </div>
