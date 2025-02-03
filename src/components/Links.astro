@@ -4,21 +4,27 @@ import links from '../data/links.json';
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 ">
     {links.filter(link => !link.draft).map((link, i) =>
-        <a class="group py-2 mono-font flex flex-col items-start"
-           href={link.url}
-           target={link.is_not_external ? '' : '_blank'}
+        <div class="py-2 mono-font flex flex-col items-start"
         >
-            <span>
-                <span class="hidden group-hover:inline group-active:px-1 transition-all duration-100 ease-in-out">
-                    &gt;
-                </span>
+            <a href={link.url} target={link.is_not_external ? '' : '_blank'} class="link">
                 {link.name}
                 <i class={link.icon + ' '}></i>
                 {!link.is_not_external ? <i class="lt-color fa-solid fa-arrow-right -rotate-45 text-sm"></i> : ''}
-            </span>
-            <span class="lt2-color sans-font group-hover:text-[var(--nt-color)]">
+            </a>
+            <span class="lt2-color opacity-70 sans-font group-hover:text-[var(--nt-color)]">
                 {link.description}
             </span>
-        </a>
+        </div>
     )}
 </div>
+
+<style>
+    .link::before {
+        content: '>';
+        transition: all 0.1s ease-in-out;
+    }
+
+    .link:hover::before {
+        margin-right : 0.3rem;
+    }
+</style>
