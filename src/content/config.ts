@@ -17,7 +17,10 @@ const projects = defineCollection({
 		title: z.string(),
 		tags: z.array(z.string()),
 		description: z.string(),
-		url: z.string().optional(),
+		links: z.array(z.object({
+			name: z.string(),
+			url: z.string(),
+		})),
 		thumbnail: z.string().optional(),
 		thumbnail_hover: z.string().optional(),
 	})
