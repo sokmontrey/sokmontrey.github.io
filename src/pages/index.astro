@@ -11,14 +11,23 @@ import Links from '@/components/Links.astro';
 import { toRoman } from '@/utils/number';
 import { formatTitle } from '@/utils/text';
 
-import { getCollection } from 'astro:content';
+import { getCollection , getEntry} from 'astro:content';
 import Tree from "../components/Tree.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import {SectionLinkContent} from "../types/type";
 
-const project_entries = await getCollection('projects');
+// const project_entries = await getCollection('projects');
+// get each project entry manually instead of using
+const project_entries = await Promise.all([
+	getEntry('projects', 'cyphex'),
+	getEntry('projects', 'dog-cat-bird'),
+	getEntry('projects', 'dynamical'),
+	getEntry('projects', 'nodeflow'),
+]);
 const experience_entries = await getCollection('experiences');
 const extra_curriculars_entries = await getCollection('extra-curriculars');
+
+console.log(project_entries);
 
 const contents: {
 	name: string,
@@ -68,7 +77,9 @@ const sections: SectionLinkContent[] = [
 
 		<section class=" block-container pt-20 " id='projects'>
 			<div class="w-[90vw] md:w-[55vw]">
-				<h1 class='mono-font h3 lt2-color flex-1 '>ii. Projects</h1>
+				<h1 class="serif-font h1 nt-color flex flex-row space-between items-center mb-8">
+					Projects
+				</h1>
 				{project_entries.map(entry => <ProjectCard {entry} />)}
 			</div>
 		</section>
