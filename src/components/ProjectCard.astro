@@ -1,6 +1,6 @@
 ---
-const { entry } = Astro.props;
-const { title, description, thumbnail, thumbnail_hover, links } = entry.data;
+const {entry} = Astro.props;
+const {title, description, thumbnail, thumbnail_hover, links} = entry.data;
 ---
 
 <div class="flex flex-col md:flex-row items-center justify-between my-8">
@@ -14,15 +14,16 @@ const { title, description, thumbnail, thumbnail_hover, links } = entry.data;
         <div class="h-full mono-font mt-4 flex flex-col flex-1">
             {links.map(link => <a href={link.url} target="_blank" class="link">
                 {link.name}
-            </a> )}
+            </a>)}
         </div>
     </div>
     {thumbnail &&
-        <img
-            src={thumbnail}
-            alt={title}
-            class={"w-[50%] md:w-[24%] h-[auto] object-cover" + (thumbnail_hover ? "thumbnail-img" : "")}
-        /> }
+            <img
+                    src={thumbnail}
+                    alt={title}
+                    class={"w-[50%] md:w-[24%] h-[auto] object-cover "}
+            />
+    }
 </div>
 
 <style>
@@ -33,12 +34,12 @@ const { title, description, thumbnail, thumbnail_hover, links } = entry.data;
 
     .link::before {
         content: '>';
-        margin-right : 0.1rem;
+        margin-right: 0.1rem;
         transition: all 0.1s ease-in-out;
     }
 
     .link:hover::before {
-        margin-right : 0.3rem;
+        margin-right: 0.3rem;
     }
 
     .link:hover {
@@ -47,6 +48,6 @@ const { title, description, thumbnail, thumbnail_hover, links } = entry.data;
     }
 
     .link:active::before {
-        margin-right : 0.1rem;
+        margin-right: 0.1rem;
     }
 </style>
