@@ -20,8 +20,9 @@ import {SectionLinkContent} from "../types/type";
 // get each project entry manually instead of using
 const project_entries = await Promise.all([
 	getEntry('projects', 'cyphex'),
-	getEntry('projects', 'dog-cat-bird'),
 	getEntry('projects', 'dynamical'),
+	getEntry('projects', 'dog-cat-bird'),
+	getEntry('projects', 'matching-net-impl'),
 	getEntry('projects', 'nodeflow'),
 ]);
 const experience_entries = await getCollection('experiences');
