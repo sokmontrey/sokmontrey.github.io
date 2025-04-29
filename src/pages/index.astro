@@ -19,6 +19,10 @@ import {
     SiPhp,
     SiCplusplus,
     SiGit,
+    SiTensorflow,
+    SiKeras,
+    SiPytorch,
+    SiNodedotjs,
 } from "react-icons/si";
 
 import { TbBrandCSharp } from "react-icons/tb";
@@ -135,22 +139,38 @@ const sections: SectionLinkContent[] = [
             <div class="flex flex-col space-y-1 mb-2 mt-2 items-start w-[40vw]">
                 <p class="mono-font lt-color">Backend</p>
                 <ul class="grid grid-cols-4 gap-2 skill-list w-full">
-                    <li class="mono-font"><TbBrandCSharp /> C#</li>
                     <li class="mono-font"><SiDotnet /> Asp.NET</li>
-                    <li class="mono-font"><SiPostgresql /> PostgresSQL</li>
+                    <li class="mono-font"><SiPostgresql /> Postgres</li>
+                    <li class="mono-font"><SiNodedotjs /> Node</li>
                     <li class="mono-font"><SiSupabase /> Supabase</li>
                     <li class="mono-font"><SiFirebase /> Firebase</li>
+                </ul>
+            </div>
+
+            <div class="flex flex-col space-y-1 mb-2 mt-2 items-start w-[40vw]">
+                <p class="mono-font lt-color">Programming Languages</p>
+                <ul class="grid grid-cols-4 gap-2 skill-list w-full">
+                    <li class="mono-font"><TbBrandCSharp /> C#</li>
+                    <li class="mono-font"><SiGo /> Go</li>
+                    <li class="mono-font"><SiCplusplus /> C++</li>
+                    <li class="mono-font"><FaJava /> Java</li>
                     <li class="mono-font"><SiPython /> Python</li>
                     <li class="mono-font"><SiPhp /> PHP</li>
                 </ul>
             </div>
 
             <div class="flex flex-col space-y-1 mb-2 mt-2 items-start w-[40vw]">
+                <p class="mono-font lt-color">ML/DL</p>
+                <ul class="grid grid-cols-4 gap-2 skill-list w-full">
+                    <li class="mono-font"><SiPytorch /> PyTorch</li>
+                    <li class="mono-font"><SiTensorflow /> TensorFlow</li>
+                    <!-- <li class="mono-font"><SiKeras /> Keras</li> -->
+                </ul>
+            </div>
+
+            <div class="flex flex-col space-y-1 mb-2 mt-2 items-start w-[40vw]">
                 <p class="mono-font lt-color">Other</p>
                 <ul class="grid grid-cols-4 gap-2 skill-list w-full">
-                    <li class="mono-font"><SiGo /> Go</li>
-                    <li class="mono-font"><SiCplusplus /> C++</li>
-                    <li class="mono-font"><FaJava /> Java</li>
                     <li class="mono-font"><SiGit /> Git</li>
                 </ul>
             </div>
