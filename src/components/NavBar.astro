@@ -25,7 +25,7 @@ const height = section_link_contents.length * 20 + 60;
             <li class="px-4">
                 <a
                     href={`#${content.id}`}
-                    class="link"
+                    class="nav-link"
                     data-section-id={content.id}
                 >
                     {content.alt || content.name}
@@ -37,7 +37,7 @@ const height = section_link_contents.length * 20 + 60;
         // Function to check which section is in view
         function highlightCurrentSection() {
             const sections = document.querySelectorAll("[id]");
-            const navLinks = document.querySelectorAll(".link");
+            const navLinks = document.querySelectorAll(".nav-link");
 
             let currentSectionId = "";
 
@@ -89,27 +89,27 @@ const height = section_link_contents.length * 20 + 60;
         text-decoration: none;
     }
 
-    .link {
+    .nav-link {
         color: var(--lt2-color);
         opacity: 0.8;
     }
 
-    .link::before {
+    .nav-link::before {
         content: ">";
         margin-right: 0.1rem;
         transition: all 0.1s ease-in-out;
     }
 
-    .link:hover::before {
+    .nav-link:hover::before {
         margin-right: 0.3rem;
     }
 
-    .link:hover {
+    .nav-link:hover {
         opacity: 1;
         color: var(--pm-color);
     }
 
-    .link:active::before {
+    .nav-link:active::before {
         margin-right: 0.1rem;
     }
 </style>
