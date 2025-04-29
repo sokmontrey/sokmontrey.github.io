@@ -1,6 +1,6 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import IntroLayout from '@/layouts/IntroLayout.astro';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import IntroLayout from "@/layouts/IntroLayout.astro";
 import {
     SiHtml5,
     SiCss3,
@@ -18,90 +18,100 @@ import {
     SiPostgresql,
     SiPhp,
     SiCplusplus,
-    SiGit
+    SiGit,
 } from "react-icons/si";
 
 import { TbBrandCSharp } from "react-icons/tb";
 import { FaJava } from "react-icons/fa";
 
-import NavBar from '@/components/NavBar.astro';
-import SimpleHeader from '@/components/SimpleHeader.astro';
-import InfoList from '@/components/InfoList.astro';
-import TableOfContents from '@/components/TableOfContents.astro';
-import Links from '@/components/Links.astro';
+import NavBar from "@/components/NavBar.astro";
+import SimpleHeader from "@/components/SimpleHeader.astro";
+import InfoList from "@/components/InfoList.astro";
+import TableOfContents from "@/components/TableOfContents.astro";
+import Links from "@/components/Links.astro";
 
-import {toRoman} from '@/utils/number';
-import {formatTitle} from '@/utils/text';
+import { toRoman } from "@/utils/number";
+import { formatTitle } from "@/utils/text";
 
-import {getCollection, getEntry} from 'astro:content';
+import { getCollection, getEntry } from "astro:content";
 import Tree from "../components/Tree.astro";
 import ProjectCard from "../components/ProjectCard.astro";
-import {SectionLinkContent} from "../types/type";
+import { SectionLinkContent } from "../types/type";
 
 // const project_entries = await getCollection('projects');
 // get each project entry manually instead of using
 const project_entries = await Promise.all([
-    getEntry('projects', 'ccc-judging'),
-    getEntry('projects', 'cyphex'),
-    getEntry('projects', 'dynamical'),
-    getEntry('projects', 'dog-cat-bird'),
-    getEntry('projects', 'matching-net-impl'),
-    getEntry('projects', 'nodeflow'),
+    getEntry("projects", "ccc-judging"),
+    getEntry("projects", "cyphex"),
+    getEntry("projects", "dynamical"),
+    getEntry("projects", "dog-cat-bird"),
+    getEntry("projects", "matching-net-impl"),
+    getEntry("projects", "nodeflow"),
 ]);
-const experience_entries = await getCollection('experiences');
-const extra_curriculars_entries = await getCollection('extra-curriculars');
+const experience_entries = await getCollection("experiences");
+const extra_curriculars_entries = await getCollection("extra-curriculars");
 
 const contents: {
-    name: string,
-    id: string,
-    entries: CollectionEntry<any>[],
-    num_show: number
+    name: string;
+    id: string;
+    entries: CollectionEntry<any>[];
+    num_show: number;
 }[] = [
     // { name: "Projects", id: "projects", entries: project_entries, num_show: 4 },
-    {name: "Experiences", id: "experiences", entries: experience_entries, num_show: 3,},
-    {name: "Extra Curriculars", id: "extra_curriculars", entries: extra_curriculars_entries, num_show: 4},
+    {
+        name: "Experiences",
+        id: "experiences",
+        entries: experience_entries,
+        num_show: 3,
+    },
+    {
+        name: "Extra Curriculars",
+        id: "extra_curriculars",
+        entries: extra_curriculars_entries,
+        num_show: 4,
+    },
 ];
 
 const sections: SectionLinkContent[] = [
-    {name: 'Links', id: 'links'},
-    {name: 'Skills', id: 'skills'},
-    {name: 'Projects', id: 'projects'},
-    {name: 'Experiences', id: 'experiences'},
-    {name: 'Extra Curriculars', id: 'extra_curriculars'},
+    { name: "Links", id: "links" },
+    { name: "Skills", id: "skills" },
+    { name: "Projects", id: "projects" },
+    { name: "Experiences", id: "experiences" },
+    { name: "Extra Curriculars", id: "extra_curriculars" },
 ];
 ---
 
-<BaseLayout title={'Sokmontrey Sythat'}>
-    <ul class="w-full p-8 pt-5 pb-20 md:pb-4 flex flex-row items-end justify-end fixed md:sticky top-0 md:top-0 float-right z-[1] mono-font text-2xl md:text-sm backdrop-blur-sm bg-opacity-10 bg-[#11151A99]">
+<BaseLayout title={"Sokmontrey Sythat"}>
+    <!-- <ul class="w-full p-8 pt-5 pb-20 md:pb-4 flex flex-row items-end justify-end fixed md:sticky top-0 md:top-0 float-right z-[1] mono-font text-2xl md:text-sm backdrop-blur-sm bg-opacity-10 bg-[#11151A99]">
         {sections.map(content =>
                 <li class='px-4'>
                     <a href={`#${content.id}`} class='hover:text-[var(--pm-color)]'>
                         {content.alt || content.name}
                     </a>
                 </li>)}
-    </ul>
+    </ul> -->
 
-    <header class=" h-screen block-container " id="intro">
-        <IntroLayout/>
+    <header class="h-screen block-container" id="intro">
+        <IntroLayout />
         <i class="fa-solid fa-arrow-down mt-10 nt-color animate-bounce"></i>
     </header>
 
     <main>
-        <section class=" block-container h-[30vh] mb-[5vh]">
-            <TableOfContents section_link_contents={sections}/>
+        <section class="block-container h-[30vh] mb-[5vh]">
+            <TableOfContents section_link_contents={sections} />
         </section>
 
-        <!--<NavBar section_link_contents={sections} />-->
+        <NavBar section_link_contents={sections} />
 
-        <section class="block-container h-[70vh] " id="links">
+        <section class="block-container h-[70vh]" id="links">
             <div>
-                <SimpleHeader text={formatTitle('links')} number={toRoman(0)}/>
-                <Links/>
+                <SimpleHeader text={formatTitle("links")} number={toRoman(0)} />
+                <Links />
             </div>
         </section>
 
         <section class="block-container py-[30vh]" id="skills">
-            <Tree/>
+            <Tree />
             <!--<p class="mono-font">Figure 1.1: A tree? Anyway, below are my battle-tested skills.</p>-->
             <!--<h1 class="serif-font h1 nt-color flex flex-row space-between items-center mb-8">-->
             <!--	Skills-->
@@ -110,77 +120,81 @@ const sections: SectionLinkContent[] = [
             <div class="flex flex-col space-y-1 mb-2 mt-2 items-start w-[40vw]">
                 <p class="mono-font lt-color">Front-end</p>
                 <ul class="grid grid-cols-4 gap-2 skill-list w-full">
-                    <li class="mono-font"> <SiHtml5/> HTML </li>
-                    <li class="mono-font"> <SiCss3/> CSS </li>
-                    <li class="mono-font"> <SiJavascript/> JS/TS </li>
-                    <li class="mono-font"> <SiReact/> ReactJS </li>
-                    <li class="mono-font"> <SiSvelte/> Svelte </li>
-                    <li class="mono-font"> <SiSvelte/> AstroJS </li>
-                    <li class="mono-font"> <SiJquery/> JQuery </li>
-                    <li class="mono-font"> <SiTailwindcss/> Tailwind </li>
-                    <li class="mono-font"> <SiBootstrap/> Bootstrap </li>
+                    <li class="mono-font"><SiHtml5 /> HTML</li>
+                    <li class="mono-font"><SiCss3 /> CSS</li>
+                    <li class="mono-font"><SiJavascript /> JS/TS</li>
+                    <li class="mono-font"><SiReact /> ReactJS</li>
+                    <li class="mono-font"><SiSvelte /> Svelte</li>
+                    <li class="mono-font"><SiSvelte /> AstroJS</li>
+                    <li class="mono-font"><SiJquery /> JQuery</li>
+                    <li class="mono-font"><SiTailwindcss /> Tailwind</li>
+                    <li class="mono-font"><SiBootstrap /> Bootstrap</li>
                 </ul>
             </div>
 
             <div class="flex flex-col space-y-1 mb-2 mt-2 items-start w-[40vw]">
                 <p class="mono-font lt-color">Backend</p>
                 <ul class="grid grid-cols-4 gap-2 skill-list w-full">
-                    <li class="mono-font"> <TbBrandCSharp /> C# </li>
-                    <li class="mono-font"> <SiDotnet/> Asp.NET </li>
-                    <li class="mono-font"> <SiPostgresql/> PostgresSQL </li>
-                    <li class="mono-font"> <SiSupabase/> Supabase </li>
-                    <li class="mono-font"> <SiFirebase/> Firebase </li>
-                    <li class="mono-font"> <SiPython/> Python </li>
-                    <li class="mono-font"> <SiPhp/> PHP </li>
+                    <li class="mono-font"><TbBrandCSharp /> C#</li>
+                    <li class="mono-font"><SiDotnet /> Asp.NET</li>
+                    <li class="mono-font"><SiPostgresql /> PostgresSQL</li>
+                    <li class="mono-font"><SiSupabase /> Supabase</li>
+                    <li class="mono-font"><SiFirebase /> Firebase</li>
+                    <li class="mono-font"><SiPython /> Python</li>
+                    <li class="mono-font"><SiPhp /> PHP</li>
                 </ul>
             </div>
 
             <div class="flex flex-col space-y-1 mb-2 mt-2 items-start w-[40vw]">
                 <p class="mono-font lt-color">Other</p>
                 <ul class="grid grid-cols-4 gap-2 skill-list w-full">
-                    <li class="mono-font"> <SiGo/> Go </li>
-                    <li class="mono-font"> <SiCplusplus/> C++ </li>
-                    <li class="mono-font"> <FaJava /> Java </li>
-                    <li class="mono-font"> <SiGit/> Git </li>
+                    <li class="mono-font"><SiGo /> Go</li>
+                    <li class="mono-font"><SiCplusplus /> C++</li>
+                    <li class="mono-font"><FaJava /> Java</li>
+                    <li class="mono-font"><SiGit /> Git</li>
                 </ul>
             </div>
         </section>
 
-        <div class='mt-20'></div>
+        <div class="mt-20"></div>
 
-        <section class=" block-container pt-20 " id='projects'>
+        <section class="block-container pt-20" id="projects">
             <div class="w-[90vw] md:w-[55vw]">
-                <h1 class="serif-font h1 nt-color flex flex-row space-between items-center mb-8">
-                    Projects
-                </h1>
-                {project_entries.map(entry =>
-                        <ProjectCard {entry}/>)}
+                <SimpleHeader text="Projects" number={toRoman(1)} />
+                {project_entries.map((entry) => <ProjectCard {entry} />)}
             </div>
         </section>
 
-        {contents.map((content, i) =>
+        {
+            contents.map((content, i) => (
                 <section class=" block-container pt-20 " id={content.id}>
                     <div class="w-[90vw] md:w-[55vw]">
-                        <h1 class='mono-font h3 lt2-color flex-1 '>{toRoman(i + 3)}. {content.name}</h1>
-                        <!--<SimpleHeader text={formatTitle(content.name)} number={toRoman(i + 2)} />-->
+                        <SimpleHeader
+                            text={formatTitle(content.name)}
+                            number={toRoman(i + 2)}
+                        />
                         <InfoList
-                                entries={content.entries}
-                                num_show={content.num_show!}
-                                id={content.id}/>
+                            entries={content.entries}
+                            num_show={content.num_show!}
+                            id={content.id}
+                        />
                     </div>
                 </section>
-        )}
+            ))
+        }
     </main>
 
-    <footer class="mt-[15vh] ">
-        <div class=" block-container ">
-            <h1 class=" serif-font h1 pb-4">Have a good one!</h1>
-            <a href="#links"
-               class="rounded-xl nt-color hover:text-[var(--pm-color)] transition-all duration-200 mono-font ">
+    <footer class="mt-[15vh]">
+        <div class="block-container">
+            <h1 class="serif-font h1 pb-4">Have a good one!</h1>
+            <a
+                href="#links"
+                class="rounded-xl nt-color hover:text-[var(--pm-color)] transition-all duration-200 mono-font"
+            >
                 <i class="fa-solid fa-arrow-up mt-10 mb-10"></i>
             </a>
         </div>
-        <section class=" block-container mt-10 mb-[5vh] opacity-70 ">
+        <section class="block-container mt-10 mb-[5vh] opacity-70">
             <p>&copy; 2025 Sokmontrey Sythat.</p>
         </section>
     </footer>

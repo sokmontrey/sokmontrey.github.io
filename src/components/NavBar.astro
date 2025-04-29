@@ -1,66 +1,146 @@
 ---
-import type { SectionLinkContent } from '@/types/type';
+import type { SectionLinkContent } from "@/types/type";
 
 interface Props {
-	section_link_contents: SectionLinkContent[];
+    section_link_contents: SectionLinkContent[];
 }
 
 const { section_link_contents } = Astro.props as Props;
 const height = section_link_contents.length * 20 + 60;
 ---
 
-<button id="nav-btn" class="w-full backdrop-blur-sm fixed top-0 left-0 p-6 md:hidden z-[1] text-left flex items-start bg-[var(--half-bg-color)]">
-	<i id="nav-btn-icon" class="fa-solid fa-bars text-xl"></i>
+<button
+    id="nav-btn"
+    class="w-full backdrop-blur-sm fixed top-0 left-0 p-6 md:hidden z-[1] text-left flex items-start bg-[var(--half-bg-color)]"
+>
+    <i id="nav-btn-icon" class="fa-solid fa-bars text-xl"></i>
 </button>
 
-<ul id="nav-container" class=" p-8 pt-10 pb-20 md:pb-4 hidden md:block flex-col items-start fixed md:sticky top-12 md:top-0 float-left z-[1] mono-font text-2xl md:text-sm w-full md:w-auto">
-	{section_link_contents.map(content => <li class='px-4'>
-		<a href={`#${content.id}`} class='hover:text-[var(--pm-color)]'>
-			{content.alt || content.name}
-		</a>
-	</li>)}
+<ul
+    id="nav-container"
+    class="p-8 pt-10 pb-20 md:pb-4 hidden md:block flex-col items-start fixed md:sticky top-12 md:top-0 float-left z-[1] mono-font text-2xl md:text-sm w-full md:w-auto"
+>
+    {
+        section_link_contents.map((content) => (
+            <li class="px-4">
+                <a
+                    href={`#${content.id}`}
+                    class="link"
+                    data-section-id={content.id}
+                >
+                    {content.alt || content.name}
+                </a>
+            </li>
+        ))
+    }
+    <script>
+        // Function to check which section is in view
+        function highlightCurrentSection() {
+            const sections = document.querySelectorAll("[id]");
+            const navLinks = document.querySelectorAll(".link");
+
+            let currentSectionId = "";
+
+            // Find which section is currently in view
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                if (
+                    window.scrollY >= sectionTop - 100 &&
+                    window.scrollY < sectionTop + sectionHeight - 100
+                ) {
+                    currentSectionId = section.id;
+                }
+            });
+
+            // Update active link
+            navLinks.forEach((link) => {
+                const sectionId = link.getAttribute("data-section-id");
+                if (sectionId === currentSectionId) {
+                    link.classList.add("active");
+                    link.style.color = "var(--nt-color)";
+                    link.style.opacity = "1";
+                } else {
+                    link.classList.remove("active");
+                    link.style.color = "var(--lt2-color)";
+                    link.style.opacity = "0.8";
+                }
+            });
+        }
+
+        // Add scroll event listener
+        window.addEventListener("scroll", highlightCurrentSection);
+
+        // Call the function on page load
+        document.addEventListener("DOMContentLoaded", highlightCurrentSection);
+    </script>
 </ul>
 
-<div 
-	class="w-full hidden md:block md:w-[40vw] z-[3] relative bg-bg-color "
-	style={`height: ${height}px;`} 
-></div>
+<div
+    class="w-full hidden md:block md:w-[40vw] z-[3] relative bg-bg-color"
+    style={`height: ${height}px;`}
+>
+</div>
 
-<br><br>
+<br /><br />
 
 <style>
-	a {
-		text-decoration: none;
-	}
+    a {
+        text-decoration: none;
+    }
+
+    .link {
+        color: var(--lt2-color);
+        opacity: 0.8;
+    }
+
+    .link::before {
+        content: ">";
+        margin-right: 0.1rem;
+        transition: all 0.1s ease-in-out;
+    }
+
+    .link:hover::before {
+        margin-right: 0.3rem;
+    }
+
+    .link:hover {
+        opacity: 1;
+        color: var(--pm-color);
+    }
+
+    .link:active::before {
+        margin-right: 0.1rem;
+    }
 </style>
 
 <script>
-let is_nav_open = false;
-const nav_btn = document.getElementById('nav-btn');
-const nav_btn_icon = document.getElementById('nav-btn-icon');
-const nav_container = document.getElementById('nav-container');
-nav_btn!.addEventListener('click', () => {
-	is_nav_open = !is_nav_open;
-	if (is_nav_open) {
-		nav_btn!.classList.add('h-full');
-		nav_btn_icon!.classList.remove('fa-bars');
-		nav_btn_icon!.classList.add('fa-xmark');
-	} else {
-		nav_btn!.classList.remove('h-full');
-		nav_btn_icon!.classList.add('fa-bars');
-		nav_btn_icon!.classList.remove('fa-xmark');
-	}
-	nav_container!.classList.toggle('hidden');
-});
+    let is_nav_open = false;
+    const nav_btn = document.getElementById("nav-btn");
+    const nav_btn_icon = document.getElementById("nav-btn-icon");
+    const nav_container = document.getElementById("nav-container");
+    nav_btn!.addEventListener("click", () => {
+        is_nav_open = !is_nav_open;
+        if (is_nav_open) {
+            nav_btn!.classList.add("h-full");
+            nav_btn_icon!.classList.remove("fa-bars");
+            nav_btn_icon!.classList.add("fa-xmark");
+        } else {
+            nav_btn!.classList.remove("h-full");
+            nav_btn_icon!.classList.add("fa-bars");
+            nav_btn_icon!.classList.remove("fa-xmark");
+        }
+        nav_container!.classList.toggle("hidden");
+    });
 
-let prev_scroll_pos = window.pageYOffset;
-window.onscroll = function() {
-	const current_scroll_pos = window.pageYOffset;
-	if (prev_scroll_pos > current_scroll_pos) {
-		nav_btn!.style.top = "0";
-	} else if (!is_nav_open) {
-		nav_btn!.style.top = "-100%";
-	}
-	prev_scroll_pos = current_scroll_pos;
-}
+    let prev_scroll_pos = window.pageYOffset;
+    window.onscroll = function () {
+        const current_scroll_pos = window.pageYOffset;
+        if (prev_scroll_pos > current_scroll_pos) {
+            nav_btn!.style.top = "0";
+        } else if (!is_nav_open) {
+            nav_btn!.style.top = "-100%";
+        }
+        prev_scroll_pos = current_scroll_pos;
+    };
 </script>
