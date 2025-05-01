@@ -8,7 +8,7 @@ description: "A peer-to-peer judging platform for the GBC CS Club Creative Codin
 #thumbnail: "/projects/cyphex/thumbnail.svg"
 links:
   - name: GitHub
-    url: "https://github.com/gbccsclub/ccc-judging"
+    url: "https://github.com/gbccsclub/ccc-judging-platform"
   - name: Demo
     url: "https://ccc-judging.netlify.app"
 ---
