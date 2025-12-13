@@ -3,8 +3,9 @@ title: Matching Net Implementation
 tags:
   - pytorch
   - deep learning
-description: "An implementation of the \"Matching Network for One Shot Learning\" paper on Fashion MNIST using PyTorch."
+description: "Implementation of Matching Networks for One Shot Learning."
 links:
   - name: GitHub
-    url: "https://github.com/sokmontrey/matching-net-implementation"
+    url: "https://github.com/sokmontrey/matching-net-impl"
+date: 2024-02-01
 ---

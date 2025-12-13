@@ -10,4 +10,6 @@ links:
     url: "https://github.com/sokmontrey/cyphex"
   - name: Demo
     url: "https://cyphex.netlify.app"
+date: 2024-05-01
 ---
+```

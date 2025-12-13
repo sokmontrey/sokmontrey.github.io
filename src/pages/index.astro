@@ -44,16 +44,14 @@ import { SectionLinkContent } from "../types/type";
 
 // const project_entries = await getCollection('projects');
 // get each project entry manually instead of using
-const project_entries = await Promise.all([
-    getEntry("projects", "ccc-judging"),
-    getEntry("projects", "cyphex"),
-    getEntry("projects", "dynamical"),
-    getEntry("projects", "dog-cat-bird"),
-    getEntry("projects", "matching-net-impl"),
-    getEntry("projects", "nodeflow"),
-]);
+const project_entries = (await getCollection("projects"))
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
 const experience_entries = await getCollection("experiences");
 const extra_curriculars_entries = await getCollection("extra-curriculars");
+
+import skills from "@/data/skills.json";
+import SkillIcon from "@/components/SkillIcon";
 
 const contents: {
     name: string;
@@ -121,59 +119,18 @@ const sections: SectionLinkContent[] = [
             <!--	Skills-->
             <!--</h1>-->
 
-            <div class="flex flex-col space-y-1 mb-2 mt-2 items-start w-[40vw]">
-                <p class="mono-font lt-color">Front-end</p>
-                <ul class="grid grid-cols-4 gap-2 skill-list w-full">
-                    <li class="mono-font"><SiHtml5 /> HTML</li>
-                    <li class="mono-font"><SiCss3 /> CSS</li>
-                    <li class="mono-font"><SiJavascript /> JS/TS</li>
-                    <li class="mono-font"><SiReact /> ReactJS</li>
-                    <li class="mono-font"><SiSvelte /> Svelte</li>
-                    <li class="mono-font"><SiSvelte /> AstroJS</li>
-                    <li class="mono-font"><SiJquery /> JQuery</li>
-                    <li class="mono-font"><SiTailwindcss /> Tailwind</li>
-                    <li class="mono-font"><SiBootstrap /> Bootstrap</li>
-                </ul>
-            </div>
-
-            <div class="flex flex-col space-y-1 mb-2 mt-2 items-start w-[40vw]">
-                <p class="mono-font lt-color">Backend</p>
-                <ul class="grid grid-cols-4 gap-2 skill-list w-full">
-                    <li class="mono-font"><SiDotnet /> Asp.NET</li>
-                    <li class="mono-font"><SiPostgresql /> Postgres</li>
-                    <li class="mono-font"><SiNodedotjs /> Node</li>
-                    <li class="mono-font"><SiSupabase /> Supabase</li>
-                    <li class="mono-font"><SiFirebase /> Firebase</li>
-                </ul>
-            </div>
-
-            <div class="flex flex-col space-y-1 mb-2 mt-2 items-start w-[40vw]">
-                <p class="mono-font lt-color">Programming Languages</p>
-                <ul class="grid grid-cols-4 gap-2 skill-list w-full">
-                    <li class="mono-font"><TbBrandCSharp /> C#</li>
-                    <li class="mono-font"><SiGo /> Go</li>
-                    <li class="mono-font"><SiCplusplus /> C++</li>
-                    <li class="mono-font"><FaJava /> Java</li>
-                    <li class="mono-font"><SiPython /> Python</li>
-                    <li class="mono-font"><SiPhp /> PHP</li>
-                </ul>
-            </div>
-
-            <div class="flex flex-col space-y-1 mb-2 mt-2 items-start w-[40vw]">
-                <p class="mono-font lt-color">ML/DL</p>
-                <ul class="grid grid-cols-4 gap-2 skill-list w-full">
-                    <li class="mono-font"><SiPytorch /> PyTorch</li>
-                    <li class="mono-font"><SiTensorflow /> TensorFlow</li>
-                    <!-- <li class="mono-font"><SiKeras /> Keras</li> -->
-                </ul>
-            </div>
-
-            <div class="flex flex-col space-y-1 mb-2 mt-2 items-start w-[40vw]">
-                <p class="mono-font lt-color">Other</p>
-                <ul class="grid grid-cols-4 gap-2 skill-list w-full">
-                    <li class="mono-font"><SiGit /> Git</li>
-                </ul>
-            </div>
+            {skills.map((category) => (
+                <div class="flex flex-col space-y-1 mb-2 mt-2 items-start w-[40vw]">
+                    <p class="mono-font lt-color">{category.category}</p>
+                    <ul class="grid grid-cols-4 gap-2 skill-list w-full">
+                        {category.items.map((skill) => (
+                            <li class="mono-font">
+                                <SkillIcon icon={skill.icon} /> {skill.name}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            ))}
         </section>
 
         <div class="mt-20"></div>
