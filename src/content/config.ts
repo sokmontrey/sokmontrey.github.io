@@ -23,6 +23,7 @@ const projects = defineCollection({
 		})),
 		thumbnail: z.string().optional(),
 		date: z.date(),
+		media: z.array(z.string()).optional(),
 	})
 });
 
