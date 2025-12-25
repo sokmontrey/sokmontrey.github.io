@@ -1,37 +1,43 @@
-# Hi there, I'm Sokmontrey Sythat 👋
+# Astro Starter Kit: Minimal
 
-Web Developer | Physics Enthusiast | Problem Solver
+```sh
+npm create astro@latest -- --template minimal
+```
 
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-## 🛠 Skills
+## 🚀 Project Structure
 
-### Front-end
-`HTML` • `CSS` • `JS/TS` • `ReactJS` • `Svelte` • `AstroJS` • `JQuery` • `Tailwind` • `Bootstrap`
+Inside of your Astro project, you'll see the following folders and files:
 
-### Backend
-`Asp.NET` • `Postgres` • `Node` • `Supabase` • `Firebase`
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
 
-### Programming Languages
-`C#` • `Go` • `C++` • `Java` • `Python` • `PHP`
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-### ML/DL
-`PyTorch` • `TensorFlow`
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-### Other
-`Git`
+Any static assets, like images, can be placed in the `public/` directory.
 
+## 🧞 Commands
 
-## 🚀 Projects
+All commands are run from the root of the project, from a terminal:
 
-| Project | Description | Tech | Links |
-|---|---|---|---|
-| **CCC Judging Platform** | A custom judge for Canadian Computing Competition (CCC) problems. | `ts` `react` `supabase` | [GitHub](https://github.com/Start-Spark/ccc-judge)<br>[Demo](https://ccc-judging.netlify.app) |
-| **Cyphex** | A web app for hiding data (image/text) directly inside an image. | `ts` `svelte` | [GitHub](https://github.com/sokmontrey/cyphex)<br>[Demo](https://cyphex.netlify.app) |
-| **Dynamical** | A 2D position-based dynamic physic engine written in TypeScript (plus React for UI). | `ts` `react` | [GitHub](https://github.com/sokmontrey/dynamical-js) |
-| **Dog Cat Bird** | An image classifier for dogs, cats, and birds. | `pytorch` `cnn` | [GitHub](https://github.com/sokmontrey/dog-cat-bird) |
-| **Matching Net Implementation** | Implementation of Matching Networks for One Shot Learning. | `pytorch` `deep learning` | [GitHub](https://github.com/sokmontrey/matching-net-impl) |
-| **Nodeflow CPP** | A simple and highly extensible Computational graph library written in C++ with the support of auto diff. | `cpp` `cmake` | [GitHub](https://github.com/sokmontrey/nodeflow) |
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## 👀 Want to learn more?
 
----
-*Generated automatically from my [portfolio website](https://sokmontrey.github.io)*
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
