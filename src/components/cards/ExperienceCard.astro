@@ -20,11 +20,18 @@ const { experience } = Astro.props;
 			: 'Present'}
 	</p>
 	<p>{experience.data.description}</p>
+	
 	{experience.data.technologies && experience.data.technologies.length > 0 && (
-		<p>
-			<strong>Technologies:</strong> {experience.data.technologies.join(', ')}
-		</p>
+		<div>
+			<strong>Technologies:</strong>
+			<ul>
+				{experience.data.technologies.map((tech) => (
+					<li>{tech}</li>
+				))}
+			</ul>
+		</div>
 	)}
+	
 	{experience.data.achievements && experience.data.achievements.length > 0 && (
 		<div>
 			<strong>Achievements:</strong>

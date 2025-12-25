@@ -14,16 +14,26 @@ const { thing } = Astro.props;
 		<strong>Category:</strong> {thing.data.category}
 	</p>
 	<p>{thing.data.description}</p>
+	
 	{thing.data.image && (
 		<img src={thing.data.image} alt={thing.data.title} />
 	)}
-	{thing.data.link && (
-		<a href={thing.data.link}>Learn more</a>
-	)}
+	
 	{thing.data.tags && thing.data.tags.length > 0 && (
-		<p>
-			<strong>Tags:</strong> {thing.data.tags.join(', ')}
-		</p>
+		<div>
+			<strong>Tags:</strong>
+			<ul>
+				{thing.data.tags.map((tag) => (
+					<li>{tag}</li>
+				))}
+			</ul>
+		</div>
+	)}
+	
+	{thing.data.link && (
+		<a href={thing.data.link} target="_blank" rel="noopener noreferrer">
+			Learn more
+		</a>
 	)}
 </li>
 

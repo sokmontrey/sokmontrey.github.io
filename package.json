@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
+    "@astrojs/tailwind": "^6.0.2",
     "astro": "^5.16.6",
+    "lucide-astro": "^0.556.0",
+    "simple-icons": "^16.2.0",
     "zod": "^3.25.76"
   }
 }
