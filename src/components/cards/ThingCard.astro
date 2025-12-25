@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	thing: CollectionEntry<'things-i-do'>;
+}
+
+const { thing } = Astro.props;
+---
+
+<li>
+	<h3>{thing.data.title}</h3>
+	<p>
+		<strong>Category:</strong> {thing.data.category}
+	</p>
+	<p>{thing.data.description}</p>
+	{thing.data.image && (
+		<img src={thing.data.image} alt={thing.data.title} />
+	)}
+	{thing.data.link && (
+		<a href={thing.data.link}>Learn more</a>
+	)}
+	{thing.data.tags && thing.data.tags.length > 0 && (
+		<p>
+			<strong>Tags:</strong> {thing.data.tags.join(', ')}
+		</p>
+	)}
+</li>
+

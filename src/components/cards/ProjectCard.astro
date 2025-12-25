@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+---
+
+<li>
+	<h3>{project.data.title}</h3>
+	<p>{project.data.description}</p>
+	{project.data.technologies && project.data.technologies.length > 0 && (
+		<p>
+			<strong>Technologies:</strong> {project.data.technologies.join(', ')}
+		</p>
+	)}
+	{project.data.tags && project.data.tags.length > 0 && (
+		<p>
+			<strong>Tags:</strong> {project.data.tags.join(', ')}
+		</p>
+	)}
+	<p>
+		<strong>Date:</strong> {project.data.date.toLocaleDateString()}
+	</p>
+	<div>
+		{project.data.githubUrl && (
+			<a href={project.data.githubUrl}>GitHub</a>
+		)}
+		{project.data.liveUrl && (
+			<a href={project.data.liveUrl}>Live Demo</a>
+		)}
+	</div>
+</li>
+

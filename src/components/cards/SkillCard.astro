@@ -1,0 +1,15 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	skill: CollectionEntry<'skills'>;
+}
+
+const { skill } = Astro.props;
+---
+
+<li>
+	<strong>{skill.data.name}</strong> - {skill.data.category}
+	{skill.data.icon && <span> ({skill.data.icon})</span>}
+</li>
+

@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import SkillCard from '../cards/SkillCard.astro';
+
+interface Props {
+	skills: CollectionEntry<'skills'>[];
+}
+
+const { skills } = Astro.props;
+---
+
+<section>
+	<h2>Skills</h2>
+	{skills.length > 0 ? (
+		<ul>
+			{skills.map((skill) => (
+				<SkillCard skill={skill} />
+			))}
+		</ul>
+	) : (
+		<p>No skills yet.</p>
+	)}
+</section>
+

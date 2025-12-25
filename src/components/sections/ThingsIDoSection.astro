@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ThingCard from '../cards/ThingCard.astro';
+
+interface Props {
+	things: CollectionEntry<'things-i-do'>[];
+}
+
+const { things } = Astro.props;
+---
+
+<section>
+	<h2>Things I Do</h2>
+	{things.length > 0 ? (
+		<ul>
+			{things.map((thing) => (
+				<ThingCard thing={thing} />
+			))}
+		</ul>
+	) : (
+		<p>No activities yet.</p>
+	)}
+</section>
+
