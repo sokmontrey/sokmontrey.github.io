@@ -1,5 +1,10 @@
 ---
+import { getAllSkills, getAllProjects, getAllExperiences, getAllThingsIDo } from '../lib/content';
 
+const skills = await getAllSkills();
+const featuredProjects = await getAllProjects({ featured: true });
+const experiences = await getAllExperiences();
+const thingsIDo = await getAllThingsIDo();
 ---
 
 <html lang="en">
@@ -8,9 +13,83 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Portfolio</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<main>
+			<h1>Portfolio</h1>
+
+			<section>
+				<h2>Skills</h2>
+				<ul>
+					{skills.map((skill) => (
+						<li>
+							<strong>{skill.data.name}</strong> - {skill.data.category}
+						</li>
+					))}
+				</ul>
+			</section>
+
+			<section>
+				<h2>Featured Projects</h2>
+				{featuredProjects.length > 0 ? (
+					<ul>
+						{featuredProjects.map((project) => (
+							<li>
+								<h3>{project.data.title}</h3>
+								<p>{project.data.description}</p>
+								{project.data.githubUrl && (
+									<a href={project.data.githubUrl}>GitHub</a>
+								)}
+								{project.data.liveUrl && (
+									<a href={project.data.liveUrl}>Live Demo</a>
+								)}
+							</li>
+						))}
+					</ul>
+				) : (
+					<p>No featured projects yet.</p>
+				)}
+			</section>
+
+			<section>
+				<h2>Experience</h2>
+				{experiences.length > 0 ? (
+					<ul>
+						{experiences.map((experience) => (
+							<li>
+								<h3>{experience.data.title} at {experience.data.company}</h3>
+								<p>
+									{experience.data.startDate.toLocaleDateString()} -{' '}
+									{experience.data.endDate
+										? experience.data.endDate.toLocaleDateString()
+										: 'Present'}
+								</p>
+								<p>{experience.data.description}</p>
+							</li>
+						))}
+					</ul>
+				) : (
+					<p>No experiences yet.</p>
+				)}
+			</section>
+
+			<section>
+				<h2>Things I Do</h2>
+				{thingsIDo.length > 0 ? (
+					<ul>
+						{thingsIDo.map((thing) => (
+							<li>
+								<h3>{thing.data.title}</h3>
+								<p>{thing.data.category}</p>
+								<p>{thing.data.description}</p>
+							</li>
+						))}
+					</ul>
+				) : (
+					<p>No activities yet.</p>
+				)}
+			</section>
+		</main>
 	</body>
 </html>
