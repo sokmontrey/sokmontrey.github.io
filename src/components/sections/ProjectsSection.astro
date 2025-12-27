@@ -1,25 +1,26 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import ProjectCard from '../cards/ProjectCard.astro';
+import type { CollectionEntry } from "astro:content";
+import ProjectCard from "../cards/ProjectCard.astro";
 
 interface Props {
-	projects: CollectionEntry<'projects'>[];
+	projects: CollectionEntry<"projects">[];
 	title?: string;
 }
 
-const { projects, title = 'Projects' } = Astro.props;
+const { projects, title = "Projects" } = Astro.props;
 ---
 
 <section>
 	<h2>{title}</h2>
-	{projects.length > 0 ? (
-		<ul>
-			{projects.map((project) => (
-				<ProjectCard project={project} />
-			))}
-		</ul>
-	) : (
-		<p>No projects yet.</p>
-	)}
+	{
+		projects.length > 0 ? (
+			<ul>
+				{projects.map((project) => (
+					<ProjectCard project={project} />
+				))}
+			</ul>
+		) : (
+			<p>No projects yet.</p>
+		)
+	}
 </section>
-
