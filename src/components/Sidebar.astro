@@ -2,14 +2,108 @@
 import SidebarItem from "./SidebarItem.astro";
 ---
 
-<aside class="pt-8 w-full md:w-48 shrink-0 md:fixed md:top-0">
-    <nav>
-        <ul class="space-y-2">
-            <SidebarItem href="#intro" label="Profile" />
-            <SidebarItem href="#skills" label="Skills" />
-            <SidebarItem href="#projects" label="Projects" />
-            <SidebarItem href="#experiences" label="Experiences" />
-            <SidebarItem href="#misc" label="Things I Do" />
-        </ul>
-    </nav>
+<!-- Mobile Toggle Button -->
+<button
+    id="mobile-menu-toggle"
+    class="fixed top-4 right-4 z-[60] p-2 bg-white rounded-md md:hidden focus:outline-none"
+    aria-label="Toggle Menu"
+>
+    <!-- Hamburger Icon -->
+    <svg
+        id="icon-menu"
+        class="h-6 w-6 text-gray-900"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+    >
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"></path>
+    </svg>
+    <!-- Close Icon (Hidden by default) -->
+    <svg
+        id="icon-close"
+        class="h-6 w-6 text-gray-900 hidden"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+    >
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+</button>
+
+<!-- Backdrop (Mobile only) -->
+<div
+    id="sidebar-backdrop"
+    class="fixed inset-0 z-40 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"
+>
+</div>
+
+<!-- Sidebar Drawer -->
+<aside
+    id="sidebar-drawer"
+    class="fixed inset-y-0 left-0 z-50 w-full bg-white transform -translate-x-full transition-transform duration-300 ease-in-out md:translate-x-0 md:w-48 md:bg-transparent md:z-20 md:p-8 md:fixed md:top-0 md:h-screen"
+>
+    <div class="h-full flex flex-col p-6 pt-20 md:pt-0 md:p-0">
+        <nav class="flex-1">
+            <ul class="space-y-4 md:space-y-2">
+                <SidebarItem href="#intro" label="Profile" />
+                <SidebarItem href="#skills" label="Skills" />
+                <SidebarItem href="#projects" label="Projects" />
+                <SidebarItem href="#experiences" label="Experiences" />
+                <SidebarItem href="#misc" label="Things I Do" />
+            </ul>
+        </nav>
+    </div>
 </aside>
+
+<script>
+    const toggleBtn = document.getElementById("mobile-menu-toggle");
+    const sidebar = document.getElementById("sidebar-drawer");
+    const backdrop = document.getElementById("sidebar-backdrop");
+    const menuIcon = document.getElementById("icon-menu");
+    const closeIcon = document.getElementById("icon-close");
+    const links = sidebar?.querySelectorAll("a");
+
+    function toggleMenu() {
+        const isOpen = sidebar?.classList.contains("translate-x-0");
+        if (isOpen) {
+            // Close menu
+            sidebar?.classList.remove("translate-x-0");
+            sidebar?.classList.add("-translate-x-full");
+            backdrop?.classList.remove("opacity-100");
+            backdrop?.classList.add("opacity-0", "pointer-events-none");
+            backdrop?.classList.remove("pointer-events-auto");
+
+            // Show menu icon, hide close icon
+            menuIcon?.classList.remove("hidden");
+            closeIcon?.classList.add("hidden");
+        } else {
+            // Open menu
+            sidebar?.classList.remove("-translate-x-full");
+            sidebar?.classList.add("translate-x-0");
+            backdrop?.classList.remove("opacity-0", "pointer-events-none");
+            backdrop?.classList.add("opacity-100", "pointer-events-auto");
+
+            // Show close icon, hide menu icon
+            menuIcon?.classList.add("hidden");
+            closeIcon?.classList.remove("hidden");
+        }
+    }
+
+    toggleBtn?.addEventListener("click", toggleMenu);
+    backdrop?.addEventListener("click", toggleMenu);
+    links?.forEach((link) => {
+        link.addEventListener("click", () => {
+            if (window.innerWidth < 768) {
+                toggleMenu();
+            }
+        });
+    });
+</script>
