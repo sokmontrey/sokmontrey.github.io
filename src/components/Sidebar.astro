@@ -1,4 +1,5 @@
 ---
+import { Menu, X } from "lucide-astro";
 import SidebarItem from "./SidebarItem.astro";
 ---
 
@@ -9,33 +10,9 @@ import SidebarItem from "./SidebarItem.astro";
     aria-label="Toggle Menu"
 >
     <!-- Hamburger Icon -->
-    <svg
-        id="icon-menu"
-        class="h-6 w-6 text-gray-900"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-    >
-        <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16m-7 6h7"></path>
-    </svg>
+    <Menu id="icon-menu" class="h-6 w-6 text-gray-900" />
     <!-- Close Icon (Hidden by default) -->
-    <svg
-        id="icon-close"
-        class="h-6 w-6 text-gray-900 hidden"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-    >
-        <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"></path>
-    </svg>
+    <X id="icon-close" class="h-6 w-6 text-gray-900 hidden" />
 </button>
 
 <!-- Backdrop (Mobile only) -->
