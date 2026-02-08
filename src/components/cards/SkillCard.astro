@@ -10,6 +10,6 @@ const { skill } = Astro.props;
 ---
 
 <li>
-	{skill.data.icon && <SkillIcon name={skill.data.icon} size={10} />}
+	{skill.data.icon && <SkillIcon name={skill.data.icon} />}
 	<strong>{skill.data.name}</strong> - {skill.data.category}
 </li>

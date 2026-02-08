@@ -1,17 +1,12 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import ProjectCard from "../cards/ProjectCard.astro";
+import ProjectCard from "@/components/cards/ProjectCard.astro";
 
-interface Props {
-	projects: CollectionEntry<"projects">[];
-	title?: string;
-}
-
-const { projects, title = "Projects" } = Astro.props;
+const projects: CollectionEntry<"projects">[] = [];
 ---
 
-<section>
-	<h2>{title}</h2>
+<section class="text-gray-200">
+    <h1 class="font-serif text-3xl">Projects</h1>
 	{
 		projects.length > 0 ? (
 			<ul>

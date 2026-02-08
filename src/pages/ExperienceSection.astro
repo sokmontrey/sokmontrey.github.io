@@ -1,16 +1,12 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import ExperienceCard from '../cards/ExperienceCard.astro';
+import ExperienceCard from '@/components/cards/ExperienceCard.astro';
 
-interface Props {
-	experiences: CollectionEntry<'experiences'>[];
-}
-
-const { experiences } = Astro.props;
+const experiences: CollectionEntry<'experiences'>[] = [];
 ---
 
-<section>
-	<h2>Experience</h2>
+<section class="text-gray-200">
+    <h1 class="font-serif text-3xl">Experiences</h1>
 	{experiences.length > 0 ? (
 		<ul>
 			{experiences.map((experience) => (
@@ -21,4 +17,3 @@ const { experiences } = Astro.props;
 		<p>No experiences yet.</p>
 	)}
 </section>
-

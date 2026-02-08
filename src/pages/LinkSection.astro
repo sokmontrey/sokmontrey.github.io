@@ -1,0 +1,17 @@
+---
+import links from "@/data/links.json";
+---
+
+<section class="text-gray-200">
+    <ul>
+        {
+            links
+                .filter((link) => link.isVisible)
+                .map((link) => (
+                    <li>
+                        <a href={link.url}>{link.name}</a>
+                    </li>
+                ))
+        }
+    </ul>
+</section>
