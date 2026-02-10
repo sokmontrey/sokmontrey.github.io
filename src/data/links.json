@@ -1,20 +1,20 @@
 [
     {
-        "name": "GitHub",
+        "name": "Instagram",
         "icon": "",
-        "url" : "https://github.com/sokmontrey",
+        "url": "",
         "isVisible": true
     },
     {
         "name": "LinkedIn",
         "icon": "",
-        "url" : "",
+        "url": "",
         "isVisible": true
     },
     {
-        "name": "Email",
+        "name": "GitHub",
         "icon": "",
-        "url" : "",
+        "url": "https://github.com/sokmontrey",
         "isVisible": true
     }
 ]
