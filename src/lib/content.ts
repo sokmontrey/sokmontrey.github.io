@@ -1,15 +1,5 @@
 import { getCollection } from 'astro:content';
 
-export async function getAllSkills(category?: string) {
-	const skills = await getCollection('skills');
-	
-	if (category) {
-		return skills.filter((skill) => skill.data.category === category);
-	}
-	
-	return skills;
-}
-
 export async function getAllProjects(options?: {
 	featured?: boolean;
 	tags?: string[];
@@ -41,13 +31,13 @@ export async function getAllExperiences() {
 	});
 }
 
-export async function getAllThingsIDo(category?: string) {
-	const things = await getCollection('things-i-do');
+export async function getAllWriting(category?: string) {
+	const writings = await getCollection('writing');
 	
 	if (category) {
-		return things.filter((thing) => thing.data.category === category);
+		return writings.filter((writing) => writing.data.category === category);
 	}
 	
-	return things;
+	return writings;
 }
 

@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import WritingCard from '../cards/WritingCard.astro';
+
+interface Props {
+	writings: CollectionEntry<'writing'>[];
+}
+
+const { writings } = Astro.props;
+---
+
+<section>
+	<h2>Writing</h2>
+	{writings.length > 0 ? (
+		<ul>
+			{writings.map((writing) => (
+				<WritingCard writing={writing} />
+			))}
+		</ul>
+	) : (
+		<p>No writing yet.</p>
+	)}
+</section>

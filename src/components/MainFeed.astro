@@ -1,22 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
+import { skills as groupedSkills } from '../data/skills';
 
 const projects = await getCollection('projects');
 const experiences = await getCollection('experiences');
-const groupedSkills = [
-  {
-    label: 'Core Web',
-    items: ['HTML/CSS', 'JS/TS', 'React/Next', 'Tailwind'],
-  },
-  {
-    label: 'Backend/Data',
-    items: ['ASP.NET', 'Spring Boot', 'Express', 'PostgreSQL', 'Supabase'],
-  },
-  {
-    label: 'Languages/Tools',
-    items: ['Python', 'C#', 'Go', 'Java', 'Kotlin', 'PHP', 'Git', 'Docker', 'PyTorch'],
-  },
-];
 const leaderDots = '. '.repeat(600).trim();
 const leaderArrows = '> '.repeat(600).trim();
 

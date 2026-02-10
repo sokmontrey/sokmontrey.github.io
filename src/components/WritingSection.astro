@@ -1,14 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
 
-const writings = await getCollection('things-i-do');
+const writings = await getCollection('writing');
 const leaderDots = '. '.repeat(600).trim();
 const leaderArrows = '> '.repeat(600).trim();
 ---
 
 <div class="space-y-7 lg:max-w-[360px]">
     <header class="group flex items-end gap-3">
-        <h2 class="font-serif text-[1.35rem] leading-none text-[#efe4ce]">Writings</h2>
+        <h2 class="font-serif text-[1.35rem] leading-none text-[#efe4ce]">Writing</h2>
         <span aria-hidden="true" class="leader-switch">
             <span class="leader-dots">
                 {leaderDots}
@@ -17,7 +17,7 @@ const leaderArrows = '> '.repeat(600).trim();
                 {leaderArrows}
             </span>
         </span>
-        <a href="/things-i-do" class="font-mono text-xs text-[#8f8f95] hover:text-[#d6c6a5] transition-colors">
+        <a href="/writing" class="font-mono text-xs text-[#8f8f95] hover:text-[#d6c6a5] transition-colors">
             read more
         </a>
     </header>

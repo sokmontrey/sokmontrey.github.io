@@ -1,14 +1,5 @@
 import { defineCollection, z } from 'astro:content';
 
-const skillsCollection = defineCollection({
-	type: 'content',
-	schema: z.object({
-		name: z.string(),
-		category: z.string(),
-		icon: z.string().optional(),
-	}),
-});
-
 const projectsCollection = defineCollection({
 	type: 'content',
 	schema: z.object({
@@ -39,7 +30,7 @@ const experiencesCollection = defineCollection({
 	}),
 });
 
-const thingsIDoCollection = defineCollection({
+const writingCollection = defineCollection({
 	type: 'content',
 	schema: z.object({
 		title: z.string(),
@@ -52,9 +43,8 @@ const thingsIDoCollection = defineCollection({
 });
 
 export const collections = {
-	skills: skillsCollection,
 	projects: projectsCollection,
 	experiences: experiencesCollection,
-	'things-i-do': thingsIDoCollection,
+	writing: writingCollection,
 };
 
