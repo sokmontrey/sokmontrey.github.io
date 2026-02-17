@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content';
-import { skills as groupedSkills } from '../data/skills';
 
 const projects = await getCollection('projects');
 const experiences = await getCollection('experiences');
@@ -107,21 +106,6 @@ const sortedProjects = projects.sort((a, b) => b.data.date.valueOf() - a.data.da
       ))}
     </div>
   </section>
-
-  <!-- Condensed Skills -->
-  <!-- <section class="space-y-4">
-    <header>
-      <h2 class="font-serif text-[1.35rem] leading-none text-[#efe4ce]">Skills</h2>
-    </header>
-    <div class="space-y-2 font-mono text-xs leading-6 text-[#a9a08f]">
-      {groupedSkills.map((group) => (
-        <p>
-          <span class="text-[#c0b28f]">{group.label}:</span>{' '}
-          <span>{group.items.join('  •  ')}</span>
-        </p>
-      ))}
-    </div>
-  </section> -->
 </div>
 
 <style>
