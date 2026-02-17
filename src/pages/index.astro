@@ -1,7 +1,7 @@
 ---
-import ProfileSection from '../components/ProfileSection.astro';
-import MainFeed from '../components/MainFeed.astro';
-import WritingSection from '../components/WritingSection.astro';
+import ProfileSection from '@/pages/ProfileSection.astro';
+import MainFeed from '@/pages/MainFeed.astro';
+import WritingSection from '@/pages/WritingSection.astro';
 ---
 
 <html lang="en">
@@ -19,19 +19,16 @@ import WritingSection from '../components/WritingSection.astro';
 		<title>sokmontrey.me</title>
 	</head>
 	<body class="site-body text-[#d9c8a8] font-sans min-h-screen antialiased">
-		<main class="max-w-[1280px] mx-auto px-6 py-12 lg:py-20 grid grid-cols-1 lg:grid-cols-[max-content_minmax(0,1fr)] gap-12 lg:gap-16">
-			<!-- Left Sidebar: Profile + Writing (desktop) -->
+		<main class="mx-auto px-12 py-12 lg:px-32 lg:py-32 grid grid-cols-1 lg:grid-cols-[1fr_2fr_2fr] gap-12 lg:gap-16">
 			<aside class="lg:sticky lg:top-20 lg:self-start">
 				<ProfileSection />
 			</aside>
 
-			<!-- Main Content: Projects + Experiences -->
 			<section>
 				<MainFeed />
 			</section>
 
-			<!-- Writing: mobile only (below main feed) -->
-			<section class="lg:hidden">
+			<section>
 				<WritingSection />
 			</section>
 		</main>

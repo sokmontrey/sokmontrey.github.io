@@ -6,7 +6,7 @@ export interface SkillsGroup {
 export const skills: SkillsGroup[] = [
 	{
 		label: 'Core Web',
-		items: ['JS/TS', 'React/Next', 'Tailwind'],
+		items: ['JS/TS', 'React', 'Tailwind'],
 	},
 	{
 		label: 'Backend/Data',

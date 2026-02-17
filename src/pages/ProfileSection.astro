@@ -1,0 +1,55 @@
+---
+import { Github, Linkedin, Instagram, Mail } from "lucide-astro";
+import links from "../data/links.json";
+import ChevronNavLink from "../components/nav/ChevronNavLink.astro";
+
+const iconClass = "w-5 h-5";
+---
+
+<div class="flex flex-col gap-10">
+  <div class="space-y-5">
+    <h1 class="font-serif text-[2rem] leading-none text-[#efe4ce]">
+      Hi, I&apos;m Sokmontrey
+    </h1>
+
+    {/* Bio */}
+    <div
+      class="text-sm text-[#9fa1aa] leading-relaxed border-separate border-spacing-y-1"
+    >
+      <p>
+        From software to robots, to data and AI, to community and art, I <span
+          class="text-[#e8ddc8]">make things</span
+        > and tell its story along the way.
+      </p>
+      <br />
+    </div>
+
+    {/* Links */}
+    <div class="flex gap-7">
+      {
+        links
+          .filter((link) => link.isVisible)
+          .map((link) => (
+            <a
+              href={link.url || "#"}
+              class="text-[#c3b493] hover:text-[#f0e5cf] transition-colors"
+              aria-label={link.name}
+            >
+              {link.name === "GitHub" && <Github class={iconClass} />}
+              {link.name === "LinkedIn" && <Linkedin class={iconClass} />}
+              {link.name === "Instagram" && <Instagram class={iconClass} />}
+              {link.name === "Mail" && <Mail class={iconClass} />}
+            </a>
+          ))
+      }
+    </div>
+
+    {/* Nav */}
+    <div class="flex flex-col font-serif gap-5 pt-7">
+      <ChevronNavLink href="/about" label="About" />
+      <ChevronNavLink href="/projects" label="Projects" />
+      <ChevronNavLink href="/writings" label="Writings" />
+      <ChevronNavLink href="/experiences" label="Experiences" />
+    </div>
+  </div>
+</div>
