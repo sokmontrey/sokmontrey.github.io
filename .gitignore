@@ -6,6 +6,8 @@ dist/
 # dependencies
 node_modules/
 
+.cursor/
+
 # logs
 npm-debug.log*
 yarn-debug.log*
