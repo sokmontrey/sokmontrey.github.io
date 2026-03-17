@@ -1,0 +1,78 @@
+---
+import { getAllWriting } from '@/lib/content';
+
+const writings = await getAllWriting({ excludeHidden: true });
+const leaderDots = '. '.repeat(600).trim();
+const leaderArrows = '> '.repeat(600).trim();
+---
+
+<div class="space-y-7">
+    <header class="flex items-end gap-3">
+        <h2 class="font-sans text-sm font-medium tracking-widest uppercase text-[#EED9B4]">Writings</h2>
+        <a href="/writings" class="leader-link font-mono text-xs text-[#A59F97] hover:text-[#d6c6a5] transition-colors flex-1 min-w-0 flex items-end gap-2 cursor-pointer">
+            <span aria-hidden="true" class="leader-switch">
+                <span class="leader-dots">{leaderDots}</span>
+                <span class="leader-arrows">{leaderArrows}</span>
+            </span>
+            <span class="shrink-0">read more</span>
+        </a>
+    </header>
+
+    <div class="space-y-8">
+    {writings.slice(0, 2).map((item) => (
+        <article class="space-y-4 group">
+            {item.data.image && (
+                <div class="relative overflow-hidden rounded-sm">
+                   <img
+                        src={item.data.image}
+                        alt={item.data.title}
+                        class="h-auto opacity-80 transition-opacity duration-500 group-hover:opacity-100"
+                    />
+                </div>
+            )}
+            
+            <div class="space-y-2">
+                <h3 class="font-serif text-[1.45rem] leading-tight text-[#EED9B4] group-hover:text-[#F5E8C4] transition-colors">
+                    <a href={`/writing/${item.slug}`}>{item.data.title}</a>
+                </h3>
+                <p class="font-sans text-[15px] text-[#A59F97] leading-snug text-justify">
+                    {item.data.description}
+                </p>
+            </div>
+        </article>
+    ))}
+    </div>
+</div>
+
+<style>
+  .leader-switch {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    height: 1em;
+    font-family: "EB Garamond", serif;
+    font-size: 1.05rem;
+    line-height: 1;
+    color: rgb(107 101 87 / 0.9);
+  }
+
+  .leader-switch > span {
+    position: absolute;
+    inset: 0;
+    white-space: nowrap;
+    transition: opacity 180ms ease;
+  }
+
+  .leader-arrows {
+    opacity: 0;
+  }
+
+  .leader-link:hover .leader-dots {
+    opacity: 0;
+  }
+
+  .leader-link:hover .leader-arrows {
+    opacity: 1;
+  }
+</style>

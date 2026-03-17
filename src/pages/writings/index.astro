@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAllWriting } from '../../lib/content';
+import { ChevronLeft } from 'lucide-astro';
+
+const writings = await getAllWriting();
+---
+
+<BaseLayout title="Writings | sokmontrey.me">
+  <main class="mx-auto max-w-3xl px-8 py-16 lg:px-12 lg:py-24">
+
+    <a
+      href="/"
+      class="mb-8 inline-flex items-center gap-1.5 text-sm text-[#c3b493] hover:text-[#f0e5cf] transition-colors"
+    >
+      <ChevronLeft class="h-4 w-4" />
+      <span>Back</span>
+    </a>
+
+    <h1 class="font-serif text-[2rem] leading-none text-[#EED9B4]">Writings</h1>
+
+    <ul class="mt-10 space-y-8">
+      {writings.map((item) => (
+        <li>
+          <a
+            href={`/writing/${item.slug}`}
+            class="group flex flex-col gap-3 transition-colors"
+          >
+            {item.data.image && (
+              <img src={item.data.image} alt={item.data.title} class="w-auto h-auto self-start opacity-70 group-hover:opacity-100 transition-opacity" />
+            )}
+            <span class="font-serif text-[1.2rem] leading-snug text-[#EED9B4] group-hover:text-[#F5E8C4] transition-colors">
+              {item.data.title}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    {writings.length === 0 && (
+      <p class="mt-10 text-sm text-[#555d6e]">Nothing here yet.</p>
+    )}
+
+  </main>
+</BaseLayout>

@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ExperienceCard from '@/components/cards/ExperienceCard.astro';
+
+const experiences: CollectionEntry<'experiences'>[] = [];
+---
+
+<section class="text-gray-200">
+    <h1 class="font-serif text-3xl">Experiences</h1>
+	{experiences.length > 0 ? (
+		<ul>
+			{experiences.map((experience) => (
+				<ExperienceCard experience={experience} />
+			))}
+		</ul>
+	) : (
+		<p>No experiences yet.</p>
+	)}
+</section>

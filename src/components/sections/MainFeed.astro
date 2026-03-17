@@ -1,0 +1,134 @@
+---
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+const experiences = await getCollection('experiences');
+const leaderDots = '. '.repeat(600).trim();
+const leaderArrows = '> '.repeat(600).trim();
+
+// Sort experiences by start date descending
+const sortedExperiences = experiences.filter((e) => !e.data.hidden).sort((a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf());
+
+// Sort projects by date descending
+const sortedProjects = projects.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<div class="space-y-14">
+  <!-- Projects Section -->
+  <section class="space-y-5">
+    <header class="flex items-end gap-3">
+      <h2 class="font-sans text-sm font-medium tracking-widest uppercase text-[#EED9B4]">Projects</h2>
+      <a href="/projects" class="leader-link font-mono text-xs text-[#A59F97] hover:text-[#d6c6a5] transition-colors flex-1 min-w-0 flex items-end gap-2 cursor-pointer">
+        <span aria-hidden="true" class="leader-switch">
+          <span class="leader-dots">{leaderDots}</span>
+          <span class="leader-arrows">{leaderArrows}</span>
+        </span>
+        <span class="shrink-0">see all projects</span>
+      </a>
+    </header>
+
+    <div class="space-y-7">
+      {sortedProjects.slice(0, 3).map((project) => (
+        <article class="flex gap-4 items-start group">
+          <!-- Thumbnail -->
+          <div class="w-14 h-14 flex-shrink-0 bg-[#161A20] rounded-sm overflow-hidden border border-[#1E242C] group-hover:border-[#2A3340] transition-colors">
+            {project.data.image ? (
+              <img src={project.data.image} alt={project.data.title} class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+            ) : (
+                <div class="w-full h-full flex items-center justify-center bg-[#161A20] text-[#2E3740] font-serif text-xl">
+                    {project.data.title.charAt(0)}
+                </div>
+            )}
+          </div>
+
+          <!-- Content -->
+          <div class="flex-1 space-y-1">
+            <div class="flex items-baseline justify-between flex-wrap gap-2">
+                <h3 class="font-serif text-[1.45rem] leading-none text-[#EED9B4] group-hover:text-[#F5E8C4] transition-colors">
+                <a href={`/projects/${project.slug}`}>{project.data.title}</a>
+                </h3>
+                <div class="font-mono text-xs text-[#EED9B4] uppercase tracking-wide opacity-70">
+                    {project.data.technologies.slice(0, 3).join(', ')}
+                </div>
+            </div>
+
+            <p class="font-sans text-[15px] text-[#A59F97] leading-snug text-justify">
+              {project.data.description}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Experiences Section -->
+  <section class="space-y-5">
+    <header class="flex items-end gap-3">
+      <h2 class="font-sans text-sm font-medium tracking-widest uppercase text-[#EED9B4]">Experiences</h2>
+      <a href="/experiences" class="leader-link font-mono text-xs text-[#A59F97] hover:text-[#d6c6a5] transition-colors flex-1 min-w-0 flex items-end gap-2 cursor-pointer">
+        <span aria-hidden="true" class="leader-switch">
+          <span class="leader-dots">{leaderDots}</span>
+          <span class="leader-arrows">{leaderArrows}</span>
+        </span>
+        <span class="shrink-0">see all experiences</span>
+      </a>
+    </header>
+
+    <div class="space-y-4">
+      {sortedExperiences.slice(0, 3).map((exp) => (
+        <div class="grid grid-cols-[42px_1fr] gap-2 group">
+          <!-- Year -->
+          <div class="font-mono text-[#A59F97] text-xs pt-1">
+            {exp.data.startDate.getFullYear()}
+          </div>
+
+          <!-- Details -->
+          <div class="space-y-1">
+            <h3 class="font-serif text-[1.55rem] leading-none text-[#EED9B4] group-hover:text-[#F5E8C4] transition-colors">
+              <a href={`/experiences/${exp.slug}`}>{exp.data.title}</a>
+            </h3>
+            <div class="font-mono text-xs tracking-wide text-[#baa67f] uppercase">
+              {exp.data.company}
+            </div>
+            <p class="font-sans text-[15px] text-[#A59F97] mt-1 leading-snug text-justify">
+               {exp.data.description.split('\n')[0]}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</div>
+
+<style>
+  .leader-switch {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    height: 1em;
+    font-family: "EB Garamond", serif;
+    font-size: 1.05rem;
+    line-height: 1;
+    color: rgb(107 101 87 / 0.9);
+  }
+
+  .leader-switch > span {
+    position: absolute;
+    inset: 0;
+    white-space: nowrap;
+    transition: opacity 180ms ease;
+  }
+
+  .leader-arrows {
+    opacity: 0;
+  }
+
+  .leader-link:hover .leader-dots {
+    opacity: 0;
+  }
+
+  .leader-link:hover .leader-arrows {
+    opacity: 1;
+  }
+</style>

@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	writing: CollectionEntry<'writing'>;
+}
+
+const { writing } = Astro.props;
+---
+
+<li>
+	<h3>{writing.data.title}</h3>
+	<p>
+		<strong>Category:</strong> {writing.data.category}
+	</p>
+	<p>{writing.data.description}</p>
+	
+	{writing.data.image && (
+		<img src={writing.data.image} alt={writing.data.title} />
+	)}
+	
+	{writing.data.tags && writing.data.tags.length > 0 && (
+		<div>
+			<strong>Tags:</strong>
+			<ul>
+				{writing.data.tags.map((tag) => (
+					<li>{tag}</li>
+				))}
+			</ul>
+		</div>
+	)}
+	
+	{writing.data.link && (
+		<a href={writing.data.link} target="_blank" rel="noopener noreferrer">
+			Read more
+		</a>
+	)}
+</li>

@@ -1,40 +1,52 @@
 import { defineCollection, z } from 'astro:content';
 
-const common_schema =
-	z.object({
-	title: z.string(),
-	type: z.array(z.string()),
-	tags: z.array(z.string()),
-	description: z.string(),
-	url: z.string().optional(),
-	image: z.array(z.string()).optional(),
-	date: z.date(),
-})
-
-const projects = defineCollection({ 
+const projectsCollection = defineCollection({
 	type: 'content',
 	schema: z.object({
 		title: z.string(),
-		tags: z.array(z.string()),
 		description: z.string(),
-		links: z.array(z.object({
-			name: z.string(),
-			url: z.string(),
-		})),
-		thumbnail: z.string().optional(),
-	})
+		longDescription: z.string().optional(),
+		technologies: z.array(z.string()),
+		image: z.string().optional(),
+		githubUrl: z.string().url().optional().or(z.literal('')),
+		liveUrl: z.string().url().optional().or(z.literal('')),
+		date: z.date(),
+		featured: z.boolean(),
+		tags: z.array(z.string()),
+	}),
 });
 
-const experiences = defineCollection({ 
+const experiencesCollection = defineCollection({
 	type: 'content',
-	schema: common_schema,
+	schema: z.object({
+		title: z.string(),
+		company: z.string(),
+		startDate: z.date(),
+		endDate: z.date().optional().nullable(),
+		type: z.enum(['work', 'education', 'volunteer', 'internship']),
+		description: z.string(),
+		technologies: z.array(z.string()).optional(),
+		achievements: z.array(z.string()).optional(),
+		hidden: z.boolean().optional(),
+	}),
 });
 
-const extra_curriculars = defineCollection({ 
+const writingCollection = defineCollection({
 	type: 'content',
-	schema: common_schema,
+	schema: z.object({
+		title: z.string(),
+		category: z.string(),
+		description: z.string(),
+		image: z.string().optional(),
+		link: z.string().url().optional().or(z.literal('')),
+		tags: z.array(z.string()).optional(),
+		hidden: z.boolean().optional(),
+	}),
 });
 
 export const collections = {
-	projects, experiences, extra_curriculars
+	projects: projectsCollection,
+	experiences: experiencesCollection,
+	writing: writingCollection,
 };
+

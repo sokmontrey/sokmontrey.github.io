@@ -1,0 +1,33 @@
+---
+import * as simpleIcons from "simple-icons";
+
+interface Props {
+	name: string;
+	size?: number;
+	class?: string;
+}
+
+const { name, size = 16, class: className = "" } = Astro.props;
+
+// Expecting name to be the icon key (e.g., "siReact")
+const icon = (simpleIcons as any)[name];
+---
+
+{
+	icon ? (
+		<svg
+			role="img"
+			viewBox="0 0 24 24"
+			width={size}
+			height={size}
+			class={className}
+			fill={`#${icon.hex}`}
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<title>{icon.title}</title>
+			<path d={icon.path} />
+		</svg>
+	) : (
+		<span class={className}>{name}</span>
+	)
+}

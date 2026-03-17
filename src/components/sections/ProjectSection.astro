@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ProjectCard from "@/components/cards/ProjectCard.astro";
+
+const projects: CollectionEntry<"projects">[] = [];
+---
+
+<section class="text-gray-200">
+    <h1 class="font-serif text-3xl">Projects</h1>
+	{
+		projects.length > 0 ? (
+			<ul>
+				{projects.map((project) => (
+					<ProjectCard project={project} />
+				))}
+			</ul>
+		) : (
+			<p>No projects yet.</p>
+		)
+	}
+</section>

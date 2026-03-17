@@ -1,0 +1,79 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ChevronLeft } from 'lucide-astro';
+
+export async function getStaticPaths() {
+  const experiences = await getCollection('experiences');
+  return experiences.map((exp) => ({
+    params: { slug: exp.slug },
+    props: { exp },
+  }));
+}
+
+const { exp } = Astro.props;
+const { data } = exp;
+const { Content } = await render(exp);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+}
+
+const dateRange = `${formatDate(data.startDate)} — ${data.endDate ? formatDate(data.endDate) : 'Present'}`;
+---
+
+<BaseLayout title={`${data.title} | sokmontrey.me`}>
+  <a href="/" class="fixed top-5 left-6 font-sans text-base text-[#A59F97] hover:text-[#EED9B4] transition-colors opacity-50 hover:opacity-100">Sokmontrey</a>
+  <main class="mx-auto max-w-3xl px-8 py-16 lg:px-12 lg:py-24">
+
+    <a
+      href="/"
+      class="mb-8 inline-flex items-center gap-1.5 text-sm text-[#c3b493] hover:text-[#f0e5cf] transition-colors -translate-x-[1.375rem]"
+    >
+      <ChevronLeft class="h-4 w-4" />
+      <span>Back</span>
+    </a>
+
+    <header class="space-y-2">
+      <p class="font-mono text-xs text-[#A59F97] uppercase tracking-wide">{dateRange}</p>
+      <h1 class="font-serif text-[2.2rem] leading-none text-[#EED9B4]">{data.title}</h1>
+      <p class="font-mono text-xs text-[#baa67f] uppercase tracking-wide">{data.company}</p>
+    </header>
+
+    {data.achievements && data.achievements.length > 0 && (
+      <ul class="mt-8 space-y-2">
+        {data.achievements.map((item) => (
+          <li class="flex gap-3 text-sm text-[#A59F97] text-justify">
+            <span class="font-mono text-[#3f4f68] mt-0.5 select-none">—</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    )}
+
+    {data.technologies && data.technologies.length > 0 && (
+      <p class="mt-6 font-mono text-xs text-[#A59F97] uppercase tracking-wide">
+        {data.technologies.join(' · ')}
+      </p>
+    )}
+
+    <hr class="mt-10 border-[#1e2d42]" />
+
+    <div class="mt-10 prose-content text-[15px] text-[#A59F97] leading-relaxed space-y-4">
+      <Content />
+    </div>
+
+  </main>
+</BaseLayout>
+
+<style is:global>
+  .prose-content p { margin-bottom: 1rem; text-align: justify; }
+  .prose-content strong { color: #EED9B4; font-weight: 600; }
+  .prose-content ul { list-style: disc; padding-left: 1.25rem; }
+  .prose-content li { margin-bottom: 0.25rem; }
+  .prose-content a { color: #c3b493; text-decoration: underline; text-underline-offset: 3px; }
+  .prose-content a:hover { color: #f0e5cf; }
+  .prose-content h2 { font-family: "EB Garamond", serif; font-size: 1.35rem; color: #EED9B4; margin-top: 2rem; margin-bottom: 0.75rem; }
+  .prose-content h3 { font-family: "EB Garamond", serif; font-size: 1.15rem; color: #EED9B4; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+  .prose-content code { font-family: "JetBrains Mono", monospace; font-size: 0.8em; color: #baa67f; background: #0f1b2b; padding: 0.1em 0.35em; border-radius: 2px; }
+</style>

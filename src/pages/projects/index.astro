@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAllProjects } from '../../lib/content';
+import { ChevronLeft } from 'lucide-astro';
+
+const projects = await getAllProjects();
+---
+
+<BaseLayout title="Projects | sokmontrey.me">
+  <main class="mx-auto max-w-3xl px-8 py-16 lg:px-12 lg:py-24">
+
+    <a
+      href="/"
+      class="mb-8 inline-flex items-center gap-1.5 text-sm text-[#c3b493] hover:text-[#f0e5cf] transition-colors"
+    >
+      <ChevronLeft class="h-4 w-4" />
+      <span>Back</span>
+    </a>
+
+    <h1 class="font-serif text-[2rem] leading-none text-[#EED9B4]">Projects</h1>
+
+    <ul class="mt-10 space-y-0 divide-y divide-[#1a2535]">
+      {projects.map((project) => (
+        <li>
+          <a
+            href={`/projects/${project.slug}`}
+            class="group flex items-center gap-6 py-4 transition-colors"
+          >
+            {project.data.image && (
+              <img src={project.data.image} alt={project.data.title} class="h-auto shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
+            )}
+            <span class="font-mono text-xs text-[#A59F97] w-10 shrink-0">
+              {project.data.date.getFullYear()}
+            </span>
+            <span class="flex-1 font-serif text-[1.2rem] leading-snug text-[#EED9B4] group-hover:text-[#F5E8C4] transition-colors">
+              {project.data.title}
+            </span>
+            <span class="hidden sm:block font-mono text-xs text-[#555d6e] group-hover:text-[#7e8696] transition-colors text-right shrink-0 max-w-[200px]">
+              {project.data.technologies.slice(0, 3).join(', ')}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+  </main>
+</BaseLayout>

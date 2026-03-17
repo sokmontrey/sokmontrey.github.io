@@ -1,0 +1,46 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	experience: CollectionEntry<'experiences'>;
+}
+
+const { experience } = Astro.props;
+---
+
+<li>
+	<h3>{experience.data.title} at {experience.data.company}</h3>
+	<p>
+		<strong>Type:</strong> {experience.data.type}
+	</p>
+	<p>
+		<strong>Duration:</strong> {experience.data.startDate.toLocaleDateString()} -{' '}
+		{experience.data.endDate
+			? experience.data.endDate.toLocaleDateString()
+			: 'Present'}
+	</p>
+	<p>{experience.data.description}</p>
+	
+	{experience.data.technologies && experience.data.technologies.length > 0 && (
+		<div>
+			<strong>Technologies:</strong>
+			<ul>
+				{experience.data.technologies.map((tech) => (
+					<li>{tech}</li>
+				))}
+			</ul>
+		</div>
+	)}
+	
+	{experience.data.achievements && experience.data.achievements.length > 0 && (
+		<div>
+			<strong>Achievements:</strong>
+			<ul>
+				{experience.data.achievements.map((achievement) => (
+					<li>{achievement}</li>
+				))}
+			</ul>
+		</div>
+	)}
+</li>
+

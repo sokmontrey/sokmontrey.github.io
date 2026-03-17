@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { ChevronLeft } from "lucide-astro";
+---
+
+<BaseLayout title="About | sokmontrey.me">
+  <main class="mx-auto max-w-3xl px-8 py-16 lg:px-12 lg:py-24">
+    <a
+      href="/"
+      class="mb-6 inline-flex items-center gap-1.5 text-sm text-[#c3b493] hover:text-[#f0e5cf] transition-colors"
+      aria-label="Back to home"
+    >
+      <ChevronLeft class="h-4 w-4" />
+      <span>Back</span>
+    </a>
+
+    <h1 class="font-serif text-[2rem] leading-none text-[#EED9B4]">
+      Hi, I&apos;m Sokmontrey
+    </h1>
+
+    <div
+      class="mt-6 space-y-6 text-sm text-[#A59F97] leading-relaxed border-separate border-spacing-y-1"
+    >
+      <p>
+        From <span class="text-[#EED9B4]">software</span> to <span
+          class="text-[#EED9B4]">robots</span
+        >, to <span class="text-[#EED9B4]">data and AI</span>, to <span
+          class="text-[#EED9B4]">community and art</span
+        >, I <span class="text-[#EED9B4]">make things</span> and <span
+          class="text-[#EED9B4]">tell the story</span
+        > along the way.
+      </p>
+
+      <p>
+        Currently, I run the GBP Computer Science Club with the goal of building
+        an environment where <span class="text-[#EED9B4]">idea and initiative</span>
+        form without border.
+      </p>
+
+      <p>
+        One of its most ambitious projects to date is <span
+          class="text-[#EED9B4]">HuskyHack</span
+        >, a hackathon
+        bringing together 150+ talented individuals to work on projects in under 24h,
+        forming teams that continue to make <span class="text-[#EED9B4]"
+          >impacts</span
+        > beyond the competition.
+      </p>
+    </div>
+  </main>
+</BaseLayout>
