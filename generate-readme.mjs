@@ -7,6 +7,7 @@ const CONTENT_ROOT = path.join(ROOT, 'src', 'content');
 const LINKS_PATH = path.join(ROOT, 'src', 'data', 'links.json');
 const BIO_PATH = path.join(ROOT, 'src', 'data', 'bio.json');
 const SKILLS_TS_PATH = path.join(ROOT, 'src', 'data', 'skills.ts');
+const SITE_URL = 'https://sokmontrey.github.io';
 
 function toDisplayName(value) {
   if (!value) return 'Developer';
@@ -196,7 +197,7 @@ function formatProjects(projects) {
       if (project.data.liveUrl) links.push(`[Live](${project.data.liveUrl})`);
       const linksText = links.length > 0 ? ` | ${links.join(' | ')}` : '';
       const tech = (project.data.technologies ?? []).join(', ');
-      return `- **${project.data.title}** (${formatDate(project.data.date)})  \n  ${project.data.description}  \n  Tech: ${tech}${linksText}`;
+      return `- **[${project.data.title}](${SITE_URL}/projects/${project.slug})** (${formatDate(project.data.date)})  \n  ${project.data.description}  \n  Tech: ${tech}${linksText}`;
     })
     .join('\n');
 }
@@ -215,7 +216,7 @@ function formatExperiences(experiences) {
       const range = `${start} - ${end}`;
       const tech = (experience.data.technologies ?? []).join(', ');
       const techLine = tech ? `  \n  Tech: ${tech}` : '';
-      return `- **${experience.data.title}** at **${experience.data.company}** (${range})  \n  ${experience.data.description.replace(/\n+/g, ' ')}${techLine}`;
+      return `- **[${experience.data.title}](${SITE_URL}/experiences/${experience.slug})** at **${experience.data.company}** (${range})  \n  ${experience.data.description.replace(/\n+/g, ' ')}${techLine}`;
     })
     .join('\n');
 }
@@ -225,7 +226,7 @@ function formatWriting(writings) {
   return writings
     .map((writing) => {
       const link = writing.data.link ? ` ([Read more](${writing.data.link}))` : '';
-      return `- **${writing.data.title}** (${writing.data.category}) - ${writing.data.description.replace(/\n+/g, ' ')}${link}`;
+      return `- **[${writing.data.title}](${SITE_URL}/writing/${writing.slug})** (${writing.data.category}) - ${writing.data.description.replace(/\n+/g, ' ')}${link}`;
     })
     .join('\n');
 }
