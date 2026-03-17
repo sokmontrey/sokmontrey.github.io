@@ -22,9 +22,9 @@ export async function getAllProjects(options?: {
 
 export async function getAllExperiences() {
 	const experiences = await getCollection('experiences');
-	
+
 	// Sort by start date, most recent first
-	return experiences.sort((a, b) => {
+	return experiences.filter((e) => !e.data.hidden).sort((a, b) => {
 		const aEnd = a.data.endDate?.getTime() ?? Date.now();
 		const bEnd = b.data.endDate?.getTime() ?? Date.now();
 		return bEnd - aEnd;

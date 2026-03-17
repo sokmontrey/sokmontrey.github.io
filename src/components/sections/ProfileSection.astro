@@ -8,20 +8,18 @@ const iconClass = "w-5 h-5";
 
 <div class="flex flex-col gap-10">
   <div class="space-y-5">
-    <h1 class="font-serif text-[2rem] leading-none text-[#efe4ce]">
+    <h1 class="font-serif text-[2rem] leading-none text-[#EED9B4]">
       Hi, I&apos;m Sokmontrey
     </h1>
 
     {/* Bio */}
-    <div
-      class="text-sm text-[#9fa1aa] leading-relaxed border-separate border-spacing-y-1"
-    >
+    <div class="text-sm text-[#A59F97] leading-relaxed space-y-3">
       <p>
         From software to robots, to data and AI, to community and art, I <span
-          class="text-[#e8ddc8]">make things</span
+          class="text-[#EED9B4]">make things</span
         > and tell its story along the way.
       </p>
-      <br />
+      <ChevronNavLink href="/about" label="more about me" class="text-xs" />
     </div>
 
     {/* Links */}
@@ -32,7 +30,7 @@ const iconClass = "w-5 h-5";
           .map((link) => (
             <a
               href={link.url || "#"}
-              class="text-[#9fa1aa] hover:text-[#f0e5cf] transition-colors"
+              class="text-[#A59F97] hover:text-[#f0e5cf] transition-colors"
               aria-label={link.name}
             >
               {link.name === "GitHub" && <Github class={iconClass} />}
@@ -42,14 +40,6 @@ const iconClass = "w-5 h-5";
             </a>
           ))
       }
-    </div>
-
-    {/* Nav */}
-    <div class="flex flex-col font-mono gap-5 pt-7">
-      <ChevronNavLink href="/about" label="About" />
-      <ChevronNavLink href="/projects" label="Projects" />
-      <ChevronNavLink href="/writings" label="Writings" />
-      <ChevronNavLink href="/experiences" label="Experiences" />
     </div>
   </div>
 </div>

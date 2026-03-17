@@ -27,6 +27,7 @@ const experiencesCollection = defineCollection({
 		description: z.string(),
 		technologies: z.array(z.string()).optional(),
 		achievements: z.array(z.string()).optional(),
+		hidden: z.boolean().optional(),
 	}),
 });
 

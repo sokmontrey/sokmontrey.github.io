@@ -7,7 +7,7 @@ const leaderDots = '. '.repeat(600).trim();
 const leaderArrows = '> '.repeat(600).trim();
 
 // Sort experiences by start date descending
-const sortedExperiences = experiences.sort((a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf());
+const sortedExperiences = experiences.filter((e) => !e.data.hidden).sort((a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf());
 
 // Sort projects by date descending
 const sortedProjects = projects.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -16,18 +16,14 @@ const sortedProjects = projects.sort((a, b) => b.data.date.valueOf() - a.data.da
 <div class="space-y-14">
   <!-- Projects Section -->
   <section class="space-y-5">
-    <header class="group flex items-end gap-3">
-      <h2 class="font-serif text-[1.35rem] leading-none text-[#efe4ce]">Projects</h2>
-      <span aria-hidden="true" class="leader-switch">
-        <span class="leader-dots">
-          {leaderDots}
+    <header class="flex items-end gap-3">
+      <h2 class="font-sans text-sm font-medium tracking-widest uppercase text-[#EED9B4]">Projects</h2>
+      <a href="/projects" class="leader-link font-mono text-xs text-[#A59F97] hover:text-[#d6c6a5] transition-colors flex-1 min-w-0 flex items-end gap-2 cursor-pointer">
+        <span aria-hidden="true" class="leader-switch">
+          <span class="leader-dots">{leaderDots}</span>
+          <span class="leader-arrows">{leaderArrows}</span>
         </span>
-        <span class="leader-arrows">
-          {leaderArrows}
-        </span>
-      </span>
-      <a href="/projects" class="font-mono text-xs text-[#8f8f95] hover:text-[#d6c6a5] transition-colors">
-        see all projects
+        <span class="shrink-0">see all projects</span>
       </a>
     </header>
 
@@ -35,11 +31,11 @@ const sortedProjects = projects.sort((a, b) => b.data.date.valueOf() - a.data.da
       {sortedProjects.slice(0, 3).map((project) => (
         <article class="flex gap-4 items-start group">
           <!-- Thumbnail -->
-          <div class="w-14 h-14 flex-shrink-0 bg-[#0f1b2b] rounded-sm overflow-hidden border border-[#243149] group-hover:border-[#3f4f68] transition-colors">
+          <div class="w-14 h-14 flex-shrink-0 bg-[#161A20] rounded-sm overflow-hidden border border-[#1E242C] group-hover:border-[#2A3340] transition-colors">
             {project.data.image ? (
               <img src={project.data.image} alt={project.data.title} class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
             ) : (
-                <div class="w-full h-full flex items-center justify-center bg-[#101a29] text-[#42516a] font-serif text-xl">
+                <div class="w-full h-full flex items-center justify-center bg-[#161A20] text-[#2E3740] font-serif text-xl">
                     {project.data.title.charAt(0)}
                 </div>
             )}
@@ -48,15 +44,15 @@ const sortedProjects = projects.sort((a, b) => b.data.date.valueOf() - a.data.da
           <!-- Content -->
           <div class="flex-1 space-y-1">
             <div class="flex items-baseline justify-between flex-wrap gap-2">
-                <h3 class="font-serif text-[1.45rem] leading-none text-[#e5d8be] group-hover:text-[#f1e7cf] transition-colors">
-                <a href={project.data.githubUrl || project.data.liveUrl || '#'}>{project.data.title}</a>
+                <h3 class="font-serif text-[1.45rem] leading-none text-[#EED9B4] group-hover:text-[#F5E8C4] transition-colors">
+                <a href={`/projects/${project.slug}`}>{project.data.title}</a>
                 </h3>
-                <div class="font-mono text-xs text-[#7e7f86] uppercase tracking-wide">
+                <div class="font-mono text-xs text-[#EED9B4] uppercase tracking-wide opacity-70">
                     {project.data.technologies.slice(0, 3).join(', ')}
                 </div>
             </div>
-            
-            <p class="font-sans text-[15px] text-[#898d98] leading-snug max-w-[92%]">
+
+            <p class="font-sans text-[15px] text-[#A59F97] leading-snug text-justify">
               {project.data.description}
             </p>
           </div>
@@ -67,18 +63,14 @@ const sortedProjects = projects.sort((a, b) => b.data.date.valueOf() - a.data.da
 
   <!-- Experiences Section -->
   <section class="space-y-5">
-    <header class="group flex items-end gap-3">
-      <h2 class="font-serif text-[1.35rem] leading-none text-[#efe4ce]">Experiences</h2>
-      <span aria-hidden="true" class="leader-switch">
-        <span class="leader-dots">
-          {leaderDots}
+    <header class="flex items-end gap-3">
+      <h2 class="font-sans text-sm font-medium tracking-widest uppercase text-[#EED9B4]">Experiences</h2>
+      <a href="/experiences" class="leader-link font-mono text-xs text-[#A59F97] hover:text-[#d6c6a5] transition-colors flex-1 min-w-0 flex items-end gap-2 cursor-pointer">
+        <span aria-hidden="true" class="leader-switch">
+          <span class="leader-dots">{leaderDots}</span>
+          <span class="leader-arrows">{leaderArrows}</span>
         </span>
-        <span class="leader-arrows">
-          {leaderArrows}
-        </span>
-      </span>
-      <a href="/about" class="font-mono text-xs text-[#8f8f95] hover:text-[#d6c6a5] transition-colors">
-        see all experiences
+        <span class="shrink-0">see all experiences</span>
       </a>
     </header>
 
@@ -86,19 +78,19 @@ const sortedProjects = projects.sort((a, b) => b.data.date.valueOf() - a.data.da
       {sortedExperiences.slice(0, 3).map((exp) => (
         <div class="grid grid-cols-[42px_1fr] gap-2 group">
           <!-- Year -->
-          <div class="font-mono text-[#6d7584] text-xs pt-1">
+          <div class="font-mono text-[#A59F97] text-xs pt-1">
             {exp.data.startDate.getFullYear()}
           </div>
 
           <!-- Details -->
           <div class="space-y-1">
-            <h3 class="font-serif text-[1.55rem] leading-none text-[#e8dbc1] group-hover:text-[#f1e8d4] transition-colors">
-              {exp.data.title}
+            <h3 class="font-serif text-[1.55rem] leading-none text-[#EED9B4] group-hover:text-[#F5E8C4] transition-colors">
+              <a href={`/experiences/${exp.slug}`}>{exp.data.title}</a>
             </h3>
             <div class="font-mono text-xs tracking-wide text-[#baa67f] uppercase">
               {exp.data.company}
             </div>
-            <p class="font-sans text-[15px] text-[#898d98] mt-1 leading-snug max-w-[90%]">
+            <p class="font-sans text-[15px] text-[#A59F97] mt-1 leading-snug text-justify">
                {exp.data.description.split('\n')[0]}
             </p>
           </div>
@@ -132,11 +124,11 @@ const sortedProjects = projects.sort((a, b) => b.data.date.valueOf() - a.data.da
     opacity: 0;
   }
 
-  .group:hover .leader-dots {
+  .leader-link:hover .leader-dots {
     opacity: 0;
   }
 
-  .group:hover .leader-arrows {
+  .leader-link:hover .leader-arrows {
     opacity: 1;
   }
 </style>

@@ -7,18 +7,14 @@ const leaderArrows = '> '.repeat(600).trim();
 ---
 
 <div class="space-y-7">
-    <header class="group flex items-end gap-3">
-        <h2 class="font-serif text-[1.35rem] leading-none text-[#efe4ce]">Writings</h2>
-        <span aria-hidden="true" class="leader-switch">
-            <span class="leader-dots">
-                {leaderDots}
+    <header class="flex items-end gap-3">
+        <h2 class="font-sans text-sm font-medium tracking-widest uppercase text-[#EED9B4]">Writings</h2>
+        <a href="/writings" class="leader-link font-mono text-xs text-[#A59F97] hover:text-[#d6c6a5] transition-colors flex-1 min-w-0 flex items-end gap-2 cursor-pointer">
+            <span aria-hidden="true" class="leader-switch">
+                <span class="leader-dots">{leaderDots}</span>
+                <span class="leader-arrows">{leaderArrows}</span>
             </span>
-            <span class="leader-arrows">
-                {leaderArrows}
-            </span>
-        </span>
-        <a href="/writing" class="font-mono text-xs text-[#8f8f95] hover:text-[#d6c6a5] transition-colors">
-            read more
+            <span class="shrink-0">read more</span>
         </a>
     </header>
 
@@ -35,19 +31,19 @@ const leaderArrows = '> '.repeat(600).trim();
                 </div>
             )}
              {!item.data.image && (
-                <div class="h-28 w-full max-w-[320px] bg-[#0f1b2b] border border-[#243149] flex items-center justify-center">
+                <div class="h-28 w-full max-w-[320px] bg-[#161A20] border border-[#1E242C] flex items-center justify-center">
                     <span class="font-serif text-3xl text-[#3f4f68] italic">?</span>
                 </div>
             )}
             
             <div class="space-y-2">
-                <h3 class="font-serif text-[1.45rem] leading-tight text-[#e5d8be] group-hover:text-[#f1e7cf] transition-colors">
-                    <a href={item.data.link || '#'}>{item.data.title}</a>
+                <h3 class="font-serif text-[1.45rem] leading-tight text-[#EED9B4] group-hover:text-[#F5E8C4] transition-colors">
+                    <a href={`/writing/${item.slug}`}>{item.data.title}</a>
                 </h3>
-                <div class="font-sans text-xs uppercase tracking-wide text-[#8f8f95]">
+                <div class="font-sans text-xs uppercase tracking-wide text-[#A59F97]">
                     {item.data.category}
                 </div>
-                <p class="font-sans text-[15px] text-[#898d98] leading-snug">
+                <p class="font-sans text-[15px] text-[#A59F97] leading-snug text-justify">
                     {item.data.description}
                 </p>
             </div>
@@ -80,11 +76,11 @@ const leaderArrows = '> '.repeat(600).trim();
     opacity: 0;
   }
 
-  .group:hover .leader-dots {
+  .leader-link:hover .leader-dots {
     opacity: 0;
   }
 
-  .group:hover .leader-arrows {
+  .leader-link:hover .leader-arrows {
     opacity: 1;
   }
 </style>

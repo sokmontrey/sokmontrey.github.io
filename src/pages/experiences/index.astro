@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAllExperiences } from '../../lib/content';
+import { ChevronLeft } from 'lucide-astro';
+
+const experiences = await getAllExperiences();
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+}
+---
+
+<BaseLayout title="Experiences | sokmontrey.me">
+  <main class="mx-auto max-w-3xl px-8 py-16 lg:px-12 lg:py-24">
+
+    <a
+      href="/"
+      class="mb-8 inline-flex items-center gap-1.5 text-sm text-[#c3b493] hover:text-[#f0e5cf] transition-colors"
+    >
+      <ChevronLeft class="h-4 w-4" />
+      <span>Back</span>
+    </a>
+
+    <h1 class="font-serif text-[2rem] leading-none text-[#EED9B4]">Experiences</h1>
+
+    <ul class="mt-10 space-y-0 divide-y divide-[#1a2535]">
+      {experiences.map((exp) => (
+        <li>
+          <a
+            href={`/experiences/${exp.slug}`}
+            class="group flex items-baseline gap-6 py-4 transition-colors"
+          >
+            <span class="font-mono text-xs text-[#A59F97] w-28 shrink-0">
+              {formatDate(exp.data.startDate)} — {exp.data.endDate ? formatDate(exp.data.endDate) : 'Present'}
+            </span>
+            <span class="flex-1 font-serif text-[1.2rem] leading-snug text-[#EED9B4] group-hover:text-[#F5E8C4] transition-colors">
+              {exp.data.title}
+            </span>
+            <span class="hidden sm:block font-mono text-xs text-[#baa67f] shrink-0 text-right">
+              {exp.data.company}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+  </main>
+</BaseLayout>

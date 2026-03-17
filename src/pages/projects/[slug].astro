@@ -1,0 +1,89 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ChevronLeft, Github, ExternalLink } from 'lucide-astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { data } = project;
+const { Content } = await render(project);
+
+const year = data.date.getFullYear();
+---
+
+<BaseLayout title={`${data.title} | sokmontrey.me`}>
+  <a href="/" class="fixed top-5 left-6 font-sans text-base text-[#A59F97] hover:text-[#EED9B4] transition-colors opacity-50 hover:opacity-100">Sokmontrey</a>
+  <main class="mx-auto max-w-3xl px-8 py-16 lg:px-12 lg:py-24">
+
+    <a
+      href="/"
+      class="mb-8 inline-flex items-center gap-1.5 text-sm text-[#c3b493] hover:text-[#f0e5cf] transition-colors -translate-x-[1.375rem]"
+    >
+      <ChevronLeft class="h-4 w-4" />
+      <span>Back</span>
+    </a>
+
+    <header class="space-y-3">
+      <p class="font-mono text-xs text-[#A59F97] uppercase tracking-wide">{year}</p>
+      <h1 class="font-serif text-[2.2rem] leading-none text-[#EED9B4]">{data.title}</h1>
+      <p class="font-mono text-xs text-[#A59F97] uppercase tracking-wide">
+        {data.technologies.join(', ')}
+      </p>
+    </header>
+
+    <div class="mt-6 flex gap-4">
+      {data.githubUrl && (
+        <a
+          href={data.githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 text-sm text-[#c3b493] hover:text-[#f0e5cf] transition-colors"
+        >
+          <Github class="h-4 w-4" />
+          <span>GitHub</span>
+        </a>
+      )}
+      {data.liveUrl && (
+        <a
+          href={data.liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 text-sm text-[#c3b493] hover:text-[#f0e5cf] transition-colors"
+        >
+          <ExternalLink class="h-4 w-4" />
+          <span>Live</span>
+        </a>
+      )}
+    </div>
+
+    <p class="mt-8 text-base text-[#A59F97] leading-relaxed text-justify">
+      {data.description}
+    </p>
+
+    <hr class="mt-10 border-[#1e2d42]" />
+
+    <div class="mt-10 prose-content text-[15px] text-[#A59F97] leading-relaxed space-y-4">
+      <Content />
+    </div>
+
+  </main>
+</BaseLayout>
+
+<style is:global>
+  .prose-content p { margin-bottom: 1rem; text-align: justify; }
+  .prose-content strong { color: #EED9B4; font-weight: 600; }
+  .prose-content ul { list-style: disc; padding-left: 1.25rem; space-y: 0.25rem; }
+  .prose-content li { margin-bottom: 0.25rem; }
+  .prose-content a { color: #c3b493; text-decoration: underline; text-underline-offset: 3px; }
+  .prose-content a:hover { color: #f0e5cf; }
+  .prose-content h2 { font-family: "EB Garamond", serif; font-size: 1.35rem; color: #EED9B4; margin-top: 2rem; margin-bottom: 0.75rem; }
+  .prose-content h3 { font-family: "EB Garamond", serif; font-size: 1.15rem; color: #EED9B4; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+  .prose-content code { font-family: "JetBrains Mono", monospace; font-size: 0.8em; color: #baa67f; background: #0f1b2b; padding: 0.1em 0.35em; border-radius: 2px; }
+</style>
