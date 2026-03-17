@@ -11,7 +11,7 @@ From software to robots, to data and AI, to community and art, I make things and
 ## Featured Projects
 
 - `2026` [GlossPlusOne](https://sokmontrey.github.io/projects/glossplusone) · TypeScript, React, Manifest V3
-- `2025` [Visionr](https://sokmontrey.github.io/projects/visionr) · Python, OpenCV, WebSockets
+- `2026` [Visionr](https://sokmontrey.github.io/projects/visionr) · Python, OpenCV, WebSockets
 - `2025` [Navi](https://sokmontrey.github.io/projects/navi) · Go, SQLite, TUI
 - `2024` [TicTacToeTuiOnline](https://sokmontrey.github.io/projects/tictactoe-tui-online) · Go, WebSockets, TUI
 - [see all projects](https://sokmontrey.github.io/projects)
@@ -25,7 +25,7 @@ From software to robots, to data and AI, to community and art, I make things and
 
 ## Writing
 
-- [Photography](https://sokmontrey.github.io/writing/example-writing) · Hobby
+- [How to build a culture of Do-ers?](https://sokmontrey.github.io/writing/how-to-build-a-culture-of-doers) · Essay
 - [see all writing](https://sokmontrey.github.io/writings)
 
 ## Connect
