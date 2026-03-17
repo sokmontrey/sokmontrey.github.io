@@ -189,19 +189,20 @@ function formatSkills(skillGroups) {
 
 function formatProjects(projects) {
   if (projects.length === 0) return '_No projects yet._';
-  return projects
+  const lines = projects
     .sort((a, b) => new Date(b.data.date) - new Date(a.data.date))
     .map((project) => {
       const year = new Date(project.data.date).getFullYear();
       const tech = (project.data.technologies ?? []).slice(0, 3).join(', ');
-      return `- \`${year}\` [${project.data.title}](${SITE_URL}/projects/${project.slug}) — ${tech}`;
-    })
-    .join('\n');
+      return `- \`${year}\` [${project.data.title}](${SITE_URL}/projects/${project.slug}) · ${tech}`;
+    });
+  lines.push(`- [see all projects](${SITE_URL}/projects)`);
+  return lines.join('\n');
 }
 
 function formatExperiences(experiences) {
   if (experiences.length === 0) return '_No experiences yet._';
-  return experiences
+  const lines = experiences
     .sort((a, b) => {
       const aEnd = a.data.endDate ? new Date(a.data.endDate).getTime() : Date.now();
       const bEnd = b.data.endDate ? new Date(b.data.endDate).getTime() : Date.now();
@@ -210,17 +211,19 @@ function formatExperiences(experiences) {
     .map((experience) => {
       const start = new Date(experience.data.startDate).getFullYear();
       const end = experience.data.endDate ? new Date(experience.data.endDate).getFullYear() : 'Present';
-      const range = start === end ? `${start}` : `${start} – ${end}`;
+      const range = start === end ? `${start}` : `${start} - ${end}`;
       return `- \`${range}\` [${experience.data.title}](${SITE_URL}/experiences/${experience.slug}) at **${experience.data.company}**`;
-    })
-    .join('\n');
+    });
+  lines.push(`- [see all experiences](${SITE_URL}/experiences)`);
+  return lines.join('\n');
 }
 
 function formatWriting(writings) {
   if (writings.length === 0) return '_No writing yet._';
-  return writings
-    .map((writing) => `- [${writing.data.title}](${SITE_URL}/writing/${writing.slug}) — ${writing.data.category}`)
-    .join('\n');
+  const lines = writings
+    .map((writing) => `- [${writing.data.title}](${SITE_URL}/writing/${writing.slug}) · ${writing.data.category}`);
+  lines.push(`- [see all writing](${SITE_URL}/writings)`);
+  return lines.join('\n');
 }
 
 function formatLinks(links) {
