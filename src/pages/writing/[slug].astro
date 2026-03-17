@@ -28,6 +28,10 @@ const { Content } = await render(item);
       <span>Back</span>
     </a>
 
+    {data.image && (
+      <img src={data.image} alt={data.title} class="mb-8 h-auto opacity-80" />
+    )}
+
     <header class="space-y-2">
       <p class="font-mono text-xs text-[#A59F97] uppercase tracking-wide">{data.category}</p>
       <h1 class="font-serif text-[2.2rem] leading-none text-[#EED9B4]">{data.title}</h1>
@@ -65,7 +69,9 @@ const { Content } = await render(item);
   .prose-content li { margin-bottom: 0.25rem; }
   .prose-content a { color: #c3b493; text-decoration: underline; text-underline-offset: 3px; }
   .prose-content a:hover { color: #f0e5cf; }
-  .prose-content h2 { font-family: "EB Garamond", serif; font-size: 1.35rem; color: #EED9B4; margin-top: 2rem; margin-bottom: 0.75rem; }
-  .prose-content h3 { font-family: "EB Garamond", serif; font-size: 1.15rem; color: #EED9B4; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+  .prose-content h2 { font-family: "DM Serif Text", serif; font-size: 1.35rem; color: #EED9B4; margin-top: 2rem; margin-bottom: 0.75rem; }
+  .prose-content h3 { font-family: "DM Serif Text", serif; font-size: 1.15rem; color: #EED9B4; margin-top: 1.5rem; margin-bottom: 0.5rem; }
   .prose-content code { font-family: "JetBrains Mono", monospace; font-size: 0.8em; color: #baa67f; background: #0f1b2b; padding: 0.1em 0.35em; border-radius: 2px; }
+  .prose-content img { display: block; margin: 1.5rem auto; max-width: 75%; height: auto; }
+  .prose-content blockquote { border-left: 2px solid #2e3d52; padding-left: 1rem; color: #7a8499; font-style: italic; margin: 1.5rem 0; }
 </style>

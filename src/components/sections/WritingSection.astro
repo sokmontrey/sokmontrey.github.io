@@ -1,7 +1,7 @@
 ---
-import { getCollection } from 'astro:content';
+import { getAllWriting } from '@/lib/content';
 
-const writings = await getCollection('writing');
+const writings = await getAllWriting({ excludeHidden: true });
 const leaderDots = '. '.repeat(600).trim();
 const leaderArrows = '> '.repeat(600).trim();
 ---
@@ -22,17 +22,12 @@ const leaderArrows = '> '.repeat(600).trim();
     {writings.slice(0, 2).map((item) => (
         <article class="space-y-4 group">
             {item.data.image && (
-                <div class="relative overflow-hidden rounded-sm max-w-[320px]">
-                   <img 
-                        src={item.data.image} 
-                        alt={item.data.title} 
-                        class="w-full h-auto object-cover opacity-80 transition-opacity duration-500 group-hover:opacity-100"
+                <div class="relative overflow-hidden rounded-sm">
+                   <img
+                        src={item.data.image}
+                        alt={item.data.title}
+                        class="h-auto opacity-80 transition-opacity duration-500 group-hover:opacity-100"
                     />
-                </div>
-            )}
-             {!item.data.image && (
-                <div class="h-28 w-full max-w-[320px] bg-[#161A20] border border-[#1E242C] flex items-center justify-center">
-                    <span class="font-serif text-3xl text-[#3f4f68] italic">?</span>
                 </div>
             )}
             
@@ -40,9 +35,6 @@ const leaderArrows = '> '.repeat(600).trim();
                 <h3 class="font-serif text-[1.45rem] leading-tight text-[#EED9B4] group-hover:text-[#F5E8C4] transition-colors">
                     <a href={`/writing/${item.slug}`}>{item.data.title}</a>
                 </h3>
-                <div class="font-sans text-xs uppercase tracking-wide text-[#A59F97]">
-                    {item.data.category}
-                </div>
                 <p class="font-sans text-[15px] text-[#A59F97] leading-snug text-justify">
                     {item.data.description}
                 </p>

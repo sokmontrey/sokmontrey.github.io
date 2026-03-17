@@ -24,8 +24,11 @@ const projects = await getAllProjects();
         <li>
           <a
             href={`/projects/${project.slug}`}
-            class="group flex items-baseline gap-6 py-4 transition-colors"
+            class="group flex items-center gap-6 py-4 transition-colors"
           >
+            {project.data.image && (
+              <img src={project.data.image} alt={project.data.title} class="h-auto shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
+            )}
             <span class="font-mono text-xs text-[#A59F97] w-10 shrink-0">
               {project.data.date.getFullYear()}
             </span>

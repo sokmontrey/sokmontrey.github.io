@@ -31,13 +31,21 @@ export async function getAllExperiences() {
 	});
 }
 
-export async function getAllWriting(category?: string) {
-	const writings = await getCollection('writing');
-	
-	if (category) {
-		return writings.filter((writing) => writing.data.category === category);
+export async function getAllWriting(options?: { category?: string; excludeHidden?: boolean }) {
+	let writings = await getCollection('writing');
+
+	if (options?.excludeHidden) {
+		writings = writings.filter((w) => !w.data.hidden);
 	}
-	
-	return writings;
+
+	if (options?.category) {
+		writings = writings.filter((w) => w.data.category === options.category);
+	}
+
+	return writings.sort((a, b) => {
+		const aDate = a.data.date ? new Date(a.data.date).getTime() : 0;
+		const bDate = b.data.date ? new Date(b.data.date).getTime() : 0;
+		return bDate - aDate;
+	});
 }
 

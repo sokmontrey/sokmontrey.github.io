@@ -40,6 +40,7 @@ const writingCollection = defineCollection({
 		image: z.string().optional(),
 		link: z.string().url().optional().or(z.literal('')),
 		tags: z.array(z.string()).optional(),
+		hidden: z.boolean().optional(),
 	}),
 });
 

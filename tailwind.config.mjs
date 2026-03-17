@@ -10,7 +10,7 @@ export default {
 				muted: "#525252", // Grey text
 			},
 			fontFamily: {
-				serif: ['"EB Garamond"', "serif"],
+				serif: ['"DM Serif Text"', "serif"],
 				sans: ['"Inter"', "sans-serif"],
 				mono: ['"JetBrains Mono"', "monospace"],
 			},
