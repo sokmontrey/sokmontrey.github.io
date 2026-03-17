@@ -192,12 +192,9 @@ function formatProjects(projects) {
   return projects
     .sort((a, b) => new Date(b.data.date) - new Date(a.data.date))
     .map((project) => {
-      const links = [];
-      if (project.data.githubUrl) links.push(`[GitHub](${project.data.githubUrl})`);
-      if (project.data.liveUrl) links.push(`[Live](${project.data.liveUrl})`);
-      const linksText = links.length > 0 ? ` | ${links.join(' | ')}` : '';
-      const tech = (project.data.technologies ?? []).join(', ');
-      return `- **[${project.data.title}](${SITE_URL}/projects/${project.slug})** (${formatDate(project.data.date)})  \n  ${project.data.description}  \n  Tech: ${tech}${linksText}`;
+      const year = new Date(project.data.date).getFullYear();
+      const tech = (project.data.technologies ?? []).slice(0, 3).join(', ');
+      return `- \`${year}\` [${project.data.title}](${SITE_URL}/projects/${project.slug}) — ${tech}`;
     })
     .join('\n');
 }
@@ -211,12 +208,10 @@ function formatExperiences(experiences) {
       return bEnd - aEnd;
     })
     .map((experience) => {
-      const start = formatDate(experience.data.startDate);
-      const end = experience.data.endDate ? formatDate(experience.data.endDate) : 'Present';
-      const range = `${start} - ${end}`;
-      const tech = (experience.data.technologies ?? []).join(', ');
-      const techLine = tech ? `  \n  Tech: ${tech}` : '';
-      return `- **[${experience.data.title}](${SITE_URL}/experiences/${experience.slug})** at **${experience.data.company}** (${range})  \n  ${experience.data.description.replace(/\n+/g, ' ')}${techLine}`;
+      const start = new Date(experience.data.startDate).getFullYear();
+      const end = experience.data.endDate ? new Date(experience.data.endDate).getFullYear() : 'Present';
+      const range = start === end ? `${start}` : `${start} – ${end}`;
+      return `- \`${range}\` [${experience.data.title}](${SITE_URL}/experiences/${experience.slug}) at **${experience.data.company}**`;
     })
     .join('\n');
 }
@@ -224,10 +219,7 @@ function formatExperiences(experiences) {
 function formatWriting(writings) {
   if (writings.length === 0) return '_No writing yet._';
   return writings
-    .map((writing) => {
-      const link = writing.data.link ? ` ([Read more](${writing.data.link}))` : '';
-      return `- **[${writing.data.title}](${SITE_URL}/writing/${writing.slug})** (${writing.data.category}) - ${writing.data.description.replace(/\n+/g, ' ')}${link}`;
-    })
+    .map((writing) => `- [${writing.data.title}](${SITE_URL}/writing/${writing.slug}) — ${writing.data.category}`)
     .join('\n');
 }
 
