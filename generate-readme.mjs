@@ -5,6 +5,7 @@ import process from 'node:process';
 const ROOT = process.cwd();
 const CONTENT_ROOT = path.join(ROOT, 'src', 'content');
 const LINKS_PATH = path.join(ROOT, 'src', 'data', 'links.json');
+const BIO_PATH = path.join(ROOT, 'src', 'data', 'bio.json');
 const SKILLS_TS_PATH = path.join(ROOT, 'src', 'data', 'skills.ts');
 
 function toDisplayName(value) {
@@ -235,17 +236,13 @@ function formatLinks(links) {
   return visibleLinks.map((link) => `- [${link.name}](${link.url})`).join('\n');
 }
 
-function buildReadme({ name, skills, projects, experiences, writings, links }) {
+function buildReadme({ name, bio, skills, projects, experiences, writings, links }) {
   const featuredProjects = projects.filter((project) => Boolean(project.data.featured));
   const projectsForReadme = featuredProjects.length > 0 ? featuredProjects : projects;
 
   return `# Hi, I'm ${name}
 
-|   |   |   |
-|---|---|---|
-| I | develop software | with intention and scalable code |
-|   | make robots | that work, sometimes |
-|   | seek inspiration in things | that bridge art and technology |
+${bio}
 
 ## Skills
 
@@ -275,18 +272,21 @@ async function main() {
     ? outputArg
     : path.join(ROOT, outputArg);
 
-  const [skillGroups, projects, experiences, writings, linksRaw] = await Promise.all([
+  const [skillGroups, projects, experiences, writings, linksRaw, bioRaw] = await Promise.all([
     readSkillsGroups(),
     readCollection('projects'),
     readCollection('experiences'),
     readCollection('writing'),
     fs.readFile(LINKS_PATH, 'utf8'),
+    fs.readFile(BIO_PATH, 'utf8'),
   ]);
 
   const links = JSON.parse(linksRaw);
+  const { bio } = JSON.parse(bioRaw);
   const name = inferNameFromRepo();
   const readme = buildReadme({
     name,
+    bio,
     skills: skillGroups,
     projects,
     experiences,

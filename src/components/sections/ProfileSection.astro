@@ -1,6 +1,7 @@
 ---
 import { Github, Linkedin, Instagram, Mail } from "lucide-astro";
 import links from "@/data/links.json";
+import bioData from "@/data/bio.json";
 import ChevronNavLink from "@/components/nav/ChevronNavLink.astro";
 
 const iconClass = "w-5 h-5";
@@ -14,11 +15,7 @@ const iconClass = "w-5 h-5";
 
     {/* Bio */}
     <div class="text-sm text-[#A59F97] leading-relaxed space-y-3">
-      <p>
-        From software to robots, to data and AI, to community and art, I <span
-          class="text-[#EED9B4]">make things</span
-        > and tell its story along the way.
-      </p>
+      <p>{bioData.bio}</p>
       <ChevronNavLink href="/about" label="more about me" class="text-xs" />
     </div>
 
