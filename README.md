@@ -30,4 +30,6 @@ From software to robots, to data and AI, to community and art, I make things and
 
 ## Connect
 
+- [Instagram](https://instagram.com/___montrey)
+- [LinkedIn](https://linkedin.com/in/sokmontrey)
 - [GitHub](https://github.com/sokmontrey)
