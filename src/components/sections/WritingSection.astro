@@ -33,7 +33,10 @@ const leaderArrows = '> '.repeat(600).trim();
             
             <div class="space-y-2">
                 <h3 class="font-serif text-[1.45rem] leading-tight text-[#EED9B4] group-hover:text-[#F5E8C4] transition-colors">
-                    <a href={`/writing/${item.slug}`}>{item.data.title}</a>
+                    <a href={`/writing/${item.slug}`} class="inline-flex items-center title-link">
+                        <span class="title-arrow inline-block w-0 mr-0 overflow-hidden opacity-0 -translate-x-1 transition-all duration-200">&gt;</span>
+                        <span>{item.data.title}</span>
+                    </a>
                 </h3>
                 <p class="font-sans text-[15px] text-[#A59F97] leading-snug text-justify">
                     {item.data.description}
@@ -74,5 +77,12 @@ const leaderArrows = '> '.repeat(600).trim();
 
   .leader-link:hover .leader-arrows {
     opacity: 1;
+  }
+
+  .title-link:hover .title-arrow {
+    width: 1rem;
+    margin-right: 0.25rem;
+    opacity: 1;
+    transform: translateX(0);
   }
 </style>

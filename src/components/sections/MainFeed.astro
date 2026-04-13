@@ -28,26 +28,20 @@ const sortedProjects = projects.sort((a, b) => b.data.date.valueOf() - a.data.da
     </header>
 
     <div class="space-y-7">
-      {sortedProjects.slice(0, 3).map((project) => (
-        <article class="flex gap-4 items-start group">
-          <!-- Thumbnail -->
-          <div class="w-14 h-14 flex-shrink-0 bg-[#161A20] rounded-sm overflow-hidden border border-[#1E242C] group-hover:border-[#2A3340] transition-colors">
-            {project.data.image ? (
-              <img src={project.data.image} alt={project.data.title} class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
-            ) : (
-                <div class="w-full h-full flex items-center justify-center bg-[#161A20] text-[#2E3740] font-serif text-xl">
-                    {project.data.title.charAt(0)}
-                </div>
-            )}
+      {sortedProjects.slice(0, 5).map((project, index) => (
+        <article class="group grid grid-cols-[42px_1fr] gap-x-2">
+          <div class="font-mono text-xs text-[#EED9B4] pt-1 text-center">
+            {(index + 1).toString().padStart(2, '0')}
           </div>
-
-          <!-- Content -->
-          <div class="flex-1 space-y-1">
-            <div class="flex items-baseline justify-between flex-wrap gap-2">
+          <div class="space-y-1">
+            <div class="flex items-baseline justify-between flex-wrap gap-2 pb-2">
                 <h3 class="font-serif text-[1.45rem] leading-none text-[#EED9B4] group-hover:text-[#F5E8C4] transition-colors">
-                <a href={`/projects/${project.slug}`}>{project.data.title}</a>
+                <a href={`/projects/${project.slug}`} class="inline-flex items-center title-link">
+                  <span class="title-arrow inline-block w-0 mr-0 overflow-hidden opacity-0 -translate-x-1 transition-all duration-200">&gt;</span>
+                  <span>{project.data.title}</span>
+                </a>
                 </h3>
-                <div class="font-mono text-xs text-[#EED9B4] uppercase tracking-wide opacity-70">
+                <div class="font-mono text-xs text-[#EED9B4]">
                     {project.data.technologies.slice(0, 3).join(', ')}
                 </div>
             </div>
@@ -76,21 +70,21 @@ const sortedProjects = projects.sort((a, b) => b.data.date.valueOf() - a.data.da
 
     <div class="space-y-4">
       {sortedExperiences.slice(0, 3).map((exp) => (
-        <div class="grid grid-cols-[42px_1fr] gap-2 group">
-          <!-- Year -->
-          <div class="font-mono text-[#A59F97] text-xs pt-1">
+        <div class="group grid grid-cols-[42px_1fr] gap-x-2">
+          <div class="font-mono text-xs text-[#EED9B4] pt-1">
             {exp.data.startDate.getFullYear()}
           </div>
-
-          <!-- Details -->
           <div class="space-y-1">
             <h3 class="font-serif text-[1.55rem] leading-none text-[#EED9B4] group-hover:text-[#F5E8C4] transition-colors">
-              <a href={`/experiences/${exp.slug}`}>{exp.data.title}</a>
+              <a href={`/experiences/${exp.slug}`} class="inline-flex items-center title-link">
+                <span class="title-arrow inline-block w-0 mr-0 overflow-hidden opacity-0 -translate-x-1 transition-all duration-200">&gt;</span>
+                <span>{exp.data.title}</span>
+              </a>
             </h3>
-            <div class="font-mono text-xs tracking-wide text-[#baa67f] uppercase">
+            <div class="font-mono text-xs text-[#EED9B4] pb-1">
               {exp.data.company}
             </div>
-            <p class="font-sans text-[15px] text-[#A59F97] mt-1 leading-snug text-justify">
+            <p class="font-sans text-[15px] text-[#A59F97] mt-4 leading-snug text-justify">
                {exp.data.description.split('\n')[0]}
             </p>
           </div>
@@ -130,5 +124,12 @@ const sortedProjects = projects.sort((a, b) => b.data.date.valueOf() - a.data.da
 
   .leader-link:hover .leader-arrows {
     opacity: 1;
+  }
+
+  .title-link:hover .title-arrow {
+    width: 1rem;
+    margin-right: 0.25rem;
+    opacity: 1;
+    transform: translateX(0);
   }
 </style>
