@@ -2,6 +2,11 @@
 import { getAllWriting } from '@/lib/content';
 
 const writings = await getAllWriting({ excludeHidden: true });
+const sortedWritings = [...writings].sort((a, b) => {
+  const aDate = a.data.date ? new Date(a.data.date).getTime() : 0;
+  const bDate = b.data.date ? new Date(b.data.date).getTime() : 0;
+  return bDate - aDate;
+});
 const leaderDots = '. '.repeat(600).trim();
 const leaderArrows = '> '.repeat(600).trim();
 ---
@@ -18,29 +23,31 @@ const leaderArrows = '> '.repeat(600).trim();
         </a>
     </header>
 
-    <div class="space-y-8">
-    {writings.slice(0, 2).map((item) => (
-        <article class="space-y-4 group">
-            {item.data.image && (
-                <div class="relative overflow-hidden rounded-sm">
-                   <img
-                        src={item.data.image}
-                        alt={item.data.title}
-                        class="h-auto opacity-80 transition-opacity duration-500 group-hover:opacity-100"
-                    />
-                </div>
-            )}
-            
-            <div class="space-y-2">
-                <h3 class="font-serif text-[1.45rem] leading-tight text-[#EED9B4] group-hover:text-[#F5E8C4] transition-colors">
-                    <a href={`/writing/${item.slug}`} class="inline-flex items-center title-link">
-                        <span class="title-arrow inline-block w-0 mr-0 overflow-hidden opacity-0 -translate-x-1 transition-all duration-200">&gt;</span>
-                        <span>{item.data.title}</span>
-                    </a>
-                </h3>
-                <p class="font-sans text-[15px] text-[#A59F97] leading-snug text-justify">
-                    {item.data.description}
-                </p>
+    <div class="divide-y divide-dashed divide-[#2A3340]">
+    {sortedWritings.slice(0, 2).map((item) => (
+        <article class="group py-6 first:pt-0 last:pb-0">
+            <div class="space-y-4">
+              <div class="space-y-2">
+                  <h3 class="font-serif text-[1.25rem] leading-tight text-[#EED9B4] group-hover:text-[#F5E8C4] transition-colors">
+                      <a href={`/writing/${item.slug}`} class="inline-flex items-center title-link">
+                          <span class="title-arrow inline-block w-0 mr-0 overflow-hidden opacity-0 -translate-x-1 transition-all duration-200">&gt;</span>
+                          <span>{item.data.title}</span>
+                      </a>
+                  </h3>
+                  <p class="font-sans text-[15px] text-[#A59F97] leading-snug text-justify">
+                      {item.data.description}
+                  </p>
+              </div>
+
+              {item.data.image && (
+                  <div class="relative overflow-hidden rounded-sm">
+                     <img
+                          src={item.data.image}
+                          alt={item.data.title}
+                          class="h-auto opacity-80 transition-opacity duration-500 group-hover:opacity-100"
+                      />
+                  </div>
+              )}
             </div>
         </article>
     ))}

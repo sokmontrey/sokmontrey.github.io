@@ -4,6 +4,11 @@ import { getAllWriting } from '../../lib/content';
 import { ChevronLeft } from 'lucide-astro';
 
 const writings = await getAllWriting();
+const sortedWritings = [...writings].sort((a, b) => {
+  const aDate = a.data.date ? new Date(a.data.date).getTime() : 0;
+  const bDate = b.data.date ? new Date(b.data.date).getTime() : 0;
+  return bDate - aDate;
+});
 ---
 
 <BaseLayout title="Writings | sokmontrey.me">
@@ -20,7 +25,7 @@ const writings = await getAllWriting();
     <h1 class="font-serif text-[2rem] leading-none text-[#EED9B4]">Writings</h1>
 
     <ul class="mt-10 space-y-8">
-      {writings.map((item) => (
+      {sortedWritings.map((item) => (
         <li>
           <a
             href={`/writing/${item.slug}`}
