@@ -81,7 +81,7 @@ const visibleLinks = links.filter(l => l.isVisible);
 
   <!-- ── Hero ──────────────────────────────────────────────────────── -->
   <header class="h-screen block-container" id="intro">
-    <div class="px-4 md:px-0">
+    <div class="hero-wrap">
       <h1 class="serif-font nt-color hero-title">Hi. I'm Montrey.</h1>
       <div class="hero-block" id="heroBlock">
         <div class="block-text mono-font">
@@ -304,11 +304,24 @@ requestAnimationFrame(frame);
     line-height: 1;
   }
 
+  .hero-wrap {
+    width: 100%;
+    padding: 0 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .hero-wrap {
+      padding: 0;
+      width: auto;
+    }
+  }
+
   .hero-block {
     position: relative;
     margin-top: 1rem;
     max-width: 100%;
     overflow: hidden;
+    contain: inline-size;
   }
 
   .block-text {
