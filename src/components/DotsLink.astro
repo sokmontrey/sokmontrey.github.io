@@ -1,0 +1,44 @@
+---
+interface Props {
+  str: string;
+  postfix: string;
+  href: string;
+  is_blank?: boolean;
+  width?: number;
+  additional_width?: number;
+}
+
+const { str, postfix, href, is_blank } = Astro.props;
+---
+
+<a href={href} target={is_blank ? '_blank' : ''} class="dots-link">
+  <span class="text">{str}</span>
+  <span class="dot-fill" aria-hidden="true">
+    <span class="dots lt-color">{'.' .repeat(120)}</span>
+    <span class="dashes lt-color">{'<'.repeat(120)}</span>
+  </span>
+  <span class="postfix" set:html={postfix}></span>
+</a>
+
+<style>
+  .dots-link {
+    display: flex;
+    align-items: baseline;
+    width: 100%;
+    text-decoration: none;
+    gap: 0.3em;
+  }
+
+  .dot-fill {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .dashes { display: none; }
+
+  .dots-link:hover .text    { color: var(--pm-color); }
+  .dots-link:hover .postfix { color: var(--pm-color); }
+  .dots-link:hover .dots    { display: none; }
+  .dots-link:hover .dashes  { display: inline; }
+</style>

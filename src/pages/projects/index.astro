@@ -1,47 +1,141 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getAllProjects } from '../../lib/content';
-import { ChevronLeft } from 'lucide-astro';
 
 const projects = await getAllProjects();
 ---
 
 <BaseLayout title="Projects | sokmontrey.me">
-  <main class="mx-auto max-w-3xl px-8 py-16 lg:px-12 lg:py-24">
+  <main class="page-main">
 
-    <a
-      href="/"
-      class="mb-8 inline-flex items-center gap-1.5 text-sm text-[#c3b493] hover:text-[#f0e5cf] transition-colors"
-    >
-      <ChevronLeft class="h-4 w-4" />
-      <span>Back</span>
-    </a>
+    <a href="/" class="back-link mono-font" onclick="if(history.length>1){event.preventDefault();history.back()}">&lt; back</a>
 
-    <h1 class="font-serif text-[2rem] leading-none text-[#EED9B4]">Projects</h1>
+    <h1 class="serif-font h1 page-title nt-color">Projects</h1>
 
-    <ul class="mt-10 space-y-0 divide-y divide-[#1a2535]">
-      {projects.map((project) => (
-        <li>
-          <a
-            href={`/projects/${project.slug}`}
-            class="group flex items-center gap-6 py-4 transition-colors"
-          >
-            {project.data.image && (
-              <img src={project.data.image} alt={project.data.title} class="h-auto shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
-            )}
-            <span class="font-mono text-xs text-[#A59F97] w-10 shrink-0">
-              {project.data.date.getFullYear()}
-            </span>
-            <span class="flex-1 font-serif text-[1.2rem] leading-snug text-[#EED9B4] group-hover:text-[#F5E8C4] transition-colors">
-              {project.data.title}
-            </span>
-            <span class="hidden sm:block font-mono text-xs text-[#555d6e] group-hover:text-[#7e8696] transition-colors text-right shrink-0 max-w-[200px]">
-              {project.data.technologies.slice(0, 3).join(', ')}
-            </span>
+    <ul class="entry-list">
+      {projects.map(p => (
+        <li class="dict-entry">
+          {p.data.image && p.data.image !== "" && (
+            <a href={`/projects/${p.slug}`} class="project-img-wrap">
+              <img src={p.data.image} alt={p.data.title} class="entry-img" />
+            </a>
+          )}
+          <a href={`/projects/${p.slug}`} class="dict-head-link">
+            <span class="dict-title serif-font">{p.data.title}</span>
           </a>
+          {p.data.technologies.length > 0 && (
+            <p class="mono-font dict-tag">[{p.data.technologies.slice(0, 5).join(', ')}]</p>
+          )}
+          <p class="sans-font dict-def lt2-color">{p.data.description}</p>
+          {(p.data.githubUrl || p.data.liveUrl) && (
+            <div class="dict-links">
+              {p.data.githubUrl && (
+                <a href={p.data.githubUrl} target="_blank" class="dict-link mono-font" onclick="event.stopPropagation()">
+                  <span class="dict-link-arrow">&gt;</span> github
+                </a>
+              )}
+              {p.data.liveUrl && (
+                <a href={p.data.liveUrl} target="_blank" class="dict-link mono-font" onclick="event.stopPropagation()">
+                  <span class="dict-link-arrow">&gt;</span> live
+                </a>
+              )}
+            </div>
+          )}
         </li>
       ))}
     </ul>
 
   </main>
 </BaseLayout>
+
+<style>
+  .page-main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 5rem 2rem 8rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: 0.95rem;
+    color: var(--lt2-color);
+    opacity: 0.6;
+    margin-bottom: 3rem;
+    transition: opacity 0.15s ease, color 0.15s ease;
+  }
+  .back-link:hover { opacity: 1; color: var(--pm-color); }
+
+  .page-title { margin-bottom: 2.5rem; }
+
+  .entry-list { list-style: none; padding: 0; }
+
+  .dict-entry {
+    padding: 1.2rem 0;
+    border-top: 1px dashed #2a3340;
+  }
+  .dict-entry:first-of-type { border-top: none; }
+
+  .dict-head-link {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: var(--nt-color);
+  }
+  .dict-head-link:hover .dict-title { color: var(--pm-color); }
+
+  .dict-title {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    transition: color 0.15s ease;
+    display: block;
+  }
+
+  .dict-tag {
+    font-size: 0.88rem;
+    color: var(--lt2-color);
+    margin-bottom: 0.4rem;
+    margin-top: 0.15rem;
+  }
+
+  .dict-def {
+    font-size: 1rem;
+    line-height: 1.7;
+    width: 100%;
+  }
+
+  .dict-links {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 0.6rem;
+  }
+
+  .dict-link {
+    font-size: 0.92rem;
+    color: var(--lt2-color);
+    opacity: 0.7;
+    transition: opacity 0.15s ease, color 0.15s ease;
+  }
+  .dict-link:hover { opacity: 1; color: var(--pm-color); }
+
+  .dict-link-arrow {
+    margin-right: 0.1rem;
+    transition: margin-right 0.1s ease;
+  }
+  .dict-link:hover .dict-link-arrow { margin-right: 0.3rem; }
+
+  .project-img-wrap {
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+
+  .entry-img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 260px;
+    object-fit: contain;
+    object-position: left center;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+  }
+  .project-img-wrap:hover .entry-img { opacity: 1; }
+</style>

@@ -1,19 +1,22 @@
 [
     {
         "name": "Instagram",
-        "icon": "",
+        "description": "@___montrey",
+        "icon": "fa-brands fa-instagram",
         "url": "https://instagram.com/___montrey",
         "isVisible": true
     },
     {
         "name": "LinkedIn",
-        "icon": "",
+        "description": "sokmontrey",
+        "icon": "fa-brands fa-linkedin",
         "url": "https://linkedin.com/in/sokmontrey",
         "isVisible": true
     },
     {
         "name": "GitHub",
-        "icon": "",
+        "description": "sokmontrey",
+        "icon": "fa-brands fa-github",
         "url": "https://github.com/sokmontrey",
         "isVisible": true
     }

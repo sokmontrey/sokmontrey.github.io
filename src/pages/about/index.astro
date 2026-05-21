@@ -1,51 +1,65 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { ChevronLeft } from "lucide-astro";
 ---
 
 <BaseLayout title="About | sokmontrey.me">
-  <main class="mx-auto max-w-3xl px-8 py-16 lg:px-12 lg:py-24">
-    <a
-      href="/"
-      class="mb-6 inline-flex items-center gap-1.5 text-sm text-[#c3b493] hover:text-[#f0e5cf] transition-colors"
-      aria-label="Back to home"
-    >
-      <ChevronLeft class="h-4 w-4" />
-      <span>Back</span>
-    </a>
+  <main class="page-main">
 
-    <h1 class="font-serif text-[2rem] leading-none text-[#EED9B4]">
-      Hi, I&apos;m Sokmontrey
-    </h1>
+    <a href="/" class="back-link mono-font lt2-color" onclick="if(history.length>1){event.preventDefault();history.back()}">&lt; back</a>
 
-    <div
-      class="mt-6 space-y-6 text-sm text-[#A59F97] leading-relaxed border-separate border-spacing-y-1"
-    >
-      <p>
-        From <span class="text-[#EED9B4]">software</span> to <span
-          class="text-[#EED9B4]">robots</span
-        >, to <span class="text-[#EED9B4]">data and AI</span>, to <span
-          class="text-[#EED9B4]">community and art</span
-        >, I <span class="text-[#EED9B4]">make things</span> and <span
-          class="text-[#EED9B4]">tell the story</span
-        > along the way.
+    <header class="page-header">
+      <h1 class="serif-font page-h1 nt-color">Hi, I'm Sokmontrey</h1>
+    </header>
+
+    <div class="page-body">
+      <p class="mono-font body-p lt2-color">
+        From <span class="nt-color">software</span> to <span class="nt-color">robots</span>,
+        to <span class="nt-color">data and AI</span>, to <span class="nt-color">community and art</span>,
+        I <span class="nt-color">make things</span> and <span class="nt-color">tell the story</span> along the way.
       </p>
 
-      <p>
+      <p class="mono-font body-p lt2-color">
         Currently, I run the GBP Computer Science Club with the goal of building
-        an environment where <span class="text-[#EED9B4]">idea and initiative</span>
-        form without border.
+        an environment where <span class="nt-color">idea and initiative</span> form without border.
       </p>
 
-      <p>
-        One of its most ambitious projects to date is <span
-          class="text-[#EED9B4]">HuskyHack</span
-        >, a hackathon
-        bringing together 150+ talented individuals to work on projects in under 24h,
-        forming teams that continue to make <span class="text-[#EED9B4]"
-          >impacts</span
-        > beyond the competition.
+      <p class="mono-font body-p lt2-color">
+        One of its most ambitious projects to date is <span class="nt-color">HuskyHack</span>,
+        a hackathon bringing together 150+ talented individuals to work on projects in under 24h,
+        forming teams that continue to make <span class="nt-color">impacts</span> beyond the competition.
       </p>
     </div>
+
   </main>
 </BaseLayout>
+
+<style>
+  .page-main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 5rem 2rem 8rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: 0.9rem;
+    opacity: 0.5;
+    margin-bottom: 3rem;
+    transition: opacity 0.15s ease, color 0.15s ease;
+  }
+  .back-link:hover { opacity: 1; color: var(--pm-color); }
+
+  .page-header { margin-bottom: 2.5rem; }
+
+  .page-h1 {
+    font-size: 2.8rem;
+    line-height: 1.1;
+  }
+
+  .page-body { display: flex; flex-direction: column; gap: 1.4rem; }
+
+  .body-p {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+</style>

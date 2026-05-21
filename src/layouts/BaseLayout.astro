@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 interface Props {
   title?: string;
 }
@@ -15,41 +17,13 @@ const { title = "sokmontrey.me" } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Serif+Text:ital@0;1&family=Inter:wght@100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Serif+Text:ital@0;1&display=swap"
       rel="stylesheet"
     />
+    <script is:inline src="https://kit.fontawesome.com/b71972c7cc.js" crossorigin="anonymous"></script>
     <title>{title}</title>
   </head>
-  <body class="site-body text-[#A59F97] font-sans min-h-screen antialiased">
+  <body>
     <slot />
   </body>
 </html>
-
-<style is:global>
-  :root {
-    color-scheme: dark;
-  }
-
-  .site-body {
-    background: #11151A;
-  }
-
-  .font-serif {
-    font-family: "DM Serif Text", serif !important;
-  }
-
-  .font-mono {
-    font-family: "DM Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
-  }
-
-  .font-mono.text-xs {
-    font-size: 0.8125rem;
-  }
-
-  /* Scrollbar */
-  ::-webkit-scrollbar { width: 5px; }
-  ::-webkit-scrollbar-track { background: #11151A; }
-  ::-webkit-scrollbar-thumb { background: #1e2d42; border-radius: 4px; }
-  ::-webkit-scrollbar-thumb:hover { background: #2d4060; }
-  * { scrollbar-width: thin; scrollbar-color: #1e2d42 #11151A; }
-</style>

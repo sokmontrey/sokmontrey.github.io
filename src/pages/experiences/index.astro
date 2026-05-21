@@ -1,48 +1,85 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getAllExperiences } from '../../lib/content';
-import { ChevronLeft } from 'lucide-astro';
 
 const experiences = await getAllExperiences();
-
-function formatDate(date: Date) {
-  return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-}
 ---
 
 <BaseLayout title="Experiences | sokmontrey.me">
-  <main class="mx-auto max-w-3xl px-8 py-16 lg:px-12 lg:py-24">
+  <main class="page-main">
 
-    <a
-      href="/"
-      class="mb-8 inline-flex items-center gap-1.5 text-sm text-[#c3b493] hover:text-[#f0e5cf] transition-colors"
-    >
-      <ChevronLeft class="h-4 w-4" />
-      <span>Back</span>
-    </a>
+    <a href="/" class="back-link mono-font" onclick="if(history.length>1){event.preventDefault();history.back()}">&lt; back</a>
 
-    <h1 class="font-serif text-[2rem] leading-none text-[#EED9B4]">Experiences</h1>
+    <h1 class="serif-font h1 page-title nt-color">Experiences</h1>
 
-    <ul class="mt-10 space-y-0 divide-y divide-[#1a2535]">
-      {experiences.map((exp) => (
-        <li>
-          <a
-            href={`/experiences/${exp.slug}`}
-            class="group flex items-baseline gap-6 py-4 transition-colors"
-          >
-            <span class="font-mono text-xs text-[#A59F97] w-28 shrink-0">
-              {formatDate(exp.data.startDate)} — {exp.data.endDate ? formatDate(exp.data.endDate) : 'Present'}
-            </span>
-            <span class="flex-1 font-serif text-[1.2rem] leading-snug text-[#EED9B4] group-hover:text-[#F5E8C4] transition-colors">
-              {exp.data.title}
-            </span>
-            <span class="hidden sm:block font-mono text-xs text-[#baa67f] shrink-0 text-right">
-              {exp.data.company}
-            </span>
+    <ul class="entry-list">
+      {experiences.map(exp => (
+        <li class="dict-entry">
+          <a href={`/experiences/${exp.slug}`} class="dict-head-link">
+            <span class="dict-title serif-font">{exp.data.title}</span>
           </a>
+          <p class="mono-font dict-tag">
+            [{exp.data.company} · {exp.data.startDate.getFullYear()}{exp.data.endDate ? `–${exp.data.endDate.getFullYear()}` : '–present'}]
+          </p>
+          <p class="sans-font dict-def lt2-color">{exp.data.description.split('\n')[0]}</p>
         </li>
       ))}
     </ul>
 
   </main>
 </BaseLayout>
+
+<style>
+  .page-main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 5rem 2rem 8rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: 0.95rem;
+    color: var(--lt2-color);
+    opacity: 0.6;
+    margin-bottom: 3rem;
+    transition: opacity 0.15s ease, color 0.15s ease;
+  }
+  .back-link:hover { opacity: 1; color: var(--pm-color); }
+
+  .page-title { margin-bottom: 2.5rem; }
+
+  .entry-list { list-style: none; padding: 0; }
+
+  .dict-entry {
+    padding: 1.2rem 0;
+    border-top: 1px dashed #2a3340;
+  }
+  .dict-entry:first-of-type { border-top: none; }
+
+  .dict-head-link {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: var(--nt-color);
+  }
+  .dict-head-link:hover .dict-title { color: var(--pm-color); }
+
+  .dict-title {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    transition: color 0.15s ease;
+    display: block;
+  }
+
+  .dict-tag {
+    font-size: 0.88rem;
+    color: var(--lt2-color);
+    margin-bottom: 0.4rem;
+    margin-top: 0.15rem;
+  }
+
+  .dict-def {
+    font-size: 1rem;
+    line-height: 1.7;
+    width: 100%;
+  }
+</style>
