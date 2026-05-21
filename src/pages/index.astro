@@ -5,6 +5,7 @@ import DotsLink from '../components/DotsLink.astro';
 import { getAllProjects, getAllExperiences, getAllWriting } from '../lib/content';
 import links from '../data/links.json';
 import treeSvg from '../assets/tree.svg?raw';
+import treeLightSvg from '../assets/tree-light.svg?raw';
 
 const projects    = await getAllProjects();
 const experiences = await getAllExperiences();
@@ -67,7 +68,7 @@ for (let r = 0; r < BG_ROWS; r++) {
   const bi = r - bioStart;
   if (bi >= 0 && bi < bioLines.length) {
     const bio = bioLines[bi];
-    const lpad = latinLine(12) + " ";
+    const lpad = latinLine(5) + " ";
     rows.push({ pre: lpad, bio, post: " " + latinLine(ROW_CHARS - bio.length - lpad.length - 1) });
   } else {
     rows.push({ pre: latinLine(ROW_CHARS), bio: null, post: "" });
@@ -217,7 +218,8 @@ const visibleLinks = links.filter(l => l.isVisible);
 
   <!-- ── Tree ──────────────────────────────────────────────────────── -->
   <div class="block-container tree-wrap">
-    <Fragment set:html={treeSvg} />
+    <span class="tree-dark"><Fragment set:html={treeSvg} /></span>
+    <span class="tree-light"><Fragment set:html={treeLightSvg} /></span>
 
     <div class="social-bar">
       {visibleLinks.map(link => (
@@ -296,7 +298,7 @@ requestAnimationFrame(frame);
   }
 
   .section-num { transform: translateY(-0.75rem); }
-  .section-title { color: rgba(192, 179, 155, 0.55); }
+  .section-title { color: var(--lt2-color); opacity: 0.55; }
 
   /* ── Hero ─────────────────────────────────────────── */
   .hero-title {
@@ -360,7 +362,7 @@ requestAnimationFrame(frame);
   /* ── Dictionary entry ─────────────────────────────── */
   .dict-entry {
     padding: 1.2rem 0;
-    border-top: 1px dashed #2a3340;
+    border-top: 1px dashed var(--border-color);
   }
   .dict-entry:first-of-type { border-top: none; }
 
@@ -438,6 +440,10 @@ requestAnimationFrame(frame);
   .see-all:hover { opacity: 1; color: var(--pm-color); }
 
   /* ── Tree + social ────────────────────────────────── */
+  .tree-light { display: none; }
+  :global([data-theme="light"]) .tree-dark { display: none; }
+  :global([data-theme="light"]) .tree-light { display: inline; }
+
   .tree-wrap {
     padding: 10vh 0 3vh;
     gap: 2.5rem;
