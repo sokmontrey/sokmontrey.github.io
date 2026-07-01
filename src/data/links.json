@@ -19,5 +19,12 @@
         "icon": "fa-brands fa-github",
         "url": "https://github.com/sokmontrey",
         "isVisible": true
+    },
+    {
+        "name": "Behance",
+        "description": "sokmontrey",
+        "icon": "fa-brands fa-behance",
+        "url": "https://www.behance.net/sokmontrey",
+        "isVisible": true
     }
 ]
