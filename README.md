@@ -18,7 +18,7 @@ From software to robots, to data and AI, to community and art, I make things and
 
 ## Experience
 
-- `2025 - Present` [President & Lead Organizer](https://sokmontrey.github.io/experiences/huskyhack-president) at **HuskyHack (Student-Run Hackathon)**
+- `2025 - 2026` [President & Lead Organizer](https://sokmontrey.github.io/experiences/huskyhack-president) at **HuskyHack (Student-Run Hackathon)**
 - `2025` [Android & Backend Developer](https://sokmontrey.github.io/experiences/chefster-developer) at **Chefster**
 - `2025` [Student Researcher](https://sokmontrey.github.io/experiences/gbp-researcher) at **George Brown Polytechnic**
 - [see all experiences](https://sokmontrey.github.io/experiences)
@@ -27,11 +27,12 @@ From software to robots, to data and AI, to community and art, I make things and
 
 - [How to build a culture of Do-ers?](https://sokmontrey.github.io/writing/how-to-build-a-culture-of-doers) · Essay
 - [I don't wish I'd known you any sooner](https://sokmontrey.github.io/writing/i-dont-wish-id-known-you-any-sooner) · 
+- [Maybe I should learn to swim](https://sokmontrey.github.io/writing/maybe-i-should-learn-to-swim) · 
 - [see all writing](https://sokmontrey.github.io/writings)
 
 ## Connect
 
+- [YouTube](https://youtube.com/@sokmontrey)
 - [Instagram](https://instagram.com/___montrey)
 - [LinkedIn](https://linkedin.com/in/sokmontrey)
 - [GitHub](https://github.com/sokmontrey)
-- [Behance](https://www.behance.net/sokmontrey)
