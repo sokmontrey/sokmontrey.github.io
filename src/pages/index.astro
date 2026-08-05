@@ -14,9 +14,9 @@ const writings    = await getAllWriting({ excludeHidden: true });
 const SHOW = 3;
 
 const sections = [
-  { name: "Writings",    id: "writings" },
   { name: "Projects",    id: "projects" },
   { name: "Experiences", id: "experiences" },
+  { name: "Writings",    id: "writings" },
 ];
 
 function toRoman(n: number): string {
@@ -123,42 +123,12 @@ const visibleLinks = links.filter(l => l.isVisible);
     <!-- ── Sticky Nav ────────────────────────────────────────────────── -->
     <SiteNav sections={sections} />
 
-    <!-- ── I · Writings ──────────────────────────────────────────────── -->
-    <section class="block-container content-section" id="writings">
-      <div class="section-inner">
-        <div class="section-header">
-          <h2 class="serif-font h1 flex-1 section-title">Writings</h2>
-          <p class="serif-font h2 lt-color section-num">{toRoman(1)}</p>
-        </div>
-        <ul>
-          {writings.slice(0, SHOW).map(w => (
-            <li class="dict-entry">
-              {w.data.image && w.data.image !== "" && (
-                <a href={`/writing/${w.slug}`} class="entry-img-wrap writing-img-wrap">
-                  <img src={w.data.image} alt={w.data.title} class="entry-img" />
-                </a>
-              )}
-              <a href={`/writing/${w.slug}`} class="dict-head-link">
-                <span class="dict-title serif-font">{w.data.title}</span>
-              </a>
-              <p class="sans-font dict-def lt2-color">{w.data.description}</p>
-            </li>
-          ))}
-        </ul>
-        {writings.length > SHOW && (
-          <a href="/writings" class="see-all mono-font">
-            see all writings <i class="fa-solid fa-arrow-right fa-rotate-by" style="--fa-rotate-angle: -45deg;"></i>
-          </a>
-        )}
-      </div>
-    </section>
-
-    <!-- ── II · Projects ─────────────────────────────────────────────── -->
+    <!-- ── Projects ─────────────────────────────────────────────── -->
     <section class="block-container content-section" id="projects">
       <div class="section-inner">
         <div class="section-header">
           <h2 class="serif-font h1 flex-1 section-title">Projects</h2>
-          <p class="serif-font h2 lt-color section-num">{toRoman(2)}</p>
+          <p class="serif-font h2 lt-color section-num">{toRoman(1)}</p>
         </div>
         <ul>
           {projects.slice(0, SHOW).map(p => (
@@ -186,12 +156,12 @@ const visibleLinks = links.filter(l => l.isVisible);
       </div>
     </section>
 
-    <!-- ── III · Experiences ─────────────────────────────────────────── -->
+    <!-- ── Experiences ─────────────────────────────────────────── -->
     <section class="block-container content-section" id="experiences">
       <div class="section-inner">
         <div class="section-header">
           <h2 class="serif-font h1 flex-1 section-title">Experiences</h2>
-          <p class="serif-font h2 lt-color section-num">{toRoman(3)}</p>
+          <p class="serif-font h2 lt-color section-num">{toRoman(2)}</p>
         </div>
         <ul>
           {experiences.slice(0, SHOW).map(exp => (
@@ -213,6 +183,37 @@ const visibleLinks = links.filter(l => l.isVisible);
         )}
       </div>
     </section>
+
+    <!-- ── Writings ──────────────────────────────────────────────── -->
+    <section class="block-container content-section" id="writings">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2 class="serif-font h1 flex-1 section-title">Writings</h2>
+          <p class="serif-font h2 lt-color section-num">{toRoman(3)}</p>
+        </div>
+        <ul>
+          {writings.slice(0, SHOW).map(w => (
+            <li class="dict-entry">
+              <!-- {w.data.image && w.data.image !== "" && (
+                <a href={`/writing/${w.slug}`} class="entry-img-wrap writing-img-wrap">
+                  <img src={w.data.image} alt={w.data.title} class="entry-img" />
+                </a>
+              )} -->
+              <a href={`/writing/${w.slug}`} class="dict-head-link">
+                <span class="dict-title serif-font">{w.data.title}</span>
+              </a>
+              <p class="sans-font dict-def lt2-color">{w.data.description}</p>
+            </li>
+          ))}
+        </ul>
+        {writings.length > SHOW && (
+          <a href="/writings" class="see-all mono-font">
+            see all writings <i class="fa-solid fa-arrow-right fa-rotate-by" style="--fa-rotate-angle: -45deg;"></i>
+          </a>
+        )}
+      </div>
+    </section>
+
 
   </main>
 

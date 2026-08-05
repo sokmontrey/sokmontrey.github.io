@@ -1,5 +1,12 @@
 [
     {
+        "name": "YouTube",
+        "description": "sokmontrey",
+        "icon": "fa-brands fa-youtube",
+        "url": "https://youtube.com/@sokmontrey",
+        "isVisible": true
+    },
+    {
         "name": "Instagram",
         "description": "@___montrey",
         "icon": "fa-brands fa-instagram",
@@ -25,6 +32,6 @@
         "description": "sokmontrey",
         "icon": "fa-brands fa-behance",
         "url": "https://www.behance.net/sokmontrey",
-        "isVisible": true
+        "isVisible": false
     }
 ]
