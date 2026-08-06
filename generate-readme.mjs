@@ -8,6 +8,12 @@ const LINKS_PATH = path.join(ROOT, 'src', 'data', 'links.json');
 const BIO_PATH = path.join(ROOT, 'src', 'data', 'bio.json');
 const SKILLS_TS_PATH = path.join(ROOT, 'src', 'data', 'skills.ts');
 const SITE_URL = 'https://sokmontrey.github.io';
+const SHOW = 3;
+
+function seeAllLine(remaining, label, url) {
+  if (remaining <= 0) return null;
+  return `- [${remaining}+ ${label}](${url})`;
+}
 
 function toDisplayName(value) {
   if (!value) return 'Developer';
@@ -187,7 +193,7 @@ function formatSkills(skillGroups) {
     .join('\n');
 }
 
-function formatProjects(projects) {
+function formatProjects(projects, totalCount) {
   if (projects.length === 0) return '_No projects yet._';
   const lines = projects
     .sort((a, b) => new Date(b.data.date) - new Date(a.data.date))
@@ -196,33 +202,43 @@ function formatProjects(projects) {
       const tech = (project.data.technologies ?? []).slice(0, 3).join(', ');
       return `- \`${year}\` [${project.data.title}](${SITE_URL}/projects/${project.slug}) · ${tech}`;
     });
-  lines.push(`- [see all projects](${SITE_URL}/projects)`);
+  const seeAll = seeAllLine(totalCount - projects.length, 'projects', `${SITE_URL}/projects`);
+  if (seeAll) lines.push(seeAll);
   return lines.join('\n');
 }
 
 function formatExperiences(experiences) {
   if (experiences.length === 0) return '_No experiences yet._';
-  const lines = experiences
-    .sort((a, b) => {
-      const aEnd = a.data.endDate ? new Date(a.data.endDate).getTime() : Date.now();
-      const bEnd = b.data.endDate ? new Date(b.data.endDate).getTime() : Date.now();
-      return bEnd - aEnd;
-    })
-    .map((experience) => {
-      const start = new Date(experience.data.startDate).getFullYear();
-      const end = experience.data.endDate ? new Date(experience.data.endDate).getFullYear() : 'Present';
-      const range = start === end ? `${start}` : `${start} - ${end}`;
-      return `- \`${range}\` [${experience.data.title}](${SITE_URL}/experiences/${experience.slug}) at **${experience.data.company}**`;
-    });
-  lines.push(`- [see all experiences](${SITE_URL}/experiences)`);
+  const sorted = experiences.sort((a, b) => {
+    const aEnd = a.data.endDate ? new Date(a.data.endDate).getTime() : Date.now();
+    const bEnd = b.data.endDate ? new Date(b.data.endDate).getTime() : Date.now();
+    return bEnd - aEnd;
+  });
+  const shown = sorted.slice(0, SHOW);
+  const lines = shown.map((experience) => {
+    const start = new Date(experience.data.startDate).getFullYear();
+    const end = experience.data.endDate ? new Date(experience.data.endDate).getFullYear() : 'Present';
+    const range = start === end ? `${start}` : `${start} - ${end}`;
+    return `- \`${range}\` [${experience.data.title}](${SITE_URL}/experiences/${experience.slug}) at **${experience.data.company}**`;
+  });
+  const seeAll = seeAllLine(sorted.length - shown.length, 'experiences', `${SITE_URL}/experiences`);
+  if (seeAll) lines.push(seeAll);
   return lines.join('\n');
 }
 
 function formatWriting(writings) {
   if (writings.length === 0) return '_No writing yet._';
-  const lines = writings
-    .map((writing) => `- [${writing.data.title}](${SITE_URL}/writing/${writing.slug}) · ${writing.data.category}`);
-  lines.push(`- [see all writing](${SITE_URL}/writings)`);
+  const sorted = writings.sort((a, b) => {
+    const aDate = a.data.date ? new Date(a.data.date).getTime() : 0;
+    const bDate = b.data.date ? new Date(b.data.date).getTime() : 0;
+    return bDate - aDate;
+  });
+  const shown = sorted.slice(0, SHOW);
+  const lines = shown.map(
+    (writing) => `- [${writing.data.title}](${SITE_URL}/writings/${writing.slug}) · ${writing.data.category}`
+  );
+  const seeAll = seeAllLine(sorted.length - shown.length, 'writings', `${SITE_URL}/writings`);
+  if (seeAll) lines.push(seeAll);
   return lines.join('\n');
 }
 
@@ -246,7 +262,7 @@ ${formatSkills(skills)}
 
 ## Featured Projects
 
-${formatProjects(projectsForReadme)}
+${formatProjects(projectsForReadme, projects.length)}
 
 ## Experience
 
@@ -280,13 +296,16 @@ async function main() {
   const links = JSON.parse(linksRaw);
   const { bio } = JSON.parse(bioRaw);
   const name = inferNameFromRepo();
+  const visibleExperiences = experiences.filter((experience) => !experience.data.hidden);
+  const visibleWritings = writings.filter((writing) => !writing.data.hidden);
+
   const readme = buildReadme({
     name,
     bio,
     skills: skillGroups,
     projects,
-    experiences,
-    writings,
+    experiences: visibleExperiences,
+    writings: visibleWritings,
     links,
   });
 

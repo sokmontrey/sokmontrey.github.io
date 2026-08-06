@@ -20,11 +20,11 @@ const writings = await getAllWriting({ excludeHidden: true });
       {writings.map(w => (
         <li class="dict-entry">
           {w.data.image && w.data.image !== "" && (
-            <a href={`/writing/${w.slug}`} class="writing-img-wrap">
+            <a href={`/writings/${w.slug}`} class="writing-img-wrap">
               <img src={w.data.image} alt={w.data.title} class="entry-img" />
             </a>
           )}
-          <a href={`/writing/${w.slug}`} class="dict-head-link">
+          <a href={`/writings/${w.slug}`} class="dict-head-link">
             <span class="dict-title serif-font">{w.data.title}</span>
           </a>
           {w.data.tags && w.data.tags.length > 0 && (

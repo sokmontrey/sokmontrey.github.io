@@ -12,6 +12,7 @@ const experiences = await getAllExperiences();
 const writings    = await getAllWriting({ excludeHidden: true });
 
 const SHOW = 3;
+const SHOW_PROJECTS = 4;
 
 const sections = [
   { name: "Projects",    id: "projects" },
@@ -131,7 +132,7 @@ const visibleLinks = links.filter(l => l.isVisible);
           <p class="serif-font h2 lt-color section-num">{toRoman(1)}</p>
         </div>
         <ul>
-          {projects.slice(0, SHOW).map(p => (
+          {projects.slice(0, SHOW_PROJECTS).map(p => (
             <li class="dict-entry">
               {p.data.image && p.data.image !== "" && (
                 <a href={`/projects/${p.slug}`} class="entry-img-wrap project-img-wrap">
@@ -148,9 +149,9 @@ const visibleLinks = links.filter(l => l.isVisible);
             </li>
           ))}
         </ul>
-        {projects.length > SHOW && (
+        {projects.length > SHOW_PROJECTS && (
           <a href="/projects" class="see-all mono-font">
-            see all projects <i class="fa-solid fa-arrow-right fa-rotate-by" style="--fa-rotate-angle: -45deg;"></i>
+            {projects.length - SHOW_PROJECTS}+ projects <i class="fa-solid fa-arrow-right fa-rotate-by" style="--fa-rotate-angle: -45deg;"></i>
           </a>
         )}
       </div>
@@ -178,7 +179,7 @@ const visibleLinks = links.filter(l => l.isVisible);
         </ul>
         {experiences.length > SHOW && (
           <a href="/experiences" class="see-all mono-font">
-            see all experiences <i class="fa-solid fa-arrow-right fa-rotate-by" style="--fa-rotate-angle: -45deg;"></i>
+            {experiences.length - SHOW}+ experiences <i class="fa-solid fa-arrow-right fa-rotate-by" style="--fa-rotate-angle: -45deg;"></i>
           </a>
         )}
       </div>
@@ -195,11 +196,11 @@ const visibleLinks = links.filter(l => l.isVisible);
           {writings.slice(0, SHOW).map(w => (
             <li class="dict-entry">
               <!-- {w.data.image && w.data.image !== "" && (
-                <a href={`/writing/${w.slug}`} class="entry-img-wrap writing-img-wrap">
+                <a href={`/writings/${w.slug}`} class="entry-img-wrap writing-img-wrap">
                   <img src={w.data.image} alt={w.data.title} class="entry-img" />
                 </a>
               )} -->
-              <a href={`/writing/${w.slug}`} class="dict-head-link">
+              <a href={`/writings/${w.slug}`} class="dict-head-link">
                 <span class="dict-title serif-font">{w.data.title}</span>
               </a>
               <p class="sans-font dict-def lt2-color">{w.data.description}</p>
@@ -208,7 +209,7 @@ const visibleLinks = links.filter(l => l.isVisible);
         </ul>
         {writings.length > SHOW && (
           <a href="/writings" class="see-all mono-font">
-            see all writings <i class="fa-solid fa-arrow-right fa-rotate-by" style="--fa-rotate-angle: -45deg;"></i>
+            {writings.length - SHOW}+ writings <i class="fa-solid fa-arrow-right fa-rotate-by" style="--fa-rotate-angle: -45deg;"></i>
           </a>
         )}
       </div>
