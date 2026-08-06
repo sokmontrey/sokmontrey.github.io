@@ -11,7 +11,7 @@ From software to robots, to data and AI, to community and art, I make things and
 ## Featured Projects
 
 - `2026` [GlossPlusOne](https://sokmontrey.github.io/projects/glossplusone) · TypeScript, React, Manifest V3
-- `2025` [Visionr](https://sokmontrey.github.io/projects/visionr) · Python, OpenCV, WebSockets
+- `2026` [Visionr](https://sokmontrey.github.io/projects/visionr) · Python, OpenCV, WebSockets
 - `2025` [Navi](https://sokmontrey.github.io/projects/navi) · Go, SQLite, TUI
 - `2024` [TicTacToeTuiOnline](https://sokmontrey.github.io/projects/tictactoe-tui-online) · Go, WebSockets, TUI
 - [7+ projects](https://sokmontrey.github.io/projects)
