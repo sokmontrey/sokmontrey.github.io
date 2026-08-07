@@ -41,17 +41,18 @@ const latinPool = [
 ];
 
 const BG_ROWS = 10;
-const ROW_CHARS = 52;
+const ROW_CHARS = 44;
 let _s = 73;
 function sr() { _s = (_s * 16807) % 2147483647; return (_s - 1) / 2147483646; }
 
 function latinLine(len: number): string {
+  if (len <= 0) return "";
   let line = "";
   while (line.length < len) {
     const w = latinPool[Math.floor(sr() * latinPool.length)];
     line += (line ? " " : "") + w;
   }
-  return line;
+  return line.slice(0, len);
 }
 
 const bioLines = [
@@ -64,13 +65,15 @@ const bioLines = [
 
 type RowData = { pre: string; bio: string | null; post: string };
 const bioStart = Math.floor((BG_ROWS - bioLines.length) / 2);
+const LPAD = 4;
 const rows: RowData[] = [];
 for (let r = 0; r < BG_ROWS; r++) {
   const bi = r - bioStart;
   if (bi >= 0 && bi < bioLines.length) {
     const bio = bioLines[bi];
-    const lpad = latinLine(5) + " ";
-    rows.push({ pre: lpad, bio, post: " " + latinLine(ROW_CHARS - bio.length - lpad.length - 1) });
+    const pre = latinLine(LPAD) + " ";
+    const post = " " + latinLine(ROW_CHARS - bio.length - pre.length - 1);
+    rows.push({ pre, bio, post });
   } else {
     rows.push({ pre: latinLine(ROW_CHARS), bio: null, post: "" });
   }
@@ -82,7 +85,7 @@ const visibleLinks = links.filter(l => l.isVisible);
 <BaseLayout title="Sokmontrey Sythat">
 
   <!-- ── Hero ──────────────────────────────────────────────────────── -->
-  <header class="h-screen block-container" id="intro">
+  <header class="hero block-container" id="intro">
     <div class="hero-wrap">
       <h1 class="serif-font nt-color hero-title">Hi. I'm Montrey.</h1>
       <div class="hero-block" id="heroBlock">
@@ -96,7 +99,7 @@ const visibleLinks = links.filter(l => l.isVisible);
       </div>
       <a href="/about" class="more-about mono-font">more about me &gt;</a>
     </div>
-    <i class="fa-solid fa-arrow-down mt-10 lt2-color animate-bounce"></i>
+    <i class="fa-solid fa-arrow-down hero-arrow lt2-color animate-bounce"></i>
   </header>
 
   <main>
@@ -194,16 +197,20 @@ const visibleLinks = links.filter(l => l.isVisible);
         </div>
         <ul>
           {writings.slice(0, SHOW).map(w => (
-            <li class="dict-entry">
-              <!-- {w.data.image && w.data.image !== "" && (
-                <a href={`/writings/${w.slug}`} class="entry-img-wrap writing-img-wrap">
-                  <img src={w.data.image} alt={w.data.title} class="entry-img" />
+            <li class="dict-entry writing-entry">
+              <div class="writing-body">
+                <a href={`/writings/${w.slug}`} class="dict-head-link">
+                  <span class="dict-title serif-font">{w.data.title}</span>
                 </a>
-              )} -->
-              <a href={`/writings/${w.slug}`} class="dict-head-link">
-                <span class="dict-title serif-font">{w.data.title}</span>
-              </a>
-              <p class="sans-font dict-def lt2-color">{w.data.description}</p>
+                {w.data.description && (
+                  <p class="sans-font dict-def lt2-color">{w.data.description}</p>
+                )}
+              </div>
+              {w.data.image && w.data.image !== "" && (
+                <a href={`/writings/${w.slug}`} class="writing-thumb" aria-hidden="true" tabindex="-1">
+                  <img src={w.data.image} alt="" />
+                </a>
+              )}
             </li>
           ))}
         </ul>
@@ -250,10 +257,11 @@ const visibleLinks = links.filter(l => l.isVisible);
 
 <script>
 // ── Generative wave on bio right edge ──────────────────────────────────
-// Layered sine waves for constant, fluid, wind-like motion
+// Layered sine waves for constant, fluid, wind-like motion.
+// Clip in % of each line so it stays aligned as the block scales.
 function wave(t: number, y: number): number {
   return (
-    Math.sin(y * 0.15 - t * 1.0)             * 0.35 +
+    Math.sin(y * 0.15 - t * 1.0)           * 0.35 +
     Math.sin(y * 0.08 + t * 1.4 + 2.1)     * 0.30 +
     Math.sin(y * 0.04 - t * 1.9 + 4.7)     * 0.20 +
     Math.sin(y * 0.20 + t * 0.8 + 1.3)     * 0.15
@@ -263,15 +271,15 @@ function wave(t: number, y: number): number {
 const lines = Array.from(
   document.getElementById('heroBlock')!.querySelectorAll<HTMLElement>('p')
 );
-const TOTAL = 52; // ROW_CHARS
 let t = 0;
 
 function frame() {
   t += 0.025;
   lines.forEach((el, i) => {
     const n = wave(t, i * 4);
-    const chars = Math.floor((88 + n * 12) / 100 * TOTAL);
-    el.style.clipPath = `polygon(0 0, ${chars}ch 0, ${chars}ch 100%, 0 100%)`;
+    // Keep the cut past the bio text (~70% of a 44-char line)
+    const pct = 86 + n * 8; // ~78–94%
+    el.style.clipPath = `polygon(0 0, ${pct}% 0, ${pct}% 100%, 0 100%)`;
   });
   requestAnimationFrame(frame);
 }
@@ -303,41 +311,36 @@ requestAnimationFrame(frame);
   .section-title { color: var(--lt2-color); opacity: 0.55; }
 
   /* ── Hero ─────────────────────────────────────────── */
+  .hero {
+    min-height: 100svh;
+    padding: clamp(3.5rem, 8vh, 5rem) 1.25rem clamp(1.5rem, 4vh, 2.5rem);
+    box-sizing: border-box;
+    justify-content: center;
+    gap: clamp(1.25rem, 4vh, 2.5rem);
+  }
+
   .hero-title {
-    font-size: clamp(40px, 6vw, 54px);
-    line-height: 1;
+    font-size: clamp(2rem, 8vw, 3.375rem);
+    line-height: 1.05;
   }
 
   .hero-wrap {
-    width: 100%;
-    padding: 0 0.5rem 0 1rem;
-  }
-
-  @media (min-width: 420px) {
-    .hero-wrap {
-      padding: 0;
-      width: auto;
-    }
+    width: fit-content;
+    max-width: 100%;
   }
 
   .hero-block {
     position: relative;
-    margin-top: 1rem;
-  }
-
-  @media (max-width: 767px) {
-    .hero-block {
-      max-width: 100%;
-      overflow: hidden;
-    }
-    .block-text {
-      font-size: 2.8vw;
-    }
+    margin-top: 0.85rem;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .block-text {
+    /* Fit ~44 monospace chars to the available width (DM Mono ch ≈ 0.6em). */
+    font-size: min(0.88rem, calc((100vw - 2.5rem) / 28));
     line-height: 1.85;
-    font-size: clamp(0.6rem, 1.45vw, 0.88rem);
     white-space: nowrap;
     user-select: none;
   }
@@ -352,14 +355,27 @@ requestAnimationFrame(frame);
 
   .more-about {
     display: inline-block;
-    margin-top: 1.6rem;
-    font-size: 0.92rem;
-    color: var(--lt-color);
-    opacity: 0.8;
+    margin-top: 1.25rem;
+    font-size: clamp(0.85rem, 2.8vw, 0.92rem);
+    color: var(--nt-color);
     transition: opacity 0.15s ease, color 0.15s ease;
     letter-spacing: 0.02em;
   }
-  .more-about:hover { opacity: 1; color: var(--pm-color); }
+  .more-about:hover { opacity: 0.75; color: var(--pm-color); }
+
+  .hero-arrow {
+    font-size: 1rem;
+    opacity: 0.55;
+  }
+
+  @media (max-height: 640px) {
+    .hero {
+      padding-block: 3rem 1.5rem;
+      gap: 1rem;
+    }
+    .more-about { margin-top: 0.9rem; }
+    .hero-title { font-size: clamp(1.75rem, 7vw, 2.5rem); }
+  }
 
   /* ── Dictionary entry ─────────────────────────────── */
   .dict-entry {
@@ -412,7 +428,7 @@ requestAnimationFrame(frame);
     width: 100%;
   }
 
-  /* ── Images (above title) ─────────────────────────── */
+  /* ── Images (projects: above title) ───────────────── */
   .entry-img-wrap {
     display: block;
     margin-bottom: 0.8rem;
@@ -429,6 +445,38 @@ requestAnimationFrame(frame);
     transition: opacity 0.2s ease;
   }
   .entry-img-wrap:hover .entry-img { opacity: 1; }
+
+  /* ── Writings: thumb left, text right ─────────────── */
+  .writing-entry {
+    display: flex;
+    align-items: stretch;
+    gap: 0.9rem;
+  }
+
+  .writing-entry :global(.writing-thumb) {
+    flex: 0 0 8.5rem;
+    width: 8.5rem;
+    position: relative;
+    overflow: hidden;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+  }
+  .writing-entry:hover :global(.writing-thumb) { opacity: 1; }
+
+  .writing-entry :global(.writing-thumb) img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: right center;
+  }
+
+  .writing-body {
+    flex: 1;
+    min-width: 0;
+    padding-block: 1.25rem;
+  }
 
   /* ── See all ──────────────────────────────────────── */
   .see-all {

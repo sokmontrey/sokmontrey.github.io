@@ -1,5 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import links from "../../data/links.json";
+
+const visibleLinks = links.filter((l) => l.isVisible);
 ---
 
 <BaseLayout title="About | sokmontrey.me">
@@ -28,6 +31,15 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         a hackathon bringing together 150+ talented individuals to work on projects in under 24h,
         forming teams that continue to make <span class="nt-color">impacts</span> beyond the competition.
       </p>
+    </div>
+
+    <div class="social-bar">
+      {visibleLinks.map((link) => (
+        <a href={link.url} target="_blank" rel="noopener noreferrer" class="social-link mono-font">
+          <i class={link.icon}></i>
+          <span>{link.name}</span>
+        </a>
+      ))}
     </div>
 
   </main>
@@ -62,4 +74,23 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     font-size: 1rem;
     line-height: 1.8;
   }
+
+  .social-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 2rem;
+    margin-top: 3rem;
+  }
+
+  .social-link {
+    font-size: 0.95rem;
+    color: var(--lt2-color);
+    opacity: 0.7;
+    transition: opacity 0.15s ease, color 0.15s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .social-link i { font-size: 1.05rem; }
+  .social-link:hover { opacity: 1; color: var(--pm-color); }
 </style>
